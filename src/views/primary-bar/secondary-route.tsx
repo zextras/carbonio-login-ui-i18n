@@ -14,7 +14,7 @@ const SecondaryRouteIconView: FC = () => {
 	const createSnackbar = useContext(SnackbarManagerContext) as any;
 	const [t] = useTranslation();
 	return (
-		<Container >
+		<Container>
 			<IconButton
 				icon="Activity"
 				onClick={(): void => {

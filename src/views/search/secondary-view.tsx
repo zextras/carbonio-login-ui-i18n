@@ -11,7 +11,7 @@ import { Container, Text } from '@zextras/carbonio-design-system';
 const SecondarySearchView: FC = () => {
 	const [t] = useTranslation();
 	return (
-		<Container >
+		<Container>
 			<Text>{t('label.view', 'This is a view')}</Text>
 		</Container>
 	);

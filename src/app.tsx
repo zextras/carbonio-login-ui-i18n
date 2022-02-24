@@ -10,8 +10,6 @@ import {
 	addSettingsView,
 	addBoardView,
 	addUtilityView,
-	addSecondaryAccessoryView,
-	addPrimaryAccessoryView,
 	setAppContext,
 	registerActions,
 	ACTION_TYPES,
@@ -107,26 +105,6 @@ const App: FC = () => {
 			label: t('label.utility_view3', 'Test utility view 3'),
 			component: PlaceholderComponent
 		});
-		addSecondaryAccessoryView({
-			id: 'secondary-1',
-			blacklistRoutes: [SECONDARY_ROUTE],
-			component: PlaceholderComponent
-		});
-		addSecondaryAccessoryView({
-			id: 'secondary-2',
-			blacklistRoutes: [MAIN_ROUTE],
-			component: PlaceholderComponent
-		});
-		addPrimaryAccessoryView({
-			id: 'primary-1',
-			blacklistRoutes: [SECONDARY_ROUTE],
-			component: 'CodeDownloadOutline'
-		});
-		addPrimaryAccessoryView({
-			id: 'primary-2',
-			blacklistRoutes: [MAIN_ROUTE],
-			component: 'ColorPaletteOutline'
-		});
 		setAppContext({ hello: 'world' });
 	}, [t]);
 
@@ -134,7 +112,7 @@ const App: FC = () => {
 		registerActions({
 			id: 'new-example',
 			type: ACTION_TYPES.NEW,
-			action: (route) => ({
+			action: () => ({
 				id: 'new-example',
 				label: t('label.example_new', 'New Example'),
 				icon: 'CubeOutline',
