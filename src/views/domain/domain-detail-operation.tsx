@@ -12,12 +12,14 @@ import {
 	GENERAL_INFORMATION,
 	GENERAL_SETTINGS,
 	VIRTUAL_HOSTS,
-	AUTHENTICATION
+	AUTHENTICATION,
+	MAILBOX_QUOTA
 } from '../../constants';
 import { getDomainInformation } from '../../services/domain-information-service';
 import { searchDirectory } from '../../services/search-directory-service';
 import DomainGalSettings from './domain-gal-settings';
 import DomainGeneralSettings from './domain-general-settings';
+import DomainMailboxQuotaSetting from './domain-mailbox-quota-settings';
 import DomainVirtualHosts from './domain-virtual-hosts';
 
 const DomainOperations: FC = () => {
@@ -75,6 +77,8 @@ const DomainOperations: FC = () => {
 						return <DomainAuthentication domainInformation={domainInformation} />;
 					case VIRTUAL_HOSTS:
 						return <DomainVirtualHosts domainInformation={domainInformation} />;
+					case MAILBOX_QUOTA:
+						return <DomainMailboxQuotaSetting domainInformation={domainInformation} />;
 					default:
 						return null;
 				}
