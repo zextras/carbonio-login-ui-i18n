@@ -2,14 +2,45 @@
     "buckets": {
         "connection": {
             "access_key": "Clave de acceso",
-            "notes": "Notas"
+            "notes": "Notas",
+            "arn_name": "ARN / Nombre",
+            "descriptive_name": "Nombre descriptivo",
+            "secret_key": "Llave secreta",
+            "verify_connector": "VERIFICAR CONECTOR"
+        },
+        "bucket_list": "Lista de Buckets",
+        "bucket_type": "Tipos de Buckets",
+        "connect_buckets": "Conectar Buckets",
+        "new": {
+            "bucket_connection": "Conexión del Bucket"
         }
     },
     "domain": {
         "advanced": "Avanzado",
         "free_busy": "Libre/Ocupado",
         "general_settings": "Ajustes generales",
-        "theme": "Tema"
+        "theme": "Tema",
+        "account_gal_synchronization": "Nombre de la cuenta para la sincronización de la GAL",
+        "aggregated_domain_space": "Espacio de dominio agregado (Byte)",
+        "authentication": "Autenticación",
+        "create_new_domain": "CREAR NUEVO DOMINIO",
+        "domain_space_byte": "Espacio del dominio (Byte)",
+        "gal": "GAL",
+        "gal_mode": "Modo GAL",
+        "general_information": "Información general",
+        "internal_gal_received": "Rango de recepción interno de la GAL",
+        "mail_server": "Servidor de E-mail",
+        "mailbox_quota": "Cuota del buzón",
+        "mailbox_space": "Espacio del buzón",
+        "many_domain_info_msg": "La lista de dominios es extensa. Comience a escribir para filtrar.",
+        "most_result_return_gal_search": "La mayoría de los resultados devueltos por la búsqueda GAL",
+        "range": "Rango",
+        "search_domain": "Buscar un dominio",
+        "select_domain_or_create_new": "Seleccione un dominio para administrarlo, o haga clic en el botón Crear para crear uno nuevo.",
+        "send_the_warning_to": "Enviar advertencia a",
+        "source_name_internal_gal": "Nombre de origen de la GAL interna",
+        "virtual_hosts": "Hosts virtuales",
+        "warn_when_reach_space_quota": "Advertirme cuando alcance este espacio de cuota agregado"
     },
     "label": {
         "account": "Cuenta",
@@ -51,7 +82,16 @@
         "suspended": "Suspendido",
         "timezone": "Huso horario",
         "unlimited": "Ilimitado",
-        "url": "URL"
+        "url": "URL",
+        "active_sync": "ActiveSync",
+        "add_regex": "AGREGAR REGEX",
+        "admin_help_url": "URL de ayuda del administrador",
+        "admins": "Administradores",
+        "aggrigated_space_criteria": "Criterio para el espacio agregado",
+        "allow_send_receive": "Permitir Enviar/Recibir",
+        "auth_method": "Método de autenticación",
+        "authentication": "Autenticación",
+        "auto_logout_users": "Cerrar sesión automáticamente"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -210,7 +250,15 @@
             "subscription_last_check": "Última comprobación de suscripción",
             "subscription_type": "Tipo de suscripción",
             "token": "Token",
-            "version": "Versión de Zextras"
+            "version": "Versión de Zextras",
+            "deactive": "Desactivar",
+            "modal": {
+                "cancel": "NO",
+                "confirm": "¿Está seguro que desea continuar?",
+                "deactivate": "Sí, desactivar",
+                "label": "Desactivar Token",
+                "warning": "Está intentando desactivar el token actual. Al continuar se inhabilitarán las funcionalidades activas."
+            }
         }
     },
     "message": {
@@ -219,5 +267,10 @@
                 "accepted": "Has aceptado la solicitud de compartir"
             }
         }
-    }
+    },
+    "commons": {
+        "confirm_connection": "CONFIRMAR CONEXIÓN"
+    },
+    "create_new_bucket": "NUEVO BUCKET",
+    "create_new_domain": "Crear un nuevo dominio"
 }
