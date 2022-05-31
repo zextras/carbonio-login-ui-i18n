@@ -50,7 +50,9 @@
         "search_domain": "Cerca un dominio",
         "send_the_warning_to": "Manda avviso a",
         "virtual_hosts": "Host virtuali",
-        "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo."
+        "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo.",
+        "authentication": "Autenticazione",
+        "general_information": "Informazioni Generali"
     },
     "label": {
         "account": "Profilo",
@@ -280,5 +282,7 @@
     "commons": {
         "confirm_connection": "CONFERMA CONNESSIONE"
     },
-    "create_new_bucket": "NUOVO BUCKET"
+    "create_new_bucket": "NUOVO BUCKET",
+    "log": "Log",
+    "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo."
 }
