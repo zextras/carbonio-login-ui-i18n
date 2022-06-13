@@ -33,7 +33,7 @@
             "subscription_last_check": "Dernière vérification de souscription",
             "subscription_type": "Type de souscription",
             "token": "Token",
-            "version": "Zextras version",
+            "version": "Version de Zextras",
             "deactive": "Désactivé",
             "modal": {
                 "cancel": "NON",
@@ -111,7 +111,7 @@
         "delete_domain_success_msg": "Le domaine a été supprimé avec succès",
         "delete_domain_with_account_content_msg": "{{domainName}} n'est pas vide : il contient {{domainAccounts}} comptes système et {{domainAccounts}} compte normaux. Êtes-vous certain de vouloir précéder à la suppression",
         "deleteing": "Suppression ",
-        "deligated_admin_help_url": "URL d'aide pour la délégation d'administrateur",
+        "deligated_admin_help_url": "URL d'aide pour les administrateurs délégués",
         "domain_quota_settings": "Paramètres de quota de domaine",
         "domains": "Domaines",
         "enable_start_tls": "Activer StartTLS",
