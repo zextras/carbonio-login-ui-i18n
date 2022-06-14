@@ -113,7 +113,7 @@ const App: FC = () => {
 			position: 1,
 			visible: true,
 			label: t('label.backup', 'Backup'),
-			primaryBar: 'RefreshOutline',
+			primaryBar: 'HistoryOutline',
 			appView: AppView,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
@@ -140,6 +140,7 @@ const App: FC = () => {
 			id: 'new-domain',
 			type: 'new'
 		});
+		history.push(`/${DASHBOARD}`);
 	}, [t, history]);
 
 	return null;
