@@ -141,7 +141,17 @@
     "buckets": {
         "connection": {
             "access_key": "Chave de acesso",
-            "notes": "Notas"
+            "notes": "Notas",
+            "arn_name": "Arn / Nombre",
+            "descriptive_name": "Nombre descriptivo",
+            "secret_key": "Secret Key",
+            "verify_connector": "VERIFICAR CONECTOR"
+        },
+        "connect_buckets": "Conectar Buckets",
+        "bucket_list": "Lista de Buckets",
+        "bucket_type": "Tipos de Buckets",
+        "new": {
+            "bucket_connection": "Conexión del bucket"
         }
     },
     "core": {
@@ -162,14 +172,43 @@
             "subscription_last_check": "Última Verificação de Assinatura",
             "subscription_type": "Tipo de Assinatura",
             "token": "Token",
-            "version": "Versão Zextras"
+            "version": "Versão Zextras",
+            "modal": {
+                "confirm": "Tem certeza que quer continuar?",
+                "cancel": "NÃO",
+                "deactivate": "Sim, desativar",
+                "label": "Desativar Token",
+                "warning": "Você está tentando desativar o Token atual. Se continuar, você vai desabilitar todas as funcionalidades habilitadas."
+            },
+            "deactive": "Desativar"
         }
     },
     "domain": {
         "advanced": "Avançado",
         "free_busy": "Livre/Ocupado",
         "general_settings": "Configurações Gerais",
-        "theme": "Tema"
+        "theme": "Tema",
+        "many_domain_info_msg": "Muitos domínios! Começe a digitar para filtrar o que você quer ver.",
+        "account_gal_synchronization": "Nome da conta para sincronização da GAL",
+        "authentication": "Autenticação",
+        "create_new_domain": "CRIAR NOVO DOMÍNIO",
+        "domain_space_byte": "Espaço do domínio (Bytes)",
+        "aggregated_domain_space": "Espaço de Domínio Agregado (Bytes)",
+        "gal": "GAL",
+        "gal_mode": "Modo da GAL",
+        "general_information": "Informação geral",
+        "internal_gal_received": "Faixa da GAL interna recebido",
+        "mail_server": "Servidor de email",
+        "mailbox_quota": "Cota de email",
+        "mailbox_space": "Espaço da conta",
+        "most_result_return_gal_search": "A maioria dos resultados devolvidos pela busca na GAL",
+        "range": "Faixa",
+        "search_domain": "Buscar um domínio",
+        "send_the_warning_to": "Enviar advertência para",
+        "source_name_internal_gal": "Nome de origem da GAL interna",
+        "virtual_hosts": "Hosts virtuais",
+        "warn_when_reach_space_quota": "Avise-me quando eu atingir esta cota de espaço agregada",
+        "select_domain_or_create_new": "Por favor selecione um domínio para gerenciá-lo o clique no botão Criar para criar um novo."
     },
     "label": {
         "account": "Conta",
@@ -211,7 +250,31 @@
         "suspended": "Suspendido",
         "timezone": "Fuso Horário",
         "unlimited": "Ilimitado",
-        "url": "URL"
+        "url": "URL",
+        "delete_domain_error_msg": "Você está eliminando o domínio {{domainName}}. Tem certeza?",
+        "aggrigated_space_criteria": "Critério para o espaço agregado",
+        "change_save_success_msg": "A mudança foi salva com sucesso",
+        "active_sync": "ActiveSync",
+        "add_regex": "ADICIONAL REGEX",
+        "admin_help_url": "URL de ajuda",
+        "admins": "Administradores",
+        "auth_method": "Método de autenticação",
+        "allow_send_receive": "Permitir enviar/reciber",
+        "authentication": "Autenticação",
+        "auto_logout_users": "Encerrar sessão automáticamente",
+        "bind_dn_template": "Ligar template DN",
+        "block_send": "Bloquear Enviar",
+        "block_send_receive": "Bloquear Enviar/Recibir",
+        "buckets": "Buckets",
+        "certificate": "Certificado",
+        "certificates": "Certificados",
+        "closed": "Fechado",
+        "console_redirection": "Redirecionamento do console",
+        "cos": "CoS",
+        "create_date": "Data de criação",
+        "default_class_of_service": "Classe de serviço por padrão",
+        "delete_domain": "Eliminar domínio",
+        "delete_domain_success_msg": "O domínio foi eliminado com sucesso"
     },
     "message": {
         "snackbar": {
@@ -219,5 +282,10 @@
                 "accepted": "Você aceitou este pedido de compartilhamento"
             }
         }
-    }
+    },
+    "commons": {
+        "confirm_connection": "CONFIRMAR CONEXÃO"
+    },
+    "create_new_bucket": "NOVO BUCKET",
+    "create_new_domain": "Crear novo domínio"
 }
