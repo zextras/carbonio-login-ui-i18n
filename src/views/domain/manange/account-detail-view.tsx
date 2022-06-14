@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import moment from 'moment';
 import {
 	Container,
@@ -17,11 +17,12 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { getMailboxQuota } from '../../../services/account-list-directory-service';
 
 const AccountDetailContainer = styled(Container)`
 	z-index: 10;
 	position: absolute;
-	top: 62px;
+	top: 43px;
 	right: 12px;
 	bottom: 0px;
 	left: ${'max(calc(100% - 680px), 12px)'};
@@ -30,7 +31,8 @@ const AccountDetailContainer = styled(Container)`
 	width: auto;
 	max-height: 100%;
 	overflow: hidden;
-	box-shadow: -6px 4px 5px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: -6px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	opacity: '10%;
 `;
 
 const AccountDetailView: FC<any> = ({
@@ -39,8 +41,18 @@ const AccountDetailView: FC<any> = ({
 	STATUS_COLOR
 }) => {
 	const [t] = useTranslation();
-	console.log('_selectedAccount', selectedAccount);
+	const [usedQuota, setUsedQuota] = useState(0);
 
+	const getDataSourceDetail = useCallback((): void => {
+		getMailboxQuota(selectedAccount?.id)
+			.then((response) => response.json())
+			.then((data) => {
+				setUsedQuota(data?.Body?.GetMailboxResponse?.mbox?.[0]?.s || 0);
+			});
+	}, [selectedAccount?.id]);
+	useEffect(() => {
+		getDataSourceDetail();
+	}, [getDataSourceDetail]);
 	return (
 		<AccountDetailContainer background="gray5" mainAlignment="flex-start">
 			<Row
@@ -50,10 +62,9 @@ const AccountDetailView: FC<any> = ({
 				background="white"
 				width="fill"
 				height="48px"
-				padding={{ vertical: 'small' }}
 				style={{ borderBottom: '1px solid #E6E9ED' }}
 			>
-				<Row padding={{ horizontal: 'large' }}></Row>
+				<Row padding={{ horizontal: 'small' }}></Row>
 				<Row takeAvailableSpace mainAlignment="flex-start">
 					<Text size="medium" overflow="ellipsis" weight="bold">
 						{`${selectedAccount?.name} ${t('label.details', 'Details')}`}
@@ -97,7 +108,11 @@ const AccountDetailView: FC<any> = ({
 							<Icon icon="PersonOutline" size="large" color="gray0" />
 						</Row>
 						<Row width="80%">
-							<Input label="Name" backgroundColor="gray6" value={selectedAccount?.displayName} />
+							<Input
+								label={t('label.name', 'Name')}
+								backgroundColor="gray6"
+								value={selectedAccount?.displayName}
+							/>
 						</Row>
 					</Row>
 					<Row
@@ -110,7 +125,11 @@ const AccountDetailView: FC<any> = ({
 							<Icon icon="EmailOutline" size="large" color="gray0" />
 						</Row>
 						<Row width="80%">
-							<Input label="E-mail" backgroundColor="gray6" value={selectedAccount?.name} />
+							<Input
+								label={t('label.email', 'E-mail')}
+								backgroundColor="gray6"
+								value={selectedAccount?.name}
+							/>
 						</Row>
 					</Row>
 				</Row>
@@ -127,7 +146,8 @@ const AccountDetailView: FC<any> = ({
 						</Row>
 						<Row width="80%">
 							<Input
-								label="Server"
+								label={t('label.server', 'Server')}
+								readOnly
 								backgroundColor="gray6"
 								value={selectedAccount?.zimbraMailHost}
 							/>
@@ -143,8 +163,25 @@ const AccountDetailView: FC<any> = ({
 							<Icon icon="CubeOutline" size="large" color="gray0" />
 						</Row>
 						<Row width="80%">
-							<Input label="Space" backgroundColor="gray6" value="25,4 MB of 512 MB" />
-							<Quota fill={10} background="gray5" />
+							<Input
+								readOnly
+								label={t('label.space', 'Space')}
+								backgroundColor="gray6"
+								value={`${(usedQuota / 1048576).toFixed(3)} MB of ${
+									selectedAccount?.zimbraMailQuota
+										? `${(selectedAccount.zimbraMailQuota / 1048576).toFixed(3)} MB`
+										: t('label.unlimited', 'Unlimited')
+								}
+								}`}
+							/>
+							<Quota
+								fill={
+									!selectedAccount?.zimbraMailQuota
+										? 1
+										: (usedQuota / selectedAccount.zimbraMailQuota) * 100
+								}
+								background="gray5"
+							/>
 						</Row>
 					</Row>
 				</Row>
@@ -160,7 +197,7 @@ const AccountDetailView: FC<any> = ({
 							<Icon icon="FingerPrintOutline" size="large" color="gray0" />
 						</Row>
 						<Row width="80%">
-							<Input label="ID" backgroundColor="gray6" value={selectedAccount?.id} />
+							<Input readOnly label="ID" backgroundColor="gray6" value={selectedAccount?.id} />
 						</Row>
 					</Row>
 					<Row
@@ -178,8 +215,9 @@ const AccountDetailView: FC<any> = ({
 						</Row>
 						<Row width="80%">
 							<Input
-								label="Status"
+								label={t('label.status', 'Status')}
 								backgroundColor="gray6"
+								readOnly
 								value={STATUS_COLOR[selectedAccount?.zimbraAccountStatus]?.label}
 							/>
 						</Row>
@@ -198,8 +236,9 @@ const AccountDetailView: FC<any> = ({
 						</Row>
 						<Row width="80%">
 							<Input
-								label="Creation Date"
+								label={t('label.creation_date', 'Creation Date')}
 								backgroundColor="gray6"
+								readOnly
 								value={moment(selectedAccount?.zimbraCreateTimestamp, 'YYYYMMDDHHmmss.Z').format(
 									'DD MMM YYYY | hh:MM:SS A'
 								)}
@@ -217,8 +256,9 @@ const AccountDetailView: FC<any> = ({
 						</Row>
 						<Row width="80%">
 							<Input
-								label="Last Access"
+								label={t('label.last_access', 'Last Access')}
 								backgroundColor="gray6"
+								readOnly
 								value={
 									selectedAccount?.zimbraLastLogonTimestamp
 										? moment(selectedAccount?.zimbraLastLogonTimestamp, 'YYYYMMDDHHmmss.Z').format(
@@ -230,41 +270,31 @@ const AccountDetailView: FC<any> = ({
 						</Row>
 					</Row>
 				</Row>
-				<Row padding={{ top: 'extralarge' }}>
-					<Text
-						size="small"
-						mainAlignment="flex-start"
-						crossAlignment="flex-start"
-						orientation="horizontal"
-						weight="bold"
-					>
-						{t('label.description', 'Description')}
-					</Text>
+				<Row
+					padding={{ top: 'extralarge' }}
+					width="100%"
+					mainAlignment="flex-start"
+					crossAlignment="flex-start"
+				>
+					<Input
+						label={t('label.description', 'Description')}
+						backgroundColor="gray6"
+						width="100%"
+						value={selectedAccount?.description}
+					></Input>
 				</Row>
-				<Row width="100%" mainAlignment="flex-start" crossAlignment="flex-start">
-					<Padding top="small" right="extralarge" bottom="small" left="large">
-						<Text size="small" overflow="break-word">
-							{selectedAccount?.description}
-						</Text>
-					</Padding>
-				</Row>
-				<Row padding={{ top: 'extralarge' }}>
-					<Text
-						size="small"
-						mainAlignment="flex-start"
-						crossAlignment="flex-start"
-						orientation="horizontal"
-						weight="bold"
-					>
-						{t('label.notes', 'Notes')}
-					</Text>
-				</Row>
-				<Row width="100%" mainAlignment="flex-start" crossAlignment="flex-start">
-					<Padding top="small" right="extralarge" bottom="small" left="large">
-						<Text size="small" overflow="break-word">
-							{selectedAccount?.zimbraNotes}
-						</Text>
-					</Padding>
+				<Row
+					padding={{ top: 'extralarge' }}
+					width="100%"
+					mainAlignment="flex-start"
+					crossAlignment="flex-start"
+				>
+					<Input
+						label={t('label.notes', 'Notes')}
+						backgroundColor="gray6"
+						width="100%"
+						value={selectedAccount?.zimbraNotes}
+					></Input>
 				</Row>
 			</Container>
 		</AccountDetailContainer>

@@ -21,13 +21,34 @@ export const accountListDirectory = async (
 			types: type
 		}
 	};
-	// if (domainName !== '') {
-	// 	request.SearchDirectoryRequest.domain = domainName;
-	// }
+	if (domainName !== '') {
+		request.SearchDirectoryRequest.domain = domainName;
+	}
 	if (query !== '') {
 		request.SearchDirectoryRequest.query = query;
 	}
 	return fetch(`/service/admin/soap/SearchDirectoryRequest`, {
+		method: 'POST',
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			Body: request
+		})
+	});
+};
+
+export const getMailboxQuota = async (id: string): Promise<any> => {
+	const request: any = {
+		GetMailboxRequest: {
+			_jsns: 'urn:zimbraAdmin',
+			mbox: {
+				id
+			}
+		}
+	};
+	return fetch(`/service/admin/soap/GetMailboxRequest`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
