@@ -14,6 +14,7 @@ import {
 	VIRTUAL_HOSTS,
 	AUTHENTICATION,
 	MAILBOX_QUOTA,
+	ACCOUNTS,
 	MAILING_LIST
 } from '../../constants';
 import { getDomainInformation } from '../../services/domain-information-service';
@@ -21,6 +22,7 @@ import { searchDirectory } from '../../services/search-directory-service';
 import DomainGalSettings from './domain-gal-settings';
 import DomainGeneralSettings from './domain-general-settings';
 import DomainMailboxQuotaSetting from './domain-mailbox-quota-settings';
+import ManageAccounts from './manange/manage-accounts';
 import DomainVirtualHosts from './domain-virtual-hosts';
 import { useDomainStore } from '../../store/domain/store';
 import DomainMailingList from './domain-mailing-list';
@@ -83,6 +85,8 @@ const DomainOperations: FC = () => {
 						return <DomainVirtualHosts />;
 					case MAILBOX_QUOTA:
 						return <DomainMailboxQuotaSetting />;
+					case ACCOUNTS:
+						return <ManageAccounts />;
 					case MAILING_LIST:
 						return <DomainMailingList />;
 					default:
