@@ -6,8 +6,8 @@
 
 import React, { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// import { Button } from '@zextras/carbonio-design-system';
-import { VerticalWizard } from '../app/component/hwizard';
+import { Button } from '@zextras/carbonio-design-system';
+import { HorizontalWizard } from '../app/component/hwizard';
 import Connection from './connection';
 import { Section } from '../app/component/section';
 
@@ -60,7 +60,7 @@ const NewBucket: FC<{
 	);
 
 	return (
-		<VerticalWizard
+		<HorizontalWizard
 			steps={wizardSteps}
 			Wrapper={WizardInSection}
 			onChange={setWizardData}
