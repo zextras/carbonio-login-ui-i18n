@@ -24,7 +24,7 @@
         "source_name_internal_gal": "Исходное имя внутреннего GAL",
         "warn_when_reach_space_quota": "Предупредить меня, когда я достигну этой совокупной квоты пространства",
         "many_domain_info_msg": "Много доменов! Какой из них вы хотели бы увидеть? Начните печатать, чтобы отфильтровать.",
-        "internal_gal_received": "Внутренний GAL получил диапазон"
+        "internal_gal_received": "Диапазон полученный внутренним GAL"
     },
     "label": {
         "account": "Учетная запись",
@@ -119,10 +119,10 @@
         "internal_gal": "Внутренний GAL",
         "log": "Журнал",
         "login_allowed_ip": "Разрешенный IP-адрес для входа",
-        "login_allowed_user_agent": "Пользовательский агент с разрешенным входом в систему",
+        "login_allowed_user_agent": "Вход из разрешенного клиента",
         "login_redirect_url": "URL переадресации входа",
         "logout_allowed_ip": "Разрешенный IP-адрес выхода",
-        "logout_allowed_user_agent": "Пользовательский агент с разрешенным выходом",
+        "logout_allowed_user_agent": "Выход из разрешенного клиент",
         "logout_redirect_url": "URL переадресации выхода из системы",
         "mail_size": "Размер письма",
         "management": "Управление",
@@ -131,7 +131,7 @@
         "no_virtual_host_msg": "Здесь нет виртуальных хостов.",
         "password_to_bind_external_server_msg": "Я хочу использовать DN/пароль для привязки к внешнему серверу",
         "public_service_hostname": "Имя хоста общедоступной службы",
-        "public_service_port": "Порт общественного обслуживания",
+        "public_service_port": "Порт для внешних подключений",
         "quota_used": "Квота / квота использована",
         "search_base": "База поиска",
         "secondary bar_view": "Это основной вид",
@@ -156,9 +156,10 @@
         "virtual_host_note": "Обратите внимание, что удаление виртуального хоста вступает в силу только после перезапуска почтового сервера.",
         "virtual_host_user_msg": "Предполагается, что любой пользователь, который входит в систему с использованием URL-адреса с одним из приведенных ниже имен хостов, находится в этом домене {{domainName}}",
         "your_auth_method_is": "Ваш метод авторизации",
-        "main_view": "это вид",
+        "main_view": "Вид",
         "example_new": "Новый образец",
-        "public_service_protocol": "Протокол публичной службы"
+        "public_service_protocol": "Протокол публичной службы",
+        "external_password_change_listener": "Детектор смены внешнего пароля"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
