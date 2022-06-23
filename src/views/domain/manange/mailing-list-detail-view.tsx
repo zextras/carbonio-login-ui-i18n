@@ -87,6 +87,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 	const [isAddToOwnerList, setIsAddToOwnerList] = useState<boolean>(false);
 	const [searchMailingListOrUser, setSearchMailingListOrUser] = useState<string>('');
 	const [isShowError, setIsShowError] = useState<boolean>(false);
+	const [isDirty, setIsDirty] = useState<boolean>(false);
 
 	const dlCreateDate = useMemo(
 		() =>
@@ -374,6 +375,14 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 		}
 	};
 
+	const onUndo = (): void => {
+		console.log('cancel');
+	};
+
+	const onSave = (): void => {
+		console.log('cancel');
+	};
+
 	return (
 		<MailingListDetailContainer background="gray5" mainAlignment="flex-start">
 			<Row
@@ -391,6 +400,25 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 					</Text>
 				</Row>
 				<Row padding={{ right: 'extrasmall' }}>
+					<Padding right="small">
+						{isDirty && (
+							<Button
+								label={t('label.undo', 'undo')}
+								type="outlined"
+								icon="CloseOutline"
+								color="secondary"
+								onClick={onUndo}
+							/>
+						)}
+					</Padding>
+					{isDirty && (
+						<Button
+							label={t('label.save', 'Save')}
+							icon="SaveOutline"
+							color="primary"
+							onClick={onSave}
+						/>
+					)}
 					<IconButton
 						size="medium"
 						icon="CloseOutline"
