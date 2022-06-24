@@ -18,9 +18,11 @@ import {
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import moment from 'moment';
+import { debounce } from 'lodash';
 import logo from '../../../assets/gardian.svg';
 import Paginig from '../../components/paging';
 import { searchDirectory } from '../../../services/search-directory-service';
+import { useDomainStore } from '../../../store/domain/store';
 
 const DomainResources: FC = () => {
 	const [t] = useTranslation();
@@ -28,6 +30,9 @@ const DomainResources: FC = () => {
 	const [offset, setOffset] = useState<number>(0);
 	const [limit, setLimit] = useState<number>(50);
 	const [totalAccount, setTotalAccount] = useState<number>(0);
+	const domainName = useDomainStore((state) => state.domain?.name);
+	const [searchString, setSearchString] = useState<string>('');
+	const [searchQuery, setSearchQuery] = useState<string>('');
 	const headers: any[] = useMemo(
 		() => [
 			{
@@ -64,56 +69,75 @@ const DomainResources: FC = () => {
 		[t]
 	);
 
-	const getResourceList = useCallback((): void => {
-		const attrs =
-			'displayName,zimbraId,zimbraMailHost,uid,description,zimbraIsAdminGroup,zimbraMailStatus,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraIsSystemAccount,zimbraIsExternalVirtualAccount,zimbraLastLogonTimestamp,zimbraAccountStatus';
-		const types = 'resources';
-		const query = '(&(!(zimbraIsSystemAccount=TRUE)))';
+	const getResourceList = useCallback(
+		(zimbraDomainName: any, queryString: any): void => {
+			const attrs =
+				'displayName,zimbraId,zimbraMailHost,uid,description,zimbraIsAdminGroup,zimbraMailStatus,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraIsSystemAccount,zimbraIsExternalVirtualAccount,zimbraLastLogonTimestamp,zimbraAccountStatus';
+			const types = 'resources';
+			const query = `${queryString}(&(!(zimbraIsSystemAccount=TRUE)))`;
 
-		searchDirectory(attrs, types, '', query, offset, limit, 'name')
-			.then((response) => response.json())
-			.then((data) => {
-				const resList = data?.Body?.SearchDirectoryResponse?.calresource;
-				if (resList) {
-					if (data?.Body?.SearchDirectoryResponse?.searchTotal) {
+			searchDirectory(attrs, types, zimbraDomainName, query, offset, limit, 'name')
+				.then((response) => response.json())
+				.then((data) => {
+					const resourceListResponse = data?.Body?.SearchDirectoryResponse?.calresource || [];
+					if (resourceListResponse && Array.isArray(resourceListResponse)) {
 						setTotalAccount(data?.Body?.SearchDirectoryResponse?.searchTotal);
-					}
-					const rList: any[] = [];
-					resList.forEach((item: any, index: number) => {
-						rList.push({
-							id: item?.id,
-							columns: [
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
-									{item?.a?.find((a: any) => a?.n === 'displayName')?._content}
-								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
-									{item?.name}
-								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
-									{item?.a?.find((a: any) => a?.n === 'zimbraAccountStatus')?._content}
-								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
-									{item?.a?.find((a: any) => a?.n === 'zimbraLastLogonTimestamp')?._content
-										? moment(
-												item?.a?.find((a: any) => a?.n === 'zimbraLastLogonTimestamp')?._content,
-												'YYYYMMDDHHmmss.Z'
-										  ).format('YY/MM/DD | hh:MM')
-										: t('label.never_logged_in', 'Never logged In')}
-								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
-									{item?.a?.find((a: any) => a?.n === 'description')?._content}
-								</Text>
-							]
+						const rList: any[] = [];
+						resourceListResponse.forEach((item: any, index: number) => {
+							rList.push({
+								id: item?.id,
+								columns: [
+									<Text size="medium" weight="light" key={item?.id} color="gray0">
+										{item?.a?.find((a: any) => a?.n === 'displayName')?._content}
+									</Text>,
+									<Text size="medium" weight="light" key={item?.id} color="gray0">
+										{item?.name}
+									</Text>,
+									<Text size="medium" weight="light" key={item?.id} color="gray0">
+										{item?.a?.find((a: any) => a?.n === 'zimbraAccountStatus')?._content}
+									</Text>,
+									<Text size="medium" weight="light" key={item?.id} color="gray0">
+										{item?.a?.find((a: any) => a?.n === 'zimbraLastLogonTimestamp')?._content
+											? moment(
+													item?.a?.find((a: any) => a?.n === 'zimbraLastLogonTimestamp')?._content,
+													'YYYYMMDDHHmmss.Z'
+											  ).format('YY/MM/DD | hh:MM')
+											: t('label.never_logged_in', 'Never logged In')}
+									</Text>,
+									<Text size="medium" weight="light" key={item?.id} color="gray0">
+										{item?.a?.find((a: any) => a?.n === 'description')?._content}
+									</Text>
+								]
+							});
 						});
-					});
-					setResourceList(rList);
-				}
-			});
-	}, [t, offset, limit]);
+						setResourceList(rList);
+					}
+				});
+		},
+		[t, offset, limit]
+	);
 
 	useEffect(() => {
-		getResourceList();
-	}, [offset, getResourceList]);
+		getResourceList(domainName, searchQuery);
+	}, [offset, getResourceList, domainName, searchQuery]);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const searchResourceQuery = useCallback(
+		debounce((searchText) => {
+			if (searchText) {
+				setSearchQuery(
+					`(|(mail=*${searchText}*)(cn=*${searchText}*)(sn=*${searchText}*)(gn=*${searchText}*)(displayName=*${searchText}*)(zimbraMailDeliveryAddress=*${searchText}*))`
+				);
+			} else {
+				setSearchQuery('');
+			}
+		}, 700),
+		[debounce]
+	);
+
+	useEffect(() => {
+		searchResourceQuery(searchString);
+	}, [searchString, searchResourceQuery]);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
@@ -185,6 +209,9 @@ const DomainResources: FC = () => {
 								<Input
 									backgroundColor="gray5"
 									label={t('label.search_dot', 'Search ...')}
+									onChange={(e: any): any => {
+										setSearchString(e.target.value);
+									}}
 									CustomIcon={(): any => <Icon icon="FunnelOutline" size="large" color="primary" />}
 								/>
 							</Container>
