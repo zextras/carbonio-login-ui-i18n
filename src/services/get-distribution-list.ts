@@ -4,36 +4,35 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export const getQuotaUsage = async (
-	domainName: string,
+export const getDistributionList = async (
+	dlId: string,
+	dlName: string,
 	offset?: number,
-	limit?: number,
-	propSortBy?: string
+	limit?: number
 ): Promise<any> => {
 	const request: any = {
-		GetQuotaUsageRequest: {
+		GetDistributionListRequest: {
 			_jsns: 'urn:zimbraAdmin',
-			sortBy: propSortBy || 'totalUsed',
 			offset: offset || 0,
-			limit: limit || 50,
-			refresh: '1',
-			domain: domainName,
-			allServers: '1'
+			limit: limit || 0
 		}
 	};
-	return fetch(`/service/admin/soap/GetQuotaUsageRequest`, {
+	if (dlId) {
+		request.GetDistributionListRequest.dl = {
+			by: 'id',
+			_content: dlId
+		};
+	}
+	if (dlName) {
+		request.GetDistributionListRequest.name = dlName;
+	}
+	return fetch(`/service/admin/soap/GetDistributionListRequest`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			Header: {
-				context: {
-					_jsns: 'urn:zimbra',
-					session: {}
-				}
-			},
 			Body: request
 		})
 	});

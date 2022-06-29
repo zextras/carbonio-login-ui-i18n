@@ -18,17 +18,26 @@ import {
 	SnackbarManagerContext
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
+import { debounce } from 'lodash';
 import logo from '../../../assets/gardian.svg';
 import Paginig from '../../components/paging';
 import { searchDirectory } from '../../../services/search-directory-service';
+import EditMailingListView from './edit-mailing-detail-view';
+import { useDomainStore } from '../../../store/domain/store';
+import { RECORD_DISPLAY_LIMIT } from '../../../constants';
 
 const DomainMailingList: FC = () => {
 	const [t] = useTranslation();
 	const createSnackbar: any = useContext(SnackbarManagerContext);
+	const domainName = useDomainStore((state) => state.domain?.name);
 	const [mailingList, setMailingList] = useState<any[]>([]);
 	const [offset, setOffset] = useState<number>(0);
-	const [limit, setLimit] = useState<number>(50);
+	const [limit, setLimit] = useState<number>(RECORD_DISPLAY_LIMIT);
 	const [totalAccount, setTotalAccount] = useState<number>(0);
+	const [selectedMailingList, setSelectedMailingList] = useState<any>({});
+	const [showMailingListDetailView, setShowMailingListDetailView] = useState<any>();
+	const [searchString, setSearchString] = useState<string>('');
+	const [searchQuery, setSearchQuery] = useState<string>('');
 	const headers: any[] = useMemo(
 		() => [
 			{
@@ -75,9 +84,9 @@ const DomainMailingList: FC = () => {
 		const attrs =
 			'displayName,zimbraId,zimbraMailHost,uid,description,zimbraIsAdminGroup,zimbraMailStatus,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraIsSystemAccount,zimbraIsExternalVirtualAccount';
 		const types = 'distributionlists,dynamicgroups';
-		const query = '(&(!(zimbraIsSystemAccount=TRUE)))';
+		const query = `${searchQuery}(&(!(zimbraIsSystemAccount=TRUE)))`;
 
-		searchDirectory(attrs, types, '', query, offset, limit, 'name')
+		searchDirectory(attrs, types, domainName || '', query, offset, limit, 'name')
 			.then((response) => response.json())
 			.then((data) => {
 				const dlList = data?.Body?.SearchDirectoryResponse?.dl;
@@ -90,37 +99,126 @@ const DomainMailingList: FC = () => {
 						mList.push({
 							id: item?.id,
 							columns: [
-								<Text size="small" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="small"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{item?.a?.find((a: any) => a?.n === 'displayName')?._content}
 								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="medium"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{item?.name}
 								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="medium"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{''}
 								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="medium"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{item?.a?.find((a: any) => a?.n === 'zimbraMailStatus')?._content === 'enabled'
 										? t('label.can_receive', 'Can receive')
 										: ''}
 								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="medium"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{''}
 								</Text>,
-								<Text size="medium" weight="light" key={item?.id} color="gray0">
+								<Text
+									size="medium"
+									weight="light"
+									key={item?.id}
+									color="gray0"
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setSelectedMailingList(item);
+										setShowMailingListDetailView(true);
+									}}
+								>
 									{item?.a?.find((a: any) => a?.n === 'description')?._content}
 								</Text>
 							]
 						});
 					});
 					setMailingList(mList);
+				} else {
+					setTotalAccount(0);
+					setMailingList([]);
 				}
 			});
-	}, [t, offset, limit]);
+	}, [t, offset, limit, domainName, searchQuery]);
 
 	useEffect(() => {
 		getMailingList();
 	}, [offset, getMailingList]);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const searchMailingListQuery = useCallback(
+		debounce((searchText) => {
+			if (searchText) {
+				setOffset(0);
+				setSearchQuery(
+					`(|(mail=*${searchText}*)(cn=*${searchText}*)(sn=*${searchText}*)(gn=*${searchText}*)(displayName=*${searchText}*)(zimbraMailDeliveryAddress=*${searchText}*))`
+				);
+			} else {
+				setOffset(0);
+				setSearchQuery('');
+			}
+		}, 100),
+		[debounce]
+	);
+
+	useEffect(() => {
+		searchMailingListQuery(searchString);
+	}, [searchString, searchMailingListQuery]);
+
+	useEffect(() => {
+		if (showMailingListDetailView !== undefined && !showMailingListDetailView) {
+			getMailingList();
+		}
+	}, [showMailingListDetailView, getMailingList]);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
@@ -138,7 +236,7 @@ const DomainMailingList: FC = () => {
 							</Text>
 						</Row>
 						<Row width="70%" mainAlignment="flex-end" crossAlignment="flex-end">
-							<Padding right="medium">
+							<Padding right="large">
 								<IconButton
 									iconColor="gray6"
 									backgroundColor="primary"
@@ -147,12 +245,13 @@ const DomainMailingList: FC = () => {
 									width={36}
 								/>
 							</Padding>
-							<Padding right="medium">
+							<Padding right="large">
 								<Button
 									label={t('label.details', 'Details')}
 									color="primary"
 									type="outlined"
 									disabled
+									height={36}
 								/>
 							</Padding>
 							<Button
@@ -162,6 +261,7 @@ const DomainMailingList: FC = () => {
 								iconPlacement="right"
 								color="primary"
 								disabled
+								height={36}
 							/>
 						</Row>
 					</Row>
@@ -174,10 +274,9 @@ const DomainMailingList: FC = () => {
 				orientation="column"
 				crossAlignment="flex-start"
 				mainAlignment="flex-start"
-				style={{ overflow: 'auto' }}
 				width="100%"
-				height="calc(100vh - 150px)"
-				padding={{ top: 'large' }}
+				height="calc(100vh - 200px)"
+				padding={{ top: 'extralarge' }}
 			>
 				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
 					<Container height="fit" crossAlignment="flex-start" background="gray6">
@@ -186,12 +285,15 @@ const DomainMailingList: FC = () => {
 							mainAlignment="space-between"
 							crossAlignment="flex-start"
 							width="fill"
-							padding={{ all: 'large' }}
+							padding={{ bottom: 'large' }}
 						>
 							<Container>
 								<Input
 									backgroundColor="gray5"
 									label={t('label.search_dot', 'Search ...')}
+									onChange={(e: any): any => {
+										setSearchString(e.target.value);
+									}}
 									CustomIcon={(): any => <Icon icon="FunnelOutline" size="large" color="primary" />}
 								/>
 							</Container>
@@ -201,10 +303,15 @@ const DomainMailingList: FC = () => {
 							mainAlignment="space-between"
 							crossAlignment="flex-start"
 							width="fill"
-							padding={{ all: 'large' }}
+							height="calc(100vh - 340px)"
 						>
 							{mailingList && mailingList.length > 0 && (
-								<Table rows={mailingList} headers={headers} showCheckbox={false} />
+								<Table
+									rows={mailingList}
+									headers={headers}
+									showCheckbox={false}
+									style={{ overflow: 'auto', height: '100%' }}
+								/>
 							)}
 							{mailingList.length === 0 && (
 								<Container orientation="column" crossAlignment="center" mainAlignment="flex-start">
@@ -253,6 +360,12 @@ const DomainMailingList: FC = () => {
 					</Container>
 				</Row>
 			</Container>
+			{showMailingListDetailView && (
+				<EditMailingListView
+					selectedMailingList={selectedMailingList}
+					setShowMailingListDetailView={setShowMailingListDetailView}
+				/>
+			)}
 		</Container>
 	);
 };
