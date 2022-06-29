@@ -149,7 +149,7 @@
         },
         "connect_buckets": "Conectar Buckets",
         "bucket_list": "Lista de Buckets",
-        "bucket_type": "Tipos de Buckets",
+        "bucket_type": "Tipos de Bucket",
         "new": {
             "bucket_connection": "Conexión del bucket"
         },
@@ -462,21 +462,30 @@
         "global": {
             "headers": {
                 "advanced": "Avançado",
-                "service_status": "Status do Serviço"
+                "service_status": "Status do serviço",
+                "server_config": "Configuração do servidor"
             }
         },
         "keep_delete_accounts_in_backup": "Manter contas excluídas no backup",
         "keep_delted_items_backup": "Manter itens excluídos no backup",
         "ldap_dump": "Despejo LDAP",
         "local_metadata_threshold": "Limite de Metadados Locais",
-        "metadata_archiving": "Arquivando Metadados",
+        "metadata_archiving": "Arquivamento de Metadados",
         "minimum_space_threshold": "Limiar de espaço mínimo",
-        "module_enable_at_startup": "Módulo Ativado na Inicialização",
+        "module_enable_at_startup": "Módulo ativado na inicialização",
         "on_the_fly_metadata": "Metadados em Tempo Real",
         "purge_old_configurations": "Excluir Configurações Antigas",
         "realtime_scanner": "RealTime Scanner",
         "schedule": "Programação",
-        "smart_scan_at_startup": "SmartScan na Inicialização"
+        "smart_scan_at_startup": "SmartScan na Inicialização",
+        "threads_for_account": "Threads para conta",
+        "threads_for_items": "Threads para elementos",
+        "smart_scan_scheduling": "Agendamento de SmartScan",
+        "set_backup_forever_msg": "Se definir 0, os seus dados serão mantidos no backup para sempre",
+        "metatdata_size": "Tamanho dos metadados",
+        "max_waiting_time": "Tempo máximo de espera",
+        "max_operations_account": "Operações máximas / Conta",
+        "latency_high_threshold": "Limiar máximo de latência"
     },
     "lable": {
         "delete_button": "EXCLUIR"
