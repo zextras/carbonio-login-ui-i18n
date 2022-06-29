@@ -93,7 +93,7 @@ const Paginig: FC<{
 		>
 			<IconButton
 				size="large"
-				icon="ArrowheadLeft"
+				icon="GoFirstOutline"
 				iconColor="primary"
 				onClick={onFirstPage}
 				disabled={isFirstPageDisabled}
@@ -131,7 +131,7 @@ const Paginig: FC<{
 			/>
 			<IconButton
 				size="large"
-				icon="ArrowheadRight"
+				icon="GoLastOutline"
 				iconColor="primary"
 				onClick={onLastPage}
 				disabled={isLastPageDisabled || currentPage === totalPages}
