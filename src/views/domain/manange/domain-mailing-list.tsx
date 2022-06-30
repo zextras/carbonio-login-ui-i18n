@@ -40,6 +40,9 @@ const DomainMailingList: FC = () => {
 	const [showEditMailingView, setShowEditMailingView] = useState<any>();
 	const [searchString, setSearchString] = useState<string>('');
 	const [searchQuery, setSearchQuery] = useState<string>('');
+	const [selectedDlRow, setSelectedDlRow] = useState<any>([]);
+	const [mailingListItem, setMailingListItem] = useState([]);
+	const [selectedFromRow, setSelectedFromRow] = useState<any>({});
 	const headers: any[] = useMemo(
 		() => [
 			{
@@ -87,7 +90,7 @@ const DomainMailingList: FC = () => {
 			'displayName,zimbraId,zimbraMailHost,uid,description,zimbraIsAdminGroup,zimbraMailStatus,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraIsSystemAccount,zimbraIsExternalVirtualAccount';
 		const types = 'distributionlists,dynamicgroups';
 		const query = `${searchQuery}(&(!(zimbraIsSystemAccount=TRUE)))`;
-
+		setMailingListItem([]);
 		searchDirectory(attrs, types, domainName || '', query, offset, limit, 'name')
 			.then((response) => response.json())
 			.then((data) => {
@@ -111,49 +114,49 @@ const DomainMailingList: FC = () => {
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="small" weight="light" key={item?.id} color="gray0">
+									<Text size="small" weight="light" key={`${item?.id}display-child`} color="gray0">
 										{item?.a?.find((a: any) => a?.n === 'displayName')?._content}
 									</Text>
 								</Row>,
 								<Row
 									mainAlignment="flex-start"
 									crossAlignment="flex-start"
-									key={item?.id}
+									key={`${item?.id}-address`}
 									onDoubleClick={(event: { stopPropagation: () => void }): void => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="medium" weight="light" key={item?.id} color="gray0">
+									<Text size="medium" weight="light" key={`${item?.id}address-child`} color="gray0">
 										{item?.name}
 									</Text>
 								</Row>,
 								<Row
 									mainAlignment="flex-start"
 									crossAlignment="flex-start"
-									key={item?.id}
+									key={`${item?.id}-member`}
 									onDoubleClick={(event: { stopPropagation: () => void }): void => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="medium" weight="light" key={item?.id} color="gray0">
+									<Text size="medium" weight="light" key={`${item?.id}member-child`} color="gray0">
 										{''}
 									</Text>
 								</Row>,
 								<Row
 									mainAlignment="flex-start"
 									crossAlignment="flex-start"
-									key={item?.id}
+									key={`${item?.id}-status`}
 									onDoubleClick={(event: { stopPropagation: () => void }): void => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="medium" weight="light" key={item?.id} color="gray0">
+									<Text size="medium" weight="light" key={`${item?.id}status-child`} color="gray0">
 										{item?.a?.find((a: any) => a?.n === 'zimbraMailStatus')?._content === 'enabled'
 											? t('label.can_receive', 'Can receive')
 											: ''}
@@ -162,28 +165,33 @@ const DomainMailingList: FC = () => {
 								<Row
 									mainAlignment="flex-start"
 									crossAlignment="flex-start"
-									key={item?.id}
+									key={`${item?.id}-gal`}
 									onDoubleClick={(event: { stopPropagation: () => void }): void => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="medium" weight="light" key={item?.id} color="gray0">
+									<Text size="medium" weight="light" key={`${item?.id}gal-child`} color="gray0">
 										{''}
 									</Text>
 								</Row>,
 								<Row
 									mainAlignment="flex-start"
 									crossAlignment="flex-start"
-									key={item?.id}
+									key={`${item?.id}-description`}
 									onDoubleClick={(event: { stopPropagation: () => void }): void => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
 								>
-									<Text size="medium" weight="light" key={item?.id} color="gray0">
+									<Text
+										size="medium"
+										weight="light"
+										key={`${item?.id}description-child`}
+										color="gray0"
+									>
 										{item?.a?.find((a: any) => a?.n === 'description')?._content}
 									</Text>
 								</Row>
@@ -191,6 +199,7 @@ const DomainMailingList: FC = () => {
 						});
 					});
 					setMailingList(mList);
+					setMailingListItem(dlList);
 				} else {
 					setTotalAccount(0);
 					setMailingList([]);
@@ -228,6 +237,21 @@ const DomainMailingList: FC = () => {
 		}
 	}, [showEditMailingView, getMailingList]);
 
+	const onDetailClick = useCallback(() => {
+		setShowMailingListDetailView(true);
+	}, []);
+
+	useEffect(() => {
+		if (showMailingListDetailView !== undefined && !showMailingListDetailView) {
+			setShowMailingListDetailView(false);
+		}
+	}, [showMailingListDetailView]);
+
+	const isOpenDetail = useMemo(
+		() => !!showMailingListDetailView && showMailingListDetailView,
+		[showMailingListDetailView]
+	);
+
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
@@ -258,8 +282,9 @@ const DomainMailingList: FC = () => {
 									label={t('label.details', 'Details')}
 									color="primary"
 									type="outlined"
-									disabled
+									disabled={selectedDlRow && selectedDlRow.length !== 1}
 									height={36}
+									onClick={onDetailClick}
 								/>
 							</Padding>
 							<Button
@@ -317,8 +342,15 @@ const DomainMailingList: FC = () => {
 								<Table
 									rows={mailingList}
 									headers={headers}
-									showCheckbox={false}
+									showCheckbox
 									style={{ overflow: 'auto', height: '100%' }}
+									selectedRows={selectedDlRow}
+									onSelectionChange={(selected: any): void => {
+										setSelectedFromRow(
+											mailingListItem.find((item: any) => selected[0] === item?.id)
+										);
+										setSelectedDlRow(selected);
+									}}
 								/>
 							)}
 							{mailingList.length === 0 && (
@@ -371,13 +403,13 @@ const DomainMailingList: FC = () => {
 			{showEditMailingView && (
 				<EditMailingListView
 					selectedMailingList={selectedMailingList}
-					setShowMailingListDetailView={setShowEditMailingView}
+					setShowEditMailingList={setShowEditMailingView}
 				/>
 			)}
 
-			{showMailingListDetailView && (
+			{isOpenDetail && (
 				<MailingListDetail
-					selectedMailingList={selectedMailingList}
+					selectedMailingList={selectedFromRow}
 					setShowMailingListDetailView={setShowMailingListDetailView}
 				/>
 			)}

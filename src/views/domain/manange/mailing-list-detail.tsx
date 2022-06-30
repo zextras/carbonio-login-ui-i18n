@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import {
 	Container,
@@ -328,9 +328,9 @@ const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDet
 	useEffect(() => {
 		if (dlMembershipList && dlMembershipList.length > 0) {
 			const allRows = dlMembershipList.map((item: any) => ({
-				id: item,
+				id: item?.id,
 				columns: [
-					<Text size="medium" weight="bold" key={item} color="#828282">
+					<Text size="medium" weight="bold" key={item?.id} color="#828282">
 						{item?.label}
 					</Text>,
 					''
