@@ -39,7 +39,11 @@ export enum TRUE_FALSE {
 	FALSE = 'FALSE'
 }
 
-const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDetailView }) => {
+const MailingListDetail: FC<any> = ({
+	selectedMailingList,
+	setShowMailingListDetailView,
+	setEditMailingList
+}) => {
 	const [t] = useTranslation();
 	const [zimbraCreateTimestamp, setZimbraCreateTimestamp] = useState<string>('');
 	const dlCreateDate = useMemo(
@@ -359,6 +363,10 @@ const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDet
 		}
 	}, [ownersList]);
 
+	const onEditMailingList = (): void => {
+		setEditMailingList(true);
+	};
+
 	return (
 		<Container
 			background="gray5"
@@ -399,6 +407,32 @@ const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDet
 			<Row>
 				<Divider color="gray3" />
 			</Row>
+			<Container
+				orientation="horizontal"
+				mainAlignment="flex-end"
+				crossAlignment="flex-end"
+				background="gray6"
+				padding={{ all: 'extralarge' }}
+			>
+				<Padding right="large">
+					<IconButton
+						iconColor="primary"
+						backgroundColor="gray6"
+						icon="EditAsNewOutline"
+						height={44}
+						width={44}
+						onClick={onEditMailingList}
+					/>
+				</Padding>
+
+				<IconButton
+					iconColor="error"
+					backgroundColor="gray6"
+					icon="Trash2Outline"
+					height={44}
+					width={44}
+				/>
+			</Container>
 			<Container
 				padding={{ all: 'extralarge' }}
 				mainAlignment="flex-start"

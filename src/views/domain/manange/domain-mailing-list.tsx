@@ -44,6 +44,7 @@ const DomainMailingList: FC = () => {
 	const [mailingListItem, setMailingListItem] = useState([]);
 	const [selectedFromRow, setSelectedFromRow] = useState<any>({});
 	const [prevent, setPrevent] = useState<boolean>(false);
+	const [editMailingList, setEditMailingList] = useState<boolean>(false);
 	const timer = useRef<any>();
 	const headers: any[] = useMemo(
 		() => [
@@ -269,6 +270,14 @@ const DomainMailingList: FC = () => {
 		}
 	}, [showMailingListDetailView]);
 
+	useEffect(() => {
+		if (editMailingList) {
+			setShowMailingListDetailView(false);
+			setEditMailingList(false);
+			setShowEditMailingView(true);
+		}
+	}, [editMailingList]);
+
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
@@ -428,6 +437,7 @@ const DomainMailingList: FC = () => {
 				<MailingListDetail
 					selectedMailingList={selectedFromRow}
 					setShowMailingListDetailView={setShowMailingListDetailView}
+					setEditMailingList={setEditMailingList}
 				/>
 			)}
 		</Container>
