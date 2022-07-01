@@ -10,7 +10,6 @@ import {
 	PasswordInput,
 	Row,
 	Select,
-	Padding,
 	Text,
 	Icon,
 	Switch
@@ -98,8 +97,8 @@ const CreateAccountDetailSection: FC = () => {
 				<Text size="small" color="gray0" weight="bold">
 					{t('label.account', 'Account')}
 				</Text>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
-					<Row width="32%" mainAlignment="flex-start">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
+					<Row width="32%" mainAlignment="space-between">
 						<Input
 							onChange={changeAccDetail}
 							inputName="givenName"
@@ -108,8 +107,7 @@ const CreateAccountDetailSection: FC = () => {
 							defaultValue={accountDetail?.givenName || ''}
 						/>
 					</Row>
-					<Padding width="2%" />
-					<Row width="32%" mainAlignment="flex-start">
+					<Row width="32%" mainAlignment="space-between">
 						<Input
 							label={t('label.second_name_initials', 'Second Name Initials')}
 							backgroundColor="gray5"
@@ -118,8 +116,7 @@ const CreateAccountDetailSection: FC = () => {
 							defaultValue={accountDetail?.initials || ''}
 						/>
 					</Row>
-					<Padding width="2%" />
-					<Row width="32%" mainAlignment="flex-start">
+					<Row width="32%" mainAlignment="space-between">
 						<Input
 							label={t('label.surname', 'Surname')}
 							backgroundColor="gray5"
@@ -129,7 +126,7 @@ const CreateAccountDetailSection: FC = () => {
 						/>
 					</Row>
 				</Row>
-				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
+				<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
 					<Row width="48%" mainAlignment="flex-start">
 						<Input
 							background="gray5"
@@ -140,7 +137,6 @@ const CreateAccountDetailSection: FC = () => {
 							// defaultValue={accountDetail?.name || ''}
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<Row
 							mainAlignment="flex-start"
@@ -170,7 +166,7 @@ const CreateAccountDetailSection: FC = () => {
 						name="descriptiveName"
 					/>
 				</Row>
-				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
+				<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
 					<Row width="48%" mainAlignment="flex-start">
 						<PasswordInput
 							background="gray5"
@@ -180,7 +176,6 @@ const CreateAccountDetailSection: FC = () => {
 							defaultValue={accountDetail?.password || ''}
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<PasswordInput
 							background="gray5"
@@ -191,7 +186,7 @@ const CreateAccountDetailSection: FC = () => {
 						/>
 					</Row>
 				</Row>
-				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
+				<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
 					<Row width="48%" mainAlignment="flex-start">
 						<Switch
 							value={accountDetail?.zimbraPasswordMustChange}
@@ -202,7 +197,6 @@ const CreateAccountDetailSection: FC = () => {
 							)}
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<Switch
 							value={accountDetail?.generateFirst2FAToken}
@@ -230,7 +224,7 @@ const CreateAccountDetailSection: FC = () => {
 						Settings
 					</Text>
 				</Row>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							items={ACCOUNT_STATUS}
@@ -244,7 +238,6 @@ const CreateAccountDetailSection: FC = () => {
 							padding={{ right: 'medium' }}
 						/>
 					</Row>
-					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							items={localeZone}
@@ -258,7 +251,6 @@ const CreateAccountDetailSection: FC = () => {
 							padding={{ right: 'medium' }}
 						/>
 					</Row>
-					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							items={timezones}
@@ -273,7 +265,7 @@ const CreateAccountDetailSection: FC = () => {
 						/>
 					</Row>
 				</Row>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
 					<Row width="32%" mainAlignment="flex-start">
 						<Switch
 							value={accountDetail?.defaultCOS}
@@ -281,7 +273,6 @@ const CreateAccountDetailSection: FC = () => {
 							label={t('accountDetails.default_COS', 'Default COS')}
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="64%" mainAlignment="flex-start">
 						<Select
 							background="gray6"

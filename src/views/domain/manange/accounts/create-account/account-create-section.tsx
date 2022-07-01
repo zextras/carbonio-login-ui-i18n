@@ -4,15 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC, useMemo, useContext } from 'react';
-import {
-	Container,
-	Input,
-	Row,
-	Select,
-	Padding,
-	Text,
-	Icon
-} from '@zextras/carbonio-design-system';
+import { Container, Input, Row, Select, Text, Icon } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { find } from 'lodash';
 import { useDomainStore } from '../../../../../store/domain/store';
@@ -35,7 +27,7 @@ const AccountCreateSection: FC = () => {
 				<Text size="small" color="Gray0" weight="bold">
 					Account
 				</Text>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
 					<Row width="48%" mainAlignment="flex-start">
 						<Input
 							label={t('label.user', 'User')}
@@ -44,7 +36,6 @@ const AccountCreateSection: FC = () => {
 							readOnly
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<Input
 							label={t('label.mail', 'Mail')}
@@ -54,7 +45,7 @@ const AccountCreateSection: FC = () => {
 						/>
 					</Row>
 				</Row>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
 					<Row width="48%" mainAlignment="flex-start">
 						<Input
 							label={t('label.password', 'Password')}
@@ -64,7 +55,6 @@ const AccountCreateSection: FC = () => {
 							readOnly
 						/>
 					</Row>
-					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<Select
 							background="gray6"
@@ -91,7 +81,7 @@ const AccountCreateSection: FC = () => {
 						disabled
 					/>
 				</Row>
-				<Row padding={{ top: 'large', left: 'large' }} width="100%">
+				<Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							background="gray5"
@@ -105,7 +95,6 @@ const AccountCreateSection: FC = () => {
 							disabled
 						/>
 					</Row>
-					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							background="gray5"
@@ -121,7 +110,6 @@ const AccountCreateSection: FC = () => {
 							disabled
 						/>
 					</Row>
-					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
 							background="gray5"
