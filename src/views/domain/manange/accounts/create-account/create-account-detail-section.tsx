@@ -16,13 +16,15 @@ import {
 	Switch
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+import { useDomainStore } from '../../../../../store/domain/store';
 import { AccountContext } from './account-context';
 import { ACTIVE, CLOSED, LOCKED, MAINTENANCE, PENDING } from '../../../../../constants';
 import { timeZoneList, localeList } from '../../../../utility/utils';
 
 const CreateAccountDetailSection: FC = () => {
 	const conext = useContext(AccountContext);
-	const { domainName, accountDetail, setAccountDetail } = conext;
+	const domainName = useDomainStore((state) => state.domain?.name);
+	const { accountDetail, setAccountDetail } = conext;
 
 	const [t] = useTranslation();
 	const timezones = useMemo(() => timeZoneList(t), [t]);

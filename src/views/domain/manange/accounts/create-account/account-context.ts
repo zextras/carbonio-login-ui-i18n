@@ -6,7 +6,6 @@
 import { createContext } from 'react';
 
 type AccountContext = {
-	domainName: string;
 	accountDetail: any;
 	setAccountDetail: (arg: any) => void;
 };

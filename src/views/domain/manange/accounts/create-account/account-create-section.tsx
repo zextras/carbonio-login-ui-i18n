@@ -15,12 +15,14 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { find } from 'lodash';
+import { useDomainStore } from '../../../../../store/domain/store';
 import { AccountContext } from './account-context';
 import { localeList } from '../../../../utility/utils';
 
 const AccountCreateSection: FC = () => {
 	const conext = useContext(AccountContext);
-	const { domainName, accountDetail, setAccountDetail } = conext;
+	const { accountDetail } = conext;
+	const domainName = useDomainStore((state) => state.domain?.name);
 	const [t] = useTranslation();
 	const localeZone = useMemo(() => localeList(t), [t]);
 

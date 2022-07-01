@@ -22,12 +22,9 @@ import {
 import logo from '../../../../assets/gardian.svg';
 import { useDomainStore } from '../../../../store/domain/store';
 import Paginig from '../../../components/paging';
-import {
-	accountListDirectory,
-	createAccountRequest
-} from '../../../../services/account-list-directory-service';
+import { accountListDirectory } from '../../../../services/account-list-directory-service';
+import { createAccountRequest } from '../../../../services/create-account';
 import AccountDetailView from './account-detail-view';
-import ListRow from '../../../list/list-row';
 import CreateAccount from './create-account/create-account';
 
 const ManageAccounts: FC = () => {
@@ -425,7 +422,6 @@ const ManageAccounts: FC = () => {
 			{showCreateAccountView && (
 				<CreateAccount
 					setShowCreateAccountView={setShowCreateAccountView}
-					domainName={domainName}
 					createAccountReq={createAccountReq}
 				/>
 			)}

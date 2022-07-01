@@ -213,7 +213,6 @@ const BucketDetailPanel: FC = () => {
 					<NewBucket
 						setToggleWizardSection={setToggleWizardSection}
 						setDetailsBucket={setDetailsBucket}
-						// bucketType={bucketType}
 						setConnectionData={setConnectionData}
 					/>
 				</AbsoluteContainer>

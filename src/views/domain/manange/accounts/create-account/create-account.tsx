@@ -8,6 +8,7 @@ import React, { FC, ReactElement, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container, Button, useSnackbar } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
+import { useDomainStore } from '../../../../../store/domain/store';
 import { HorizontalWizard } from '../../../../app/component/hwizard';
 import CreateAccountDetailSection from './create-account-detail-section';
 import { Section } from '../../../../app/component/section';
@@ -68,11 +69,11 @@ interface AccountDetailObj {
 // eslint-disable-next-line no-empty-pattern
 const CreateAccount: FC<{
 	setShowCreateAccountView: any;
-	domainName: any;
 	createAccountReq: any;
-}> = ({ setShowCreateAccountView, domainName, createAccountReq }) => {
+}> = ({ setShowCreateAccountView, createAccountReq }) => {
 	const { t } = useTranslation();
 	const createSnackbar = useSnackbar();
+	const domainName = useDomainStore((state) => state.domain?.name);
 	const [accountDetail, setAccountDetail] = useState<AccountDetailObj>({
 		name: '',
 		givenName: '',
@@ -216,7 +217,7 @@ const CreateAccount: FC<{
 
 	return (
 		<AccountDetailContainer background="gray5" mainAlignment="flex-start">
-			<AccountContext.Provider value={{ domainName, accountDetail, setAccountDetail }}>
+			<AccountContext.Provider value={{ accountDetail, setAccountDetail }}>
 				<HorizontalWizard
 					steps={wizardSteps}
 					Wrapper={WizardInSection}
