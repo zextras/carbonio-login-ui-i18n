@@ -45,6 +45,7 @@ const DomainMailingList: FC = () => {
 	const [selectedFromRow, setSelectedFromRow] = useState<any>({});
 	const [prevent, setPrevent] = useState<boolean>(false);
 	const [editMailingList, setEditMailingList] = useState<boolean>(false);
+	const [isUpdateRecord, setIsUpdateRecord] = useState<boolean>(false);
 	const timer = useRef<any>();
 	const headers: any[] = useMemo(
 		() => [
@@ -230,9 +231,11 @@ const DomainMailingList: FC = () => {
 					});
 					setMailingList(mList);
 					setMailingListItem(dlList);
+					setIsUpdateRecord(false);
 				} else {
 					setTotalAccount(0);
 					setMailingList([]);
+					setIsUpdateRecord(false);
 				}
 			});
 	}, [t, offset, limit, domainName, searchQuery, handleClick]);
@@ -288,6 +291,12 @@ const DomainMailingList: FC = () => {
 			setShowEditMailingView(true);
 		}
 	}, [editMailingList]);
+
+	useEffect(() => {
+		if (isUpdateRecord) {
+			getMailingList();
+		}
+	}, [isUpdateRecord, getMailingList]);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
@@ -441,6 +450,7 @@ const DomainMailingList: FC = () => {
 				<EditMailingListView
 					selectedMailingList={selectedMailingList}
 					setShowEditMailingList={setShowEditMailingView}
+					setIsUpdateRecord={setIsUpdateRecord}
 				/>
 			)}
 

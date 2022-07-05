@@ -19,7 +19,8 @@ import {
 	Switch,
 	ChipInput,
 	Button,
-	SnackbarManagerContext
+	SnackbarManagerContext,
+	Icon
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import moment from 'moment';
@@ -49,7 +50,11 @@ export enum TRUE_FALSE {
 	FALSE = 'FALSE'
 }
 
-const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingList }) => {
+const EditMailingListView: FC<any> = ({
+	selectedMailingList,
+	setShowEditMailingList,
+	setIsUpdateRecord
+}) => {
 	const [t] = useTranslation();
 	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const [memberOffset, setMemberOffset] = useState<number>(0);
@@ -574,6 +579,7 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 				replace: true
 			});
 			updatePreviousDetail();
+			setIsUpdateRecord(true);
 		});
 	};
 
@@ -953,6 +959,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 				</Row>
 
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'EyeOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.displayed_name', 'Displayed Name')}
@@ -962,6 +971,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 								setDisplayName(e.target.value);
 							}}
 						/>
+					</Container>
+					<Container width="64px" padding={{ right: 'small', left: 'medium' }}>
+						<Icon icon={'EmailOutline'} size="large" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Input
@@ -975,6 +987,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CheckmarkCircleOutline'} size="large" />
+					</Container>
 					<Container>
 						<Select
 							items={subscriptionUnsubscriptionRequestOptions}
@@ -984,6 +999,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 							onChange={onSubscriptionChange}
 							selection={zimbraDistributionListSubscriptionPolicy}
 						/>
+					</Container>
+					<Container width="64px" padding={{ right: 'small', left: 'medium' }}>
+						<Icon icon={'CloseCircleOutline'} size="large" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Select
@@ -997,6 +1015,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="fit" padding={{ right: 'small' }}>
+						<Icon icon={'OptionsOutline'} size="large" />
+					</Container>
 					<Container padding={{ right: 'small', top: 'small' }}>
 						<Select
 							items={rightsOptions}
@@ -1037,6 +1058,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'PeopleOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.members', 'Members')}
@@ -1044,6 +1068,9 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 							background="gray5"
 							disabled
 						/>
+					</Container>
+					<Container width="64px" padding={{ right: 'small', left: 'medium' }}>
+						<Icon icon={'CornerUpRight'} size="large" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Input
@@ -1056,6 +1083,15 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 				</ListRow>
 
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'FingerPrintOutline'} size="large" />
+					</Container>
+					<Container padding={{ all: 'small' }}>
+						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
+					</Container>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CalendarOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.creation_date', 'Creation Date')}
@@ -1063,9 +1099,6 @@ const EditMailingListView: FC<any> = ({ selectedMailingList, setShowEditMailingL
 							background="gray5"
 							disabled
 						/>
-					</Container>
-					<Container padding={{ all: 'small' }}>
-						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
 					</Container>
 				</ListRow>
 				<Row padding={{ top: 'small', bottom: 'small' }}>

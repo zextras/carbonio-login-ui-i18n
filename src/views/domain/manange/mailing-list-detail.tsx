@@ -15,7 +15,8 @@ import {
 	Text,
 	Select,
 	Switch,
-	Padding
+	Padding,
+	Icon
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
@@ -450,6 +451,9 @@ const MailingListDetail: FC<any> = ({
 					</Text>
 				</Row>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'EyeOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.displayed_name', 'Displayed Name')}
@@ -458,6 +462,9 @@ const MailingListDetail: FC<any> = ({
 							readOnly
 							disabled
 						/>
+					</Container>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'EmailOutline'} size="large" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Input
@@ -469,6 +476,10 @@ const MailingListDetail: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CheckmarkCircleOutline'} size="large" />
+					</Container>
+
 					<Container>
 						<Input
 							background="gray6"
@@ -478,6 +489,10 @@ const MailingListDetail: FC<any> = ({
 							value={zimbraDistributionListSubscriptionPolicy?.label}
 						/>
 					</Container>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CloseCircleOutline'} size="large" />
+					</Container>
+
 					<Container padding={{ all: 'small' }}>
 						<Input
 							background="gray6"
@@ -489,6 +504,9 @@ const MailingListDetail: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="fit" padding={{ right: 'small' }} className="xxxxxx">
+						<Icon icon={'OptionsOutline'} size="large" />
+					</Container>
 					<Container padding={{ right: 'small', top: 'small' }}>
 						<Input
 							background="gray6"
@@ -524,6 +542,9 @@ const MailingListDetail: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'PeopleOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.members', 'Members')}
@@ -531,6 +552,9 @@ const MailingListDetail: FC<any> = ({
 							background="gray6"
 							disabled
 						/>
+					</Container>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CornerUpRight'} size="large" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Input
@@ -542,6 +566,15 @@ const MailingListDetail: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'FingerPrintOutline'} size="large" />
+					</Container>
+					<Container padding={{ all: 'small' }}>
+						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
+					</Container>
+					<Container width="64px" padding={{ right: 'small' }}>
+						<Icon icon={'CalendarOutline'} size="large" />
+					</Container>
 					<Container>
 						<Input
 							label={t('label.creation_date', 'Creation Date')}
@@ -549,9 +582,6 @@ const MailingListDetail: FC<any> = ({
 							background="gray6"
 							disabled
 						/>
-					</Container>
-					<Container padding={{ all: 'small' }}>
-						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
 					</Container>
 				</ListRow>
 				<Row padding={{ top: 'small', bottom: 'small' }}>
