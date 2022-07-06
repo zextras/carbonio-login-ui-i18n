@@ -91,10 +91,12 @@ const DomainMailingList: FC = () => {
 
 	const doClickAction = useCallback((): void => {
 		setShowMailingListDetailView(true);
+		setShowEditMailingView(false);
 	}, []);
 
 	const doDoubleClickAction = useCallback((): void => {
 		setShowEditMailingView(true);
+		setShowMailingListDetailView(false);
 	}, []);
 
 	const handleClick = useCallback(
