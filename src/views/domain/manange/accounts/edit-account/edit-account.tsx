@@ -51,12 +51,14 @@ const EditAccount: FC<{
 			.then((response: any) => response.json())
 			.then((data: any) => {
 				const obj: any = {};
+				// eslint-disable-next-line array-callback-return
 				data?.Body?.GetAccountResponse?.account?.[0]?.a?.map((ele: any) => {
 					obj[ele.n] = ele._content;
 				});
 				setInitAccountDetail({ ...obj });
 				setAccountDetail({ ...obj });
 			})
+			// eslint-disable-next-line @typescript-eslint/no-empty-function
 			.catch((error) => {});
 	}, []);
 	useEffect(() => {
