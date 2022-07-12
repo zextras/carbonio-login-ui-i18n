@@ -1124,6 +1124,12 @@ const EditMailingListView: FC<any> = ({
 		}
 	}, [searchMember, dlm, ownersList]);
 
+	useEffect(() => {
+		if (selectedMailingList?.dynamic) {
+			setIsAddToOwnerList(true);
+		}
+	}, [selectedMailingList?.dynamic]);
+
 	return (
 		<Container
 			background="gray5"
@@ -1612,6 +1618,7 @@ const EditMailingListView: FC<any> = ({
 							onClick={(): void => {
 								setIsAddToOwnerList(!isAddToOwnerList);
 							}}
+							disabled={selectedMailingList?.dynamic}
 						/>
 					</Container>
 				</Container>

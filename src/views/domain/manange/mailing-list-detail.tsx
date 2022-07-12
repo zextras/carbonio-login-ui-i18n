@@ -394,7 +394,11 @@ const MailingListDetail: FC<any> = ({
 				<Row padding={{ horizontal: 'small' }}></Row>
 				<Row takeAvailableSpace mainAlignment="flex-start">
 					<Text size="medium" overflow="ellipsis" weight="bold">
-						{selectedMailingList?.name} ({t('label.standard', 'Standard')})
+						{selectedMailingList?.name} (
+						{selectedMailingList?.dynamic
+							? t('label.dynamic', 'Dynamic')
+							: t('label.standard', 'Standard')}
+						)
 					</Text>
 				</Row>
 				<Row padding={{ right: 'extrasmall' }}>
