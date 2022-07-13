@@ -804,6 +804,11 @@ const EditMailingListView: FC<any> = ({
 			});
 		}
 
+		attributes.push({
+			n: 'zimbraNotes',
+			_content: zimbraNotes
+		});
+
 		request.push(modifyDistributionList(selectedMailingList?.id, attributes));
 		if (
 			previousDetail?.distributionName !== undefined &&
@@ -1424,7 +1429,7 @@ const EditMailingListView: FC<any> = ({
 						</Container>
 					</Container>
 				</ListRow>
-				{selectedMailingList?.dynamic && (
+				{/* {selectedMailingList?.dynamic && (
 					<ListRow>
 						<Container padding={{ top: 'small', bottom: 'small' }}>
 							<ChipInput
@@ -1441,7 +1446,7 @@ const EditMailingListView: FC<any> = ({
 							/>
 						</Container>
 					</ListRow>
-				)}
+				)} */}
 				<Row padding={{ top: 'small', bottom: 'small' }}>
 					<Text size="medium" weight="bold" color="gray0">
 						{t('label.manage_list', 'Manage List')}
