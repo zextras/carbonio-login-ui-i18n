@@ -25,6 +25,7 @@ interface MailingListDetailObj {
 	zimbraHideInGal: boolean;
 	zimbraNotes: string;
 	memberURL: string;
+	members: Array<any>;
 }
 
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
@@ -61,7 +62,8 @@ const CreateMailingList: FC<{
 		zimbraIsACLGroup: '',
 		zimbraMailStatus: true,
 		zimbraNotes: '',
-		memberURL: ''
+		memberURL: '',
+		members: []
 	});
 
 	const standardMailingListSizardSteps = useMemo(
