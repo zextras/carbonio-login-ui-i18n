@@ -175,7 +175,11 @@
         "surname": "姓氏",
         "user": "用户",
         "wizard_cancel_button": "取消",
-        "yes": "是"
+        "yes": "是",
+        "deleteing": "正在删除",
+        "enable_toaster_notification_for_new_calendar_events": "针对新的日历事件启用 Toaster 通知功能",
+        "range_time": "时间",
+        "search_dot": "搜索…"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -405,7 +409,10 @@
         "s_mime_features": "S/MIME 功能",
         "search_features": "搜索功能",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "显示选择复选框，用以在列表视图中成批选择电子邮件、联系人和语音邮件项目s",
-        "view_mail_as_html": "以 HTML 格式查看邮件 (若可能)"
+        "view_mail_as_html": "以 HTML 格式查看邮件 (若可能)",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "当系统管理员试图离开 Carbonio 管理控制台时，显示警示",
+        "group_mail": "邮件分组方式：",
+        "range_time": "时间"
     },
     "accountDetails": {
         "hide_in_gal": "在GAL中隐藏",
