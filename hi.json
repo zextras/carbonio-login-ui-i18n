@@ -156,7 +156,11 @@
         "surname": "सरनेम",
         "user": "उपयोगकर्ता",
         "wizard_cancel_button": "कैंसल करें",
-        "yes": "हाँ"
+        "yes": "हाँ",
+        "deleteing": "डिलीट कर रहा है",
+        "enable_toaster_notification_for_new_calendar_events": "नए कैलेंडर ईवेंट के लिए टोस्‍टर सूचना सक्षम करें",
+        "range_time": "समय",
+        "search_dot": "सर्च करें…"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
@@ -405,7 +409,10 @@
         "s_mime_features": "S/MIME सुविधाएँ",
         "search_features": "खोज सुविधाएँ",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "बैच कार्रवाइयों के लिए सूची दृश्य में ईमेल, संपर्क, वॉइसमेल आइटम्स चुनने के लिए चेकबॉक्‍स दिखाएं",
-        "view_mail_as_html": "HTML के रूप में मेल देखें (जब संभव हो)"
+        "view_mail_as_html": "HTML के रूप में मेल देखें (जब संभव हो)",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "व्यवस्थापकों के Carbonio व्यवस्थापन कंसोल से दूर जाने का प्रयास करने पर चेतावनी प्रदर्शित करें",
+        "group_mail": "इस आधार पर मेल समूहीकृत करें:",
+        "range_time": "समय"
     },
     "accountDetails": {
         "hide_in_gal": "GAL में छिपाएँ",
