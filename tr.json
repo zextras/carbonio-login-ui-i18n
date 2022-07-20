@@ -16,7 +16,7 @@
         "delete": "Sil",
         "description": "Açıklama",
         "discard_changes": "DEĞİŞİKLİKLERİ UYGULAMA",
-        "external": "Dış",
+        "external": "Harici",
         "hours": "Saat",
         "mb": "MB",
         "name": "Ad",
@@ -370,7 +370,7 @@
         "on_the_fly_metadata": "Anlık Metaveri",
         "purge_old_configurations": "Eski Yapılandırmaları Temizle",
         "realtime_scanner": "Gerçek Zamanlı Tarayıcı",
-        "schedule": "Çizelge",
+        "schedule": "Zamanlama",
         "smart_scan_at_startup": "Başlangıçta AkıllıTarama"
     },
     "cos": {
@@ -402,7 +402,8 @@
         "s_mime_features": "S/MIME Özellikleri",
         "search_features": "Arama Özellikleri",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Toplu işlemler için e-posta, kişi, sesli posta öğelerini seçmek üzere liste görünümünde seçim onay kutusu göster",
-        "view_mail_as_html": "HTML olarak görüntüle (mümkün olduğunda)"
+        "view_mail_as_html": "HTML olarak görüntüle (mümkün olduğunda)",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "Yöneticiler Carbonio Yönetici Konsolu’ndan ayrılmaya çalıştığında bir uyarı mesajı görüntüle"
     },
     "lable": {
         "delete_button": "SİL"
