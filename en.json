@@ -556,7 +556,7 @@
         "utility_view3": "Test utility view 3",
         "uuid": "uuid",
         "verify_connector": "VERIFY CONNECTOR",
-        "verify_connector_fail": " VERIFICATION FAILED",
+        "verify_connector_fail": "VERIFICATION FAILED",
         "verify_error": "{{name}}",
         "view": "This is a view",
         "view_mail": "VIEW MAIL",
@@ -770,5 +770,5 @@
         "pacific_tongatapu": "{{value}} Nuku’alofa",
         "utc": "{{value}} Coordinated Universal Time"
     },
-    "welcome_to_carbonio": "Welcome {{adminName}}, to Carbonio {{carbonioVersion}}!"
+    "welcome_to_carbonio": "Welcome {{adminName}} to Carbonio {{carbonioVersion}}!"
 }
