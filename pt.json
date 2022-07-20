@@ -147,7 +147,11 @@
         "signatures": "Assinaturas",
         "standard": "Padrão",
         "surname": "Apelido",
-        "user": "Usuário"
+        "user": "Usuário",
+        "deleteing": "Eliminação",
+        "enable_toaster_notification_for_new_calendar_events": "Ativar notificação de saudação para novos eventos do calendário",
+        "range_time": "Hora",
+        "search_dot": "Busca…"
     },
     "timezone": {
         "asia_pyongyang": "{{value}} Pyongyang",
@@ -358,7 +362,10 @@
         "play_sound_when_message_arrives": "Reproduzir um som quando chegar uma mensagem (requer o suplemento do QuickTime ou Windows Media)",
         "polling_interval": "Intervalo de verificação (tempo após o qual se irá verificar se existem novas mensagens de correio)",
         "preferences": "Preferências",
-        "receiving_mail": "A receber correio"
+        "receiving_mail": "A receber correio",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "Apresentar um aviso quando os administradores tentarem navegar para fora da Consola de administração do Carbonio",
+        "group_mail": "Agrupar e-mail por:",
+        "range_time": "Hora"
     },
     "backup": {
         "backup_path": "Path do backup",
