@@ -183,7 +183,11 @@
         "password": "Wachtwoord",
         "require_list_owner_approval": "Goedkeuring van eigenaar van lijst vereisen",
         "resource": "Resource",
-        "rights": "Rechten"
+        "rights": "Rechten",
+        "deleteing": "Wordt verwijderd",
+        "enable_toaster_notification_for_new_calendar_events": "Toaster-kennisgeving voor nieuwe agenda-items inschakelen",
+        "range_time": "Tijd",
+        "search_dot": "Zoeken…"
     },
     "timezone": {
         "europe_belgrade": "{{value}} Belgrado, Bratislava, Boedapest, Ljubljana, Praag",
@@ -405,7 +409,10 @@
         "s_mime_features": "S/MIME-functies",
         "search_features": "Zoekfuncties",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Selectievakje tonen voor het selecteren van e-mail-, contact-, voicemail-items in een lijstweergave voor batch-bewerking",
-        "view_mail_as_html": "E-mail in HTML weergeven (wanneer mogelijk)"
+        "view_mail_as_html": "E-mail in HTML weergeven (wanneer mogelijk)",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "Waarschuwing weergeven wanneer beheerders het Carbonio Administration Console willen verlaten",
+        "group_mail": "E-mail groeperen op:",
+        "range_time": "Tijd"
     },
     "locale": {
         "English": "Engels",
