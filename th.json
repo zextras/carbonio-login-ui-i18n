@@ -341,7 +341,11 @@
         "surname": "นามสกุล",
         "user": "ผู้ใช้",
         "wizard_cancel_button": "ยกเลิก",
-        "yes": "ใช่"
+        "yes": "ใช่",
+        "deleteing": "กำลังลบ",
+        "enable_toaster_notification_for_new_calendar_events": "เปิดใช้งานการแจ้งให้ทราบจาก toaster สำหรับเหตุการณ์ปฏิทินใหม่",
+        "range_time": "เวลา",
+        "search_dot": "ค้นหา…"
     },
     "message": {
         "snackbar": {
@@ -405,7 +409,10 @@
         "s_mime_features": "คุณลักษณะ S/MIME",
         "search_features": "คุณลักษณะการค้นหา",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "แสดงกล่องกาเครื่องหมายการเลือกสำหรับเลือกรายการอีเมล รายชื่อผู้ติดต่อ ข้อความเสียงในมุมมองรายการสำหรับการดำเนินการชุดงาน",
-        "view_mail_as_html": "ดูจดหมายเป็นแบบ HTML (หากเป็นไปได้)"
+        "view_mail_as_html": "ดูจดหมายเป็นแบบ HTML (หากเป็นไปได้)",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "แสดงคำเตือนเมื่อผู้ดูแลระบบพยายามนำทางออกจากคอนโซลการดูแล Carbonio",
+        "group_mail": "จัดกลุ่มจดหมายตาม:",
+        "range_time": "เวลา"
     },
     "accountDetails": {
         "hide_in_gal": "ซ่อนใน GAL",
