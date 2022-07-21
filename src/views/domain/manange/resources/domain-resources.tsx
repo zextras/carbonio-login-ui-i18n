@@ -14,22 +14,29 @@ import {
 	Icon,
 	Input,
 	Table,
-	Text
+	Text,
+	SnackbarManagerContext
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { debounce } from 'lodash';
-import logo from '../../../assets/gardian.svg';
-import Paginig from '../../components/paging';
-import { searchDirectory } from '../../../services/search-directory-service';
-import { useDomainStore } from '../../../store/domain/store';
+import logo from '../../../../assets/gardian.svg';
+import Paginig from '../../../components/paging';
+import { searchDirectory } from '../../../../services/search-directory-service';
+import { useDomainStore } from '../../../../store/domain/store';
 import ResourceEditDetailView from './resource-edit-detail-view';
+import { RECORD_DISPLAY_LIMIT } from '../../../../constants';
+import { createResource } from '../../../../services/create-cal-resource-service';
+import { createSignature } from '../../../../services/create-signature-service';
+import CreateResource from './create-resource';
+import { modifyCalendarResource } from '../../../../services/modify-cal-resource-service';
 
 const DomainResources: FC = () => {
 	const [t] = useTranslation();
+	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const [resourceList, setResourceList] = useState<any[]>([]);
 	const [offset, setOffset] = useState<number>(0);
-	const [limit, setLimit] = useState<number>(50);
+	const [limit, setLimit] = useState<number>(RECORD_DISPLAY_LIMIT);
 	const [totalAccount, setTotalAccount] = useState<number>(0);
 	const domainName = useDomainStore((state) => state.domain?.name);
 	const [searchString, setSearchString] = useState<string>('');
@@ -37,6 +44,8 @@ const DomainResources: FC = () => {
 	const [selectedResourceList, setSelectedResourceList] = useState<any>({});
 	const [showResourceEditDetailView, setShowResourceEditDetailView] = useState<boolean>(false);
 	const [isEditMode, setIsEditMode] = useState<boolean>(false);
+	const [isUpdateRecord, setIsUpdateRecord] = useState<boolean>(false);
+	const [showCreateResourceView, setShowCreateResourceView] = useState<boolean>(false);
 	const timer = useRef<any>();
 	const headers: any[] = useMemo(
 		() => [
@@ -76,17 +85,20 @@ const DomainResources: FC = () => {
 
 	const doClickAction = useCallback((): void => {
 		setIsEditMode(false);
+		setShowResourceEditDetailView(true);
 	}, []);
 
 	const doDoubleClickAction = useCallback((): void => {
 		setIsEditMode(true);
+		setShowResourceEditDetailView(true);
 	}, []);
 
 	const handleClick = useCallback(
 		(event: any) => {
+			event.stopPropagation();
 			clearTimeout(timer.current);
 			if (event.detail === 1) {
-				timer.current = setTimeout(doClickAction, 200);
+				timer.current = setTimeout(doClickAction, 300);
 			} else if (event.detail === 2) {
 				doDoubleClickAction();
 			}
@@ -120,7 +132,6 @@ const DomainResources: FC = () => {
 										onClick={(e: { stopPropagation: () => void }): void => {
 											e.stopPropagation();
 											setSelectedResourceList(item);
-											setShowResourceEditDetailView(true);
 											handleClick(e);
 										}}
 									>
@@ -134,7 +145,6 @@ const DomainResources: FC = () => {
 										onClick={(e: { stopPropagation: () => void }): void => {
 											e.stopPropagation();
 											setSelectedResourceList(item);
-											setShowResourceEditDetailView(true);
 											handleClick(e);
 										}}
 									>
@@ -148,7 +158,6 @@ const DomainResources: FC = () => {
 										onClick={(e: { stopPropagation: () => void }): void => {
 											e.stopPropagation();
 											setSelectedResourceList(item);
-											setShowResourceEditDetailView(true);
 											handleClick(e);
 										}}
 									>
@@ -162,7 +171,6 @@ const DomainResources: FC = () => {
 										onClick={(e: { stopPropagation: () => void }): void => {
 											e.stopPropagation();
 											setSelectedResourceList(item);
-											setShowResourceEditDetailView(true);
 											handleClick(e);
 										}}
 									>
@@ -181,7 +189,6 @@ const DomainResources: FC = () => {
 										onClick={(e: { stopPropagation: () => void }): void => {
 											e.stopPropagation();
 											setSelectedResourceList(item);
-											setShowResourceEditDetailView(true);
 											handleClick(e);
 										}}
 									>
@@ -193,6 +200,7 @@ const DomainResources: FC = () => {
 							});
 						});
 						setResourceList(rList);
+						setIsUpdateRecord(false);
 					}
 				});
 		},
@@ -202,6 +210,12 @@ const DomainResources: FC = () => {
 	useEffect(() => {
 		getResourceList(domainName, searchQuery);
 	}, [offset, getResourceList, domainName, searchQuery]);
+
+	useEffect(() => {
+		if (isUpdateRecord) {
+			getResourceList(domainName, searchQuery);
+		}
+	}, [isUpdateRecord, getResourceList, domainName, searchQuery]);
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const searchResourceQuery = useCallback(
@@ -220,6 +234,136 @@ const DomainResources: FC = () => {
 	useEffect(() => {
 		searchResourceQuery(searchString);
 	}, [searchString, searchResourceQuery]);
+
+	const successSnackBar = useCallback(
+		(resourceName: any): void => {
+			createSnackbar({
+				key: 'success',
+				type: 'success',
+				label: t('label.create_resource_success_msg', {
+					resourceName,
+					defaultValue: '{{resourceName}} has been created successfully'
+				}),
+				autoHideTimeout: 3000,
+				hideButton: true,
+				replace: true
+			});
+		},
+		[createSnackbar, t]
+	);
+
+	const errorSnackBar = useCallback(
+		(text?: any): void => {
+			createSnackbar({
+				key: 'error',
+				type: 'error',
+				label:
+					text || t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+				autoHideTimeout: 3000,
+				hideButton: true,
+				replace: true
+			});
+		},
+		[createSnackbar, t]
+	);
+
+	const createResourceReq = useCallback(
+		(
+			name,
+			password,
+			attr,
+			resourceName,
+			signatureList,
+			zimbraPrefCalendarAutoAcceptSignatureId,
+			zimbraPrefCalendarAutoDeclineSignatureId,
+			zimbraPrefCalendarAutoDenySignatureId
+		) => {
+			createResource(name, password, attr)
+				.then((response) => response.json())
+				.then((data) => {
+					const resourceId = data?.Body?.CreateCalendarResourceResponse?.calresource[0]?.id;
+					if (resourceId) {
+						if (signatureList && signatureList.length > 0) {
+							const requests: any[] = [];
+							signatureList.forEach((item: any) => {
+								requests.push(createSignature(resourceId, item?.name, item?.content[0]?._content));
+							});
+							Promise.all(requests)
+								.then((responses) => Promise.all(responses.map((response) => response.json())))
+								.then((resData) => {
+									if (
+										zimbraPrefCalendarAutoAcceptSignatureId?.value === '' &&
+										zimbraPrefCalendarAutoDeclineSignatureId?.value === '' &&
+										zimbraPrefCalendarAutoDenySignatureId?.value === ''
+									) {
+										setShowCreateResourceView(false);
+										successSnackBar(resourceName);
+										setIsUpdateRecord(true);
+									} else {
+										const signatureRes: any[] = [];
+										resData.forEach((res: any) => {
+											signatureRes.push(res?.Body?.CreateSignatureResponse?.signature[0]);
+										});
+										const signtureAttr: any = {
+											zimbraPrefCalendarAutoAcceptSignatureId:
+												zimbraPrefCalendarAutoAcceptSignatureId?.value
+													? signatureRes.filter(
+															(item: any) =>
+																// eslint-disable-next-line max-len
+																item.name === zimbraPrefCalendarAutoAcceptSignatureId?.label
+													  )[0]?.id
+													: '',
+											zimbraPrefCalendarAutoDeclineSignatureId:
+												zimbraPrefCalendarAutoDeclineSignatureId?.value
+													? signatureRes.filter(
+															(item: any) =>
+																// eslint-disable-next-line max-len
+																item.name === zimbraPrefCalendarAutoDeclineSignatureId?.label
+													  )[0]?.id
+													: '',
+											zimbraPrefCalendarAutoDenySignatureId:
+												zimbraPrefCalendarAutoDenySignatureId?.value
+													? signatureRes.filter(
+															(item: any) =>
+																// eslint-disable-next-line max-len
+																item.name === zimbraPrefCalendarAutoDenySignatureId?.label
+													  )[0]?.id
+													: ''
+										};
+										const attrList: { n: string; _content: string }[] = [];
+										Object.keys(signtureAttr).map((ele: any) =>
+											attrList.push({ n: ele, _content: signtureAttr[ele] })
+										);
+										modifyCalendarResource(resourceId, attrList)
+											.then((response) => response.json())
+											.then((modifyData) => {
+												setShowCreateResourceView(false);
+												successSnackBar(resourceName);
+												setIsUpdateRecord(true);
+											})
+											.catch((error) => {
+												errorSnackBar();
+											});
+									}
+								})
+								.catch((error) => {
+									errorSnackBar();
+								});
+						} else {
+							setShowCreateResourceView(false);
+							successSnackBar(resourceName);
+							setIsUpdateRecord(true);
+						}
+					} else {
+						errorSnackBar(data?.Body?.Fault?.Reason?.Text);
+					}
+				})
+				.catch((error) => {
+					errorSnackBar();
+				});
+		},
+		[errorSnackBar, successSnackBar]
+	);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
@@ -244,6 +388,9 @@ const DomainResources: FC = () => {
 									icon="Plus"
 									height={36}
 									width={36}
+									onClick={(): void => {
+										setShowCreateResourceView(true);
+									}}
 								/>
 							</Padding>
 							<Button
@@ -369,6 +516,13 @@ const DomainResources: FC = () => {
 					setShowResourceEditDetailView={setShowResourceEditDetailView}
 					isEditMode={isEditMode}
 					setIsEditMode={setIsEditMode}
+					setIsUpdateRecord={setIsUpdateRecord}
+				/>
+			)}
+			{showCreateResourceView && (
+				<CreateResource
+					setShowCreateResourceView={setShowCreateResourceView}
+					createResourceReq={createResourceReq}
 				/>
 			)}
 		</Container>

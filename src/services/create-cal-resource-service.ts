@@ -4,16 +4,22 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export const renameDistributionList = async (dlId: string, newName?: string): Promise<any> => {
+export const createResource = async (
+	name: string,
+	passowrd: string,
+	a?: Array<any>
+): Promise<any> => {
 	const request: any = {
-		RenameDistributionListRequest: {
+		CreateCalendarResourceRequest: {
 			_jsns: 'urn:zimbraAdmin',
-			id: dlId,
-			newName
+			name,
+			passowrd
 		}
 	};
-
-	return fetch(`/service/admin/soap/RenameDistributionListRequest`, {
+	if (a) {
+		request.CreateCalendarResourceRequest.a = a;
+	}
+	return fetch(`/service/admin/soap/CreateCalendarResourceRequest`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
