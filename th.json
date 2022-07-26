@@ -141,8 +141,22 @@
     "buckets": {
         "connection": {
             "access_key": "รหัสการเข้าถึง",
-            "notes": "หมายเหตุ"
-        }
+            "notes": "หมายเหตุ",
+            "verify_connector": "ยืนยันตัวเชื่อมต่อ",
+            "secret_key": "รหัสลับ",
+            "descriptive_name": "คำอธิบายชื่อ",
+            "create_and_verify_connector": "สร้าง & ยืนยันตัวเชื่อมต่อ",
+            "arn_name": "Arn / ชื่อ"
+        },
+        "new": {
+            "bucket_connection": "การเชื่อมต่อ Bucket"
+        },
+        "filter_buckets_list": "รายการกรอง Bucket",
+        "create_new_bucket": "Bucket ใหม่",
+        "connect_buckets": "เชื่อมต่อ Bucket",
+        "bucket_type": "ประเภท Bucket",
+        "bucket_list": "รายการ Bucket",
+        "connector_used": "ตัวเชื่อมต่อที่ใช้เป็น"
     },
     "core": {
         "subscription": {
@@ -162,7 +176,15 @@
             "subscription_last_check": "การสมัครสมาชิกตรวจสอบล่าสุด",
             "subscription_type": "ประเภทสมาชิก",
             "token": "โทเค็น",
-            "version": "รุ่น Zextras"
+            "version": "รุ่น Zextras",
+            "modal": {
+                "warning": "คุณกำลังพยายามปิดใช้งานโทเค็นปัจจุบัน การทำเช่นนั้นจะเป็นการปิดใช้งานคุณสมบัติที่เปิดใช้งานอยู่ทั้งหมด",
+                "label": "ปิดใช้งานโทเค็น",
+                "deactivate": "ใช่ ปิดการใช้งาน",
+                "confirm": "คุณแน่ใจหรือว่าต้องการดำเนินการต่อ?",
+                "cancel": "ไม่"
+            },
+            "deactive": "ปิดการใช้งาน"
         }
     },
     "domain": {
@@ -182,7 +204,30 @@
         "manage": "จัดการ",
         "new_domain": "โดเมนใหม่",
         "resources": "ทรัพยากร",
-        "restore_account": "การกู้คืนข้อมูลบัญชี"
+        "restore_account": "การกู้คืนข้อมูลบัญชี",
+        "type_here_a_domain": "พิมพ์โดเมนที่นี่",
+        "send_the_warning_to": "ส่งคำเตือนไปที่",
+        "select_domain_or_create_new": "โปรดเลือกโดเมนที่ต้องการ หรือคลิกที่ปุ่มสร้างเพื่อสร้างโดเมนใหม่",
+        "search_domain": "ค้นหาโดเมน",
+        "mailing_list": "รายชื่อผู้รับจดหมาย",
+        "mail_server": "เซิร์ฟเวอร์จดหมาย",
+        "admin_delegates": "ตัวแทนผู้ดูแลระบบ",
+        "active_sync": "ActiveSync",
+        "account_list": "รายการบัญชี",
+        "account_gal_synchronization": "ชื่อบัญชีของการซิงโครไนซ์ GAL",
+        "warn_when_reach_space_quota": "เตือนฉันเมื่อถึงกำหนดโควต้าของพื้นที่รวมนี้",
+        "source_name_internal_gal": "ชื่อแหล่งที่มาของ GAL ภายใน",
+        "restore_deleted_email": "กู้คืนอีเมลที่ถูกลบ",
+        "range": "ช่วง",
+        "many_domain_info_msg": "มีหลายโดเมน! คุณต้องการดูโดเมนใด? เริ่มพิมพ์เพื่อทำการกรอง",
+        "mailbox_space": "พื้นที่กล่องจดหมาย",
+        "list_details": "รายละเอียดรายการ",
+        "internal_gal_received": "ช่วงการรับ GAL ภายใน",
+        "i_want_to_see_this_domain": "ฉันต้องการดูโดเมนนี้",
+        "gal_mode": "โหมด GAL",
+        "domain_space_byte": "พื้นที่โดเมน (ไบต์)",
+        "create_new_domain": "สร้างโดเมนใหม่",
+        "aggregated_domain_space": "พื้นที่โดเมนรวม (ไบต์)"
     },
     "label": {
         "account": "บัญชี",
@@ -345,7 +390,67 @@
         "deleteing": "กำลังลบ",
         "enable_toaster_notification_for_new_calendar_events": "เปิดใช้งานการแจ้งให้ทราบจาก toaster สำหรับเหตุการณ์ปฏิทินใหม่",
         "range_time": "เวลา",
-        "search_dot": "ค้นหา…"
+        "search_dot": "ค้นหา…",
+        "console_redirection": "การเปลี่ยนเส้นทางคอนโซล",
+        "connector_is_not_created_and_verification_failed": "คอนเนคเตอร์ไม่ได้ถูกสร้างขึ้น และการตรวจสอบล้มเหลว",
+        "connect_buckets": "เชื่อมต่อสิ่งที่ต้องทำ",
+        "admin_delegates": "ตัวแทนผู้ดูแลระบบ",
+        "add_regex": "เพิ่ม REGEX",
+        "I_want_to_see_this_COS": "ฉันต้องการดู COS นี้",
+        "default_class_of_service": "คลาสของบริการที่เป็นค่าเริ่มต้น",
+        "datasource_name_for_internal_gal": "ชื่อแหล่งข้อมูลสำหรับ GAL ภายใน",
+        "dashboard": "แผงควบคุม",
+        "create_resource_msg": "คุณสามารถสร้างแหล่งที่มาใหม่ได้โดยคลิกที่ปุ่ม <bold>สร้าง</bold> (มุมบนซ้าย) หรือบนปุ่มเพิ่ม (<bold>+</bold>) ด้านบนนี้",
+        "create_new_domain": "สร้างโดเมนใหม่",
+        "create_new_cos": "สร้าง COS ใหม่",
+        "create_new_bucket": "Bucket ใหม่",
+        "create_mailing_list_msg": "คุณสามารถสร้างรายชื่อผู้รับจดหมายใหม่ได้โดยคลิกที่ปุ่มสร้าง (มุมบนซ้าย) หรือบนปุ่มเพิ่ม (+) ด้านบนนี้",
+        "create_domain_success_msg": "สร้าง {{domainName}} สำเร็จแล้ว",
+        "create_date": "วันที่สร้าง",
+        "create_cos_success_msg": "สร้าง {{cosName}} สำเร็จแล้ว",
+        "create_button": "สร้าง",
+        "create_account_list_msg": "คุณสามารถสร้างบัญชีใหม่ได้โดยคลิกที่ปุ่ม <bold>สร้าง</bold> (มุมบนซ้าย) หรือบนปุ่มเพิ่ม (<bold>+</bold>) ด้านบนนี้",
+        "cos_name": "ชื่อ Cos",
+        "connector_is_created_by_verification_failed": "คอนเนคเตอร์ถูกสร้างขึ้น แต่การตรวจสอบล้มเหลว",
+        "connector_is_create_and_verified": "คอนเนคเตอร์ถูกสร้างขึ้นและตรวจสอบแล้ว",
+        "connection_is_created_verify_connector_fail": "คอนเนคเตอร์ถูกสร้างขึ้น แต่การตรวจสอบล้มเหลว",
+        "configration": "การกำหนดค่า",
+        "changes_have_been_saved": "การเปลี่ยนแปลงถูกบันทึกแล้ว",
+        "change_save_success_msg": "บันทึกการเปลี่ยนแปลงเรียบร้อยแล้ว",
+        "certificates": "ใบรับรอง",
+        "cancle_button": "ไม่",
+        "can_send_receiver": "สามารถส่ง & รับได้",
+        "can_receive": "สามารถรับได้",
+        "bulk_actions": "การดำเนินการเป็นกลุ่ม",
+        "buckets": "Bucket",
+        "bucket_view_details_button": "ดูรายละเอียด",
+        "bucket_type": "ประเภท Bucket",
+        "bucket_need_help_button": "ต้องการความช่วยเหลือ?",
+        "block_send_receive": "บล็อกการส่ง/การรับ",
+        "block_send": "บล็อกการส่ง",
+        "bind_dn_template": "เทมเพลต Bind DN",
+        "auto_refuse": "ปฏิเสธโดยอัตโนมัติ",
+        "auto_negation": "ปฏิเสธโดยอัตโนมัติ",
+        "auto_logout_users": "ผู้ใช้ออกจากระบบโดยอัตโนมัติ",
+        "auto_accept_auto_decline_on_conflict": "ยอมรับโดยอัตโนมัติหากมี ปฏิเสธโดยอัตโนมัติในกรณีที่มีข้อขัดแย้ง",
+        "auto_accept_always": "ยอมรับโดยอัตโนมัติเสมอหากมี",
+        "auto_accept": "ยอมรับโดยอัตโนมัติ",
+        "auth_method": "วิธีการตรวจสอบสิทธิ์",
+        "arn_name": "Arn / ชื่อ",
+        "are_you_sure_deleting_cos": "คุณแน่ใจหรือว่าต้องการลบคลาสของบริการนี้?",
+        "always_compose_mail_using": "เขียนจดหมายโดยใช้รูปแบบนี้เสมอ",
+        "allow_send_receive": "อนุญาตให้รับ/ส่ง",
+        "alias_in_the_list": "นามแฝงในรายการ",
+        "aggrigated_space_criteria": "เกณฑ์พื้นที่รวม",
+        "admins": "ผู้ดูแล",
+        "admin_help_url": "URL การช่วยเหลือของผู้ดูแลระบบ",
+        "add_to_the_list": "เพิ่มในรายการ",
+        "add_it_to_list": "เพิ่มในรายการ",
+        "add_in_mailing_list_or_both": "คุณเพิ่มรายชื่อผู้รับจดหมายหรือผู้ใช้อื่น โดยทั้งคู่สามารถเป็นเจ้าของรายการได้",
+        "active_sync": "ActiveSync",
+        "activate_and_update": "เปิดใช้งาน & อัปเดต",
+        "account_created_successfully": "สร้างบัญชีสำเร็จแล้ว",
+        "I_am_looking_for_this_account": "ฉันกำลังมองหาบัญชีนี้…"
     },
     "message": {
         "snackbar": {
@@ -361,7 +466,8 @@
         "global": {
             "headers": {
                 "advanced": "ขั้นสูง",
-                "service_status": "สถานะการให้บริการ"
+                "service_status": "สถานะการให้บริการ",
+                "server_config": "การกำหนดค่าเซิร์ฟเวอร์"
             }
         },
         "keep_delete_accounts_in_backup": "เก็บบัญชีที่ถูกลบไว้ในการสำรองข้อมูล",
@@ -375,7 +481,18 @@
         "purge_old_configurations": "ล้างการกำหนดค่าเก่า",
         "realtime_scanner": "เครื่องสแกนแบบเรียลไทม์",
         "schedule": "กำหนดการ",
-        "smart_scan_at_startup": "SmartScan เมื่อ Startup"
+        "smart_scan_at_startup": "SmartScan เมื่อ Startup",
+        "threads_for_items": "หัวข้อสำหรับรายการ",
+        "threads_for_account": "หัวข้อสำหรับบัญชี",
+        "smart_scan_scheduling": "ตารางเวลาการสแกนอัจฉริยะ",
+        "set_backup_forever_msg": "หากคุณตั้งค่าเป็น 0 ข้อมูลของคุณจะถูกเก็บไว้ในข้อมูลสำรองตลอดไป",
+        "server_configurations": "การกำหนดค่าเซิร์ฟเวอร์",
+        "save_index": "บันทึกดัชนี",
+        "metatdata_size": "ขนาดข้อมูลเมตา",
+        "max_waiting_time": "เวลาการรอสูงสุด",
+        "max_operations_account": "การดำเนินการสูงสุดต่อบัญชี",
+        "latency_low_threshold": "เกณฑ์เวลาในการตอบสนองต่ำ",
+        "latency_high_threshold": "เกณฑ์เวลาในการตอบสนองสูง"
     },
     "lable": {
         "delete_button": "ลบ"
@@ -407,16 +524,32 @@
         "preferences": "การกำหนดลักษณะ",
         "receiving_mail": "การรับจดหมาย",
         "s_mime_features": "คุณลักษณะ S/MIME",
-        "search_features": "คุณลักษณะการค้นหา",
+        "search_features": "ค้นหาคุณสมบัติ",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "แสดงกล่องกาเครื่องหมายการเลือกสำหรับเลือกรายการอีเมล รายชื่อผู้ติดต่อ ข้อความเสียงในมุมมองรายการสำหรับการดำเนินการชุดงาน",
         "view_mail_as_html": "ดูจดหมายเป็นแบบ HTML (หากเป็นไปได้)",
         "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "แสดงคำเตือนเมื่อผู้ดูแลระบบพยายามนำทางออกจากคอนโซลการดูแล Carbonio",
         "group_mail": "จัดกลุ่มจดหมายตาม:",
-        "range_time": "เวลา"
+        "range_time": "เวลา",
+        "type_of_UI": "ประเภทของ UI",
+        "standard_html_client": "ไคลเอ็นต์มาตรฐาน (HTML)",
+        "show_search_string": "แสดงสตริงการค้นหา",
+        "show_IMAP_search_folder": "แสดงโฟลเดอร์การค้นหา IMAP",
+        "sending_mail": "การส่งจดหมาย",
+        "send_read_receipts": "ส่งการแจ้งเมื่อผู้รับเปิดอ่าน",
+        "search_class_of_service": "เลือกคลาสของบริการ",
+        "composing_mail": "การเขียนจดหมาย",
+        "main_features": "คุณสมบัติหลัก",
+        "i_want_to_see_this_cos": "ฉันต้องการดู COS นี้"
     },
     "accountDetails": {
         "hide_in_gal": "ซ่อนใน GAL",
-        "prevent_user_from_changing_password": "ป้องกันไม่ให้ผู้ใช้เปลี่ยนรหัสผ่าน"
+        "prevent_user_from_changing_password": "ป้องกันไม่ให้ผู้ใช้เปลี่ยนรหัสผ่าน",
+        "this_user_must_change_password": "ผู้ใช้รายนี้ต้องเปลี่ยนรหัสผ่าน",
+        "this_is_global_administrator": "นี่คือผู้ดูแลระบบส่วนกลาง",
+        "generate_first_2FA_token": "สร้างโทเค็น 2FA อันแรก",
+        "enable_activeSync_remote_access": "เปิดใช้งานการเข้าถึงระยะไกล ActiveSync",
+        "default_COS": "COS เริ่มต้น",
+        "change_password_for_next_login": "ต้องเปลี่ยนรหัสผ่านในการเข้าสู่ระบบครั้งต่อไป"
     },
     "locale": {
         "English": "อังกฤษ",
@@ -449,5 +582,20 @@
         "spanish": "ภาษาสเปน",
         "thai": "ไทย",
         "turkish": "ตุรกี"
+    },
+    "create_new_domain": "สร้างโดเมนใหม่",
+    "create_new_cos": "สร้าง COS ใหม่",
+    "create_new_bucket": "Bucket ใหม่",
+    "commons": {
+        "create_with_there_data": "สร้างด้วยข้อมูลเหล่านี้",
+        "confirm_connection": "ยืนยันการเชื่อมต่อ"
+    },
+    "account": {
+        "new": {
+            "create_account_wizard": "ตัวช่วยสร้างบัญชี"
+        },
+        "edit": {
+            "edit_account_wizard": "ตัวช่วยแก้ไขบัญชี"
+        }
     }
 }
