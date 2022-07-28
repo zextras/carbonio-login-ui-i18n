@@ -459,7 +459,10 @@
         "list_url": "URL della Mailing list",
         "i_am_looking_for_member": "Cerca all'interno della lista",
         "first_2FA_access_token_link": "Token link (da inviare all'utente) per effettuare il primo accesso 2FA",
-        "can_send_receiver": "Può ricevere e inviare"
+        "can_send_receiver": "Può ricevere e inviare",
+        "auto_accept_auto_decline_on_conflict": "Accetta automaticamente in caso di disponibilità, rifiuta automaticamente in caso di conflitto",
+        "auto_accept": "Accetta automaticamente",
+        "add_in_mailing_list_or_both": "Hai aggiunto una Mailing list o un utente. Entrambi possono essere proprietari della lista."
     },
     "message": {
         "snackbar": {
