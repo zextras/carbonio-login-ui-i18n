@@ -1106,10 +1106,17 @@ export const isValidEmail = (email: string): boolean => {
 	return re.test(email);
 };
 
-export const getAllEmailFromString = (str: string): any =>
-	str
+export const getAllEmailFromString = (str: string): any => {
+	console.log(
+		'$$$$$888 : ',
+		str
+			.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+(.))/gi)
+			?.map((item: any) => item.replace('>', ''))
+	);
+	return str
 		.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+(.))/gi)
 		?.map((item: any) => item.replace('>', ''));
+};
 
 export const getEmailDisplayNameFromString = (str: string): any => str.match(/".*?"|'.*?'/g);
 

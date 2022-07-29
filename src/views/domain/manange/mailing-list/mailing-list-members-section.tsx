@@ -79,7 +79,7 @@ const MailingListMembersSection: FC<any> = () => {
 	const onAdd = useCallback((): void => {
 		if (member !== '') {
 			const allEmails: any[] = getAllEmailFromString(member);
-			if (allEmails !== null) {
+			if (allEmails !== null && allEmails !== undefined) {
 				const inValidEmailAddress = allEmails.filter((item: any) => !isValidEmail(item));
 				if (inValidEmailAddress && inValidEmailAddress.length > 0) {
 					createSnackbar({
@@ -94,11 +94,20 @@ const MailingListMembersSection: FC<any> = () => {
 					});
 				} else {
 					const sortedList = sortedUniq(allEmails);
-					setDlm(sortedList);
+					setDlm(dlm.concat(sortedList));
 				}
+			} else if (allEmails === undefined) {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: `${t('label.invalid_email_address', 'Invalid email address')} ${member}`,
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
 			}
 		}
-	}, [member, createSnackbar, t]);
+	}, [member, createSnackbar, t, dlm]);
 
 	const onDeleteFromList = useCallback((): void => {
 		if (selectedDistributionListMember.length > 0) {

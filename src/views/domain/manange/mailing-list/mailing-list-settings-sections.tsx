@@ -13,13 +13,14 @@ import {
 	Table,
 	Input,
 	Button,
-	Dropdown
+	Dropdown,
+	SnackbarManagerContext
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import { debounce } from 'lodash';
+import { debounce, sortedUniq } from 'lodash';
 import { MailingListContext } from './mailinglist-context';
 import ListRow from '../../../list/list-row';
-import { isValidEmail } from '../../../utility/utils';
+import { getAllEmailFromString, isValidEmail } from '../../../utility/utils';
 import { searchDirectory } from '../../../../services/search-directory-service';
 import { RECORD_DISPLAY_LIMIT } from '../../../../constants';
 import { searchGal } from '../../../../services/search-gal-service';
@@ -33,6 +34,7 @@ export enum SUBSCRIBE_UNSUBSCRIBE {
 
 const MailingListSettingsSection: FC<any> = () => {
 	const { t } = useTranslation();
+	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const context = useContext(MailingListContext);
 	const { mailingListDetail, setMailingListDetail } = context;
 	const [member, setMember] = useState<string>('');
@@ -133,11 +135,38 @@ const MailingListSettingsSection: FC<any> = () => {
 	}, [ownersList, setMailingListDetail]);
 
 	const onAdd = useCallback((): void => {
-		if (member !== '' && isValidEmail(member)) {
-			setOwnersList((prev: any) => [...prev, member]);
-			setMember('');
+		if (member !== '') {
+			const allEmails: any[] = getAllEmailFromString(member);
+			if (allEmails !== null && allEmails !== undefined) {
+				const inValidEmailAddress = allEmails.filter((item: any) => !isValidEmail(item));
+				if (inValidEmailAddress && inValidEmailAddress.length > 0) {
+					createSnackbar({
+						key: 'error',
+						type: 'error',
+						label: `${t('label.invalid_email_address', 'Invalid email address')} ${
+							inValidEmailAddress[0]
+						}`,
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
+				} else {
+					setMember('');
+					const sortedList = sortedUniq(allEmails);
+					setOwnersList(ownersList.concat(sortedList));
+				}
+			} else if (allEmails === undefined) {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: `${t('label.invalid_email_address', 'Invalid email address')} ${member}`,
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
+			}
 		}
-	}, [member]);
+	}, [member, createSnackbar, ownersList, t]);
 
 	const onDeleteFromList = useCallback((): void => {
 		if (selectedDistributionListOwner.length > 0) {

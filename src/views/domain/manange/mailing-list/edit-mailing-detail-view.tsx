@@ -1219,7 +1219,6 @@ const EditMailingListView: FC<any> = ({
 			.then((response) => response.json())
 			.then((data) => {
 				const result: any[] = [];
-
 				const dl = data?.Body?.SearchDirectoryResponse?.dl;
 				const account = data?.Body?.SearchDirectoryResponse?.account;
 				const alias = data?.Body?.SearchDirectoryResponse?.alias;
@@ -1252,7 +1251,7 @@ const EditMailingListView: FC<any> = ({
 	const onAdd = useCallback((): void => {
 		if (searchMember !== '') {
 			const allEmails: any[] = getAllEmailFromString(searchMember);
-			if (allEmails !== null) {
+			if (allEmails !== null && allEmails !== undefined) {
 				const inValidEmailAddress = allEmails.filter((item: any) => !isValidEmail(item));
 				if (inValidEmailAddress && inValidEmailAddress.length > 0) {
 					createSnackbar({
@@ -1269,6 +1268,15 @@ const EditMailingListView: FC<any> = ({
 					const sortedList = sortedUniq(allEmails);
 					setDlm(dlm.concat(sortedList));
 				}
+			} else if (allEmails === undefined) {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: `${t('label.invalid_email_address', 'Invalid email address')} ${searchMember}`,
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
 			}
 		}
 	}, [searchMember, createSnackbar, t, dlm]);
@@ -1276,7 +1284,7 @@ const EditMailingListView: FC<any> = ({
 	const onAddOwner = useCallback((): void => {
 		if (searchOwner !== '') {
 			const allEmails: any[] = getAllEmailFromString(searchOwner);
-			if (allEmails !== null) {
+			if (allEmails !== null && allEmails !== undefined) {
 				const inValidEmailAddress = allEmails.filter((item: any) => !isValidEmail(item));
 				if (inValidEmailAddress && inValidEmailAddress.length > 0) {
 					createSnackbar({
@@ -1295,6 +1303,15 @@ const EditMailingListView: FC<any> = ({
 						ownersList.concat(sortedList.map((item: any) => ({ name: item, id: item })))
 					);
 				}
+			} else if (allEmails === undefined) {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: `${t('label.invalid_email_address', 'Invalid email address')} ${searchOwner}`,
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
 			}
 		}
 	}, [searchOwner, createSnackbar, t, ownersList]);
