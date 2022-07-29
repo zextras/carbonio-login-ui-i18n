@@ -16,7 +16,30 @@
         "manage": "Verwalten",
         "new_domain": "Neue Domain",
         "resources": "Ressourcen",
-        "restore_account": "Konto wiederherstellen"
+        "restore_account": "Konto wiederherstellen",
+        "select_domain_or_create_new": "Bitte wählen Sie eine Domain aus, um diese zu verwalten oder klicken Sie auf den \"Erstellen\"-Button, um eine neue zu erstellen.",
+        "many_domain_info_msg": "So viele Domains! Welche möchten Sie sehen? Schreiben Sie, um zu filtern.",
+        "mailing_list": "Mailing Liste",
+        "mailbox_space": "Größe der Mailbox",
+        "mail_server": "Mail-Server",
+        "list_details": "Liste Details",
+        "internal_gal_received": "Interner Radius der empfangenen GAL",
+        "i_want_to_see_this_domain": "Ich möchte diese Domain sehen",
+        "gal_mode": "GAL-Modus",
+        "domain_space_byte": "Domain Speicherplatz (Byte)",
+        "create_new_domain": "NEUE DOMAIN ERSTELLEN",
+        "aggregated_domain_space": "Aggregierter Domain Speicherplatz (Byte)",
+        "admin_delegates": "Delegierte Administratoren",
+        "active_sync": "ActiveSync",
+        "account_list": "Liste der Konten",
+        "account_gal_synchronization": "Konto Name der GAL Synchronisierung",
+        "warn_when_reach_space_quota": "Warne mich, wenn ich diesen Schwellwert des aggregierten Speicherplatzes erreiche",
+        "type_here_a_domain": "Schreiben Sie hier eine Domain",
+        "source_name_internal_gal": "Quellname der internen GAL",
+        "send_the_warning_to": "Die Warnung schicken an",
+        "search_domain": "Nach einer Domain suchen",
+        "restore_deleted_email": "Gelöschte E-Mails wiederherstellen",
+        "range": "Radius"
     },
     "label": {
         "account": "Account",
@@ -179,7 +202,85 @@
         "enable_toaster_notification_for_new_calendar_events": "Aktiviert die Toaster-Benachrichtigung für neue Kalenderereignisse",
         "deleteing": "Wird gelöscht",
         "range_time": "Uhrzeit",
-        "search_dot": "Suchen…"
+        "search_dot": "Suchen…",
+        "deleting_cos_msg": "{{cosname}} wird gelöscht",
+        "delete_domain_with_account_content_msg": "{{domainName}} ist nicht leer: er enthält {{domainAccounts}} Systemkonten und {{domainAccounts}} reguläre Konten. Sind Sie sicher, dass Sie den Löschvorgang fortsetzen möchten?",
+        "delete_domain_success_msg": "Die Domain wurde erfolgreich gelöscht",
+        "delete_domain_error_msg": "Sie löschen {{domainName}}. Sind Sie sicher, dass Sie {{domainName}} löschen möchten?",
+        "delete_domain": "Domain löschen",
+        "delete_cos_succeess": "Der {{cosname}} wurde erfolgreich gelöscht",
+        "delete_cos_instruction_msg": "Wenn Sie auf den Button JA, LÖSCHEN klicken, wird das Standard COS den gelöschten COS ersetzen.",
+        "delete_content": "Sie löschen {{name}}.\nSind Sie sicher, dass Sie fortfahren möchten?",
+        "delete_bucket_sucess": "Der {{name}} wurde entfernt",
+        "delete_bucket_message_2": "Sind Sie sicher, dass Sie die Verbindung zu {{bucket_name}} entfernen möchten?",
+        "delete_bucket_message": "Sie entfernen die Verbindung zu {{bucket_name}}. Sie entfernen nur die Verbindung, die Daten des Buckets sind weiterhin gesichert. Wenn Sie die Daten löschen möchten, greifen Sie bitte auf die Bucket Quelle zurück.",
+        "delete_bucket_fail": "Der {{name}} wurde nicht entfernt",
+        "delet_content": "Sie löschen {{name}}. Sind Sie sicher, dass Sie es löschen möchten?",
+        "delet_bucket_header": "Entferne {{name}}",
+        "default_settings": "Standardeinstellungen",
+        "default_font_size": "Standard Schriftgröße",
+        "default_font_family": "Standard Schriftfamilie",
+        "default_font_color": "Standard Schriftfarbe",
+        "default_class_of_service": "Standard-Dienstklasse",
+        "datasource_name_for_internal_gal": "Name der Datenquelle für interne GAL",
+        "dashboard": "Dashboard",
+        "create_resource_msg": "Sie können eine neue Ressource erstellen, indem Sie auf den <bold>Erstellen</bold> Button (oben links) oder auf den Hinzufügen (<bold>+</bold>) Button hier oben klicken",
+        "create_new_domain": "Neue Domain erstellen",
+        "create_new_cos": "Neuen COS erstellen",
+        "create_new_bucket": "NEUER BUCKET",
+        "create_mailing_list_msg": "Sie können eine neue Mailling Liste erstellen, indem Sie auf den Erstellen Button (oben links) oder auf den Hinzufügen (+) Button hier oben klicken",
+        "create_domain_success_msg": "{{domainName}} wurde erfolgreich erstellt",
+        "create_date": "Erstellungsdatum",
+        "create_cos_success_msg": "{{cosName}} wurde erfolgreich erstellt",
+        "create_button": "ERSTELLEN",
+        "create_account_list_msg": "Sie können ein neues Konto erstellen, indem Sie auf den <bold>Erstellen</bold> Button (oben links) oder auf den Hinzufügen (<bold>+</bold>) Button hier oben klicken",
+        "cos_name": "Cos Name",
+        "console_redirection": "Weiterleitung Konsole",
+        "connector_is_not_created_and_verification_failed": "VERBINDER WURDE NICHT ERSTELLT UND DIE ÜBERPRÜFUNG IST FEHLGESCHLAGEN",
+        "connector_is_created_by_verification_failed": "VERBINDER WURDE ERSTELLT ABER DIE ÜBERPRÜFUNG IST FEHLGESCHLAGEN",
+        "connector_is_create_and_verified": "VERBINDER WURDE ERSTELLT UND ÜBERPRÜFT",
+        "connection_is_created_verify_connector_fail": "VERBINDER WURDE ERSTELLT ABER DIE ÜBERPRÜFUNG IST FEHLGESCHLAGEN",
+        "connect_buckets": "Buckets verbinden",
+        "configration": "KONFIGURATION",
+        "changes_have_been_saved": "Die Änderungen wurden gespeichert",
+        "admin_delegates": "Delegierte Administratoren",
+        "add_to_the_list": "Zur Liste hinzufügen",
+        "I_want_to_see_this_COS": "Ich möchte dieses COS sehen",
+        "change_save_success_msg": "Die Änderung wurde erfolgreich gespeichert",
+        "certificates": "Zertifikate",
+        "cancle_button": "NEIN",
+        "can_send_receiver": "Kann senden & empfangen",
+        "can_receive": "kann empfangen",
+        "bulk_actions": "Massenvorgänge",
+        "buckets": "Buckets",
+        "bucket_view_details_button": "DETAILS ANSEHEN",
+        "bucket_type": "Buckets Typ",
+        "bucket_need_help_button": "BRAUCHEN SIE HILFE?",
+        "block_send_receive": "Senden/ Empfangen blockieren",
+        "block_send": "Senden blockieren",
+        "bind_dn_template": "Template DN einbinden",
+        "auto_refuse": "Automatisch verweigern",
+        "auto_negation": "Automatisches Ablehnen",
+        "auto_logout_users": "Benutzer automatisch ausloggen",
+        "auto_accept_auto_decline_on_conflict": "Automatisch akzeptieren, wenn verfügbar, automatisch ablehnen im Konfliktfall",
+        "auto_accept_always": "Automatisch akzeptieren, wenn immer verfügbar",
+        "auto_accept": "Automatisch akzeptieren",
+        "auth_method": "Authentifizierungsmethode",
+        "arn_name": "Arn / Name",
+        "are_you_sure_deleting_cos": "Sind Sie sicher, dass Sie diese Dienstklasse löschen wollen?",
+        "always_compose_mail_using": "Mails immer verfassen mit",
+        "allow_send_receive": "Senden/Empfangen zulassen",
+        "alias_in_the_list": "Alias in der Liste",
+        "aggrigated_space_criteria": "Kriterien für aggregierten Speicherplatz",
+        "admins": "Admins",
+        "admin_help_url": "URL der Admin-Hilfe",
+        "add_regex": "REGEX HINZUFÜGEN",
+        "add_it_to_list": "Zur Liste hinzufügen",
+        "add_in_mailing_list_or_both": "Sie fügen eine andere Mailing Liste oder einen Benutzer hinzu. Beide können der Besitzer der Liste sein.",
+        "active_sync": "ActiveSync",
+        "activate_and_update": "Aktivieren & Aktualisieren",
+        "account_created_successfully": "Das Konto wurde erfolgreich erstellt",
+        "I_am_looking_for_this_account": "Ich suche nach diesem Konto…"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
@@ -323,8 +424,22 @@
     "buckets": {
         "connection": {
             "access_key": "Access Key",
-            "notes": "Notizen"
-        }
+            "notes": "Notizen",
+            "create_and_verify_connector": "VERBINDER ERSTELLEN & ÜBERPRÜFEN",
+            "verify_connector": "VERBINDER ÜBERPRÜFEN",
+            "secret_key": "Geheimer Schlüssel",
+            "descriptive_name": "Beschreibender Name",
+            "arn_name": "Arn / Name"
+        },
+        "new": {
+            "bucket_connection": "Bucket Verbindung"
+        },
+        "filter_buckets_list": "Buckets List filtern",
+        "create_new_bucket": "NEUER BUCKET",
+        "connector_used": "Verbinder genutzt als",
+        "connect_buckets": "Buckets verbinden",
+        "bucket_type": "Buckets Typ",
+        "bucket_list": "Buckets Liste"
     },
     "core": {
         "subscription": {
@@ -344,7 +459,15 @@
             "subscription_last_check": "Abonnement Letzte Überprüfung",
             "subscription_type": "Abonnement Art",
             "token": "Token",
-            "version": "Zextras Version"
+            "version": "Zextras Version",
+            "modal": {
+                "warning": "Sie versuchen, den aktuellen Token zu deaktivieren. Dadurch werden alle aktivierten Funktionieren deaktiviert.",
+                "label": "Token deaktivieren",
+                "deactivate": "Ja, deaktivieren",
+                "confirm": "Sind Sie sicher, dass Sie sich fortfahren möchten?",
+                "cancel": "NEIN"
+            },
+            "deactive": "Deaktiviert"
         }
     },
     "message": {
@@ -383,7 +506,11 @@
         "max_waiting_time": "Max Wartezeit",
         "max_operations_account": "Max. Anzahl der Vorgänge pro Konto",
         "latency_low_threshold": "Wartezeit niedriger Schwellenwert",
-        "latency_high_threshold": "Wartezeit hoher Schwellenwert"
+        "latency_high_threshold": "Wartezeit hoher Schwellenwert",
+        "threads_for_items": "Threads für Elemente",
+        "threads_for_account": "Threads für Konto",
+        "smart_scan_scheduling": "Zeitplanung SmartScan",
+        "set_backup_forever_msg": "Wenn Sie 0 einstellen, werden Ihre Daten für immer im Backup gespeichert werden"
     },
     "cos": {
         "calendar_options": "Kalenderoptionen",
@@ -412,12 +539,22 @@
         "preferences": "Einstellungen",
         "receiving_mail": "Mail empfangen",
         "s_mime_features": "S/MIME-Funktionen",
-        "search_features": "Suchfunktionen",
+        "search_features": "Nach Funktionen suchen",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Kontrollkästchen für die Auswahl von Mails, Kontakten, Sprachnachrichten in einer Listenanzeige für Stapeloperationen anzeigen",
         "view_mail_as_html": "Mail als HTML anzeigen (falls möglich)",
         "display_a_warning_when_administrators_try_to_navigate_away_from_Carbonio_Administration_Console": "Warnung anzeigen, wenn Administratoren von der Carbonio-Verwaltungskonsole weg navigieren",
         "group_mail": "Mails gruppieren nach:",
-        "range_time": "Uhrzeit"
+        "range_time": "Uhrzeit",
+        "type_of_UI": "Art der Benutzeroberfläche",
+        "standard_html_client": "Standard-Client (HTML)",
+        "show_search_string": "Suchzeichenfolge anzeigen",
+        "show_IMAP_search_folder": "IMAP-Suchordner anzeigen",
+        "sending_mail": "Mail senden",
+        "send_read_receipts": "Lesebestätigungen senden",
+        "search_class_of_service": "Dienstklasse auswählen",
+        "main_features": "Hauptfunktionen",
+        "i_want_to_see_this_cos": "Ich möchte dieses COS sehen",
+        "composing_mail": "Mail verfassen"
     },
     "lable": {
         "delete_button": "LÖSCHEN"
@@ -471,5 +608,12 @@
         "edit": {
             "edit_account_wizard": "Konten Assistent bearbeiten"
         }
+    },
+    "create_new_domain": "Neue Domain erstellen",
+    "create_new_cos": "NEUE COS ERSTELLEN",
+    "create_new_bucket": "NEUER BUCKET",
+    "commons": {
+        "create_with_there_data": "MIT DIESEN DATEN ERSTELLEN",
+        "confirm_connection": "VERBINDUNG BESTÄTIGEN"
     }
 }
