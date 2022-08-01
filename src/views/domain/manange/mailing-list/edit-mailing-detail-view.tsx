@@ -23,7 +23,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import moment from 'moment';
-import { debounce, isEqual, sortedUniq } from 'lodash';
+import { debounce, isEqual, sortedUniq, uniqBy } from 'lodash';
 import ListRow from '../../../list/list-row';
 import Paginig from '../../../components/paging';
 import { getDistributionList } from '../../../../services/get-distribution-list';
@@ -100,6 +100,7 @@ const EditMailingListView: FC<any> = ({
 	const [isShowMemberError, setIsShowMemberError] = useState<boolean>(false);
 	const [isShowOwnerError, setIsShowOwnerError] = useState<boolean>(false);
 	const [memberErrorMessage, setMemberErrorMessage] = useState<string>('');
+	const [allOwnerList, setAllOwnerList] = useState<Array<any>>([]);
 
 	const dlCreateDate = useMemo(
 		() =>
@@ -518,6 +519,16 @@ const EditMailingListView: FC<any> = ({
 		}
 	}, [ownersList]);
 
+	const _allOwnerLists = useMemo(
+		() =>
+			ownersList.map((item: any) => ({
+				id: item?.id,
+				name: item?.name,
+				type: item?.type
+			})),
+		[ownersList]
+	);
+
 	const getSearchMembers = useCallback((value: string) => {
 		const attrs = 'name,zimbraId';
 		const types = 'distributionlists,dynamicgroups';
@@ -772,6 +783,20 @@ const EditMailingListView: FC<any> = ({
 			});
 	};
 
+	const getOwnerType = useCallback(
+		(email?: string): any => {
+			let type = 'email';
+			const all = [..._allOwnerLists, ...allOwnerList];
+			all.forEach((item: any) => {
+				if (item?.id && item?.type && item?.email === email) {
+					type = item?.type === 'group' || item?.type === 'grp' ? 'grp' : 'usr';
+				}
+			});
+			return type;
+		},
+		[allOwnerList, _allOwnerLists]
+	);
+
 	const onSave = (): void => {
 		const attributes: any[] = [];
 		const request: any[] = [];
@@ -951,7 +976,7 @@ const EditMailingListView: FC<any> = ({
 						op: 'addOwners',
 						owner: {
 							by: 'name',
-							type: 'usr',
+							type: getOwnerType(item?.name),
 							_content: item?.name
 						}
 					};
@@ -969,7 +994,7 @@ const EditMailingListView: FC<any> = ({
 						op: 'removeOwners',
 						owner: {
 							by: 'name',
-							type: 'usr',
+							type: getOwnerType(item?.name),
 							_content: item?.name
 						}
 					};
@@ -1334,23 +1359,38 @@ const EditMailingListView: FC<any> = ({
 		}
 	}, [searchOwner, t, ownersList]);
 
-	const getSearchOwnerList = useCallback((searchKeyword) => {
-		searchGal(searchKeyword)
-			.then((response) => response.json())
-			.then((data) => {
-				const contactList = data?.Body?.SearchGalResponse?.cn;
-				if (contactList) {
-					let result: any[] = [];
-					result = contactList.map((item: any): any => ({
-						id: item?.id,
-						name: item?._attrs?.email
-					}));
-					setSearchOwnerResult(result);
-				} else {
-					setSearchOwnerResult([]);
-				}
-			});
-	}, []);
+	const getSearchOwnerList = useCallback(
+		(searchKeyword) => {
+			searchGal(searchKeyword)
+				.then((response) => response.json())
+				.then((data) => {
+					const contactList = data?.Body?.SearchGalResponse?.cn;
+					if (contactList) {
+						let result: any[] = [];
+						result = contactList.map((item: any): any => ({
+							id: item?.id,
+							name: item?._attrs?.email
+						}));
+						setAllOwnerList(
+							uniqBy(
+								allOwnerList.concat(
+									contactList.map((item: any) => ({
+										id: item?.id,
+										name: item?._attrs?.email,
+										type: item?._attrs?.type
+									}))
+								),
+								'id'
+							)
+						);
+						setSearchOwnerResult(result);
+					} else {
+						setSearchOwnerResult([]);
+					}
+				});
+		},
+		[allOwnerList]
+	);
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const searchOwnerCall = useCallback(
