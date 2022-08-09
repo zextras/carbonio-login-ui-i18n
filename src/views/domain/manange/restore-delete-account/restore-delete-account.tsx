@@ -18,7 +18,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import RestoreAccountWizard from './restore-delete-account-wizard';
-import { useGlobalConfigStore } from '../../../../store/Global Config/store';
+import { useGlobalConfigStore } from '../../../../store/global-config/store';
 
 const RestoreDeleteAccount: FC = () => {
 	const [t] = useTranslation();

@@ -39,7 +39,8 @@ import BackupDetailPanel from './backup/backup-detail-panel';
 import BucketRoutePanel from './bucket/bucket-route-panel';
 import { getAllServers } from '../services/get-all-servers-service';
 import { useServerStore } from '../store/server/store';
-import { useGlobalConfigStore } from '../store/Global Config/store';
+import { useGlobalConfigStore } from '../store/global-config/store';
+import { useBackupModuleStore } from '../store/backup-module/store';
 
 const DetailViewContainer = styled(Container)`
 	max-width: ${({ isPrimaryBarExpanded }): number => (isPrimaryBarExpanded ? 981 : 1125)}px;
@@ -50,6 +51,25 @@ const AppView: FC = () => {
 	const isPrimaryBarExpanded = usePrimaryBarState();
 	const setServerList = useServerStore((state) => state.setServerList);
 	const setGlobalConfig = useGlobalConfigStore((state) => state.setGlobalConfig);
+	const setBackupModuleEnable = useBackupModuleStore((state) => state.setBackupModuleEnable);
+	const checkIsBackupModuleEnable = useCallback(
+		(servers) => {
+			fetch(`/service/extension/zextras_admin/core/getAllServers?module=zxbackup`, {
+				method: 'GET',
+				credentials: 'include'
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					const backupServer = data?.servers;
+					if (backupServer && Array.isArray(backupServer) && backupServer.length > 0) {
+						setBackupModuleEnable(true);
+					} else {
+						setBackupModuleEnable(false);
+					}
+				});
+		},
+		[setBackupModuleEnable]
+	);
 	const getGlobalConfig = useCallback(
 		(serverName) => {
 			fetch(`/service/admin/soap/zextras`, {
@@ -93,10 +113,11 @@ const AppView: FC = () => {
 				const server = data?.Body?.GetAllServersResponse?.server;
 				if (server && Array.isArray(server) && server.length > 0) {
 					setServerList(server);
+					checkIsBackupModuleEnable(server);
 					getGlobalConfig(server[0]?.name);
 				}
 			});
-	}, [setServerList, getGlobalConfig]);
+	}, [setServerList, getGlobalConfig, checkIsBackupModuleEnable]);
 
 	return (
 		<Container>
