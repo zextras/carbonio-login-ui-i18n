@@ -4,7 +4,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, Suspense } from 'react';
+import React, { FC, Suspense, useCallback, useEffect } from 'react';
 import { Container } from '@zextras/carbonio-design-system';
 import {
 	Spinner,
@@ -37,6 +37,9 @@ import CosDetailPanel from './cos/cos-detail-panel';
 import BackupListPanel from './backup/backup-list-panel';
 import BackupDetailPanel from './backup/backup-detail-panel';
 import BucketRoutePanel from './bucket/bucket-route-panel';
+import { getAllServers } from '../services/get-all-servers-service';
+import { useServerStore } from '../store/server/store';
+import { useGlobalConfigStore } from '../store/Global Config/store';
 
 const DetailViewContainer = styled(Container)`
 	max-width: ${({ isPrimaryBarExpanded }): number => (isPrimaryBarExpanded ? 981 : 1125)}px;
@@ -45,6 +48,56 @@ const DetailViewContainer = styled(Container)`
 
 const AppView: FC = () => {
 	const isPrimaryBarExpanded = usePrimaryBarState();
+	const setServerList = useServerStore((state) => state.setServerList);
+	const setGlobalConfig = useGlobalConfigStore((state) => state.setGlobalConfig);
+	const getGlobalConfig = useCallback(
+		(serverName) => {
+			fetch(`/service/admin/soap/zextras`, {
+				method: 'POST',
+				credentials: 'include',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					Header: {
+						context: {
+							_jsns: 'urn:zimbra',
+							session: {}
+						}
+					},
+					Body: {
+						zextras: {
+							_jsns: 'urn:zimbraAdmin',
+							module: 'ZxConfig',
+							action: 'dump_global_config',
+							targetServers: serverName
+						}
+					}
+				})
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					const responseData = JSON.parse(data?.Body?.response?.content);
+					const globalConfig = responseData?.response[serverName]?.response;
+					if (globalConfig) {
+						setGlobalConfig(globalConfig);
+					}
+				});
+		},
+		[setGlobalConfig]
+	);
+	useEffect(() => {
+		getAllServers()
+			.then((response) => response.json())
+			.then((data) => {
+				const server = data?.Body?.GetAllServersResponse?.server;
+				if (server && Array.isArray(server) && server.length > 0) {
+					setServerList(server);
+					getGlobalConfig(server[0]?.name);
+				}
+			});
+	}, [setServerList, getGlobalConfig]);
+
 	return (
 		<Container>
 			<BreadCrumb />

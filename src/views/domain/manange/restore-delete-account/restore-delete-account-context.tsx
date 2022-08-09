@@ -5,8 +5,8 @@
  */
 import { createContext } from 'react';
 
-type RestoreAccountContext = {
+type RestoreDeleteAccountContext = {
 	restoreAccountDetail: any;
 	setRestoreAccountDetail: (arg: any) => void;
 };
-export const RestoreAccountContext = createContext({} as RestoreAccountContext);
+export const RestoreDeleteAccountContext = createContext({} as RestoreDeleteAccountContext);

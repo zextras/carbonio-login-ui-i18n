@@ -17,14 +17,20 @@ import {
 	Divider
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import RestoreAccountWizard from './restore-account-wizard';
+import RestoreAccountWizard from './restore-delete-account-wizard';
+import { useGlobalConfigStore } from '../../../../store/Global Config/store';
 
-const RestoreAccount: FC = () => {
+const RestoreDeleteAccount: FC = () => {
 	const [t] = useTranslation();
 	const [showRestoreAccountWizard, setShowRestoreAccountWizard] = useState<boolean>(false);
 	const restoreAccountRequest = useCallback(() => {
 		console.log('xxxx');
 	}, []);
+
+	const getGlobalConfig = useGlobalConfigStore((state) => state.globalConfig);
+	useEffect(() => {
+		console.log('$$$$$$$ ', getGlobalConfig);
+	}, [getGlobalConfig]);
 	return (
 		<Container background="gray5" mainAlignment="flex-start">
 			<Container
@@ -33,27 +39,6 @@ const RestoreAccount: FC = () => {
 				crossAlignment="flex-start"
 				mainAlignment="flex-start"
 			>
-				{/* <Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
-					<Container
-						background="gray6"
-						orientation="vertical"
-						mainAlignment="space-around"
-						height="56px"
-					>
-						<Row orientation="horizontal" width="100%">
-							<Row
-								padding={{ all: 'large' }}
-								mainAlignment="flex-start"
-								width="100%"
-								crossAlignment="flex-start"
-							>
-								<Text size="medium" weight="bold" color="gray0">
-									{t('label.restore_account', 'Restore Account')}
-								</Text>
-							</Row>
-						</Row>
-					</Container>
-				</Row> */}
 				<Container
 					orientation="column"
 					background="gray6"
@@ -71,4 +56,4 @@ const RestoreAccount: FC = () => {
 		</Container>
 	);
 };
-export default RestoreAccount;
+export default RestoreDeleteAccount;

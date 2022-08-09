@@ -20,9 +20,9 @@ import ListRow from '../../../list/list-row';
 import { searchDirectory } from '../../../../services/search-directory-service';
 import { isValidLdapQuery } from '../../../utility/utils';
 
-const RestoreSelectAccountSection: FC<any> = () => (
+const RestoreDeleteAccountStartSection: FC<any> = () => (
 	<Container>
-		<Container>111111111</Container>
+		<Container>22222222222</Container>
 	</Container>
 );
-export default RestoreSelectAccountSection;
+export default RestoreDeleteAccountStartSection;

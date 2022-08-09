@@ -17,7 +17,8 @@ import {
 	ACCOUNTS,
 	MAILING_LIST,
 	RESOURCES,
-	RESTORE_ACCOUNT
+	RESTORE_ACCOUNT,
+	RESTORE_DELETED_EMAIL
 } from '../../constants';
 import { getDomainInformation } from '../../services/domain-information-service';
 import { searchDirectory } from '../../services/search-directory-service';
@@ -29,7 +30,7 @@ import DomainVirtualHosts from './details/domain-virtual-hosts';
 import { useDomainStore } from '../../store/domain/store';
 import DomainMailingList from './manange/mailing-list/domain-mailing-list';
 import DomainResources from './manange/resources/domain-resources';
-import RestoreAccount from './manange/restore-account/restore-account';
+import RestoreAccount from './manange/restore-delete-account/restore-delete-account';
 
 const DomainOperations: FC = () => {
 	const [t] = useTranslation();
@@ -95,7 +96,7 @@ const DomainOperations: FC = () => {
 						return <DomainMailingList />;
 					case RESOURCES:
 						return <DomainResources />;
-					case RESTORE_ACCOUNT:
+					case RESTORE_DELETED_EMAIL:
 						return <RestoreAccount />;
 					default:
 						return null;

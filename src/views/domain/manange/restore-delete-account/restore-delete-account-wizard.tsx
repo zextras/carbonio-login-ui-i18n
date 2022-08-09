@@ -9,10 +9,10 @@ import { Container, Button } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { Section } from '../../../app/component/section';
 import { HorizontalWizard } from '../../../app/component/hwizard';
-import { RestoreAccountContext } from './restore-account-context';
-import RestoreSelectAccountSection from './restore-select-account-section';
-import RestoreAccountStartSection from './restore-account-start-section';
-import RestoreAccountConfigSection from './restore-account-config-section';
+import RestoreSelectAccountSection from './restore-delete-account-select-section';
+import RestoreAccountStartSection from './restore-delete-account-start-section';
+import RestoreAccountConfigSection from './restore-delete-account-config-section';
+import { RestoreDeleteAccountContext } from './restore-delete-account-context';
 
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
 	const { t } = useTranslation();
@@ -32,7 +32,7 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 	);
 };
 
-const RestoreAccountWizard: FC<{
+const RestoreDeleteAccountWizard: FC<{
 	setShowRestoreAccountWizard: any;
 	restoreAccountRequest: any;
 }> = ({ setShowRestoreAccountWizard, restoreAccountRequest }) => {
@@ -160,7 +160,9 @@ const RestoreAccountWizard: FC<{
 
 	return (
 		<Container background="gray5" mainAlignment="flex-start">
-			<RestoreAccountContext.Provider value={{ restoreAccountDetail, setRestoreAccountDetail }}>
+			<RestoreDeleteAccountContext.Provider
+				value={{ restoreAccountDetail, setRestoreAccountDetail }}
+			>
 				<HorizontalWizard
 					steps={wizardSteps}
 					Wrapper={WizardInSection}
@@ -168,9 +170,9 @@ const RestoreAccountWizard: FC<{
 					onComplete={onComplete}
 					setToggleWizardSection={setShowRestoreAccountWizard}
 				/>
-			</RestoreAccountContext.Provider>
+			</RestoreDeleteAccountContext.Provider>
 		</Container>
 	);
 };
 
-export default RestoreAccountWizard;
+export default RestoreDeleteAccountWizard;
