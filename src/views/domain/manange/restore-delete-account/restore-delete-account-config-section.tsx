@@ -12,7 +12,8 @@ import {
 	Switch,
 	Icon,
 	Table,
-	Padding
+	Padding,
+	DateTimePicker
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
@@ -25,6 +26,10 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 	const { t } = useTranslation();
 	const context = useContext(RestoreDeleteAccountContext);
 	const { restoreAccountDetail, setRestoreAccountDetail } = context;
+	const [date, setDate] = useState(new Date());
+	const handleChange = useCallback((d) => {
+		setDate(d);
+	}, []);
 	return (
 		<Container
 			orientation="column"
@@ -59,15 +64,32 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 							/>
 						</ListRow>
 						<ListRow>
-							<Switch
-								value
-								label={t('label.use_last_available_status', 'Use last available status')}
-							/>
+							<Container crossAlignment="flex-start">
+								<Switch
+									value
+									label={t('label.use_last_available_status', 'Use last available status')}
+								/>
+							</Container>
+
+							<Container crossAlignment="flex-start">
+								<DateTimePicker
+									label="Date Time Picker"
+									defaultValue={date}
+									onChange={handleChange}
+									dateFormat="dd/MM/yyyy hh:mm"
+								/>
+							</Container>
 						</ListRow>
-						<ListRow>
-							<Container>xx</Container>
-							<Container>yyyy</Container>
-						</ListRow>
+						{/* <ListRow>
+							<Container>
+								<DateTimePicker
+									label="Date Time Picker"
+									defaultValue={date}
+									onChange={handleChange}
+									dateFormat="dd/MM/yyyy"
+								/>
+							</Container>
+						</ListRow> */}
 						<ListRow>
 							<Switch value label={t('label.hsm_apply', 'HSM Apply')} />
 						</ListRow>
