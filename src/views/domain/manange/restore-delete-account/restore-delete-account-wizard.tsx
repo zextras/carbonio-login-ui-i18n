@@ -22,7 +22,7 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 			padding={{ all: '0' }}
 			footer={wizardFooter}
 			divider
-			showClose
+			showClose={false}
 			onClose={(): void => {
 				setToggleWizardSection(false);
 			}}
@@ -191,11 +191,12 @@ const RestoreDeleteAccountWizard: FC<{
 						icon="PowerOutline"
 						iconPlacement="right"
 						onClick={onRestoreAccount}
+						disabled={restoreAccountDetail?.name === ''}
 					/>
 				)
 			}
 		],
-		[t, setShowRestoreAccountWizard, onRestoreAccount]
+		[t, setShowRestoreAccountWizard, onRestoreAccount, restoreAccountDetail?.name]
 	);
 
 	return (

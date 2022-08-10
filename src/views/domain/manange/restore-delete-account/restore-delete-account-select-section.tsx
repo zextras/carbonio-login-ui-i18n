@@ -166,9 +166,9 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 						mainAlignment="space-between"
 						crossAlignment="flex-start"
 						width="fill"
-						padding={{ bottom: 'large' }}
+						padding={{ bottom: 'large', right: 'large', left: 'large' }}
 					>
-						<Container>
+						<Container padding={{ bottom: 'medium' }}>
 							<Input
 								backgroundColor="gray5"
 								value={searchString}

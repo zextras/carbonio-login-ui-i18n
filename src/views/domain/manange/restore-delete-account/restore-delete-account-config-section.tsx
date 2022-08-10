@@ -15,7 +15,7 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 	const context = useContext(RestoreDeleteAccountContext);
 	const { restoreAccountDetail, setRestoreAccountDetail } = context;
 	const [date, setDate] = useState(
-		restoreAccountDetail?.dateTime === null ? new Date() : restoreAccountDetail?.dateTime
+		restoreAccountDetail?.dateTime === null ? null : restoreAccountDetail?.dateTime
 	);
 	const handleChange = useCallback(
 		(d) => {
@@ -42,7 +42,7 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 						mainAlignment="space-between"
 						crossAlignment="flex-start"
 						width="fill"
-						padding={{ bottom: 'large' }}
+						padding={{ bottom: 'large', right: 'large', left: 'large' }}
 					>
 						<ListRow>
 							<Input
@@ -61,7 +61,7 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 							/>
 						</ListRow>
 						<ListRow>
-							<Container crossAlignment="flex-start">
+							<Container crossAlignment="flex-start" padding={{ top: 'large', bottom: 'medium' }}>
 								<Switch
 									value={restoreAccountDetail?.lastAvailableStatus}
 									label={t('label.use_last_available_status', 'Use last available status')}
@@ -74,7 +74,7 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 								/>
 							</Container>
 
-							<Container crossAlignment="flex-start">
+							<Container crossAlignment="flex-start" padding={{ top: 'large', bottom: 'medium' }}>
 								<DateTimePicker
 									label={t('label.date_time_picker', 'Date Time Picker')}
 									defaultValue={date}
@@ -85,53 +85,64 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 						</ListRow>
 
 						<ListRow>
-							<Switch
-								value={restoreAccountDetail?.hsmApply}
-								label={t('label.hsm_apply', 'HSM Apply')}
-								onClick={(): void => {
-									setRestoreAccountDetail((prev: any) => ({
-										...prev,
-										hsmApply: !restoreAccountDetail?.hsmApply
-									}));
-								}}
-							/>
+							<Row padding={{ bottom: 'medium' }}>
+								<Switch
+									value={restoreAccountDetail?.hsmApply}
+									label={t('label.hsm_apply', 'HSM Apply')}
+									onClick={(): void => {
+										setRestoreAccountDetail((prev: any) => ({
+											...prev,
+											hsmApply: !restoreAccountDetail?.hsmApply
+										}));
+									}}
+								/>
+							</Row>
 						</ListRow>
 						<ListRow>
-							<Switch
-								value={restoreAccountDetail?.dataSource}
-								label={t('label.restore_data_source', 'Restore Data Source')}
-								onClick={(): void => {
-									setRestoreAccountDetail((prev: any) => ({
-										...prev,
-										dataSource: !restoreAccountDetail?.dataSource
-									}));
-								}}
-							/>
+							<Row padding={{ bottom: 'medium' }}>
+								<Switch
+									value={restoreAccountDetail?.dataSource}
+									label={t('label.restore_data_source', 'Restore Data Source')}
+									onClick={(): void => {
+										setRestoreAccountDetail((prev: any) => ({
+											...prev,
+											dataSource: !restoreAccountDetail?.dataSource
+										}));
+									}}
+								/>
+							</Row>
 						</ListRow>
 						<ListRow>
-							<Switch
-								value={restoreAccountDetail?.isEmailNotificationEnable}
-								label={t('label.email_notification', 'E-mail Notifications')}
-								onClick={(): void => {
-									setRestoreAccountDetail((prev: any) => ({
-										...prev,
-										isEmailNotificationEnable: !restoreAccountDetail?.isEmailNotificationEnable
-									}));
-								}}
-							/>
+							<Row padding={{ bottom: 'medium' }}>
+								<Switch
+									value={restoreAccountDetail?.isEmailNotificationEnable}
+									label={t('label.email_notification', 'E-mail Notifications')}
+									onClick={(): void => {
+										setRestoreAccountDetail((prev: any) => ({
+											...prev,
+											isEmailNotificationEnable: !restoreAccountDetail?.isEmailNotificationEnable
+										}));
+									}}
+								/>
+							</Row>
 						</ListRow>
 						<ListRow>
-							<Input
-								value={restoreAccountDetail?.notificationReceiver}
-								backgroundColor="gray5"
-								label={t('label.who_needs_receive_this_email', 'Who needs to receive this email?')}
-								onChange={(e: any): void => {
-									setRestoreAccountDetail((prev: any) => ({
-										...prev,
-										notificationReceiver: e.target.value
-									}));
-								}}
-							/>
+							<Row padding={{ bottom: 'medium' }} width="100%">
+								<Input
+									value={restoreAccountDetail?.notificationReceiver}
+									backgroundColor="gray5"
+									label={t(
+										'label.who_needs_receive_this_email',
+										'Who needs to receive this email?'
+									)}
+									onChange={(e: any): void => {
+										setRestoreAccountDetail((prev: any) => ({
+											...prev,
+											notificationReceiver: e.target.value
+										}));
+									}}
+								/>
+							</Row>
 						</ListRow>
 					</Row>
 				</Container>
