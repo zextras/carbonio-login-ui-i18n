@@ -146,11 +146,10 @@ const ManageAccounts: FC = () => {
 	const getAccountDetail = useCallback(
 		(id): void => {
 			getAccountRequest(id)
-				.then((response: any) => response.json())
 				.then((data: any) => {
 					const obj: any = {};
 					// eslint-disable-next-line array-callback-return
-					data?.Body?.GetAccountResponse?.account?.[0]?.a?.map((ele: any) => {
+					data?.account?.[0]?.a?.map((ele: any) => {
 						if (obj[ele.n]) {
 							obj[ele.n] = `${obj[ele.n]}, ${ele._content}`;
 						} else {
@@ -177,12 +176,11 @@ const ManageAccounts: FC = () => {
 	const getAccountMembership = useCallback(
 		(id): void => {
 			getAccountMembershipRequest(id)
-				.then((response: any) => response.json())
 				.then((data: any) => {
 					const directMemArr: any[] = [];
 					const inDirectMemArr: any[] = [];
 					// eslint-disable-next-line array-callback-return
-					data?.Body?.GetAccountMembershipResponse?.dl?.map((ele: any) => {
+					data?.dl?.map((ele: any) => {
 						if (ele?.via)
 							inDirectMemArr.push({ label: ele?.name, closable: false, disabled: true });
 						else directMemArr.push({ label: ele?.name, closable: false, disabled: true });

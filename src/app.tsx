@@ -533,16 +533,14 @@ const App: FC = () => {
 	);
 
 	const getAllServersRequest = useCallback(() => {
-		getAllServers()
-			.then((response) => response.json())
-			.then((data) => {
-				const server = data?.Body?.GetAllServersResponse?.server;
-				if (server && Array.isArray(server) && server.length > 0) {
-					setServerList(server);
-					checkIsBackupModuleEnable(server);
-					getGlobalConfig(server[0]?.name);
-				}
-			});
+		getAllServers().then((data) => {
+			const server = data?.server;
+			if (server && Array.isArray(server) && server.length > 0) {
+				setServerList(server);
+				checkIsBackupModuleEnable(server);
+				getGlobalConfig(server[0]?.name);
+			}
+		});
 	}, [setServerList, getGlobalConfig, checkIsBackupModuleEnable]);
 
 	useEffect(() => {

@@ -108,7 +108,6 @@ const CosGeneralInformation: FC = () => {
 		};
 		body.id = id;
 		modifyCos(body)
-			.then((response) => response.json())
 			.then((data) => {
 				createSnackbar({
 					key: 'success',
@@ -118,7 +117,7 @@ const CosGeneralInformation: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				const cos: any = data?.Body?.ModifyCosResponse?.cos[0];
+				const cos: any = data?.cos[0];
 				if (cos) {
 					setCos(cos);
 				} else {
@@ -202,9 +201,8 @@ const CosGeneralInformation: FC = () => {
 	const onDeleteCOS = (): void => {
 		setIsRequestInProgress(true);
 		deleteCOS(cosData.zimbraId)
-			.then((response) => response.json())
 			.then((data) => {
-				const isCosDelete: any = data?.Body?.DeleteCosResponse;
+				const isCosDelete: any = data;
 				setIsRequestInProgress(false);
 				if (isCosDelete) {
 					createSnackbar({

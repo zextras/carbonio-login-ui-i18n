@@ -210,213 +210,211 @@ const EditMailingListView: FC<any> = ({
 
 	const getMailingList = useCallback(
 		(id: string, name: string): void => {
-			getDistributionList(id, name)
-				.then((response) => response.json())
-				.then((data) => {
-					const distributionListMembers = data?.Body?.GetDistributionListResponse?.dl[0];
-					if (distributionListMembers) {
-						if (distributionListMembers?.id) {
-							setdlId(distributionListMembers?.id);
-						}
-						if (distributionListMembers?.dlm) {
-							const _dlm = distributionListMembers?.dlm.map((item: any) => item?._content);
-							if (!selectedMailingList?.dynamic) {
-								setDlm(_dlm);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									dlm: _dlm
-								}));
-							} else {
-								const allMembers = _dlm.map((item: any) => ({
-									label: item,
-									background: 'gray3',
-									color: 'text',
-									id: item,
-									name: item
-								}));
-								setOwnerOfList(allMembers);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									ownerOfList: allMembers
-								}));
-							}
-						} else if (!selectedMailingList?.dynamic) {
+			getDistributionList(id, name).then((data) => {
+				const distributionListMembers = data?.dl[0];
+				if (distributionListMembers) {
+					if (distributionListMembers?.id) {
+						setdlId(distributionListMembers?.id);
+					}
+					if (distributionListMembers?.dlm) {
+						const _dlm = distributionListMembers?.dlm.map((item: any) => item?._content);
+						if (!selectedMailingList?.dynamic) {
+							setDlm(_dlm);
 							setPreviousDetail((prevState: any) => ({
 								...prevState,
-								dlm: []
+								dlm: _dlm
 							}));
-						} else if (selectedMailingList?.dynamic) {
+						} else {
+							const allMembers = _dlm.map((item: any) => ({
+								label: item,
+								background: 'gray3',
+								color: 'text',
+								id: item,
+								name: item
+							}));
+							setOwnerOfList(allMembers);
 							setPreviousDetail((prevState: any) => ({
 								...prevState,
-								ownerOfList: []
+								ownerOfList: allMembers
 							}));
 						}
-						if (distributionListMembers?.owners && distributionListMembers?.owners[0]?.owner) {
-							setOwnersList(distributionListMembers?.owners[0]?.owner);
+					} else if (!selectedMailingList?.dynamic) {
+						setPreviousDetail((prevState: any) => ({
+							...prevState,
+							dlm: []
+						}));
+					} else if (selectedMailingList?.dynamic) {
+						setPreviousDetail((prevState: any) => ({
+							...prevState,
+							ownerOfList: []
+						}));
+					}
+					if (distributionListMembers?.owners && distributionListMembers?.owners[0]?.owner) {
+						setOwnersList(distributionListMembers?.owners[0]?.owner);
+						setPreviousDetail((prevState: any) => ({
+							...prevState,
+							ownersList: distributionListMembers?.owners[0]?.owner
+						}));
+					} else {
+						setPreviousDetail((prevState: any) => ({
+							...prevState,
+							ownersList: []
+						}));
+					}
+					if (distributionListMembers?.a) {
+						/* Get Gal Hide Information */
+						const _zimbraHideInGal = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraHideInGal'
+						)?._content;
+						if (_zimbraHideInGal === 'TRUE') {
+							setZimbraHideInGal(true);
 							setPreviousDetail((prevState: any) => ({
 								...prevState,
-								ownersList: distributionListMembers?.owners[0]?.owner
+								zimbraHideInGal: true
+							}));
+						} else {
+							setZimbraHideInGal(false);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraHideInGal: false
+							}));
+						}
+
+						const _zimbraNotes = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraNotes'
+						)?._content;
+
+						setZimbraNotes(_zimbraNotes || '');
+						if (_zimbraNotes) {
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraNotes: _zimbraNotes
 							}));
 						} else {
 							setPreviousDetail((prevState: any) => ({
 								...prevState,
-								ownersList: []
+								zimbraNotes: ''
 							}));
 						}
-						if (distributionListMembers?.a) {
-							/* Get Gal Hide Information */
-							const _zimbraHideInGal = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraHideInGal'
-							)?._content;
-							if (_zimbraHideInGal === 'TRUE') {
-								setZimbraHideInGal(true);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraHideInGal: true
-								}));
-							} else {
-								setZimbraHideInGal(false);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraHideInGal: false
-								}));
-							}
-
-							const _zimbraNotes = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraNotes'
+						const _zimbraDistributionListSendShareMessageToNewMembers =
+							distributionListMembers?.a?.find(
+								(a: any) => a?.n === 'zimbraDistributionListSendShareMessageToNewMembers'
 							)?._content;
 
-							setZimbraNotes(_zimbraNotes || '');
-							if (_zimbraNotes) {
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraNotes: _zimbraNotes
-								}));
-							} else {
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraNotes: ''
-								}));
-							}
-							const _zimbraDistributionListSendShareMessageToNewMembers =
-								distributionListMembers?.a?.find(
-									(a: any) => a?.n === 'zimbraDistributionListSendShareMessageToNewMembers'
-								)?._content;
+						if (_zimbraDistributionListSendShareMessageToNewMembers === 'TRUE') {
+							setZimbraDistributionListSendShareMessageToNewMembers(true);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraDistributionListSendShareMessageToNewMembers: true
+							}));
+						} else {
+							setZimbraDistributionListSendShareMessageToNewMembers(false);
+						}
 
-							if (_zimbraDistributionListSendShareMessageToNewMembers === 'TRUE') {
-								setZimbraDistributionListSendShareMessageToNewMembers(true);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraDistributionListSendShareMessageToNewMembers: true
-								}));
-							} else {
-								setZimbraDistributionListSendShareMessageToNewMembers(false);
-							}
+						const _zimbraMailAlias = distributionListMembers?.a?.filter(
+							(a: any) => a?.n === 'zimbraMailAlias' && a?._content !== selectedMailingList?.name
+						);
+						if (_zimbraMailAlias && _zimbraMailAlias.length > 0) {
+							const allAlias = _zimbraMailAlias.map((item: any) => ({
+								attr: 'zimbraMailAlias',
+								value: item?._content
+							}));
+							setZimbraMailAlias(allAlias);
+						}
+						const _zimbraCreateTimestamp = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraCreateTimestamp'
+						)?._content;
+						_zimbraCreateTimestamp
+							? setZimbraCreateTimestamp(_zimbraCreateTimestamp)
+							: setZimbraCreateTimestamp('');
 
-							const _zimbraMailAlias = distributionListMembers?.a?.filter(
-								(a: any) => a?.n === 'zimbraMailAlias' && a?._content !== selectedMailingList?.name
+						const _zimbraDistributionListSubscriptionPolicy = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraDistributionListSubscriptionPolicy'
+						)?._content;
+						if (_zimbraDistributionListSubscriptionPolicy) {
+							onSubscriptionChange(_zimbraDistributionListSubscriptionPolicy);
+							const it = subscriptionUnsubscriptionRequestOptions.find(
+								(item: any) => item.value === _zimbraDistributionListSubscriptionPolicy
 							);
-							if (_zimbraMailAlias && _zimbraMailAlias.length > 0) {
-								const allAlias = _zimbraMailAlias.map((item: any) => ({
-									attr: 'zimbraMailAlias',
-									value: item?._content
-								}));
-								setZimbraMailAlias(allAlias);
-							}
-							const _zimbraCreateTimestamp = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraCreateTimestamp'
-							)?._content;
-							_zimbraCreateTimestamp
-								? setZimbraCreateTimestamp(_zimbraCreateTimestamp)
-								: setZimbraCreateTimestamp('');
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraDistributionListSubscriptionPolicy: it
+							}));
+						} else {
+							const value = subscriptionUnsubscriptionRequestOptions[0]?.value;
+							onSubscriptionChange(value);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraDistributionListSubscriptionPolicy:
+									subscriptionUnsubscriptionRequestOptions[0]
+							}));
+						}
 
-							const _zimbraDistributionListSubscriptionPolicy = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraDistributionListSubscriptionPolicy'
-							)?._content;
-							if (_zimbraDistributionListSubscriptionPolicy) {
-								onSubscriptionChange(_zimbraDistributionListSubscriptionPolicy);
-								const it = subscriptionUnsubscriptionRequestOptions.find(
-									(item: any) => item.value === _zimbraDistributionListSubscriptionPolicy
-								);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraDistributionListSubscriptionPolicy: it
-								}));
-							} else {
-								const value = subscriptionUnsubscriptionRequestOptions[0]?.value;
-								onSubscriptionChange(value);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraDistributionListSubscriptionPolicy:
-										subscriptionUnsubscriptionRequestOptions[0]
-								}));
-							}
+						const _zimbraDistributionListUnsubscriptionPolicy = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraDistributionListUnsubscriptionPolicy'
+						)?._content;
+						if (_zimbraDistributionListUnsubscriptionPolicy) {
+							onUnSubscriptionChange(_zimbraDistributionListUnsubscriptionPolicy);
+							const it = subscriptionUnsubscriptionRequestOptions.find(
+								(item: any) => item.value === _zimbraDistributionListUnsubscriptionPolicy
+							);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraDistributionListUnsubscriptionPolicy: it
+							}));
+						} else {
+							const value = subscriptionUnsubscriptionRequestOptions[0]?.value;
+							onUnSubscriptionChange(value);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraDistributionListUnsubscriptionPolicy:
+									subscriptionUnsubscriptionRequestOptions[0]
+							}));
+						}
+						/* Mail status */
 
-							const _zimbraDistributionListUnsubscriptionPolicy = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraDistributionListUnsubscriptionPolicy'
-							)?._content;
-							if (_zimbraDistributionListUnsubscriptionPolicy) {
-								onUnSubscriptionChange(_zimbraDistributionListUnsubscriptionPolicy);
-								const it = subscriptionUnsubscriptionRequestOptions.find(
-									(item: any) => item.value === _zimbraDistributionListUnsubscriptionPolicy
-								);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraDistributionListUnsubscriptionPolicy: it
-								}));
-							} else {
-								const value = subscriptionUnsubscriptionRequestOptions[0]?.value;
-								onUnSubscriptionChange(value);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraDistributionListUnsubscriptionPolicy:
-										subscriptionUnsubscriptionRequestOptions[0]
-								}));
-							}
-							/* Mail status */
+						const _zimbraMailStatus = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraMailStatus'
+						)?._content;
+						if (_zimbraMailStatus === 'enabled') {
+							onRightsChange(rightsOptions[0].value);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraMailStatus: rightsOptions[0]
+							}));
+						} else {
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								zimbraMailStatus: rightsOptions[1]
+							}));
+						}
 
-							const _zimbraMailStatus = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraMailStatus'
-							)?._content;
-							if (_zimbraMailStatus === 'enabled') {
-								onRightsChange(rightsOptions[0].value);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraMailStatus: rightsOptions[0]
-								}));
-							} else {
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									zimbraMailStatus: rightsOptions[1]
-								}));
-							}
+						const _memberURL = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'memberURL'
+						)?._content;
 
-							const _memberURL = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'memberURL'
-							)?._content;
+						if (_memberURL) {
+							setMemberURL(_memberURL);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								memberURL: _memberURL
+							}));
+						} else if (selectedMailingList?.dynamic) {
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								memberURL: ''
+							}));
+						}
 
-							if (_memberURL) {
-								setMemberURL(_memberURL);
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									memberURL: _memberURL
-								}));
-							} else if (selectedMailingList?.dynamic) {
-								setPreviousDetail((prevState: any) => ({
-									...prevState,
-									memberURL: ''
-								}));
-							}
-
-							const _zimbraIsACLGroup = distributionListMembers?.a?.find(
-								(a: any) => a?.n === 'zimbraIsACLGroup'
-							)?._content;
-							if (_zimbraIsACLGroup) {
-								setZimbraIsACLGroup(_zimbraIsACLGroup === 'TRUE');
-							}
+						const _zimbraIsACLGroup = distributionListMembers?.a?.find(
+							(a: any) => a?.n === 'zimbraIsACLGroup'
+						)?._content;
+						if (_zimbraIsACLGroup) {
+							setZimbraIsACLGroup(_zimbraIsACLGroup === 'TRUE');
 						}
 					}
-				});
+				}
+			});
 		},
 		[
 			selectedMailingList?.name,
@@ -430,32 +428,30 @@ const EditMailingListView: FC<any> = ({
 	);
 
 	const getDistributionListMembershipList = useCallback((id: string): void => {
-		getDistributionListMembership(id)
-			.then((response) => response.json())
-			.then((data) => {
-				const members = data?.Body?.GetDistributionListMembershipResponse?.dl;
-				if (members && members.length > 0) {
-					const allMembers = members.map((item: any) => ({
-						label: item?.name,
-						background: 'gray3',
-						color: 'text',
-						id: item?.id,
-						name: item?.name
-					}));
-					setDlMembershipList(allMembers);
-					setDlMembershipListNames(allMembers.map((item: any) => item?.name).join(', '));
-					setPreviousDetail((prevState: any) => ({
-						...prevState,
-						dlMembershipList: allMembers
-					}));
-				} else {
-					setPreviousDetail((prevState: any) => ({
-						...prevState,
-						dlMembershipList: []
-					}));
-					setDlMembershipListNames('');
-				}
-			});
+		getDistributionListMembership(id).then((data) => {
+			const members = data?.dl;
+			if (members && members.length > 0) {
+				const allMembers = members.map((item: any) => ({
+					label: item?.name,
+					background: 'gray3',
+					color: 'text',
+					id: item?.id,
+					name: item?.name
+				}));
+				setDlMembershipList(allMembers);
+				setDlMembershipListNames(allMembers.map((item: any) => item?.name).join(', '));
+				setPreviousDetail((prevState: any) => ({
+					...prevState,
+					dlMembershipList: allMembers
+				}));
+			} else {
+				setPreviousDetail((prevState: any) => ({
+					...prevState,
+					dlMembershipList: []
+				}));
+				setDlMembershipListNames('');
+			}
+		});
 	}, []);
 
 	useEffect(() => {

@@ -40,14 +40,12 @@ const DomainOperations: FC = () => {
 
 	const getSelectedDomainInformation = useCallback(
 		(id: any): any => {
-			getDomainInformation(id)
-				.then((response) => response.json())
-				.then((data) => {
-					const domain = data?.Body?.GetDomainResponse?.domain[0];
-					if (domain) {
-						setDomain(domain);
-					}
-				});
+			getDomainInformation(id).then((data) => {
+				const domain = data?.domain[0];
+				if (domain) {
+					setDomain(domain);
+				}
+			});
 		},
 		[setDomain]
 	);

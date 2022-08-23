@@ -150,9 +150,8 @@ const EditAccount: FC<{
 			modifiedData[ele] = accountDetail[ele];
 		});
 		modifyAccountRequest(initAccountDetail?.zimbraId, modifiedData)
-			.then((response) => response.json())
 			.then((data) => {
-				if (data?.Body?.ModifyAccountResponse) {
+				if (data) {
 					// setShowCreateAccountView(false);
 					createSnackbar({
 						key: 'success',

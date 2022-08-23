@@ -279,9 +279,8 @@ const DomainResources: FC = () => {
 			zimbraPrefCalendarAutoDenySignatureId
 		) => {
 			createResource(name, password, attr)
-				.then((response) => response.json())
 				.then((data) => {
-					const resourceId = data?.Body?.CreateCalendarResourceResponse?.calresource[0]?.id;
+					const resourceId = data?.calresource[0]?.id;
 					if (resourceId) {
 						if (signatureList && signatureList.length > 0) {
 							const requests: any[] = [];
@@ -335,7 +334,6 @@ const DomainResources: FC = () => {
 											attrList.push({ n: ele, _content: signtureAttr[ele] })
 										);
 										modifyCalendarResource(resourceId, attrList)
-											.then((response) => response.json())
 											.then((modifyData) => {
 												setShowCreateResourceView(false);
 												successSnackBar(resourceName);

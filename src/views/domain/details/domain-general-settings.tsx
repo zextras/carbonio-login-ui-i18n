@@ -478,23 +478,21 @@ const DomainGeneralSettings: FC = () => {
 	};
 
 	const deleteOnlyDomain = (): void => {
-		deleteDomain(domainData.zimbraId)
-			.then((res) => res.json())
-			.then((resData) => {
-				setIsRequestInProgress(false);
-				setOpenDeleteDomainConfirmDialog(false);
-				setDomainAccounts([]);
-				createSnackbar({
-					key: 'success',
-					type: 'success',
-					label: t('label.delete_domain_success_msg', 'Domain has been delete successfully'),
-					autoHideTimeout: 3000,
-					hideButton: true,
-					replace: true
-				});
-				removeDomain();
-				replaceHistory(`/${DOMAINS_ROUTE_ID}`);
+		deleteDomain(domainData.zimbraId).then((resData) => {
+			setIsRequestInProgress(false);
+			setOpenDeleteDomainConfirmDialog(false);
+			setDomainAccounts([]);
+			createSnackbar({
+				key: 'success',
+				type: 'success',
+				label: t('label.delete_domain_success_msg', 'Domain has been delete successfully'),
+				autoHideTimeout: 3000,
+				hideButton: true,
+				replace: true
 			});
+			removeDomain();
+			replaceHistory(`/${DOMAINS_ROUTE_ID}`);
+		});
 	};
 
 	const onDeleteAccountAndDomain = (): void => {

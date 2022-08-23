@@ -68,9 +68,8 @@ const CreateCos: FC = () => {
 			_content: cosName
 		});
 		createCos(cosName, attributes)
-			.then((response) => response.json())
 			.then((data) => {
-				const cos: any = data?.Body?.CreateCosResponse?.cos[0];
+				const cos: any = data?.cos[0];
 				if (cos) {
 					showSuccessSnackBar();
 					routeToCos(data);

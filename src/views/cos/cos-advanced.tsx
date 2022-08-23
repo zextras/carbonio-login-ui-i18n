@@ -1435,7 +1435,6 @@ const CosAdvanced: FC = () => {
 		});
 		body.a = attributes;
 		modifyCos(body)
-			.then((response) => response.json())
 			.then((data) => {
 				createSnackbar({
 					key: 'success',
@@ -1445,7 +1444,7 @@ const CosAdvanced: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				const cos: any = data?.Body?.ModifyCosResponse?.cos[0];
+				const cos: any = data?.cos[0];
 				if (cos) {
 					setCos(cos);
 				} else {

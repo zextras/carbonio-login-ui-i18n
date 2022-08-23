@@ -460,43 +460,40 @@ const DomainMailingList: FC = () => {
 					_content: zimbraDistributionListSubscriptionPolicy?.value
 				});
 			}
-			createMailingList(dynamic, name, attributes)
-				.then((response) => response.json())
-				.then((data) => {
-					let type = 'success';
-					let message = '';
-					if (data?.Body?.Fault?.Reason?.Text) {
-						type = 'error';
-						const text = data?.Body?.Fault?.Reason?.Text;
-
-						if (text.includes('no such domain')) {
-							message = t('label.specified_domain_not_exist', 'Specified domain does not exist');
-						} else if (text.includes('email address already exists')) {
-							message = t('label.email_addready_exists', {
-								name,
-								defaultValue: 'Email address {{name}} already exists'
-							});
-						} else {
-							message = text;
-						}
-					} else {
-						const mlId = data?.Body?.CreateDistributionListResponse?.dl[0]?.id;
-						addMemberToMailingList(members, owners, mlId, allOwnersList);
-						setShowCreateMailingListView(false);
-						message = t('label.the_has_been_created_success', {
+			createMailingList(dynamic, name, attributes).then((data) => {
+				let type = 'success';
+				let message = '';
+				if (data?.Body?.Fault?.Reason?.Text) {
+					type = 'error';
+					const text = data?.Body?.Fault?.Reason?.Text;
+					if (text.includes('no such domain')) {
+						message = t('label.specified_domain_not_exist', 'Specified domain does not exist');
+					} else if (text.includes('email address already exists')) {
+						message = t('label.email_addready_exists', {
 							name,
-							defaultValue: 'The {{name}} has been created successfull'
+							defaultValue: 'Email address {{name}} already exists'
 						});
+					} else {
+						message = text;
 					}
-					createSnackbar({
-						key: type,
-						type,
-						label: message,
-						autoHideTimeout: 3000,
-						hideButton: true,
-						replace: true
+				} else {
+					const mlId = data?.dl[0]?.id;
+					addMemberToMailingList(members, owners, mlId, allOwnersList);
+					setShowCreateMailingListView(false);
+					message = t('label.the_has_been_created_success', {
+						name,
+						defaultValue: 'The {{name}} has been created successfull'
 					});
+				}
+				createSnackbar({
+					key: type,
+					type,
+					label: message,
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
 				});
+			});
 		},
 		[createSnackbar, t, addMemberToMailingList]
 	);

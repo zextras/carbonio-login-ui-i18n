@@ -213,7 +213,6 @@ const CosFeatures: FC = () => {
 		};
 		body.id = id;
 		modifyCos(body)
-			.then((response) => response.json())
 			.then((data) => {
 				createSnackbar({
 					key: 'success',
@@ -223,7 +222,7 @@ const CosFeatures: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				const cos: any = data?.Body?.ModifyCosResponse?.cos[0];
+				const cos: any = data.cos[0];
 				if (cos) {
 					setCos(cos);
 				} else {

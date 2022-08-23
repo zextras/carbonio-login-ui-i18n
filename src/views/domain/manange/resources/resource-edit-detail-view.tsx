@@ -233,21 +233,18 @@ const ResourceEditDetailView: FC<any> = ({
 	};
 
 	const getResourceDetail = useCallback((): void => {
-		getCalenderResource(selectedResourceList?.id)
-			.then((response) => response.json())
-			.then((data) => {
-				const resourceDetailResponse =
-					data?.Body?.GetCalendarResourceResponse?.calresource[0] || {};
-				const sendInviteTo = resourceDetailResponse?.a
-					?.filter((value: any) => value?.n === 'zimbraPrefCalendarForwardInvitesTo')
-					.map((item: any, index: any): any => {
-						const id = index?.toString();
-						return { ...item, id };
-					});
-				generateSendInviteList(sendInviteTo);
-				setSendInviteData(sendInviteTo);
-				setResourceInformation(resourceDetailResponse?.a);
-			});
+		getCalenderResource(selectedResourceList?.id).then((data) => {
+			const resourceDetailResponse = data?.calresource[0] || {};
+			const sendInviteTo = resourceDetailResponse?.a
+				?.filter((value: any) => value?.n === 'zimbraPrefCalendarForwardInvitesTo')
+				.map((item: any, index: any): any => {
+					const id = index?.toString();
+					return { ...item, id };
+				});
+			generateSendInviteList(sendInviteTo);
+			setSendInviteData(sendInviteTo);
+			setResourceInformation(resourceDetailResponse?.a);
+		});
 	}, [selectedResourceList?.id]);
 
 	const getSignatureDetail = useCallback((): void => {
