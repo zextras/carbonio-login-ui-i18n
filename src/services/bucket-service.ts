@@ -22,5 +22,3 @@ export const fetchSoap = async (api: string, body: unknown): Promise<any> =>
 		body,
 		api
 	);
-// .then((res) => res.json())
-// .then((res) => res.Body);

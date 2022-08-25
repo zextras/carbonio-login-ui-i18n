@@ -458,23 +458,10 @@ const DomainMailingList: FC = () => {
 					_content: zimbraDistributionListSubscriptionPolicy?.value
 				});
 			}
-			createMailingList(dynamic, name, attributes).then((data) => {
-				let type = 'success';
-				let message = '';
-				if (data?.Body?.Fault?.Reason?.Text) {
-					type = 'error';
-					const text = data?.Body?.Fault?.Reason?.Text;
-					if (text.includes('no such domain')) {
-						message = t('label.specified_domain_not_exist', 'Specified domain does not exist');
-					} else if (text.includes('email address already exists')) {
-						message = t('label.email_addready_exists', {
-							name,
-							defaultValue: 'Email address {{name}} already exists'
-						});
-					} else {
-						message = text;
-					}
-				} else {
+			createMailingList(dynamic, name, attributes)
+				.then((data) => {
+					const type = 'success';
+					let message = '';
 					const mlId = data?.dl[0]?.id;
 					addMemberToMailingList(members, owners, mlId, allOwnersList);
 					setShowCreateMailingListView(false);
@@ -482,16 +469,41 @@ const DomainMailingList: FC = () => {
 						name,
 						defaultValue: 'The {{name}} has been created successfull'
 					});
-				}
-				createSnackbar({
-					key: type,
-					type,
-					label: message,
-					autoHideTimeout: 3000,
-					hideButton: true,
-					replace: true
+					createSnackbar({
+						key: 'success',
+						type,
+						label: message,
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
+				})
+				.catch((error) => {
+					let message = '';
+					if (error?.message) {
+						const text = error?.message;
+						if (text.includes('no such domain')) {
+							message = t('label.specified_domain_not_exist', 'Specified domain does not exist');
+						} else if (text.includes('email address already exists')) {
+							message = t('label.email_addready_exists', {
+								name,
+								defaultValue: 'Email address {{name}} already exists'
+							});
+						} else {
+							message = text;
+						}
+					}
+					createSnackbar({
+						key: 'error',
+						type: 'error',
+						label:
+							message ||
+							t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
 				});
-			});
 		},
 		[createSnackbar, t, addMemberToMailingList]
 	);

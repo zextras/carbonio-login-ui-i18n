@@ -769,6 +769,18 @@ const EditMailingListView: FC<any> = ({
 					updatePreviousDetail();
 					setIsUpdateRecord(true);
 				}
+			})
+			.catch((error) => {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: error.message
+						? error.message
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
 			});
 	};
 

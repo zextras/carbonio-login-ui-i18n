@@ -338,7 +338,7 @@ const DomainResources: FC = () => {
 												setIsUpdateRecord(true);
 											})
 											.catch((error) => {
-												errorSnackBar();
+												errorSnackBar(error?.message);
 											});
 									}
 								})
@@ -350,12 +350,10 @@ const DomainResources: FC = () => {
 							successSnackBar(resourceName);
 							setIsUpdateRecord(true);
 						}
-					} else {
-						errorSnackBar(data?.Body?.Fault?.Reason?.Text);
 					}
 				})
 				.catch((error) => {
-					errorSnackBar();
+					errorSnackBar(error?.message);
 				});
 		},
 		[errorSnackBar, successSnackBar]

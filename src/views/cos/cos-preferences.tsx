@@ -915,15 +915,6 @@ const CosPreferences: FC = () => {
 				const cos: any = data?.cos[0];
 				if (cos) {
 					setCos(cos);
-				} else {
-					createSnackbar({
-						key: 'error',
-						type: 'error',
-						label: data?.Body?.Fault?.Reason?.Text,
-						autoHideTimeout: 3000,
-						hideButton: true,
-						replace: true
-					});
 				}
 				setIsDirty(false);
 			})
@@ -931,7 +922,9 @@ const CosPreferences: FC = () => {
 				createSnackbar({
 					key: 'error',
 					type: 'error',
-					label: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					label: error?.message
+						? error?.message
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
 					autoHideTimeout: 3000,
 					hideButton: true,
 					replace: true

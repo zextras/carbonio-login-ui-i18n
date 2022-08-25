@@ -167,9 +167,20 @@ const ManageAccounts: FC = () => {
 					setAccountDetail({ ...obj });
 				})
 				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				.catch((error) => {});
+				.catch((error) => {
+					createSnackbar({
+						key: 'error',
+						type: 'error',
+						label: error?.message
+							? error?.message
+							: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
+				});
 		},
-		[setAccountDetail]
+		[setAccountDetail, createSnackbar, t]
 	);
 	const getAccountMembership = useCallback(
 		(id): void => {
@@ -188,9 +199,20 @@ const ManageAccounts: FC = () => {
 					setInDirectMemberList(inDirectMemArr);
 				})
 				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				.catch((error) => {});
+				.catch((error) => {
+					createSnackbar({
+						key: 'error',
+						type: 'error',
+						label: error?.message
+							? error?.message
+							: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
+				});
 		},
-		[setDirectMemberList, setInDirectMemberList]
+		[setDirectMemberList, setInDirectMemberList, t, createSnackbar]
 	);
 	const openDetailView = useCallback(
 		(acc: any): void => {
@@ -327,15 +349,6 @@ const ManageAccounts: FC = () => {
 							hideButton: true,
 							replace: true
 						});
-					} else {
-						createSnackbar({
-							key: 'error',
-							type: 'error',
-							label: data?.Body?.Fault?.Reason?.Text,
-							autoHideTimeout: 3000,
-							hideButton: true,
-							replace: true
-						});
 					}
 					getAccountList();
 				})
@@ -343,7 +356,9 @@ const ManageAccounts: FC = () => {
 					createSnackbar({
 						key: 'error',
 						type: 'error',
-						label: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+						label: error?.message
+							? error?.message
+							: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
 						autoHideTimeout: 3000,
 						hideButton: true,
 						replace: true
