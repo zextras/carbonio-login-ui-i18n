@@ -196,9 +196,7 @@
         "mailbox_quota": "Przydział skrzynki pocztowej",
         "most_result_return_gal_search": "Najwięcej wyników zwróconych przez wyszukiwanie GAL",
         "virtual_hosts": "Wirtualne hosty",
-        "accounts": "Konta",
         "manage": "Zarządzaj",
-        "resources": "Zasoby",
         "mailing_list": "Lista mailingowa",
         "internal_gal_received": "Odebrany zakres wewnętrznego GAL",
         "many_domain_info_msg": "Ale dużo domen! Którą z nich chcesz zobaczyć? Aby filtrować, zacznij wpisywać.",
@@ -216,7 +214,6 @@
         "domain_space_byte": "Przestrzeń domeny (bity)",
         "create_new_domain": "STWÓRZ NOWĄ DOMENĘ",
         "aggregated_domain_space": "Zsumowana przestrzeń domeny (Bity)",
-        "active_sync": "ActiveSync",
         "account_list": "Lista kont",
         "account_gal_synchronization": "Nazwa konta Synchronizacji GAL"
     },
@@ -315,7 +312,6 @@
         "monitoring": "Monitorowanie",
         "new_cos": "Nowy COS",
         "new_domain": "Nowa domena",
-        "no_subject": "Bez tematu",
         "notes": "Notatki",
         "notify_of_changes_made_via_delegated_access": "Powiadamiaj o zmianach dokonanych przy użyciu delegowanego dostępu",
         "out_of_office_cache_lifetime": "Okres istnienia pamięci cache będąc poza biurem",
@@ -498,7 +494,6 @@
         "gal_mode": "Tryb GAL",
         "force_delete": "Wymuś usunięcie",
         "first_day_of_Week": "Pierwszy dzień tygodnia",
-        "feature": "FUNKCJA",
         "fall_back_to_local_msg": "Powróć do lokalnego zarządzania hasła w przypadku niepowodzenia",
         "external_password_change_listener": "Endpoint do użycia przy zmianie hasła",
         "example_new": "Nowy przykład",
@@ -509,7 +504,6 @@
         "domain_quota_settings": "Ustawienia przydziału domeny",
         "domain_name": "Nazwa domeny",
         "displayed_name": "Wyświetlana nazwa",
-        "descriptive_name": "Nazwa opisowa",
         "deligated_admin_help_url": "URL Pomocy delegowanego administratora",
         "deleting_cos_msg": "Usuwanie {{cosname}}",
         "delete_domain_with_account_content_msg": "{{domainName}} nie jest puste: zawiera {{domainAccounts}} kont systemowych i {{domainAccounts}} regularnych kont. Czy na pewno chcesz kontynuować usuwanie?",
@@ -566,7 +560,6 @@
         "active_sync": "ActiveSync",
         "activate_and_update": "Aktywuj i Zaktualizuj",
         "account_created_successfully": "Konto zostało stworzone pomyślnie",
-        "I_am_looking_for_this_account": "Szukam tego konta…",
         "block_send": "Blokuj wysyłanie",
         "bind_dn_template": "Łącz DN Template",
         "auto_refuse": "Automatyczne odrzucenie",
@@ -589,13 +582,8 @@
     },
     "backup": {
         "backup_path": "Ścieżka kopii zapasowej",
-        "backup_purge": "Wyczyszczenie kopii zapasowej",
+        "backup_purge": "Czystka kopii zapasowej",
         "compression_level": "Poziom kompresji",
-        "global": {
-            "headers": {
-                "service_status": "Status usługi"
-            }
-        },
         "keep_delete_accounts_in_backup": "Zachowuj usunięte konta w kopii zapasowej",
         "keep_delted_items_backup": "Zachowuj usunięte pozycje w kopii zapasowej",
         "ldap_dump": "LDAP Dump",
@@ -604,7 +592,7 @@
         "minimum_space_threshold": "Próg minimalnej przestrzeni",
         "module_enable_at_startup": "Moduł włączony przy uruchomieniu",
         "on_the_fly_metadata": "Metadane \"w locie\"",
-        "purge_old_configurations": "Wyczyść stare konfiguracje",
+        "purge_old_configurations": "Czystka starych konfiguracji",
         "realtime_scanner": "RealTime Scanner",
         "schedule": "Harmonogram",
         "smart_scan_at_startup": "SmartScan przy uruchomieniu",
@@ -700,7 +688,6 @@
         "vietnamese": "Wietnamski"
     },
     "accountDetails": {
-        "prevent_user_from_changing_password": "Uniemożliwiaj użytkownikowi zmianę hasła",
         "this_is_global_administrator": "To jest Administrator Globalny",
         "enable_activeSync_remote_access": "Włącz zdalny dostęp ActiveSync",
         "default_COS": "Domyślne COS",
@@ -727,5 +714,10 @@
         "new": {
             "create_account_wizard": "Stwórz Kreator Konta"
         }
+    },
+    "account_details": {
+        "add_invites_with_publish_method": "Dodawaj zaproszenia metodą PUBLISH",
+        "add_forwarded_invites_to_calendar": "Dodawaj przekazane dalej zaproszenia do kalendarza",
+        "add_appointments_when_invited": "Dodawaj spotkania po otrzymaniu zaproszenia"
     }
 }
