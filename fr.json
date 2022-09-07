@@ -10,7 +10,7 @@
             "create_and_verify_connector": "CRÉATION ET VÉRIFICATION DU CONNECTEUR"
         },
         "bucket_list": "Liste des buckets",
-        "bucket_type": "Type de Buckets",
+        "bucket_type": "Type de Bucket",
         "connect_buckets": "Connecter les Buckets",
         "new": {
             "bucket_connection": "Connexion au Bucket"
@@ -24,7 +24,10 @@
             "descriptive_name": "Nom descriptif",
             "notes": "Remarques",
             "secret_key": "Clé secrète"
-        }
+        },
+        "invalid_prefix": "Le préfixe ne peux pas contenir d'espace, les caractères autorisés sont \"a-z\", \"A-Z\" et les caractères spéciaux \"/-.\"",
+        "serverName_volumes": "Volumes de {{serverName}}",
+        "serverName#1_volumes": "Volumes de ServerName#1"
     },
     "core": {
         "subscription": {
@@ -572,7 +575,6 @@
         "source_name_internal_gal": "Nom de la source pour la GAL interne",
         "virtual_hosts": "Hôtes virtuels",
         "warn_when_reach_space_quota": "Me prévenir quand j'ai atteint ce quota d'espace agrégé",
-        "export_domain": "Exporter un domain",
         "manage": "Gérer",
         "type_here_a_domain": "Entrer le nom du domaine",
         "i_want_to_see_this_domain": "Je souhaite consulter ce domaine",
@@ -618,7 +620,9 @@
         "save_index": "Sauvegarder l'Index",
         "metatdata_size": "Taille des Meta données",
         "max_waiting_time": "Temps d'attente maximum",
-        "max_operations_account": "Maximum d'opérations par Compte"
+        "max_operations_account": "Maximum d'opérations par Compte",
+        "latency_low_threshold": "Seuil bas de latence",
+        "latency_high_threshold": "Seuil haut de latence"
     },
     "cos": {
         "calendar_options": "Options d’agenda",
@@ -661,7 +665,7 @@
         "i_want_to_see_this_cos": "Je souhaite consulter cette COS",
         "composing_mail": "Rédiger un email",
         "sending_mail": "email en cours d'envoi",
-        "group_mail": "Grouper les mails par :",
+        "group_mail": "Email du groupe",
         "account_quota": "Quota du compte",
         "admin_console_auth_token_lifetime": "Durée de vie du jeton d’authentification de la console d’administration",
         "advanced": "Avancé",
@@ -729,7 +733,34 @@
         "time_window_failed_logins_must_occur_to_lock_account": "Période pendant laquelle les échecs de connexion doivent se produire pour entraîner le blocage du compte :",
         "timeout_policy": "Politique de timeout",
         "trashed_message_lifetime": "Durée de conservation des mails supprimés",
-        "user_specific_fowarding_addresses": "Dans le champ prévu pour les adresses de transfert spécifiées par l’utilisateur, limiter le texte à (caractères)"
+        "user_specific_fowarding_addresses": "Dans le champ prévu pour les adresses de transfert spécifiées par l’utilisateur, limiter le texte à (caractères)",
+        "new_proxy_allowed_domain": "Nouveau domaine autorisé sur le proxy",
+        "name_server": "Nom du serveur",
+        "minimum_duration_of_time_between_quota_warnings": "Temps minimum entre deux avertissements sur les quotas",
+        "limt_serverpool_avaiable_create_user": "Limiter le pool de serveurs disponibles pour la création de nouveaux utilisateurs dans cette COS",
+        "legacy_exchange_dn_attribute": "O et OU utilisés dans l'attribut legacyExchangeDN",
+        "initial_search_preference": "Préférences de recherche initiales",
+        "group_calender": "Calendrier du groupe",
+        "external_pop_access": "Accès POP externe",
+        "enable_past_due_reminders": "Activer les notifications pour les rappels en retard",
+        "enable_notification_for_new_email": "Activer les notifications pour les nouveaux emails",
+        "enable_notification_for_new_appointment": "Activer les notifications pour les nouveaux rendez-vous",
+        "enable_auto_add_contacts": "Activer l'ajout automatique des contacts",
+        "distribution_list_folder": "Dossier des listes de distribution",
+        "display_by": "Afficher par",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Zimbra_Administration_Console": "Afficher un avertissement lorsque l'administrateur tente de naviguer hors de la console d'administration de Zimbra",
+        "disabling_pool": "Désactiver le pool",
+        "default_charset": "Jeu de caractères par défaut",
+        "days_hours_minutes_sec": "Jours / Heures / Minutes / Secondes",
+        "create_cos_success_msg": "Vous êtes sur le point de désactiver le pool sur {{serverName}}. Toutes les boîtes aux lettres ne seront pas déplacées. Êtes-vous sûr de vouloir le supprimer ?",
+        "auto_delete_duplicate_messages": "Suppression automatique des messages dupliqués",
+        "audible_reminder_notification": "Notification de rappel sonore",
+        "allow_sending_from_any_address": "Autoriser l'envoi depuis n'importe quelle adresse",
+        "allow_sending_cancellation_mail": "Autoriser l'envoi d'email d'annulation",
+        "add_invites_with_publish_method": "Ajouter les invitations avec la méthode PUBLISH",
+        "add_forwarded_invites_to_calendar": "Ajouter les invitations transférées au calendrier",
+        "add_appointments_when_invited": "Ajouter un rendez-vous lors d'une invitation",
+        "auto_decline_if_inviter_is_blacklisted": "Décliner automatiquement si l'organisateur est dans la liste des indésirables"
     },
     "create_new_cos": "CRÉER UNE NOUVELLE COS",
     "select_section_from_left_menu": "Merci de sélectionner une section depuis le menu de gauche",
@@ -769,7 +800,6 @@
         "vietnamese": "Vietnamienne"
     },
     "accountDetails": {
-        "this_is_global_administrator": "C'est un Administrateur Global",
         "enable_activeSync_remote_access": "Activer l'accès distant ActiveSync",
         "default_COS": "COS par défaut",
         "change_password_for_next_login": "Doit changer son mot de passe à la prochaine connexion"
@@ -805,7 +835,58 @@
         "hide_in_gal": "Masquer la GAL",
         "mail": "Mail",
         "manuallly": "Manuellement",
-        "message_priority": "Priorité du message"
+        "message_priority": "Priorité du message",
+        "view_mail_as_html": "Afficher les emails en HTML",
+        "use_quickadd_dialog_in_creation": "Utiliser la boite de dialogue QuickAdd en création",
+        "use_ical_delegation_model_for_shared_calendars": "Utiliser un modèle de délégation iCal pour le partage de calendrier",
+        "use_gal_to_auto_fill": "Utiliser la GAL pour l'auto-complétion",
+        "this_user_must_change_password": "Cet utilisateur doit changer son mot de passe",
+        "this_is_global_administrator": "C'est un Administrateur Global ",
+        "this_account_is_a_in_direct_member_of": "Ce compte est un membre direct de",
+        "this_account_is_a_direct_member_of": "Ce compte est un membre direct de",
+        "sms_reminder": "Rappel par SMS",
+        "show_time_zone_lists_in_view": "Afficher la liste de fuseaux horaires dans la vue",
+        "search_fro_people": "Chercher une personne",
+        "pop3_access": "Accès POP3",
+        "out_of_the_office_reply": "Réponse hors bureau",
+        "out_of_office_reply": "Réponse hors bureau",
+        "notify_changes_by_delegated_access": "Notification des modifications par accès délégué",
+        "new_mail_notification": "Notification de nouvel email",
+        "min_new_check_interval_value": "Valeur minimale de l'intervalle de vérification",
+        "mail_signatures": "Signatures email",
+        "mail_signature": "Signature email",
+        "initial_search_preference": "Préférences de recherche initiales",
+        "iamp_access": "Accès IMAP",
+        "html_compose": "Éditeur HTML",
+        "group_calendar": "Calendrier du groupe",
+        "global_address_list_access": "Accès à la liste globale d'adresses (GAL)",
+        "forwarding_calendar_invitations_to_these_addresses": "Transfert des invitations de calendrier à ces adresses",
+        "forwarding_addresses_specified_by_the_user": "Adresse de transfert définie par l'utilisateur",
+        "forwarding_addresses_hidden_from_the_user": "Adresse de transfert cachée à l'utilisateur",
+        "external_pop_access": "Accès POP externe",
+        "enable_toast_notifications": "Activer les bulles de notifications",
+        "enable_toast_for_new_emails": "Activer les bulles de notifications pour les nouveaux emails",
+        "enable_past_due_reminders": "Activer les rappels d'arriérés",
+        "enable_notifications": "Activer les notifications",
+        "enable_auto_add_contacts": "Activer l'ajout automatique de contact",
+        "enable_address_for_new_email_notifications": "Activer l'adresse pour les nouvelles notifications par email",
+        "dont_keep_local_copy_of_messages": "Ne pas garder une copie locale des messages",
+        "distribution_list_folder": "Dossier des listes de distribution",
+        "display_external_image_as_html": "Afficher les images externe comme HTML",
+        "auto_decline_if_inviter_is_blacklisted": "Décliner automatiquement si l'expéditeur est dans la liste des indésirables",
+        "cannot_check_for_less_than": "Ne peut vérifier pour moins de",
+        "can_specify_forwarding_address": "Peux spécifier l'adresse de transfert",
+        "can_send_auto_reply_messages": "Peut envoyer des messages de réponse automatiques",
+        "browser_title_for_appointments": "Titre du navigateur pour les rendez-vous",
+        "auto_delete_duplicate_messages": "Supprimer automatiquement les messages dupliqués",
+        "audible_reminder_notification": "Notification de rappel sonore",
+        "appointments_default_duration": "Durée par défaut pour les rendez-vous",
+        "always_show_mini_calendar": "Toujours voir mon mini calendrier",
+        "allow_sending_from_any_address": "Autoriser l'envoi à partir de n'importe quelle adresse",
+        "allow_sending_cancellation_mail": "Autoriser l'envoi d'email d'annulation",
+        "add_invites_with_publish_method": "Ajouter les invitations avec la méthode PUBLISH",
+        "add_forwarded_invites_to_calendar": "Ajouter les invitations transférées au calendrier",
+        "add_appointments_when_invited": "Ajouter les rendez-vous sur invitation"
     },
     "connection": {
         "access_key": "Clé d’accès",
@@ -820,5 +901,6 @@
     "reminder": {
         "minute": "{{count}} minute",
         "minute_plural": ""
-    }
+    },
+    "click_new_bucket_button_to_create_new_one": "Cliquer sur le bouton NOUVEAU BUCKET pour en créer un nouveau."
 }
