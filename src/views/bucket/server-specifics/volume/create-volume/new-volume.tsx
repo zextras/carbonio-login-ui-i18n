@@ -3,13 +3,11 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, ReactElement, useCallback, useState } from 'react';
 import { Button } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { HorizontalWizard } from '../../../../app/component/hwizard';
 import { Section } from '../../../../app/component/section';
-import MailstoresConfig from './mailstores-config';
-import MailstoresVolume from './mailstores-volume';
 import MailstoresCreate from './mailstores-create';
 import { VolumeContext } from './volume-context';
 
@@ -49,7 +47,7 @@ interface VolumeDetailObj {
 	path: string;
 	isCurrent: boolean;
 	isCompression: boolean;
-	compressionThreshold: number;
+	compressionThreshold: string;
 }
 
 const NewVolume: FC<{
@@ -74,82 +72,15 @@ const NewVolume: FC<{
 		path: '',
 		isCurrent: false,
 		isCompression: false,
-		compressionThreshold: 0
+		compressionThreshold: ''
 	});
+
 	const wizardSteps = [
-		{
-			name: 'volume',
-			label: t('label.new_volume', 'VOLUME'),
-			icon: 'CubeOutline',
-			view: MailstoresVolume,
-			canGoNext: (): any => true,
-			CancelButton: (props: any) => (
-				<Button
-					{...props}
-					type="outlined"
-					key="wizard-cancel"
-					label={t('label.volume_cancel_button', 'CANCEL')}
-					icon={'CloseOutline'}
-					iconPlacement="right"
-					color="secondary"
-					onClick={(): void => setToggleWizardSection(false)}
-				/>
-			),
-			PrevButton: (props: any): any => '',
-			NextButton: (props: any): any => (
-				<Button
-					{...props}
-					label={t('label.volume_next_step_button', 'NEXT STEP')}
-					icon={'ChevronRightOutline'}
-					iconPlacement="right"
-					disable={props.completeLoading}
-				/>
-			)
-		},
-		{
-			name: 'config',
-			label: t('label.new_volume_config', 'CONFIG'),
-			icon: 'Options2Outline',
-			view: MailstoresConfig,
-			canGoNext: (): any => true,
-			CancelButton: (props: any) => (
-				<Button
-					{...props}
-					type="outlined"
-					key="wizard-cancel"
-					label={t('label.volume_cancel_button', 'CANCEL')}
-					icon={'CloseOutline'}
-					iconPlacement="right"
-					color="secondary"
-					onClick={(): void => setToggleWizardSection(false)}
-				/>
-			),
-			PrevButton: (props: any): any => (
-				<Button
-					{...props}
-					label={t('label.volume_back_button', 'BACK')}
-					icon={'ChevronLeftOutline'}
-					iconPlacement="left"
-					disable={props.completeLoading}
-					color="secondary"
-				/>
-			),
-			NextButton: (props: any): any => (
-				<Button
-					{...props}
-					label={t('label.volume_next_step_button', 'NEXT STEP')}
-					icon={'ChevronRightOutline'}
-					iconPlacement="right"
-					disable={props.completeLoading}
-				/>
-			)
-		},
 		{
 			name: 'create',
 			label: t('label.new_volume_create', 'CREATE'),
 			icon: 'CubeOutline',
 			view: MailstoresCreate,
-			canGoNext: (): any => true,
 			CancelButton: (props: any) => (
 				<Button
 					{...props}
@@ -162,24 +93,14 @@ const NewVolume: FC<{
 					onClick={(): void => setToggleWizardSection(false)}
 				/>
 			),
-			PrevButton: (props: any): any => (
+			PrevButton: (props: any): ReactElement => <></>,
+			NextButton: (props: any) => (
 				<Button
 					{...props}
-					label={t('label.volume_back_button', 'BACK')}
-					icon={'ChevronLeftOutline'}
-					iconPlacement="left"
-					disable={props.completeLoading}
-					color="secondary"
-				/>
-			),
-			NextButton: (props: any): any => (
-				<Button
-					{...props}
-					label={t('label.volume_create_with_this_data_button', 'CREATE WITH THESE DATA')}
-					icon={'CubeOutline'}
+					label={t('label.volume_create', 'CREATE')}
+					icon={'ChevronRightOutline'}
 					iconPlacement="right"
 					disable={props.completeLoading}
-					onClick={(): any => CreateVolumeRequest(volumeDetail)}
 				/>
 			)
 		}
@@ -187,12 +108,28 @@ const NewVolume: FC<{
 
 	const onComplete = useCallback(
 		(data) => {
-			setCreateMailstoresVolumeData(data.steps.connection);
+			CreateVolumeRequest({
+				id: volumeDetail?.id,
+				name: volumeDetail?.volumeName,
+				rootpath: volumeDetail?.path,
+				type: volumeDetail?.volumeMain,
+				compressBlobs: volumeDetail?.isCompression ? 1 : 0,
+				compressionThreshold: volumeDetail?.compressionThreshold,
+				isCurrent: volumeDetail?.isCurrent ? 1 : 0
+			});
+			setCreateMailstoresVolumeData(volumeDetail);
 			setToggleWizardSection(false);
 			setDetailsVolume(false);
 		},
-		[setToggleWizardSection, setDetailsVolume, setCreateMailstoresVolumeData]
+		[
+			volumeDetail,
+			CreateVolumeRequest,
+			setCreateMailstoresVolumeData,
+			setToggleWizardSection,
+			setDetailsVolume
+		]
 	);
+
 	return (
 		<VolumeContext.Provider value={{ volumeDetail, setVolumeDetail }}>
 			<HorizontalWizard

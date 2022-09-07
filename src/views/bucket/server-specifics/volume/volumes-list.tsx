@@ -15,16 +15,16 @@ import {
 } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { NO, YES } from '../../../constants';
-import { AbsoluteContainer } from '../../components/styled';
+import { NO, YES } from '../../../../constants';
+import { AbsoluteContainer } from '../../../components/styled';
 import ServerVolumeDetailsPanel from './server-volume-details-panel';
-import { fetchSoap } from '../../../services/bucket-service';
+import { fetchSoap } from '../../../../services/bucket-service';
 import IndexerVolumeTable from './indexer-volume-table';
-import { tableHeader, indexerHeaders } from '../../utility/utils';
-import { useBucketVolumeStore } from '../../../store/bucket-volume/store';
-import NewVolume from './volume/create-volume/new-volume';
-import ModifyVolume from './volume/modify-volume/modify-volume';
-import DeleteVolumeModel from './volume/delete-volume-model';
+import { tableHeader, indexerHeaders } from '../../../utility/utils';
+import { useBucketVolumeStore } from '../../../../store/bucket-volume/store';
+import NewVolume from './create-volume/new-volume';
+import ModifyVolume from './modify-volume/modify-volume';
+import DeleteVolumeModel from './delete-volume-model';
 
 const RelativeContainer = styled(Container)`
 	position: relative;
@@ -247,37 +247,57 @@ const VolumesDetailPanel: FC = () => {
 			});
 	};
 
-	const CreateVolumeRequest = (volumeDetail: {
-		id: any;
-		volumeName: any;
-		path: any;
-		volumeMain: any;
-		isCompression: any;
-		compressionThreshold: any;
-		isCurrent: any;
+	const CreateVolumeRequest = (attr: {
+		id: string;
+		name: string;
+		type: number;
+		rootpath: string;
+		isCurrent: number;
+		compressBlobs: number;
+		compressionThreshold: string;
 	}): any => {
 		fetchSoap('CreateVolumeRequest', {
 			_jsns: 'urn:zimbraAdmin',
 			module: 'ZxCore',
 			action: 'CreateVolumeRequest',
-			volume: {
-				id: volumeDetail?.id,
-				name: volumeDetail?.volumeName,
-				rootpath: volumeDetail?.path,
-				type: volumeDetail?.volumeMain,
-				compressBlobs: volumeDetail?.isCompression ? 1 : 0,
-				compressionThreshold: volumeDetail?.compressionThreshold,
-				isCurrent: volumeDetail?.isCurrent ? 1 : 0
-			}
+			volume: attr
 		})
 			.then((res: any) => {
+				if (attr?.isCurrent === 1) {
+					fetchSoap('SetCurrentVolumeRequest', {
+						_jsns: 'urn:zimbraAdmin',
+						module: 'ZxCore',
+						action: 'SetCurrentVolumeRequest',
+						id: res?.Body?.CreateVolumeResponse?.volume[0]?.id,
+						type: res?.Body?.CreateVolumeResponse?.volume[0]?.type
+					})
+						.then(() => {
+							createSnackbar({
+								key: '1',
+								type: 'success',
+								label: t('label.volume_active', '{{volumeName}} is Currently active', {
+									volumeName: attr?.name
+								})
+							});
+						})
+						.catch((error) => {
+							createSnackbar({
+								key: 'error',
+								type: 'error',
+								label: t('label.volume_detail_error', '{{message}}', {
+									message: error
+								}),
+								autoHideTimeout: 5000
+							});
+						});
+				}
+				GetAllVolumesRequest();
 				setToggleWizardSection(false);
 				createSnackbar({
 					key: '1',
 					type: 'success',
 					label: t('label.volume_created', 'Volume created successfully')
 				});
-				GetAllVolumesRequest();
 			})
 			.catch((error) => {
 				createSnackbar({

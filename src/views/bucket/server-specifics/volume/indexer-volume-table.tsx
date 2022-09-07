@@ -5,7 +5,7 @@
  */
 import React, { FC, useMemo } from 'react';
 import { Container, Row, Text, Divider, Table, Button } from '@zextras/carbonio-design-system';
-import { NO, YES } from '../../../constants';
+import { NO, YES } from '../../../../constants';
 
 const IndexerVolumeTable: FC<{
 	volumes: Array<any>;

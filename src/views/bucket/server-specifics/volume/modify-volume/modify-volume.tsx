@@ -71,6 +71,24 @@ const ModifyVolume: FC<{
 			}
 		})
 			.then(() => {
+				if (isCurrent) {
+					fetchSoap('SetCurrentVolumeRequest', {
+						_jsns: 'urn:zimbraAdmin',
+						module: 'ZxCore',
+						action: 'SetCurrentVolumeRequest',
+						id,
+						type: type?.value
+					}).catch((error) => {
+						createSnackbar({
+							key: 'error',
+							type: 'error',
+							label: t('label.volume_detail_error', '{{message}}', {
+								message: error
+							}),
+							autoHideTimeout: 5000
+						});
+					});
+				}
 				createSnackbar({
 					key: '1',
 					type: 'success',

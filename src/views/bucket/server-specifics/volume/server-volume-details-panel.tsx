@@ -17,8 +17,8 @@ import {
 	useSnackbar
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import { fetchSoap } from '../../../services/bucket-service';
-import { INDEXERES, PRIMARIES, SECONDARIES } from '../../../constants';
+import { fetchSoap } from '../../../../services/bucket-service';
+import { INDEXERES, PRIMARIES, SECONDARIES } from '../../../../constants';
 
 const ServerVolumeDetailsPanel: FC<{
 	setToggleDetailPage: any;
