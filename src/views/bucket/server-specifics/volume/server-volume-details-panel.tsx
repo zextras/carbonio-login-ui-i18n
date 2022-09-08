@@ -225,26 +225,32 @@ const ServerVolumeDetailsPanel: FC<{
 							/>
 						</Row>
 						<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="100%">
-							<Row width="48%" mainAlignment="flex-start">
-								<Switch
-									value={detailData?.compressBlobs}
-									label={t('label.enable_compression', 'Enable Compression')}
-								/>
-							</Row>
-							<Padding width="4%" />
+							{typeLabel !== INDEXERES && (
+								<>
+									<Row width="48%" mainAlignment="flex-start">
+										<Switch
+											value={detailData?.compressBlobs}
+											label={t('label.enable_compression', 'Enable Compression')}
+										/>
+									</Row>
+									<Padding width="4%" />
+								</>
+							)}
 							<Row width="48%" mainAlignment="flex-start">
 								<Switch value={detailData?.isCurrent} label={t('label.current', 'Current')} />
 							</Row>
 						</Row>
-						<Row padding={{ top: 'small' }} width="50%">
-							<Input
-								label={t('label.compression_threshold', 'Compression Threshold')}
-								value={detailData?.compressionThreshold}
-								backgroundColor="gray6"
-								readOnly
-								color="secondary"
-							/>
-						</Row>
+						{typeLabel !== INDEXERES && (
+							<Row padding={{ top: 'small' }} width="50%">
+								<Input
+									label={t('label.compression_threshold', 'Compression Threshold')}
+									value={detailData?.compressionThreshold}
+									backgroundColor="gray6"
+									readOnly
+									color="secondary"
+								/>
+							</Row>
+						)}
 						<Container orientation="horizontal" mainAlignment="flex-end" crossAlignment="flex-end">
 							{typeLabel !== INDEXERES && (
 								<>

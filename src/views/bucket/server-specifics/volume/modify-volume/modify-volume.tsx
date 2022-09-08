@@ -264,14 +264,18 @@ const ModifyVolume: FC<{
 						/>
 					</Row>
 					<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="100%">
-						<Row width="48%" mainAlignment="flex-start">
-							<Switch
-								value={compressBlobs}
-								label={t('label.enable_compression', 'Enable Compression')}
-								onClick={(e: any): any => setCompressBlobs(!compressBlobs)}
-							/>
-						</Row>
-						<Padding width="4%" />
+						{volumeDetail?.type !== 10 && (
+							<>
+								<Row width="48%" mainAlignment="flex-start">
+									<Switch
+										value={compressBlobs}
+										label={t('label.enable_compression', 'Enable Compression')}
+										onClick={(e: any): any => setCompressBlobs(!compressBlobs)}
+									/>
+								</Row>
+								<Padding width="4%" />
+							</>
+						)}
 						<Row width="48%" mainAlignment="flex-start">
 							<Switch
 								value={isCurrent}
@@ -280,15 +284,17 @@ const ModifyVolume: FC<{
 							/>
 						</Row>
 					</Row>
-					<Row padding={{ top: 'small' }} width="50%">
-						<Input
-							label={t('label.compression_threshold', 'Compression Threshold')}
-							value={compressionThreshold}
-							backgroundColor="gray6"
-							onChange={(e: any): any => setCompressionThreshold(e.target.value)}
-							color="secondary"
-						/>
-					</Row>
+					{volumeDetail?.type !== 10 && (
+						<Row padding={{ top: 'small' }} width="50%">
+							<Input
+								label={t('label.compression_threshold', 'Compression Threshold')}
+								value={compressionThreshold}
+								backgroundColor="gray6"
+								onChange={(e: any): any => setCompressionThreshold(e.target.value)}
+								color="secondary"
+							/>
+						</Row>
+					)}
 				</Container>
 			</Container>
 		</>

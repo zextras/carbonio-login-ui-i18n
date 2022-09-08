@@ -862,6 +862,13 @@ export const BucketTypeItems = (t: TFunction): Array<{ value?: string; label: st
 
 export const tableHeader = [
 	{
+		id: 'id',
+		label: 'ID',
+		width: '5%',
+		bold: true,
+		align: 'center'
+	},
+	{
 		id: 'name',
 		label: 'Name',
 		width: '62%',
@@ -886,6 +893,13 @@ export const tableHeader = [
 ];
 
 export const indexerHeaders = [
+	{
+		id: 'id',
+		label: 'ID',
+		width: '5%',
+		bold: true,
+		align: 'center'
+	},
 	{
 		id: 'name',
 		label: 'Name',

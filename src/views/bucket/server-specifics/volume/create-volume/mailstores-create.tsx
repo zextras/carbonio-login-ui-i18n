@@ -28,10 +28,16 @@ const MailstoresCreate: FC<{
 	const [errName, setErrName] = useState(true);
 	const [errPath, setErrPath] = useState(true);
 	const [errCompressionThreshold, setErrCompressionThreshold] = useState(true);
+	const [toggleIndexer, setToggleIndexer] = useState(false);
 
-	const onVolMainChange = (v: object): void => {
-		setVolumeDetail((prev: object) => ({ ...prev, volumeMain: v }));
+	const onVolMainChange = (v: any): void => {
+		setVolumeDetail((prev: any) => ({ ...prev, volumeMain: v }));
 		onSelection({ volumeMain: v }, true);
+		if (v === 10) {
+			setToggleIndexer(true);
+		} else {
+			setToggleIndexer(false);
+		}
 	};
 
 	const changeVolName = useCallback(
@@ -62,7 +68,6 @@ const MailstoresCreate: FC<{
 		(e) => {
 			setVolumeDetail((prev: object) => ({ ...prev, compressionThreshold: e.target.value }));
 			onSelection({ compressionThreshold: e.target.value }, true);
-			const compThresold = /^[0-9]$/;
 			if (e.target.value !== '') {
 				setErrCompressionThreshold(true);
 			} else {
@@ -87,7 +92,7 @@ const MailstoresCreate: FC<{
 			volumeDetail?.volumeMain &&
 			volumeDetail?.volumeName &&
 			volumeDetail?.path &&
-			volumeDetail?.compressionThreshold
+			(volumeDetail?.compressionThreshold || toggleIndexer)
 		) {
 			setCompleteLoading(true);
 		} else {
@@ -95,6 +100,7 @@ const MailstoresCreate: FC<{
 		}
 	}, [
 		setCompleteLoading,
+		toggleIndexer,
 		volumeDetail?.compressionThreshold,
 		volumeDetail?.path,
 		volumeDetail?.volumeMain,
@@ -159,33 +165,35 @@ const MailstoresCreate: FC<{
 						</Padding>
 					)}
 				</Row>
-				<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="100%">
-					<Row width="32%" mainAlignment="flex-start">
-						<Switch
-							value={volumeDetail?.isCompression}
-							label={t('label.enable_compression', 'Enable Compression')}
-							onClick={changeSwitchIsCompression}
-						/>
+				{!toggleIndexer && (
+					<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="100%">
+						<Row width="32%" mainAlignment="flex-start">
+							<Switch
+								value={volumeDetail?.isCompression}
+								label={t('label.enable_compression', 'Enable Compression')}
+								onClick={changeSwitchIsCompression}
+							/>
+						</Row>
+						<Padding horizontal="small" />
+						<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="65%">
+							<Input
+								inputName="compressionThreshold"
+								label={t('label.volume_compression_thresold', 'Compression Threshold')}
+								backgroundColor="gray5"
+								value={volumeDetail?.compressionThreshold}
+								onChange={changeVolCompThresold}
+								hasError={!errCompressionThreshold}
+							/>
+							{!errCompressionThreshold && (
+								<Padding top="extrasmall">
+									<Text color="error" overflow="break-word" size="extrasmall">
+										{t('buckets.invalid_compression_thresold', 'Compression Threshold is required')}
+									</Text>
+								</Padding>
+							)}
+						</Row>
 					</Row>
-					<Padding horizontal="small" />
-					<Row mainAlignment="flex-start" padding={{ top: 'large' }} width="65%">
-						<Input
-							inputName="compressionThreshold"
-							label={t('label.volume_compression_thresold', 'Compression Threshold')}
-							backgroundColor="gray5"
-							value={volumeDetail?.compressionThreshold}
-							onChange={changeVolCompThresold}
-							hasError={!errCompressionThreshold}
-						/>
-						{!errCompressionThreshold && (
-							<Padding top="extrasmall">
-								<Text color="error" overflow="break-word" size="extrasmall">
-									{t('buckets.invalid_compression_thresold', 'Compression Threshold is required')}
-								</Text>
-							</Padding>
-						)}
-					</Row>
-				</Row>
+				)}
 				<Row padding={{ top: 'large' }} mainAlignment="flex-start" width="100%">
 					<Switch
 						value={volumeDetail?.isCurrent}

@@ -47,7 +47,7 @@ interface VolumeDetailObj {
 	path: string;
 	isCurrent: boolean;
 	isCompression: boolean;
-	compressionThreshold: string;
+	compressionThreshold: number;
 }
 
 const NewVolume: FC<{
@@ -72,7 +72,7 @@ const NewVolume: FC<{
 		path: '',
 		isCurrent: false,
 		isCompression: false,
-		compressionThreshold: ''
+		compressionThreshold: 0
 	});
 
 	const wizardSteps = [
@@ -118,16 +118,8 @@ const NewVolume: FC<{
 				isCurrent: volumeDetail?.isCurrent ? 1 : 0
 			});
 			setCreateMailstoresVolumeData(volumeDetail);
-			setToggleWizardSection(false);
-			setDetailsVolume(false);
 		},
-		[
-			volumeDetail,
-			CreateVolumeRequest,
-			setCreateMailstoresVolumeData,
-			setToggleWizardSection,
-			setDetailsVolume
-		]
+		[volumeDetail, CreateVolumeRequest, setCreateMailstoresVolumeData]
 	);
 
 	return (

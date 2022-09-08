@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC, useMemo } from 'react';
-import { Container, Row, Text, Divider, Table, Button } from '@zextras/carbonio-design-system';
+import { Container, Row, Text, Table } from '@zextras/carbonio-design-system';
 import { NO, YES } from '../../../../constants';
 
 const IndexerVolumeTable: FC<{
@@ -17,8 +17,17 @@ const IndexerVolumeTable: FC<{
 	const tableRows = useMemo(
 		() =>
 			volumes.map((v, i) => ({
-				id: i,
+				id: v?.id,
 				columns: [
+					<Row
+						key={i}
+						onClick={(): void => {
+							onClick(i);
+						}}
+						style={{ textAlign: 'center', justifyContent: 'flex-center' }}
+					>
+						{v?.id}
+					</Row>,
 					<Row
 						key={i}
 						onClick={(): void => {

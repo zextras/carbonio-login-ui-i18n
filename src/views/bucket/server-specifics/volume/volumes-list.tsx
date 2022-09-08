@@ -41,8 +41,17 @@ const VolumeListTable: FC<{
 	const tableRows = useMemo(
 		() =>
 			volumes.map((v, i) => ({
-				id: i,
+				id: v?.id,
 				columns: [
+					<Row
+						key={i}
+						onClick={(): void => {
+							onClick(i);
+						}}
+						style={{ textAlign: 'center', justifyContent: 'flex-center' }}
+					>
+						{v?.id}
+					</Row>,
 					<Row
 						key={i}
 						onClick={(): void => {
@@ -50,7 +59,7 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
-						{v.name}
+						{v?.name}
 					</Row>,
 					<Row
 						key={i}
@@ -59,7 +68,7 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'center' }}
 					>
-						<Text color={v.isCurrent ? 'text' : 'error'}>{v.isCurrent ? YES : NO}</Text>
+						<Text color={v?.isCurrent ? 'text' : 'error'}>{v?.isCurrent ? YES : NO}</Text>
 					</Row>,
 					<Row
 						key={i}
@@ -68,7 +77,7 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'center' }}
 					>
-						<Text color={v.compressBlobs ? 'text' : 'error'}>{v.compressBlobs ? YES : NO}</Text>
+						<Text color={v?.compressBlobs ? 'text' : 'error'}>{v?.compressBlobs ? YES : NO}</Text>
 					</Row>
 				],
 				clickable: true
@@ -248,7 +257,7 @@ const VolumesDetailPanel: FC = () => {
 			});
 	};
 
-	const CreateVolumeRequest = (attr: {
+	const CreateVolumeRequest = async (attr: {
 		id: string;
 		name: string;
 		type: number;
@@ -256,16 +265,16 @@ const VolumesDetailPanel: FC = () => {
 		isCurrent: number;
 		compressBlobs: number;
 		compressionThreshold: string;
-	}): any => {
-		fetchSoap('CreateVolumeRequest', {
+	}): Promise<any> => {
+		await fetchSoap('CreateVolumeRequest', {
 			_jsns: 'urn:zimbraAdmin',
 			module: 'ZxCore',
 			action: 'CreateVolumeRequest',
 			volume: attr
 		})
-			.then((res: any) => {
+			.then(async (res: any) => {
 				if (attr?.isCurrent === 1) {
-					fetchSoap('SetCurrentVolumeRequest', {
+					await fetchSoap('SetCurrentVolumeRequest', {
 						_jsns: 'urn:zimbraAdmin',
 						module: 'ZxCore',
 						action: 'SetCurrentVolumeRequest',
@@ -299,6 +308,9 @@ const VolumesDetailPanel: FC = () => {
 					type: 'success',
 					label: t('label.volume_created', 'Volume created successfully')
 				});
+				setToggleWizardSection(false);
+				setDetailsVolume(false);
+				return res;
 			})
 			.catch((error) => {
 				createSnackbar({
@@ -309,6 +321,7 @@ const VolumesDetailPanel: FC = () => {
 					}),
 					autoHideTimeout: 5000
 				});
+				return error;
 			});
 	};
 
