@@ -78,10 +78,6 @@ const MailingListSection: FC<any> = () => {
 				label: t('label.internal_users_only', 'Internal Users only'),
 				value: ALL
 			},
-			// {
-			// 	label: t('label.owners', 'Owners'),
-			// 	value: SUBSCRIBE_UNSUBSCRIBE.REJECT
-			// },
 			{
 				label: t('label.only_there_users', 'Only these users'),
 				value: EMAIL
