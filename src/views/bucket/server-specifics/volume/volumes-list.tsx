@@ -48,7 +48,7 @@ const VolumeListTable: FC<{
 						onClick={(): void => {
 							onClick(i);
 						}}
-						style={{ textAlign: 'center', justifyContent: 'flex-center' }}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
 						{v?.id}
 					</Row>,
@@ -66,7 +66,16 @@ const VolumeListTable: FC<{
 						onClick={(): void => {
 							onClick(i);
 						}}
-						style={{ textAlign: 'center' }}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
+					>
+						{v?.rootpath}
+					</Row>,
+					<Row
+						key={i}
+						onClick={(): void => {
+							onClick(i);
+						}}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
 						<Text color={v?.isCurrent ? 'text' : 'error'}>{v?.isCurrent ? YES : NO}</Text>
 					</Row>,
@@ -75,7 +84,7 @@ const VolumeListTable: FC<{
 						onClick={(): void => {
 							onClick(i);
 						}}
-						style={{ textAlign: 'center' }}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
 						<Text color={v?.compressBlobs ? 'text' : 'error'}>{v?.compressBlobs ? YES : NO}</Text>
 					</Row>

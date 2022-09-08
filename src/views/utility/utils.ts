@@ -866,12 +866,20 @@ export const tableHeader = [
 		label: 'ID',
 		width: '5%',
 		bold: true,
-		align: 'center'
+		align: 'left'
 	},
 	{
 		id: 'name',
 		label: 'Name',
-		width: '62%',
+		width: '10%',
+		bold: true,
+		align: 'left'
+	},
+
+	{
+		id: 'path',
+		label: 'Path',
+		width: '47%',
 		bold: true,
 		align: 'left'
 	},
@@ -879,7 +887,7 @@ export const tableHeader = [
 		id: 'current',
 		label: 'Current',
 		width: '12%',
-		align: 'center',
+		align: 'left',
 		bold: true
 	},
 	{
@@ -887,7 +895,7 @@ export const tableHeader = [
 		label: 'Compression',
 		i18nAllLabel: 'All',
 		width: '14%',
-		align: 'center',
+		align: 'left',
 		bold: true
 	}
 ];
@@ -898,27 +906,27 @@ export const indexerHeaders = [
 		label: 'ID',
 		width: '5%',
 		bold: true,
-		align: 'center'
+		align: 'left'
 	},
 	{
 		id: 'name',
 		label: 'Name',
-		width: '62%',
+		width: '10%',
 		bold: true,
 		align: 'left'
 	},
 	{
 		id: 'path',
 		label: 'Path',
-		width: '12%',
-		align: 'center',
+		width: '71%',
+		align: 'left',
 		bold: true
 	},
 	{
 		id: 'current',
 		label: 'Current',
 		width: '14%',
-		align: 'center',
+		align: 'left',
 		bold: true
 	}
 ];
