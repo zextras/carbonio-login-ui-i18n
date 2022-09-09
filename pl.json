@@ -166,7 +166,7 @@
         },
         "serverName#1_volumes": "Woluminy NazwaSerwera#1",
         "serverName_volumes": "Woluminy {{serverName}}",
-        "invalid_prefix": "Prefiks nie może zawierać spacji, dozwolone litery to a-z, A-z i znaki specjalne /-."
+        "invalid_prefix": "Prefiks nie może zawierać spacji, dozwolone litery to a-z, A-Z i znaki specjalne /-."
     },
     "core": {
         "subscription": {
@@ -381,7 +381,7 @@
         "deleteing": "Usuwanie ",
         "enable_toaster_notification_for_new_calendar_events": "włącz powiadomienia pop-up dla nowych zdarzeń kalendarza",
         "range_time": "Zakres czasu",
-        "search_dot": "Wyszukaj ...",
+        "search_dot": "Wyszukaj …",
         "virtual_host_info_msg": "Wirtualne hosty pozwalają systemowi na stworzenie domyślnej domeny dla logowania użytkowników.",
         "virtual_host_enable_info_msg": "Kliknij w przycisk DODAJ, aby włączyć nowe.",
         "number_of_items_to_fetch_when_scrolling": "Liczba załadowywanych elementów przy przewijaniu",
@@ -493,8 +493,8 @@
         "index_volumes": "Indeksuj Woluminy",
         "inbound_smtp_host_name": "Nazwa przychodzącego hosta SMTP",
         "import_an_external_backup": "Importuj zewnętrzny Backup",
-        "i_am_looking_for_this_account": "Szukam tego konta...",
-        "i_am_looking_for_member": "Szukam członka...",
+        "i_am_looking_for_this_account": "Szukam tego konta…",
+        "i_am_looking_for_member": "Szukam członka…",
         "https": "https",
         "http": "http",
         "here_you_will_find": "Tutaj znajdziesz",
@@ -658,7 +658,7 @@
         "verify_connector_verified": " ZWERYFIKOWANO",
         "username_without": "nazwa użytkownika bez",
         "username_with": "nazwa użytkownika z",
-        "type_an_account_dot": "Wprowadź konto ...",
+        "type_an_account_dot": "Wprowadź konto  …",
         "type_accounts_paste_them_here": "Wprowadź konta lub wklej je tutaj",
         "the_has_been_created_success": "{{name}} zostało stworzone pomyślnie",
         "start": "start",
@@ -690,8 +690,8 @@
         "min_Threshold": "Min. próg",
         "maximum_conflict": "Max. konflikt",
         "max_quota_allowed": "Max. dozwolony przydział",
-        "max_email_quota_you_can_manage_is": "Max. przydział e-mail, którym możesz zarządzać to...",
-        "max_account_you_can_manage_is": "Max. liczba kont, którymi możesz zarządzać to...",
+        "max_email_quota_you_can_manage_is": "Max. przydział e-mail, którym możesz zarządzać to…",
+        "max_account_you_can_manage_is": "Max. liczba kont, którymi możesz zarządzać to…",
         "main_settings": "Główne ustawienia",
         "main": "Główne",
         "mailing_list_name": "Nazwa listy mailingowej",
@@ -737,7 +737,7 @@
         "account_quota_mb": "Przydział konta (MB)",
         "account_data_copy_to_account": "Dane konta zostaną skopiowane na te konto",
         "I_want_to_see_this_server_details": "chcę zobaczyć szczegóły tego serwera",
-        "\"max_email_quota_you_can_manage_is": "Max. przydział e-mail, którym możesz zarządzać to..."
+        "\"max_email_quota_you_can_manage_is": "Max. przydział e-mail, którym możesz zarządzać to…"
     },
     "message": {
         "snackbar": {
@@ -910,13 +910,13 @@
         "enable_auto_add_contacts": "Włącz automatyczne dodawanie kontaktów",
         "distribution_list_folder": "Folder Listy dystrybucyjnej",
         "display_by": "Wyświetl według",
-        "display_a_warning_when_administrators_try_to_navigate_away_from_Zimbra_Administration_Console": "Wyświetl ostrzeżenie kiedy administratorzy spróbują opuścić Konsolę Administracyjną Zimbry",
+        "display_a_warning_when_administrators_try_to_navigate_away_from_Zimbra_Administration_Console": "Wyświetl ostrzeżenie kiedy administratorzy spróbują opuścić Konsolę Administracyjną Carbonio",
         "disabling_pool": "Wyłączanie puli",
         "default_charset": "Domyślny zestaw znaków",
         "days_hours_minutes_sec": "Dni / Godziny / Minuty / Sekundy",
         "create_cos_success_msg": "Wyłączasz pulę na {{serverName}}. Żadna skrzynka pocztowa nie zostanie przeniesiona. Czy na pewno chcesz ją usunąć?",
         "auto_delete_duplicate_messages": "Automatycznie usuwaj zduplikowane wiadomości",
-        "auto_decline_if_inviter_is_blacklisted": "Automatycznie odrzucaj jeśli zapraszający znajduje się na czarnej liście",
+        "auto_decline_if_inviter_is_blacklisted": "Automatycznie odrzucaj jeśli nadawca znajduje się na czarnej liście",
         "audible_reminder_notification": "Dźwiękowe przypomnienie",
         "allow_sending_from_any_address": "Zezwalaj na wysyłanie z jakiegokolwiek adresu",
         "allow_sending_cancellation_mail": "Zezwalaj na wysyłanie wiadomości e-mail o anulowaniu",
