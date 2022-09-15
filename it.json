@@ -591,7 +591,8 @@
         "main": "Principale",
         "max_account_you_can_manage_is": "Il numero massimo di account che puoi gestire è...",
         "max_quota_allowed": "Quota Massima Consentita",
-        "min_Threshold": "Soglia Minima"
+        "min_Threshold": "Soglia Minima",
+        "configuration_lbl": "Configurazione"
     },
     "message": {
         "snackbar": {
@@ -913,7 +914,11 @@
         "search_a_specific_server": "Cerca un server",
         "search_for_people": "Cerca utenti",
         "sms_reminders": "Promemoria SMS",
-        "yes_disable": "Sì, disabilita"
+        "yes_disable": "Sì, disabilita",
+        "allow_sending_cancellation_mail": "Consenti cancellazione dell'invio di una e-mail",
+        "audible_reminder_notification": "Notifica sonora per i promemoria",
+        "enable_auto_add_contacts": "Abilita aggiunta automatica dei contatti",
+        "show_time_zone_lists_in_view": "Mostra l'elenco dei fusi orari nella vista dell'appuntamento"
     },
     "lable": {
         "delete_button": "ELIMINA"
