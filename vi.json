@@ -236,7 +236,8 @@
         "volume_server": "Máy chủ",
         "enable_current_helptext": "Bật tùy chọn này sẽ vô hiệu hóa âm lượng đang hoạt động hiện tại.",
         "required": "Yêu cầu",
-        "select_a_server": "Lựa chọn một Máy chủ"
+        "select_a_server": "Lựa chọn một Máy chủ",
+        "configuration_lbl": "Cấu hình"
     },
     "timezone": {
         "australia_sydney": "{{value}} Canberra, Melbourne, Sydney",
@@ -579,7 +580,8 @@
             "work_week": "Xem theo tuần làm việc"
         },
         "enable_smime": "Bật S/MIME:",
-        "general": "Chung"
+        "general": "Chung",
+        "min_new_check_interval_value": "Giá trị"
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Gửi dữ liệu lỗi đầy đủ tới Zextras"
