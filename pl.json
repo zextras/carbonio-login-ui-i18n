@@ -839,7 +839,6 @@
         "login_is_disabled": "Logowanie jest wyłączone",
         "no_owner_search_information_message": "Nie ma tutaj żadnych właścicieli. Wyszukaj użytkownika i kliknij przycisk DODAJ.",
         "send_new_members_notification_for_share_assigned_to_this_group": "Wysyłaj nowym członkom powiadomienie o udostępnieniu/delegacji przypisanej do tej grupy",
-        "Maintenance": "Wsparcie",
         "detail_error": "{{name}}",
         "enable_current_helptext": "Włączenie tej opcji spowoduje wyłączenie aktywnego bieżącego woluminu.",
         "required": "Wymagany",

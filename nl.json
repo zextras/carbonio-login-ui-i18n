@@ -461,7 +461,6 @@
             "tuesday": "Dinsdag",
             "wednesday": "Woensdag"
         },
-        "Maintenance": "Onderhoud",
         "detail_error": "{{name}}",
         "enable_current_helptext": "Door deze optie in te schakelen wordt het huidige actieve volume uitgeschakeld.",
         "required": "Vereist",

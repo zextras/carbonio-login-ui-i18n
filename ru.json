@@ -537,7 +537,6 @@
         "deleting_account_content_2": "Удаление аккаунта НАВСЕГДА удаляет все данные. ",
         "apply_hsm_policy_after_the_restore": "Применить политики HSM после восстановления",
         "deleting_account_content_1": "Вы уверены, что хотите удалить <bold>{{name}}</bold>?",
-        "Maintenance": "Обслуживание",
         "required": "Обязательный",
         "select_a_server": "Выбрать Сервер",
         "volume_create": "СОЗДАТЬ",

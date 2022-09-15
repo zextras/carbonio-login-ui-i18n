@@ -143,7 +143,6 @@
         "internal": "Interno",
         "locked": "Bloqueada",
         "log": "Log",
-        "logout_allowed_user_agent": "User Agents permitidos para cierre de sesión",
         "logout_redirect_url": "URL de redireccionamiento del cierre de sesión",
         "mail_size": "Tamaño del e-mail",
         "maintenance": "Mantenimiento",
@@ -462,7 +461,6 @@
             "tuesday": "Martes",
             "wednesday": "Miércoles"
         },
-        "Maintenance": "Mantenimiento",
         "required": "Necesario",
         "select_a_server": "Seleccionar un servidor",
         "detail_error": "{{name}}",

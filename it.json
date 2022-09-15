@@ -525,7 +525,6 @@
         "appointments_default_duration": "Durata predefinita di un appuntamento",
         "volume_create": "CREA",
         "volume_server": "Server",
-        "Maintenance": "Manutenzione",
         "detail_error": "{{name}}",
         "enable_current_helptext": "Abilitando questa opzione, l'attuale volume attivo verrà disattivato.",
         "required": "Richiesto",

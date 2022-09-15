@@ -234,7 +234,6 @@
         },
         "restore_data_source": "Khôi phục Dữ liệu nguồn",
         "volume_server": "Máy chủ",
-        "Maintenance": "Bảo trì",
         "enable_current_helptext": "Bật tùy chọn này sẽ vô hiệu hóa âm lượng đang hoạt động hiện tại.",
         "required": "Yêu cầu",
         "select_a_server": "Lựa chọn một Máy chủ"

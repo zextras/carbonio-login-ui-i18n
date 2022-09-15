@@ -498,7 +498,6 @@
             "tuesday": "Salı",
             "wednesday": "Çarşamba"
         },
-        "Maintenance": "Bakım",
         "detail_error": "{{name}}",
         "required": "Gerekli",
         "select_a_server": "Sunucu Seç",

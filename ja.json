@@ -460,7 +460,6 @@
         "mailing_list": "メーリングリスト",
         "mail_size": "メールサイズ",
         "logout_redirect_url": "ログアウトリダイレクトURL",
-        "login_allowed_user_agent": "ログイン許可ユーザーエージェント",
         "log": "ログ",
         "list_url": "リストURL",
         "initial_mail_serach": "メール検索を開始する",
@@ -633,7 +632,6 @@
         "enable_current_helptext": "このオプションを有効にすると、現在アクティブなボリュームが無効になります。",
         "select_a_server": "サーバーを選択してください",
         "volume_create": "作成",
-        "Maintenance": "メンテナンス",
         "required": "必須",
         "volume_server": "サーバー"
     },
