@@ -633,7 +633,8 @@
         "detail_error": "{{name}}",
         "enable_current_helptext": "การเปิดใช้งานตัวเลือกนี้จะปิดใช้งานโวลุ่มที่ใช้งานอยู่ในปัจจุบัน",
         "required": "ที่จำเป็น",
-        "volume_server": "เซิร์ฟเวอร์"
+        "volume_server": "เซิร์ฟเวอร์",
+        "configuration_lbl": "การกำหนดค่า"
     },
     "message": {
         "snackbar": {
@@ -863,7 +864,8 @@
         "saved_searches": "การค้นหาที่บันทึกไว้",
         "send_read_receipts": "ส่งการแจ้งเมื่อผู้รับเปิดอ่าน",
         "sharing": "การใช้ร่วมกัน",
-        "tagging": "การแท็ก"
+        "tagging": "การแท็ก",
+        "min_new_check_interval_value": "ค่า"
     },
     "connection": {
         "access_key": "รหัสการเข้าถึง",
