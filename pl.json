@@ -846,7 +846,8 @@
         "volume_create": "STWÓRZ",
         "volume_detail_error": "{{message}}",
         "volume_server": "Serwer",
-        "volume_type_edited": "{{message}}"
+        "volume_type_edited": "{{message}}",
+        "configuration_lbl": "Konfiguracja"
     },
     "message": {
         "snackbar": {
@@ -1078,7 +1079,7 @@
     },
     "welcome_to_carbonio": "{{adminName}}, witaj w Carbonio {{carbonioVersion}}!",
     "select_section_from_left_menu": "Wybierz sekcję z menu po lewej stronie",
-    "select_domain_or_create_new": "Wybierz domenę, aby móc nią zarządzać lub kliknij przcisk Stwórz, aby stworzyć nową.",
+    "select_domain_or_create_new": "Wybierz domenę z menu po lewej stronie lub kliknij przcisk Stwórz, aby stworzyć nową.",
     "select_cos_or_create_new_cos": "Wybierz Class of Service (CoS), aby nim zarządzać lub kliknij przycisk \"Stwórz\", aby stworzyć nowe.",
     "select_bucket_or_create_new_bucket": "Wygląda na to, że nie ustawiłeś jeszcze typu bucketa. Kliknij przycisk \"NOWY BUCKET\", aby go stworzyć.",
     "new_bucket_summary": "PODSUMOWANIE",
@@ -1148,7 +1149,7 @@
         "out_of_office_reply": "Odpowiedź Poza biurem",
         "notify_changes_by_delegated_access": "Powiadamiaj o zmianach dokonanych przy użyciu delegowanego dostępu",
         "new_mail_notification": "Nowe powiadomienie mailowe",
-        "min_new_check_interval_value": "Min. interwał nowego sprawdzenia (wartość)",
+        "min_new_check_interval_value": "Wartość",
         "mail_signatures": "Podpisy e-mail",
         "mail_signature": "Podpis e-mail",
         "initial_search_preference": "Preferencje wstępnego wyszukiwania",
