@@ -466,7 +466,8 @@
         "detail_error": "{{name}}",
         "enable_current_helptext": "Activando esta opción deshabilitará el volumen activo actual.",
         "volume_create": "CREAR",
-        "volume_server": "Servidor"
+        "volume_server": "Servidor",
+        "configuration_lbl": "Configuración"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -871,7 +872,8 @@
         "saved_searches": "Búsquedas guardadas",
         "send_read_receipts": "Enviar confirmación de lectura",
         "sharing": "Compartir",
-        "tagging": "Etiquetado"
+        "tagging": "Etiquetado",
+        "min_new_check_interval_value": "Valor"
     },
     "connection": {
         "access_key": "Clave de acceso",
