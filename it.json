@@ -359,7 +359,7 @@
         "server_settings": "Impostazioni Server",
         "servers_list": "Lista dei server",
         "show_reminder": "Mostra Promemoria",
-        "sso_logout_redirect_admin_to_msg": "Il logout SSO reindirizzerà l'amministratore a",
+        "sso_logout_redirect_admin_to_msg": "Al momento del logout, l'amministratore verrà reindirizzato a questo URL",
         "storages": "Storage",
         "this_list_is_empty": "Questa lista è vuota.",
         "uuid": "uuid",
@@ -608,7 +608,31 @@
         "set_as_secondary_button": "IMPOSTA COME SECONDARIO",
         "share_message_to_new_member": "Condividi messaggio con i nuovi membri",
         "smime": "S/MIME",
-        "specified_domain_not_exist": "Il dominio specificato non esiste"
+        "specified_domain_not_exist": "Il dominio specificato non esiste",
+        "email_addready_exists": "L'indirizzo email {{name}} esiste già",
+        "no_owner_search_information_message": "Non sono presenti proprietari. Cerca un utente e clicca il pulsante AGGIUNGI.",
+        "type_an_account_dot": "Digita un account…",
+        "type_name_your_domain_will_have": "Digita il nome da usare per il tuo dominio",
+        "username_with": "nome utente con",
+        "username_without": "nome utente senza",
+        "volume_active": "{{volumeName}} è attualmente attivo",
+        "virtual_host_user_msg_1": "Per esempio, è possibile rendere il servizio disponibile sia per mail.example.com che per webamil.example.com.",
+        "volume_back_button": "INDIETRO",
+        "volume_check": "CONTROLLA",
+        "volume_created": "Volume creato con successo",
+        "volume_deleted": "Volume eliminato con successo",
+        "volume_detail_error": "{{message}}",
+        "volume_edited": "Volume modificato con successo",
+        "volume_max_quota_allowed": "Quota Massima Consentita",
+        "volume_min_threshold": "Soglia Minima",
+        "volume_type_edited": "{{message}}",
+        "what_is_a_gal": "Cos'è la GAL?",
+        "who_can_send_mails_to_this_list": "Chi può inviare e-mail a questa lista?",
+        "default_calendar_view": "Vista predefinita calendario",
+        "restore_account_has_added_operation_queue": "Il ripristino dell'account è stato aggiunto con successo alla coda delle operazioni",
+        "contact_options": "Opzioni Contatto",
+        "who_is_in_this_list": "Chi è in questa lista?",
+        "who_needs_receive_this_email": "Chi deve ricevere questa e-mail?"
     },
     "message": {
         "snackbar": {
@@ -762,10 +786,10 @@
     },
     "create_new_bucket": "NUOVO BUCKET",
     "log": "Log",
-    "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo.",
+    "select_domain_or_create_new": "Seleziona una dominio dal menù sulla sinistra oppure seleziona il tasto \"Crea\" per crearne uno nuovo.",
     "new_bucket_connection": "CONNESSIONE",
     "create_new_domain": "Crea Nuovo Dominio",
-    "select_bucket_or_create_new_bucket": "sembra che tu non abbia ancora impostato un tipo di bucket. Clicca il bottone NUOVO BUCKET per crearne uno nuovo.",
+    "select_bucket_or_create_new_bucket": "Sembra che tu non abbia ancora impostato un tipo di bucket. Clicca il bottone NUOVO BUCKET per crearne uno nuovo.",
     "many_domain_info_msg": "Sembrano esserci molti domini! Quale vuoi visualizzare? Inizia a digitare il nome per filtrarli.",
     "backup": {
         "compression_level": "Livello Compressione",
@@ -942,7 +966,7 @@
     },
     "many_cos_info_msg": "Sembrano esserci molte COS! Quale vuoi visualizzare? Inizia a digitare il nome per filtrarle.",
     "new_bucket_summary": "RIEPILOGO",
-    "select_cos_or_create_new_cos": "Seleziona una Classe di Servizio per gestirla oppure seleziona il tasto Crea per crearne uno nuova.",
+    "select_cos_or_create_new_cos": "Seleziona una Classe di Servizio (CoS) per gestirla oppure seleziona il tasto \"Crea\" per crearne uno nuova.",
     "select_section_from_left_menu": "Seleziona una voce dal menu a sinistra",
     "locale": {
         "label_german": "Tedesco - {{value}}",
@@ -985,7 +1009,8 @@
         }
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras"
+        "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras",
+        "analytics_sub_1": "I tuoi dati sono al sicuro. Tutte le informazioni collezionate resteranno anonime. Saranno utilizzate dal nostro team esclusivamente per capire come migliorare ulteriormente Carbonio."
     },
     "reminder": {
         "minute": "{{count}} minuto",
@@ -1071,5 +1096,8 @@
         "secret_key": "Chiave Segreta"
     },
     "click_new_bucket_button_to_create_new_one": "Seleziona il pulsante NUOVO BUCKET per crearne uno nuovo.",
-    "have_not_setup_bucket_type": "Sembra che tu non abbia selezionato il tipo di bucket"
+    "have_not_setup_bucket_type": "Sembra che tu non abbia selezionato il tipo di bucket",
+    "volume": {
+        "serverName_volumes": "Volumi {{serverName}}"
+    }
 }
