@@ -15,6 +15,7 @@ import { Section } from '../../../../app/component/section';
 import CreateAccountSectionView from './account-create-section';
 import CreateOtpSectionView from './account-otp-section';
 import { AccountContext } from './account-context';
+import { createAccountRequest } from '../../../../../services/create-account';
 
 const AccountDetailContainer = styled(Container)`
 	z-index: 10;
@@ -74,8 +75,8 @@ interface AccountDetailObj {
 // eslint-disable-next-line no-empty-pattern
 const CreateAccount: FC<{
 	setShowCreateAccountView: any;
-	createAccountReq: any;
-}> = ({ setShowCreateAccountView, createAccountReq }) => {
+	getAccountList: any;
+}> = ({ setShowCreateAccountView, getAccountList }) => {
 	const { t } = useTranslation();
 	const createSnackbar = useSnackbar();
 	const domainName = useDomainStore((state) => state.domain?.name);
@@ -101,6 +102,8 @@ const CreateAccount: FC<{
 	});
 
 	const [wizardData, setWizardData] = useState();
+	const [activeStep, setActiveStep] = useState('');
+	const goToStep = (step: string): string => step;
 
 	const wizardSteps = useMemo(
 		() => [
@@ -108,7 +111,7 @@ const CreateAccount: FC<{
 				name: 'details',
 				label: t('label.details', 'DETAILS'),
 				icon: 'Edit2Outline',
-				view: CreateOtpSectionView, // CreateAccountDetailSection,
+				view: CreateAccountDetailSection,
 				CancelButton: (props: any): ReactElement => (
 					<Button
 						{...props}
@@ -151,7 +154,6 @@ const CreateAccount: FC<{
 				PrevButton: (props: any): ReactElement => <></>,
 				NextButton: (props: any) => (
 					<Button
-						{...props}
 						label={t('commons.create_with_there_data', 'CREATE WITH THESE DATA')}
 						icon="PersonOutline"
 						iconPlacement="right"
@@ -182,7 +184,7 @@ const CreateAccount: FC<{
 									replace: true
 								});
 							} else {
-								createAccountReq(
+								createAccountRequest(
 									{
 										givenName: accountDetail?.givenName,
 										initials: accountDetail?.initials,
@@ -199,7 +201,40 @@ const CreateAccount: FC<{
 									},
 									`${accountDetail?.name}@${domainName}`,
 									accountDetail?.password || ''
-								);
+								)
+									.then((data) => {
+										const isCreateAccount = data;
+										if (isCreateAccount) {
+											setActiveStep('otp');
+											createSnackbar({
+												key: 'success',
+												type: 'success',
+												label: t(
+													'label.account_created_successfully',
+													'The account has been created successfully'
+												),
+												autoHideTimeout: 3000,
+												hideButton: true,
+												replace: true
+											});
+										}
+										getAccountList();
+									})
+									.catch((error) => {
+										createSnackbar({
+											key: 'error',
+											type: 'error',
+											label: error?.message
+												? error?.message
+												: t(
+														'label.something_wrong_error_msg',
+														'Something went wrong. Please try again.'
+												  ),
+											autoHideTimeout: 3000,
+											hideButton: true,
+											replace: true
+										});
+									});
 							}
 						}}
 					/>
@@ -210,26 +245,16 @@ const CreateAccount: FC<{
 				label: t('label.otp', 'OTP'),
 				icon: 'KeyOutline',
 				view: CreateOtpSectionView,
-				CancelButton: (props: any) => (
-					<Button
-						{...props}
-						type="outlined"
-						key="wizard-cancel"
-						label={'CANCEL'}
-						color="secondary"
-						icon="CloseOutline"
-						iconPlacement="right"
-						onClick={(): void => setShowCreateAccountView(false)}
-					/>
-				),
-				PrevButton: (props: any): ReactElement => <></>,
+				clickDisabled: true,
+				CancelButton: () => <></>,
+				PrevButton: (): ReactElement => <></>,
 				NextButton: (props: any) => (
 					<Button
 						{...props}
-						label={t('commons.create_with_there_data', 'CREATE WITH THESE DATA')}
+						label={t('commons.i_have_sent_data_to_user', 'I HAVE SENT THE DATA TO THE USER')}
 						icon="PersonOutline"
 						iconPlacement="right"
-						// onClick={(): void => {}}
+						onClick={(): void => setShowCreateAccountView(false)}
 					/>
 				)
 			}
@@ -252,23 +277,25 @@ const CreateAccount: FC<{
 			accountDetail?.zimbraCOSId,
 			accountDetail?.name,
 			createSnackbar,
-			createAccountReq,
-			domainName
+			domainName,
+			getAccountList
 		]
 	);
 
 	const onComplete = useCallback(() => {
 		setShowCreateAccountView(false);
 	}, [setShowCreateAccountView]);
-
 	return (
 		<AccountDetailContainer background="gray5" mainAlignment="flex-start">
-			<AccountContext.Provider value={{ accountDetail, setAccountDetail }}>
+			<AccountContext.Provider
+				value={{ accountDetail, setAccountDetail, setShowCreateAccountView }}
+			>
 				<HorizontalWizard
 					steps={wizardSteps}
 					Wrapper={WizardInSection}
 					onChange={setWizardData}
 					onComplete={onComplete}
+					activeStep={activeStep}
 					setToggleWizardSection={setShowCreateAccountView}
 				/>
 			</AccountContext.Provider>
