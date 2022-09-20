@@ -35,10 +35,9 @@ import { AccountContext } from '../account-context';
 // eslint-disable-next-line no-empty-pattern
 const EditAccount: FC<{
 	setShowEditAccountView: any;
-	createAccountReq: any;
 	selectedAccount: any;
 	getAccountList: any;
-}> = ({ setShowEditAccountView, createAccountReq, selectedAccount, getAccountList }) => {
+}> = ({ setShowEditAccountView, selectedAccount, getAccountList }) => {
 	const { t } = useTranslation();
 	const createSnackbar = useSnackbar();
 	const domainName = useDomainStore((state) => state.domain?.name);
