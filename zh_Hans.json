@@ -440,7 +440,8 @@
         "required": "必要",
         "select_a_server": "选择服务器",
         "volume_create": "创建",
-        "volume_server": "服务器"
+        "volume_server": "服务器",
+        "global_address_list": "全局地址列表"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
