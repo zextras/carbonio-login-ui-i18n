@@ -17,6 +17,7 @@ import {
 	useSnackbar
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+import { soapFetch } from '@zextras/carbonio-shell-ui';
 import { fetchSoap } from '../../../../services/bucket-service';
 import { INDEXERES, PRIMARIES, SECONDARIES } from '../../../../constants';
 
@@ -30,6 +31,7 @@ const ServerVolumeDetailsPanel: FC<{
 	getAllVolumesRequest: any;
 	detailData: any;
 	setDetailData: any;
+	selectedServerId: string;
 }> = ({
 	setToggleDetailPage,
 	volumeDetail,
@@ -39,7 +41,8 @@ const ServerVolumeDetailsPanel: FC<{
 	changeSelectedVolume,
 	getAllVolumesRequest,
 	detailData,
-	setDetailData
+	setDetailData,
+	selectedServerId
 }) => {
 	const { t } = useTranslation();
 	const createSnackbar = useSnackbar();
@@ -50,27 +53,34 @@ const ServerVolumeDetailsPanel: FC<{
 	const [toggleSetAsIcon, setToggleSetAsIcon] = useState('ArrowheadDown');
 
 	const getVolumeDetailData = useCallback((): void => {
-		fetchSoap('GetVolumeRequest', {
-			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxPowerstore',
-			id: volumeDetail?.id
-		})
-			.then((response) => {
-				if (response?.Body?.GetVolumeResponse?.volume[0]?.type === 1) {
+		soapFetch(
+			'GetVolume',
+			{
+				_jsns: 'urn:zimbraAdmin',
+				module: 'ZxPowerstore',
+				id: volumeDetail?.id
+			},
+			undefined,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			selectedServerId
+		)
+			.then((response: any) => {
+				if (response?.volume[0]?.type === 1) {
 					setTypeLabel(PRIMARIES);
-				} else if (response?.Body?.GetVolumeResponse?.volume[0]?.type === 2) {
+				} else if (response?.volume[0]?.type === 2) {
 					setTypeLabel(SECONDARIES);
-				} else if (response?.Body?.GetVolumeResponse?.volume[0]?.type === 10) {
+				} else if (response?.volume[0]?.type === 10) {
 					setTypeLabel(INDEXERES);
 				}
 				setDetailData({
-					name: response?.Body?.GetVolumeResponse?.volume[0]?.name,
-					id: response?.Body?.GetVolumeResponse?.volume[0]?.id,
-					type: response?.Body?.GetVolumeResponse?.volume[0]?.type,
-					compressBlobs: response?.Body?.GetVolumeResponse?.volume[0]?.compressBlobs,
-					isCurrent: response?.Body?.GetVolumeResponse?.volume[0]?.isCurrent,
-					rootpath: response?.Body?.GetVolumeResponse?.volume[0]?.rootpath,
-					compressionThreshold: response?.Body?.GetVolumeResponse?.volume[0]?.compressionThreshold
+					name: response?.volume[0]?.name,
+					id: response?.volume[0]?.id,
+					type: response?.volume[0]?.type,
+					compressBlobs: response?.volume[0]?.compressBlobs,
+					isCurrent: response?.volume[0]?.isCurrent,
+					rootpath: response?.volume[0]?.rootpath,
+					compressionThreshold: response?.volume[0]?.compressionThreshold
 				});
 			})
 			.catch((error) => {
@@ -91,7 +101,8 @@ const ServerVolumeDetailsPanel: FC<{
 		setDetailData,
 		setToggleDetailPage,
 		t,
-		volumeDetail?.id
+		volumeDetail?.id,
+		selectedServerId
 	]);
 
 	useEffect(() => {
@@ -99,16 +110,23 @@ const ServerVolumeDetailsPanel: FC<{
 	}, [getVolumeDetailData, volumeDetail, modifyVolumeToggle]);
 
 	const handleTypeToggleClick = useCallback((): void => {
-		fetchSoap('ModifyVolumeRequest', {
-			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxCore',
-			action: 'ModifyVolumeRequest',
-			id: detailData?.id,
-			volume: {
+		soapFetch(
+			'ModifyVolume',
+			{
+				_jsns: 'urn:zimbraAdmin',
+				module: 'ZxCore',
+				action: 'ModifyVolumeRequest',
 				id: detailData?.id,
-				type: typeLabel === PRIMARIES ? '2' : '1'
-			}
-		})
+				volume: {
+					id: detailData?.id,
+					type: typeLabel === PRIMARIES ? '2' : '1'
+				}
+			},
+			undefined,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			selectedServerId
+		)
 			.then(() => {
 				createSnackbar({
 					key: '1',
@@ -133,7 +151,15 @@ const ServerVolumeDetailsPanel: FC<{
 					autoHideTimeout: 5000
 				});
 			});
-	}, [getAllVolumesRequest, createSnackbar, detailData?.id, getVolumeDetailData, t, typeLabel]);
+	}, [
+		getAllVolumesRequest,
+		createSnackbar,
+		detailData?.id,
+		getVolumeDetailData,
+		t,
+		typeLabel,
+		selectedServerId
+	]);
 
 	useEffect(() => {
 		if (typeLabel === PRIMARIES) {

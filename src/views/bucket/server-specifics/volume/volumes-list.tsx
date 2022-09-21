@@ -228,14 +228,21 @@ const VolumesDetailPanel: FC = () => {
 	}, [createSnackbar, t, selectedServerId]);
 
 	const deleteHandler = (id: any): any => {
-		fetchSoap('DeleteVolumeRequest', {
-			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxCore',
-			action: 'DeleteVolumeRequest',
-			id
-		})
-			.then((res) => {
-				if (res?.Body?.DeleteVolumeResponse?._jsns === 'urn:zimbraAdmin') {
+		soapFetch(
+			'DeleteVolume',
+			{
+				_jsns: 'urn:zimbraAdmin',
+				module: 'ZxCore',
+				action: 'DeleteVolumeRequest',
+				id
+			},
+			undefined,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			selectedServerId
+		)
+			.then((res: any) => {
+				if (res?._jsns === 'urn:zimbraAdmin') {
 					createSnackbar({
 						key: '1',
 						type: 'success',
@@ -287,20 +294,27 @@ const VolumesDetailPanel: FC = () => {
 		compressBlobs: number;
 		compressionThreshold: string;
 	}): Promise<any> => {
-		await fetchSoap('CreateVolumeRequest', {
-			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxCore',
-			action: 'CreateVolumeRequest',
-			volume: attr
-		})
+		await soapFetch(
+			'CreateVolume',
+			{
+				_jsns: 'urn:zimbraAdmin',
+				module: 'ZxCore',
+				action: 'CreateVolumeRequest',
+				volume: attr
+			},
+			undefined,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			selectedServerId
+		)
 			.then(async (res: any) => {
 				if (attr?.isCurrent === 1) {
 					await fetchSoap('SetCurrentVolumeRequest', {
 						_jsns: 'urn:zimbraAdmin',
 						module: 'ZxCore',
 						action: 'SetCurrentVolumeRequest',
-						id: res?.Body?.CreateVolumeResponse?.volume[0]?.id,
-						type: res?.Body?.CreateVolumeResponse?.volume[0]?.type
+						id: res?.volume[0]?.id,
+						type: res?.volume[0]?.type
 					})
 						.then(() => {
 							createSnackbar({
@@ -337,9 +351,11 @@ const VolumesDetailPanel: FC = () => {
 				createSnackbar({
 					key: 'error',
 					type: 'error',
-					label: t('label.volume_detail_error', '{{message}}', {
-						message: error
-					}),
+					label: error?.message
+						? error?.message
+						: t('label.volume_detail_error', '{{message}}', {
+								message: error
+						  }),
 					autoHideTimeout: 5000
 				});
 				return error;
@@ -375,6 +391,7 @@ const VolumesDetailPanel: FC = () => {
 						setDetailData={setDetailData}
 						changeSelectedVolume={changeSelectedVolume}
 						getAllVolumesRequest={getAllVolumesRequest}
+						selectedServerId={selectedServerId}
 					/>
 				</AbsoluteContainer>
 			)}
@@ -385,6 +402,7 @@ const VolumesDetailPanel: FC = () => {
 						setmodifyVolumeToggle={setmodifyVolumeToggle}
 						changeSelectedVolume={changeSelectedVolume}
 						getAllVolumesRequest={getAllVolumesRequest}
+						selectedServerId={selectedServerId}
 					/>
 				</AbsoluteContainer>
 			)}
