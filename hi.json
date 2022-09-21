@@ -412,7 +412,8 @@
         "select_a_server": "कोई सर्वर चुनें",
         "volume_create": "बनाएँ",
         "volume_server": "सर्वर",
-        "configuration_lbl": "कॉन्फ़िगुरेशन"
+        "configuration_lbl": "कॉन्फ़िगुरेशन",
+        "global_address_list": "वै‍श्विक एड्रैस सूची"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
