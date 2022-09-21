@@ -440,7 +440,8 @@
         "volume_create": "ERSTELLEN",
         "select_a_server": "Server auswählen",
         "volume_server": "Server",
-        "configuration_lbl": "Konfiguration"
+        "configuration_lbl": "Konfiguration",
+        "global_address_list": "Globale Adressliste"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
