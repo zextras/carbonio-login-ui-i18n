@@ -631,7 +631,12 @@
         "restore_account_has_added_operation_queue": "Il ripristino dell'account è stato aggiunto con successo alla coda delle operazioni",
         "contact_options": "Opzioni Contatto",
         "who_is_in_this_list": "Chi è in questa lista?",
-        "who_needs_receive_this_email": "Chi deve ricevere questa e-mail?"
+        "who_needs_receive_this_email": "Chi deve ricevere questa e-mail?",
+        "disabled": "Disabilitato",
+        "local": "Locale",
+        "na": "N/D",
+        "purge": "Elimina",
+        "scheduled": "Pianificata"
     },
     "message": {
         "snackbar": {
@@ -1085,7 +1090,8 @@
         "forwarding_addresses_specified_by_the_user": "Indirizzi di inoltro specificati dall'utente",
         "search_fro_people": "Cerca utenti",
         "this_account_is_a_direct_member_of": "Questo account è un membro diretto di",
-        "this_account_is_a_in_direct_member_of": "Questo account è un membro indiretto di"
+        "this_account_is_a_in_direct_member_of": "Questo account è un membro indiretto di",
+        "send": "INVIA"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
