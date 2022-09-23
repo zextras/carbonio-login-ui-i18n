@@ -467,7 +467,12 @@
         "volume_create": "CREAR",
         "volume_server": "Servidor",
         "configuration_lbl": "Configuración",
-        "global_address_list": "Libreta general de direcciones"
+        "global_address_list": "Libreta general de direcciones",
+        "disabled": "Desactivado",
+        "local": "Local",
+        "na": "N/A",
+        "purge": "Eliminar",
+        "scheduled": "Programado"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -869,7 +874,8 @@
         "send_read_receipts": "Enviar confirmación de lectura",
         "sharing": "Compartir",
         "tagging": "Etiquetado",
-        "min_new_check_interval_value": "Valor"
+        "min_new_check_interval_value": "Valor",
+        "send": "ENVIAR"
     },
     "connection": {
         "access_key": "Clave de acceso",
