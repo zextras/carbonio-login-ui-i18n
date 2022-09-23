@@ -440,7 +440,12 @@
         "select_a_server": "Server auswählen",
         "volume_server": "Server",
         "configuration_lbl": "Konfiguration",
-        "global_address_list": "Globale Adressliste"
+        "global_address_list": "Globale Adressliste",
+        "disabled": "Deaktiviert",
+        "local": "Lokal",
+        "na": "N/A",
+        "purge": "Bereinigen",
+        "scheduled": "Geplant"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
@@ -861,7 +866,8 @@
         "send_read_receipts": "Lesebestätigungen senden",
         "sharing": "Freigaben",
         "tagging": "Tagging",
-        "min_new_check_interval_value": "Wert"
+        "min_new_check_interval_value": "Wert",
+        "send": "SENDEN"
     },
     "connection": {
         "access_key": "Access Key",
