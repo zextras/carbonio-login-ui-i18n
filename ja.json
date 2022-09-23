@@ -633,7 +633,12 @@
         "volume_create": "作成",
         "required": "必須",
         "volume_server": "サーバー",
-        "configuration_lbl": "構成"
+        "configuration_lbl": "構成",
+        "disabled": "無効",
+        "purge": "パージ",
+        "scheduled": "スケジュールされました",
+        "local": "ローカル",
+        "na": "N/A"
     },
     "message": {
         "snackbar": {
@@ -866,7 +871,8 @@
         "send_read_receipts": "開封確認を送信する",
         "sharing": "共有",
         "tagging": "タグ付け",
-        "min_new_check_interval_value": "価"
+        "min_new_check_interval_value": "価",
+        "send": "送信する"
     },
     "connection": {
         "access_key": "アクセスキー",
