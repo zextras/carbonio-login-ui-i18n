@@ -73,13 +73,13 @@ const IconInfo = ({
 
 const moduleNames: any = {
 	ZxBackup: 'Backup',
-	ZxMobile: 'Mobile',
+	ZxMobile: 'ActiveSync',
 	ZxAdmin: 'Admins',
 	ZxPowerstore: 'Mailstores',
 	SproxyD: 'SproxyD',
-	ZxDrive: 'Drive',
+	ZxDrive: 'Files',
 	ZxDocs: 'Docs',
-	ZxChat: 'Chat',
+	ZxChat: 'Chats',
 	ZxHA: 'HA'
 };
 
