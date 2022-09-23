@@ -442,7 +442,7 @@
         "yes": "Tak",
         "deleteing": "Usuwanie ",
         "enable_toaster_notification_for_new_calendar_events": "włącz powiadomienia pop-up dla nowych zdarzeń kalendarza",
-        "search_dot": "Wyszukaj ...",
+        "search_dot": "Wyszukaj…",
         "virtual_host_info_msg": "Używanie nazwy Virtualhost pozwalają użytkownikom na używanie usługi również używając innych adresów URL.",
         "virtual_host_enable_info_msg": "Kliknij w przycisk DODAJ, aby włączyć nowe.",
         "number_of_items_to_fetch_when_scrolling": "Liczba załadowywanych elementów przy przewijaniu",
@@ -846,7 +846,12 @@
         "volume_detail_error": "{{message}}",
         "volume_server": "Serwer",
         "volume_type_edited": "{{message}}",
-        "configuration_lbl": "Konfiguracja"
+        "configuration_lbl": "Konfiguracja",
+        "disabled": "Wyłączone",
+        "local": "Lokalne",
+        "na": "nd.",
+        "purge": "Czystka",
+        "scheduled": "Zaplanowane"
     },
     "message": {
         "snackbar": {
@@ -1169,7 +1174,8 @@
         "audible_reminder_notification": "Dźwiękowe przypomnienie",
         "appointments_default_duration": "Domyślna długość trwania spotkania",
         "always_show_mini_calendar": "Zawsze pokazuj minikalendarz",
-        "allow_sending_from_any_address": "Zezwalaj na wysyłanie z jakiegokolwiek adresu"
+        "allow_sending_from_any_address": "Zezwalaj na wysyłanie z jakiegokolwiek adresu",
+        "send": "WYŚLIJ"
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Wyślij wszystkie dane o błędach do Zextras",
