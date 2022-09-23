@@ -8,7 +8,14 @@ import { useTranslation } from 'react-i18next';
 import { Container } from '@zextras/carbonio-design-system';
 import { replaceHistory } from '@zextras/carbonio-shell-ui';
 import ListPanelItem from '../list/list-panel-item';
-import { ADVANCED, IMPORT_EXTERNAL_BACKUP, SERVERS_LIST, SERVER_CONFIG } from '../../constants';
+import {
+	ADVANCED,
+	CONFIGURATION_LBL,
+	IMPORT_EXTERNAL_BACKUP,
+	SERVERS_LIST,
+	SERVER_CONFIG,
+	SERVICE_STATUS
+} from '../../constants';
 import ListItems from '../list/list-items';
 
 const BackupListPanel: FC = () => {
@@ -20,6 +27,11 @@ const BackupListPanel: FC = () => {
 	const defaultSettingsOptions = useMemo(
 		() => [
 			{
+				id: SERVICE_STATUS,
+				name: t('label.service_status', 'Service Status'),
+				isSelected: true
+			},
+			{
 				id: SERVER_CONFIG,
 				name: t('label.server_config', 'Server Config'),
 				isSelected: true
@@ -27,6 +39,11 @@ const BackupListPanel: FC = () => {
 			{
 				id: ADVANCED,
 				name: t('label.advanced', 'Advanced'),
+				isSelected: true
+			},
+			{
+				id: SERVERS_LIST,
+				name: t('label.servers_list', 'Servers List'),
 				isSelected: true
 			}
 		],
@@ -36,8 +53,13 @@ const BackupListPanel: FC = () => {
 	const serverSettingsOptions = useMemo(
 		() => [
 			{
-				id: SERVERS_LIST,
-				name: t('label.servers_list', 'Servers List'),
+				id: CONFIGURATION_LBL,
+				name: t('label.configuration_lbl', 'Configuration'),
+				isSelected: true
+			},
+			{
+				id: ADVANCED,
+				name: t('label.advanced', 'Advanced'),
 				isSelected: true
 			}
 		],
@@ -78,7 +100,7 @@ const BackupListPanel: FC = () => {
 			style={{ overflow: 'auto', borderTop: '1px solid #FFFFFF' }}
 		>
 			<ListPanelItem
-				title={t('label.default_settings', 'Default Settings')}
+				title={t('label.global_server_settings', 'Global Server Settings')}
 				isListExpanded={isDefaultSettingsExpanded}
 				setToggleView={toggleDefaultSettingsView}
 			/>
@@ -91,7 +113,7 @@ const BackupListPanel: FC = () => {
 			)}
 
 			<ListPanelItem
-				title={t('label.server_settings', 'Server Settings')}
+				title={t('label.server_specifics', 'Server Specifics')}
 				isListExpanded={isServerSettingsEpanded}
 				setToggleView={toggleServerSettingsView}
 			/>
