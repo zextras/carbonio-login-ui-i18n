@@ -19,7 +19,10 @@ import {
 import {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	getSoapFetchRequest
+	getSoapFetchRequest,
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	postSoapFetchRequest
 } from '@zextras/carbonio-shell-ui';
 import { useParams } from 'react-router-dom';
 import ListRow from '../../list/list-row';
@@ -47,6 +50,7 @@ const BackupConfiguration: FC = () => {
 	const [isDirty, setIsDirty] = useState<boolean>(false);
 	const [isRequestInProgress, setIsRequestInProgress] = useState<boolean>(false);
 	const [currentBackupValue, setCurrentBackupValue] = useState<any>({});
+	const [backupServiceStart, setBackupServiceStart] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (allServers && allServers.length > 0) {
@@ -140,27 +144,28 @@ const BackupConfiguration: FC = () => {
 									currentBackupObject.backupDestPath = '';
 								}
 							}
-						}
-
-						if (data && data?.properties) {
-							const properties = data?.properties;
-							if (properties?.latest_smart_scan) {
-								const value = properties?.latest_smart_scan?.numDeletedItems;
+							if (attributes?.ZxBackup_DataRetentionDays) {
+								const value = attributes?.ZxBackup_DataRetentionDays?.value;
 								if (value) {
 									setKeepDeletedItemInBackup(value);
 									currentBackupObject.keepDeletedItemInBackup = value;
 								} else {
 									currentBackupObject.keepDeletedItemInBackup = 0;
 								}
+							}
 
-								const numDeletedAccount = properties?.latest_smart_scan?.numDeletedAccounts;
-								if (numDeletedAccount) {
-									setKeepDeletedAccountsInBackup(numDeletedAccount);
-									currentBackupObject.keepDeletedAccountsInBackup = numDeletedAccount;
+							if (attributes?.backupAccountsRetentionDays) {
+								const value = attributes?.backupAccountsRetentionDays?.value;
+								if (value) {
+									setKeepDeletedAccountsInBackup(value);
+									currentBackupObject.keepDeletedAccountsInBackup = value;
 								} else {
 									currentBackupObject.keepDeletedAccountsInBackup = 0;
 								}
 							}
+						}
+						if (data && data?.services?.module?.running) {
+							setBackupServiceStart(true);
 						}
 						setCurrentBackupValue(currentBackupObject);
 					})
@@ -208,7 +213,6 @@ const BackupConfiguration: FC = () => {
 	]);
 
 	const onSave = useCallback(() => {
-		console.log('>>>>>>> Save');
 		const body: any = {
 			ZxBackup_ModuleEnabledAtStartup: {
 				value: moduleEnableStartup,
@@ -251,12 +255,12 @@ const BackupConfiguration: FC = () => {
 				objectName: server,
 				configType: SERVER
 			},
-			numDeletedItems: {
+			ZxBackup_DataRetentionDays: {
 				value: keepDeletedItemInBackup,
 				objectName: server,
 				configType: SERVER
 			},
-			numDeletedAccounts: {
+			backupAccountsRetentionDays: {
 				value: keepDeletedAccountsInBackup,
 				objectName: server,
 				configType: SERVER
@@ -443,6 +447,42 @@ const BackupConfiguration: FC = () => {
 		}
 	}, [currentBackupValue?.keepDeletedAccountsInBackup, keepDeletedAccountsInBackup]);
 
+	const serviceStartStop = useCallback(() => {
+		setIsRequestInProgress(true);
+		postSoapFetchRequest(
+			`/service/admin/soap/zextras`,
+			{
+				_jsns: 'urn:zimbraAdmin',
+				module: 'ZxBackup',
+				action: backupServiceStart ? 'doStopService' : 'doStartService',
+				service_name: 'module'
+			},
+			'zextras'
+		)
+			.then((res: any) => {
+				setIsRequestInProgress(false);
+				if (res?.Body?.response?.content) {
+					const content = JSON.parse(res?.Body?.response?.content);
+					if (content?.response?.message) {
+						setBackupServiceStart(!backupServiceStart);
+					}
+				}
+			})
+			.catch((error: any) => {
+				setIsRequestInProgress(false);
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: error
+						? error?.error
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
+			});
+	}, [backupServiceStart, createSnackbar, t]);
+
 	return (
 		<Container mainAlignment="flex-start" background="gray6">
 			<Container
@@ -520,10 +560,17 @@ const BackupConfiguration: FC = () => {
 					>
 						<Button
 							type="outlined"
-							label={t('backup.start_service', 'Start service')}
-							color="primary"
+							label={
+								backupServiceStart
+									? t('backup.stop_service', 'Stop service')
+									: t('backup.start_service', 'Start service')
+							}
+							color={backupServiceStart ? 'error' : 'primary'}
 							width="fit"
 							height={44}
+							onClick={serviceStartStop}
+							disabled={isRequestInProgress}
+							loading={isRequestInProgress}
 						/>
 					</Container>
 
