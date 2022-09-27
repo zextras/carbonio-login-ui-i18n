@@ -638,7 +638,8 @@
         "local": "Lokal",
         "na": "N/A",
         "purge": "Hapus",
-        "scheduled": "Dijadwalkan"
+        "scheduled": "Dijadwalkan",
+        "global_address_list": "Daftar Alamat Global"
     },
     "message": {
         "snackbar": {
