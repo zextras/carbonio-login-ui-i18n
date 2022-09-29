@@ -183,7 +183,9 @@
         }
     },
     "backup": {
-        "schedule": "Planificare"
+        "schedule": "Planificare",
+        "advanced": "Avansat",
+        "general": "General"
     },
     "cos": {
         "calendar_options": "Opţiuni calendar",
