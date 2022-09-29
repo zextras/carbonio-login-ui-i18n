@@ -126,7 +126,7 @@
         "cos": "COS",
         "detail": "Detalhar",
         "device": "Dispositivo",
-        "edit": "Editar",
+        "edit": "Edit",
         "go_back": "Voltar",
         "id_lbl": "ID",
         "language": "Idioma",
@@ -489,7 +489,10 @@
         "local_metadata_threshold": "Limiar local de Metadados",
         "ldap_dump": "Dump do LDAP",
         "latency_low_threshold": "Limiar mínimo de latência",
-        "latency_high_threshold": "Limiar máximo de latência"
+        "latency_high_threshold": "Limiar máximo de latência",
+        "advanced": "Avançado",
+        "data_retention_policies": "Políticas de retenção de dados",
+        "general": "Geral"
     },
     "locale": {
         "English": "Inglês",
