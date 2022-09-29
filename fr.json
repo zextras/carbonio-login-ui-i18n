@@ -687,7 +687,21 @@
         "select_an_account": "Sélectionner un compte",
         "sending_mails": "Envoi des emails",
         "server_specific": "Serveur Spécifique",
-        "sharing": "PARTAGE"
+        "sharing": "PARTAGE",
+        "virtual_host_user_msg_2": "Les Virtual hosts doivent être unique pour le domaine, ce qui permet au système de comprendre à quel domaine est lié un utilisateur et il est possible de voir les options de personnalisation pour le domaine",
+        "volume_active": "{{volumeName}} est actuellement actif",
+        "virtual_host_user_msg_1": "Par exemple, vous pouvez rendre le service disponible pour mail.exemple.com et webmail.exemple.com.",
+        "volume_check": "VÉRIFICATION",
+        "volume_created": "Le Volume a été créé avec succès",
+        "what_is_a_gal": "Qu'est-ce que la GAL ?",
+        "who_can_send_mails_to_this_list": "Qui peut envoyer des emails à cette liste ?",
+        "volume_edited": "Le Volume a été modifié avec succès",
+        "volume_main": "Volume principal",
+        "volume_deleted": "Le Volume a été supprimé avec succès",
+        "yes_delete_it": "Oui, supprimez la",
+        "who_is_in_this_list": "Qui est dans cette liste ?",
+        "who_needs_receive_this_email": "Qui doit recevoir cet email ?",
+        "would_you_like_to_add_ml": "<bold>Qui souhaitez-vous ajouter à cette liste de distribution ?</bold>"
     },
     "message": {
         "snackbar": {
