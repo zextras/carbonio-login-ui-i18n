@@ -112,24 +112,30 @@ const App: FC = () => {
 				]
 			},
 			{
-				header: t('label.default_settings', 'Default Settings'),
+				header: t('label.global_server_settings', 'Global Server Settings'),
 				options: [
 					{
 						label: t('label.server_config', 'Server Config')
 					},
 					{
 						label: t('label.advanced', 'Advanced')
-					}
-				]
-			},
-			{
-				header: t('label.server_settings', 'Server Settings'),
-				options: [
+					},
 					{
 						label: t('label.servers_list', 'Servers List')
 					}
 				]
 			},
+			{
+				header: t('label.server_specifics', 'Server Specifics'),
+				options: [
+					{
+						label: t('label.configuration_lbl', 'Configuration')
+					},
+					{
+						label: t('label.advanced', 'Advanced')
+					}
+				]
+			} /* ,
 			{
 				header: t('label.actions', 'Actions'),
 				options: [
@@ -137,7 +143,7 @@ const App: FC = () => {
 						label: t('label.import_an_external_backup', 'Import an External Backup')
 					}
 				]
-			}
+			} */
 		],
 		[t]
 	);
@@ -174,10 +180,10 @@ const App: FC = () => {
 					},
 					{
 						label: t('label.advanced', 'Advanced')
-					},
+					} /* ,
 					{
 						label: t('label.retention_policy', 'Retention Policy')
-					}
+					} */
 				]
 			}
 		],
@@ -323,10 +329,10 @@ const App: FC = () => {
 				options: [
 					{
 						label: t('label.details', 'Details')
-					},
+					} /* ,
 					{
 						label: t('label.activate_and_update', 'Activate & Update')
-					}
+					} */
 				]
 			}
 		],
