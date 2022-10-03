@@ -1420,7 +1420,7 @@ const ResourceEditDetailView: FC<any> = ({
 									label={t('label.close_the_resource', 'Close the resource')}
 									color="primary"
 									onClick={onDisableResource}
-									disabled={isRequestInProgress}
+									disabled={isRequestInProgress || zimbraAccountStatus?.value === STATUS.CLOSED}
 								/>
 							</Row>
 						</Container>
