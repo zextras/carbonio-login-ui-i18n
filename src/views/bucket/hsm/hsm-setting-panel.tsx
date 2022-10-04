@@ -21,12 +21,14 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { fetchSoap } from '../../../services/bucket-service';
 import ListRow from '../../list/list-row';
+import CreateHsmPolicy from './create-hsm-policy/create-hsm-policy';
 
 const HSMsettingPanel: FC = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
 	const [isDirty, setIsDirty] = useState<boolean>(false);
 	const [policies, setPolicies] = useState<any>([]);
+	const [showCreateHsmPolicyView, setShowCreateHsmPolicyView] = useState<boolean>(false);
 	const headers = useMemo(
 		() => [
 			{
@@ -192,6 +194,9 @@ const HSMsettingPanel: FC = () => {
 									type="outlined"
 									color="primary"
 									height={36}
+									onClick={(): void => {
+										setShowCreateHsmPolicyView(true);
+									}}
 								/>
 							</Row>
 						</Row>
@@ -211,6 +216,9 @@ const HSMsettingPanel: FC = () => {
 					</Container>
 				</ListRow>
 			</Container>
+			{showCreateHsmPolicyView && (
+				<CreateHsmPolicy setShowCreateHsmPolicyView={setShowCreateHsmPolicyView} />
+			)}
 		</Container>
 	);
 };
