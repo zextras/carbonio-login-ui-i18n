@@ -874,7 +874,9 @@
         "specified_domain_not_exist": "O domínio especificado não existe",
         "start": "iniciar",
         "who_is_in_this_list": "Quem está nesta lista?",
-        "who_needs_receive_this_email": "Quem deve receber este e-mail?"
+        "who_needs_receive_this_email": "Quem deve receber este e-mail?",
+        "reply_to_address_for_receipt": "Endereço de resposta da confirmação",
+        "home": "Home"
     },
     "message": {
         "snackbar": {
