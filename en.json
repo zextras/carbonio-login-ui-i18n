@@ -507,6 +507,7 @@
         "criteria": "Criteria",
         "current": "Current",
         "days": "Days",
+        "days_lbl": "days",
         "delete": "Delete",
         "delete_hsm": "Delete HSM",
         "delete_hsm_policy_confirm_msg": "If you delete this HSM policy you won`t be able to restore it. Do you want to delete HSM Policy 2?",
