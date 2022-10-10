@@ -166,11 +166,34 @@ const HSMpolicySettings: FC<any> = () => {
 		}
 	}, [policyCriteria, t]);
 
+	const onClickAll = useCallback(
+		(check: boolean) => {
+			setAll(check);
+			setHsmDetail((prev: any) => ({
+				...prev,
+				allVolumes: check
+			}));
+			setIsDocument(check);
+			setIsContactEnable(check);
+			setIsMessageEnable(check);
+			setIsEventEnable(check);
+		},
+		[setHsmDetail]
+	);
+
+	useEffect(() => {
+		if (!isDocument || !isContactEnable || !isMessageEnable || !isEventEnable) {
+			setAll(false);
+		} else if (isDocument && isContactEnable && isMessageEnable && isEventEnable) {
+			setAll(true);
+		}
+	}, [isDocument, isContactEnable, isMessageEnable, isEventEnable]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
 			crossAlignment="flex-start"
-			height="calc(100vh - 300px)"
+			height="calc(100vh - 280px)"
 			background="white"
 			style={{ overflow: 'auto', padding: '16px' }}
 		>
@@ -194,11 +217,7 @@ const HSMpolicySettings: FC<any> = () => {
 						label={t('hsm.all', 'All')}
 						value={all}
 						onClick={(): void => {
-							setAll(!all);
-							setHsmDetail((prev: any) => ({
-								...prev,
-								allVolumes: !all
-							}));
+							onClickAll(!all);
 						}}
 					/>
 				</Container>
@@ -316,14 +335,14 @@ const HSMpolicySettings: FC<any> = () => {
 						}}
 					/>
 				</Container>
-				<Container width="fit">
+				<Container width="fit" padding={{ right: 'small' }}>
 					<Button
 						type="outlined"
 						label={t('label.add', 'Add')}
 						icon="PlusOutline"
 						iconPlacement="right"
 						color="primary"
-						height={44}
+						height={46}
 						onClick={onAdd}
 					/>
 				</Container>
@@ -332,7 +351,13 @@ const HSMpolicySettings: FC<any> = () => {
 				</Container>
 			</ListRow>
 			<ListRow>
-				<Table rows={policyCriteriaRows} headers={headers} />
+				<Container
+					mainAlignment="flex-start"
+					crossAlignment="flex-start"
+					padding={{ top: 'large' }}
+				>
+					<Table rows={policyCriteriaRows} headers={headers} />
+				</Container>
 			</ListRow>
 		</Container>
 	);

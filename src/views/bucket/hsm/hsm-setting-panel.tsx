@@ -435,6 +435,8 @@ const HSMsettingPanel: FC = () => {
 				mainAlignment="flex-start"
 				width="100%"
 				padding={{ all: 'large' }}
+				style={{ overflow: 'auto' }}
+				height="calc(100vh - 160px)"
 			>
 				<ListRow>
 					<Padding bottom="large">
@@ -532,6 +534,7 @@ const HSMsettingPanel: FC = () => {
 										onClick={(): void => {
 											setShowEditHsmPolicyView(true);
 										}}
+										disabled
 									/>
 								</Padding>
 								<Button
