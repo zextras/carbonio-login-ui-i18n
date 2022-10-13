@@ -225,14 +225,14 @@ const HSMsettingPanel: FC = () => {
 	const onSave = useCallback(() => {
 		setIsRequestInProgress(true);
 		const body: any = {
-			/* powerstoreMoveScheduler: {
+			powerstoreMoveScheduler: {
 				value: {
 					'cron-pattern': powerstoreMoveSchedulerValue,
 					'cron-enabled': isPowerstoreMoveSchedulerEnabled
 				},
 				objectName: server,
 				configType: SERVER
-			}, */
+			},
 			ZxPowerstore_SpaceThreshold: {
 				value: powerstoreSpaceThreshold,
 				objectName: server,
