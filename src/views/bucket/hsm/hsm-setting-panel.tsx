@@ -376,7 +376,7 @@ const HSMsettingPanel: FC = () => {
 			let policy = '';
 			const criteriaScale: string[] = [];
 			if (hsmPolicyDetail?.isAllEnabled) {
-				policy += 'document,message,contact,appointment';
+				policy += 'document,message,contact,appointment:';
 			} else {
 				if (hsmPolicyDetail?.isMessageEnabled) {
 					criteriaScale.push('message');
@@ -392,27 +392,26 @@ const HSMsettingPanel: FC = () => {
 				}
 			}
 			if (criteriaScale.length > 0) {
-				policy += criteriaScale.toString();
+				policy += `${criteriaScale.toString()}:`;
 			}
 			if (hsmPolicyDetail?.policyCriteria.length > 0) {
 				hsmPolicyDetail?.policyCriteria.forEach((item: any, index: number) => {
 					if (item?.option === 'before') {
-						policy += `:${item?.option}:-${item?.dateScale}${item?.scale}`;
+						policy += `${item?.option}:-${item?.dateScale}${item?.scale} `;
 					} else if (item?.option === 'after') {
-						policy += `:${item?.option}:${item?.dateScale}${item?.scale}`;
+						policy += `${item?.option}:${item?.dateScale}${item?.scale} `;
 					} else if (item?.option === 'larger' || item?.option === 'smaller') {
-						policy += `:${item?.option}:${item?.dateScale}${item?.scale}`;
+						policy += `${item?.option}:${item?.dateScale}${item?.scale} `;
 					}
-					// policy += `:${item?.option}:${item?.dateScale}${item?.scale}`;
 				});
 			}
 			if (hsmPolicyDetail?.sourceVolume?.length > 0) {
-				policy += ` source: ${hsmPolicyDetail?.sourceVolume
+				policy += ` source:${hsmPolicyDetail?.sourceVolume
 					.map((item: any) => item?.id)
 					.toString()}`;
 			}
 			if (hsmPolicyDetail?.destinationVolume?.length > 0) {
-				policy += ` destination: ${hsmPolicyDetail?.destinationVolume
+				policy += ` destination:${hsmPolicyDetail?.destinationVolume
 					.map((item: any) => item?.id)
 					.toString()}`;
 			}
@@ -651,7 +650,7 @@ const HSMsettingPanel: FC = () => {
 										disabled={selectedPolicies.length === 0}
 									/>
 								</Padding>
-								{/* <Padding right="small">
+								<Padding right="small">
 									<Button
 										label={t('hsm.edit', 'Edit')}
 										type="outlined"
@@ -661,9 +660,10 @@ const HSMsettingPanel: FC = () => {
 										onClick={(): void => {
 											setShowEditHsmPolicyView(true);
 										}}
-										disabled
+										disabled={selectedPolicies.length === 0 || isVolumeInProgress}
+										loading={isVolumeInProgress}
 									/>
-								</Padding> */}
+								</Padding>
 								<Button
 									label={t('hsm.new_policy', 'New Policy')}
 									icon="Plus"
@@ -713,7 +713,12 @@ const HSMsettingPanel: FC = () => {
 				/>
 			)}
 			{showEditHsmPolicyView && (
-				<EditHsmPolicy setShowEditHsmPolicyView={setShowEditHsmPolicyView} />
+				<EditHsmPolicy
+					setShowEditHsmPolicyView={setShowEditHsmPolicyView}
+					policies={policies}
+					selectedPolicies={selectedPolicies[0]}
+					volumeList={volumeList}
+				/>
 			)}
 			{showDeletePolicyView && (
 				<DeleteHsmPolicy

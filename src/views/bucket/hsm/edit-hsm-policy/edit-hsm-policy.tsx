@@ -30,17 +30,52 @@ import React, {
 import { Trans, useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ListRow from '../../../list/list-row';
+import { HSMContext } from '../hsm-context/hsm-context';
 import EditHsmPolicyDetailSection from './edit-hsm-policy-detail-section';
 import EditHsmPolicyVolumesSection from './edit-hsm-policy-volumes-section';
 
+interface hsmDetailObj {
+	allVolumes: Array<any>;
+	isAllEnabled: boolean;
+	isMessageEnabled: boolean;
+	isEventEnabled: boolean;
+	isContactEnabled: boolean;
+	isDocumentEnabled: boolean;
+	policyCriteria: Array<any>;
+	sourceVolume: Array<any>;
+	destinationVolume: Array<any>;
+}
+
 const EditHsmPolicy: FC<{
 	setShowEditHsmPolicyView: any;
-}> = ({ setShowEditHsmPolicyView }) => {
+	policies: any;
+	selectedPolicies: any;
+	volumeList: any;
+}> = ({ setShowEditHsmPolicyView, policies, selectedPolicies, volumeList }) => {
 	const { t } = useTranslation();
 	const createSnackbar = useSnackbar();
 	const [change, setChange] = useState('details');
 	const [click, setClick] = useState('');
 	const [isDirty, setIsDirty] = useState<boolean>(false);
+	const [currentPolicy, setCurrentPolicy] = useState<any>();
+	const [hsmDetail, setHsmDetail] = useState<hsmDetailObj>({
+		allVolumes: volumeList,
+		isAllEnabled: false,
+		isMessageEnabled: false,
+		isEventEnabled: false,
+		isContactEnabled: false,
+		isDocumentEnabled: false,
+		policyCriteria: [],
+		sourceVolume: [],
+		destinationVolume: []
+	});
+
+	useEffect(() => {
+		const policy = policies.find((item: any) => item?.hsmQuery === selectedPolicies);
+		if (policy) {
+			setCurrentPolicy(policy);
+		}
+	}, [selectedPolicies, policies]);
 
 	const ReusedDefaultTabBar: FC<{
 		item: any;
@@ -141,25 +176,27 @@ const EditHsmPolicy: FC<{
 					<Row width="100%">
 						<Divider color="gray2" />
 					</Row>
-					<Container crossAlignment="flex-start" padding={{ all: '0px' }}>
-						{isDirty && (
-							<Container
-								orientation="horizontal"
-								mainAlignment="flex-end"
-								crossAlignment="flex-end"
-								background="gray6"
-								padding={{ all: 'medium' }}
-								height="85px"
-							>
-								<Padding right="small">
-									<Button label={t('label.cancel', 'Cancel')} color="secondary" />
-								</Padding>
-								<Button label={t('label.save', 'Save')} color="primary" />
-							</Container>
-						)}
-						{change === 'details' && <EditHsmPolicyDetailSection />}
-						{change === 'volumes' && <EditHsmPolicyVolumesSection />}
-					</Container>
+					<HSMContext.Provider value={{ hsmDetail, setHsmDetail }}>
+						<Container crossAlignment="flex-start" padding={{ all: '0px' }}>
+							{isDirty && (
+								<Container
+									orientation="horizontal"
+									mainAlignment="flex-end"
+									crossAlignment="flex-end"
+									background="gray6"
+									padding={{ all: 'medium' }}
+									height="85px"
+								>
+									<Padding right="small">
+										<Button label={t('label.cancel', 'Cancel')} color="secondary" />
+									</Padding>
+									<Button label={t('label.save', 'Save')} color="primary" />
+								</Container>
+							)}
+							{change === 'details' && <EditHsmPolicyDetailSection currentPolicy={currentPolicy} />}
+							{change === 'volumes' && <EditHsmPolicyVolumesSection />}
+						</Container>
+					</HSMContext.Provider>
 				</Container>
 			</Container>
 		</>

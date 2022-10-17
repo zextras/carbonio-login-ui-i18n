@@ -11,15 +11,110 @@ import {
 	IconButton,
 	Padding,
 	Checkbox,
-	Table
+	Table,
+	Button
 } from '@zextras/carbonio-design-system';
-import React, { FC, useMemo } from 'react';
+import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import ListRow from '../../../list/list-row';
+import { HSMContext } from '../hsm-context/hsm-context';
 
-const EditHsmPolicyDetailSection: FC<any> = () => {
+const EditHsmPolicyDetailSection: FC<{
+	currentPolicy: any;
+}> = ({ currentPolicy }) => {
+	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
+	const context = useContext(HSMContext);
+	const { hsmDetail, setHsmDetail } = context;
+	const [all, setAll] = useState<boolean>(hsmDetail?.isAllEnabled);
+	const [isMessageEnable, setIsMessageEnable] = useState<boolean>(hsmDetail?.isMessageEnabled);
+	const [isEventEnable, setIsEventEnable] = useState<boolean>(hsmDetail?.isEventEnabled);
+	const [isContactEnable, setIsContactEnable] = useState<boolean>(hsmDetail?.isContactEnabled);
+	const [isDocument, setIsDocument] = useState<boolean>(hsmDetail?.isDocumentEnabled);
+	const [policyCriteriaRows, setPolicyCriteriaRows] = useState<Array<any>>();
+	const [policyCriteria, setPolicyCriteria] = useState<Array<any>>(hsmDetail?.policyCriteria);
+	const [isShowDateScale, setIsShowDateScale] = useState<boolean>(true);
+	const [value, setValue] = useState<string>();
+	const [selectedPolicies, setSelectedPolicies] = useState<Array<any>>([]);
+
+	useEffect(() => {
+		if (!isDocument || !isContactEnable || !isMessageEnable || !isEventEnable) {
+			setAll(false);
+			setHsmDetail((prev: any) => ({
+				...prev,
+				isAllEnabled: false
+			}));
+		} else if (isDocument && isContactEnable && isMessageEnable && isEventEnable) {
+			setAll(true);
+			setHsmDetail((prev: any) => ({
+				...prev,
+				isAllEnabled: true
+			}));
+		}
+	}, [isDocument, isContactEnable, isMessageEnable, isEventEnable, setHsmDetail]);
+
+	useEffect(() => {
+		if (currentPolicy) {
+			if (currentPolicy?.hsmType) {
+				if (currentPolicy?.hsmType.length === 4) {
+					setIsDocument(true);
+					setIsContactEnable(true);
+					setIsMessageEnable(true);
+					setIsEventEnable(true);
+				} else {
+					currentPolicy?.hsmType.forEach((element: any) => {
+						if (element === 5) {
+							setIsMessageEnable(true);
+						} else if (element === 8) {
+							setIsDocument(true);
+						} else if (element === 11) {
+							setIsEventEnable(true);
+						} else if (element === 6) {
+							setIsContactEnable(true);
+						}
+					});
+				}
+			}
+
+			if (currentPolicy?.hsmQuery) {
+				const queries = currentPolicy?.hsmQuery.split(' ');
+				if (queries && queries.length > 0) {
+					queries.forEach((element: string) => {
+						if (
+							element !== '' &&
+							!element.startsWith('source') &&
+							!element.startsWith('destination')
+						) {
+							const option = element.split(':')[0];
+							const scale = element
+								.split(':')[1]
+								.match(/[a-zA-Z]/g)
+								?.join('');
+							const valueItem = element.split(':')[1].match(/\d/g)?.join('');
+							setPolicyCriteria((prev) => [
+								...prev,
+								{
+									option,
+									scale,
+									dateScale: valueItem
+								}
+							]);
+						}
+					});
+				}
+			}
+		}
+	}, [currentPolicy]);
+
+	useEffect(() => {
+		setHsmDetail((prev: any) => ({
+			...prev,
+			policyCriteria
+		}));
+	}, [policyCriteria, setHsmDetail]);
+
 	const options: any[] = useMemo(
 		() => [
 			{
@@ -93,6 +188,94 @@ const EditHsmPolicyDetailSection: FC<any> = () => {
 		],
 		[t]
 	);
+	const [selectedOption, setSelectedOption]: any = useState<any>(options[0]);
+	const [selectedScale, setSelectedScale]: any = useState<any>(
+		isShowDateScale ? dateScaleOption[0] : scaleOptions[0]
+	);
+	const onOptionChange = (v: any): any => {
+		const it = options.find((item: any) => item.value === v);
+		setSelectedOption(it);
+		if (it?.value === 'after' || it?.value === 'before') {
+			setIsShowDateScale(true);
+			setSelectedScale(dateScaleOption[0]);
+		} else {
+			setIsShowDateScale(false);
+			setSelectedScale(scaleOptions[0]);
+		}
+	};
+
+	const onScaleChange = (v: any): any => {
+		const it = scaleOptions.find((item: any) => item.value === v);
+		setSelectedScale(it);
+	};
+
+	const onDateScaleChange = (v: any): any => {
+		const it = dateScaleOption.find((item: any) => item.value === v);
+		setSelectedScale(it);
+	};
+
+	const onClickAll = useCallback(
+		(check: boolean) => {
+			setAll(check);
+			setHsmDetail((prev: any) => ({
+				...prev,
+				isAllEnabled: check,
+				isMessageEnabled: check,
+				isEventEnabled: check,
+				isContactEnabled: check,
+				isDocumentEnabled: check
+			}));
+			setIsDocument(check);
+			setIsContactEnable(check);
+			setIsMessageEnable(check);
+			setIsEventEnable(check);
+		},
+		[setHsmDetail]
+	);
+
+	useEffect(() => {
+		if (policyCriteria.length > 0) {
+			let displayPolicy = '';
+			const allRows = policyCriteria.map((item: any, index: number) => {
+				if (item?.option === 'before' || item?.option === 'after') {
+					displayPolicy = `${item?.option} ${item?.dateScale} ${item?.scale}`;
+				} else if (item?.option === 'larger' || item?.option === 'smaller') {
+					displayPolicy = `${item?.option}  ${item?.dateScale} ${item?.scale}`;
+				}
+				return {
+					id: index,
+					columns: [
+						<Text size="medium" weight="bold" key={index} color="#828282">
+							{displayPolicy}
+						</Text>
+					]
+				};
+			});
+			setPolicyCriteriaRows(allRows);
+		} else if (policyCriteria.length === 0) {
+			setPolicyCriteriaRows([]);
+		}
+	}, [policyCriteria, t]);
+
+	const onAdd = useCallback(() => {
+		setPolicyCriteria((prev) => [
+			...prev,
+			{
+				option: selectedOption?.value,
+				scale: selectedScale?.value,
+				dateScale: value
+			}
+		]);
+	}, [selectedOption?.value, selectedScale?.value, value]);
+
+	const onDeletePolicy = useCallback(() => {
+		const reducedArr = policyCriteria.filter(
+			(item, itemIndex) => itemIndex !== selectedPolicies[0]
+		);
+		setPolicyCriteria(reducedArr);
+		setSelectedPolicies([]);
+	}, [selectedPolicies, policyCriteria]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -103,7 +286,7 @@ const EditHsmPolicyDetailSection: FC<any> = () => {
 		>
 			<ListRow>
 				<Container padding={{ bottom: 'large' }}>
-					<Input label={t('hsm.server', 'Server')} background="gray6" />
+					<Input label={t('hsm.server', 'Server')} background="gray6" value={server} readOnly />
 				</Container>
 			</ListRow>
 			<ListRow>
@@ -115,19 +298,75 @@ const EditHsmPolicyDetailSection: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.all', 'All')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.all', 'All')}
+						value={all}
+						onClick={(): void => {
+							onClickAll(!all);
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.message', 'Message')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.message', 'Message')}
+						value={isMessageEnable}
+						onClick={(): void => {
+							setIsMessageEnable(!isMessageEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isMessageEnabled: !isMessageEnable
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.document', 'Document')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.document', 'Document')}
+						value={isDocument}
+						onClick={(): void => {
+							setIsDocument(!isDocument);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isDocumentEnabled: !isDocument
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.event', 'Event')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.event', 'Event')}
+						value={isEventEnable}
+						onClick={(): void => {
+							setIsEventEnable(!isEventEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isEventEnabled: !isEventEnable
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.contact', 'Contact')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.contact', 'Contact')}
+						value={isContactEnable}
+						onClick={(): void => {
+							setIsContactEnable(!isContactEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isContactEnabled: !isContactEnable
+							}));
+						}}
+					/>
 				</Container>
 			</ListRow>
 			<ListRow>
@@ -148,39 +387,91 @@ const EditHsmPolicyDetailSection: FC<any> = () => {
 						background="gray5"
 						label={t('hsm.option', 'Option')}
 						showCheckbox={false}
+						selection={selectedOption}
+						onChange={onOptionChange}
 					/>
 				</Container>
+				{isShowDateScale && (
+					<Container
+						mainAlignment="flex-start"
+						crossAlignment="flex-start"
+						padding={{ right: 'large' }}
+					>
+						<Select
+							items={dateScaleOption}
+							background="gray5"
+							label={t('hsm.value', 'Value')}
+							showCheckbox={false}
+							selection={selectedScale}
+							onChange={onDateScaleChange}
+						/>
+					</Container>
+				)}
+				{!isShowDateScale && (
+					<Container
+						mainAlignment="flex-start"
+						crossAlignment="flex-start"
+						padding={{ right: 'large' }}
+					>
+						<Select
+							items={scaleOptions}
+							background="gray5"
+							label={t('hsm.value', 'Value')}
+							showCheckbox={false}
+							selection={selectedScale}
+							onChange={onScaleChange}
+						/>
+					</Container>
+				)}
 				<Container
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
 					padding={{ right: 'large' }}
 				>
-					<Select
-						items={dateScaleOption}
-						background="gray5"
-						label={t('hsm.scale', 'Scale')}
-						showCheckbox={false}
-					/>
-				</Container>
-				<Container
-					mainAlignment="flex-start"
-					crossAlignment="flex-start"
-					padding={{ right: 'large' }}
-				>
-					<Select
-						items={scaleOptions}
-						background="gray5"
+					<Input
 						label={t('hsm.value', 'Value')}
-						showCheckbox={false}
+						backgroundColor="gray5"
+						size="medium"
+						value={value}
+						onChange={(e: any): any => {
+							setValue(e.target.value);
+						}}
 					/>
 				</Container>
 				<Container style={{ border: '1px solid #2b73d2' }} width="fit">
-					<IconButton iconColor="primary" icon="Plus" height={44} width={44} />
+					<Button
+						type="outlined"
+						label={t('label.add', 'Add')}
+						icon="PlusOutline"
+						iconPlacement="right"
+						color="primary"
+						height={46}
+						onClick={onAdd}
+					/>
 				</Container>
+				<Padding left="small">
+					<Container style={{ border: '1px solid rgb(215, 73, 66)' }} width="fit">
+						<IconButton
+							iconColor="error"
+							icon="Trash2Outline"
+							height={44}
+							width={44}
+							onClick={onDeletePolicy}
+							disabled={selectedPolicies.length === 0}
+						/>
+					</Container>
+				</Padding>
 			</ListRow>
 			<ListRow>
 				<Padding top="large">
-					<Table rows={[]} headers={headers} />
+					<Table
+						rows={policyCriteriaRows}
+						headers={headers}
+						showCheckbox={false}
+						multiSelect={false}
+						selectedRows={selectedPolicies}
+						onSelectionChange={(selected: any): void => setSelectedPolicies(selected)}
+					/>
 				</Padding>
 			</ListRow>
 		</Container>

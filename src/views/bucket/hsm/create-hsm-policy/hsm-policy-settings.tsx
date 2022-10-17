@@ -117,8 +117,6 @@ const HSMpolicySettings: FC<any> = () => {
 		isShowDateScale ? dateScaleOption[0] : scaleOptions[0]
 	);
 
-	// const [dateScale, setDateScale] = useState<any>(dateScaleOption[0]);
-
 	const onOptionChange = (v: any): any => {
 		const it = options.find((item: any) => item.value === v);
 		setSelectedOption(it);
