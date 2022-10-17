@@ -6,11 +6,20 @@
 
 import { soapFetch } from '@zextras/carbonio-shell-ui';
 
-export const getSessions = async (type: string, offset?: number, limit?: number): Promise<any> =>
-	soapFetch(`GetSessions`, {
-		_jsns: 'urn:zimbraAdmin',
-		type,
-		offset: offset || 0,
-		sortBy: 'nameAsc',
-		refresh: 1
-	});
+export const getSessions = async (
+	type: string,
+	accountName: string,
+	offset?: number,
+	limit?: number
+): Promise<any> =>
+	soapFetch(
+		`GetSessions`,
+		{
+			_jsns: 'urn:zimbraAdmin',
+			type,
+			offset: offset || 0,
+			sortBy: 'nameAsc',
+			refresh: 1
+		},
+		accountName
+	);

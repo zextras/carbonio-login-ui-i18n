@@ -21,6 +21,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { soapFetch } from '@zextras/carbonio-shell-ui';
 import { getMailboxQuota } from '../../../../services/account-list-directory-service';
 import { AccountContext } from './account-context';
 import { deleteAccount } from '../../../../services/delete-account-service';
@@ -220,7 +221,7 @@ const AccountDetailView: FC<any> = ({
 	const getAllUserSession = useCallback(() => {
 		const sessionType: string[] = ['admin', 'imap', 'soap'];
 		sessionType.forEach((item: string) => {
-			getSessions(item).then((resp: any) => {
+			getSessions(item, selectedAccount?.name).then((resp: any) => {
 				if (resp && resp?.s) {
 					const existingSession = resp?.s;
 					if (existingSession) {
@@ -239,7 +240,7 @@ const AccountDetailView: FC<any> = ({
 				}
 			});
 		});
-	}, []);
+	}, [selectedAccount?.name]);
 
 	useEffect(() => {
 		if (userSessionList && userSessionList.length > 0) {
