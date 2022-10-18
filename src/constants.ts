@@ -124,3 +124,6 @@ export const INDEXER_PAUSED = 'Paused';
 export const HSM_SCHEDULED_KEY = 'cron-enabled';
 export const HSM_SCHEDULED_ENABLED = 'Scheduled';
 export const HSM_SCHEDULED_DISABLED = 'Disabled';
+export const MANAGE_EXTERNAL_VOLUME = 'manage-external-volume';
+export const MOVE_TO_EXTERNAL_BUCKET = 'move-external-bucket';
+export const MOVE_TO_LOCAL_MOUNT_POINT = 'move-to-local-mountpoint';

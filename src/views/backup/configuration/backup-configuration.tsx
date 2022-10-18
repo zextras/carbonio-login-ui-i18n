@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
+import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import {
 	Container,
@@ -14,7 +14,8 @@ import {
 	Switch,
 	Input,
 	SnackbarManagerContext,
-	Padding
+	Padding,
+	Select
 } from '@zextras/carbonio-design-system';
 import {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -31,8 +32,14 @@ import { useParams } from 'react-router-dom';
 import ListRow from '../../list/list-row';
 import { useServerStore } from '../../../store/server/store';
 import { updateBackup } from '../../../services/update-backup';
-import { SERVER } from '../../../constants';
+import {
+	MANAGE_EXTERNAL_VOLUME,
+	MOVE_TO_EXTERNAL_BUCKET,
+	MOVE_TO_LOCAL_MOUNT_POINT,
+	SERVER
+} from '../../../constants';
 import { RouteLeavingGuard } from '../../ui-extras/nav-guard';
+import { fetchSoap } from '../../../services/bucket-service';
 
 const BackupConfiguration: FC = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
@@ -60,7 +67,38 @@ const BackupConfiguration: FC = () => {
 	const [isExternalVolumeRequestRunning, setIsExternalVolumeRequestRunning] =
 		useState<boolean>(false);
 	const [isSaveRequestInProgress, setIsSaveRequestInProgress] = useState<boolean>(false);
+	const [isManageExternalVolumeEnable, setIsManageExternalVolumeEnable] = useState<boolean>(false);
+	const [bucketList, setBucketList] = useState<Array<any>>([]);
+	const destinationOptions: any[] = useMemo(
+		() => [
+			{
+				label: t(
+					'label.manage_external_volume_and_move_all',
+					'MANAGE EXTERNAL VOLUME and Move All Items to Local Path'
+				),
+				value: MANAGE_EXTERNAL_VOLUME
+			},
+			{
+				label: t('label.move_item_to_an_external_bucket', 'Move Items to an External Bucket'),
+				value: MOVE_TO_EXTERNAL_BUCKET
+			},
+			{
+				label: t('label.move_item_to_a_local_mountpoint', 'Move Items to a Local Mountpoint'),
+				value: MOVE_TO_LOCAL_MOUNT_POINT
+			}
+		],
+		[t]
+	);
 
+	const [destinationSelected, setDestinationSelected] = useState<any>(destinationOptions[0]);
+
+	const onDestinationChange = useCallback(
+		(v: any): any => {
+			const it = destinationOptions.find((item: any) => item.value === v);
+			setDestinationSelected(it);
+		},
+		[destinationOptions]
+	);
 	useEffect(() => {
 		if (allServers && allServers.length > 0) {
 			const selectedServer = allServers.find((serverItem: any) => serverItem?.name === server);
@@ -766,19 +804,86 @@ const BackupConfiguration: FC = () => {
 						</Container>
 					</ListRow>
 
+					{isManageExternalVolumeEnable && (
+						<ListRow>
+							<Container padding={{ top: 'large' }}>
+								<Select
+									items={destinationOptions}
+									background="gray5"
+									label={t('label.destination', 'Destination')}
+									showCheckbox={false}
+									onChange={onDestinationChange}
+									selection={destinationSelected}
+								/>
+							</Container>
+						</ListRow>
+					)}
+
+					{isManageExternalVolumeEnable && destinationSelected?.value === MANAGE_EXTERNAL_VOLUME && (
+						<Container>
+							<ListRow>
+								<Container padding={{ top: 'large' }}>
+									<Input
+										label={t('backup.external_volume', 'External Volume')}
+										value={''}
+										background="gray5"
+									/>
+								</Container>
+							</ListRow>
+							<ListRow>
+								<Container padding={{ top: 'large', bottom: 'large' }}>
+									<Input
+										label={t('backup.bucket_configuration', 'Bucket Configuration')}
+										value={''}
+										background="gray5"
+									/>
+								</Container>
+							</ListRow>
+						</Container>
+					)}
+					{isManageExternalVolumeEnable && destinationSelected?.value === MOVE_TO_EXTERNAL_BUCKET && (
+						<Container>
+							<ListRow>
+								<Container padding={{ top: 'large' }}>
+									<Select
+										items={[]}
+										background="gray5"
+										label={t('backup.bucket_list', 'Buckets List')}
+										showCheckbox={false}
+									/>
+								</Container>
+							</ListRow>
+						</Container>
+					)}
+					{isManageExternalVolumeEnable &&
+						destinationSelected?.value === MOVE_TO_LOCAL_MOUNT_POINT && (
+							<Container>
+								<ListRow>
+									<Container padding={{ top: 'large' }}>
+										<Input
+											label={t('backup.local_mountpoint', 'Local Mountpoint')}
+											value={''}
+											background="gray5"
+										/>
+									</Container>
+								</ListRow>
+							</Container>
+						)}
+
 					<ListRow>
 						<Container padding={{ top: 'large' }}>
 							<Button
 								type="outlined"
-								label={t('backup.set_external_volume', 'Set external volume')}
+								label={t('backup.manage_external_volume', 'Manage external volume')}
 								color="primary"
 								icon="HardDriveOutline"
 								iconPlacement="right"
 								height={36}
 								width="100%"
-								disabled={!isBackupInitialized || isExternalVolumeRequestRunning}
-								onClick={onBackupExternalVolume}
-								loading={isExternalVolumeRequestRunning}
+								disabled={!isBackupInitialized}
+								onClick={(): void => {
+									setIsManageExternalVolumeEnable(true);
+								}}
 							/>
 						</Container>
 					</ListRow>
