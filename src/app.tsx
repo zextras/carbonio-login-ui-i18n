@@ -22,6 +22,7 @@ import {
 } from '@zextras/carbonio-shell-ui';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import { MatomoProvider } from '@datapunt/matomo-tracker-react';
 import {
 	APPLICATION_LOG,
 	APP_ID,
@@ -54,13 +55,16 @@ import { useConfigStore } from './store/config/store';
 import { getAllConfig } from './services/get-all-config';
 import { useAuthIsAdvanced } from './store/auth-advanced/store';
 import { useBucketServersListStore } from './store/bucket-server-list/store';
+import MatomoTracker from './matomo-tracker';
 
 const LazyAppView = lazy(() => import('./views/app-view'));
 
 const AppView: FC = (props) => (
-	<Suspense fallback={<Spinner />}>
-		<LazyAppView {...props} />
-	</Suspense>
+	<MatomoProvider value={MatomoTracker.matomoInstance}>
+		<Suspense fallback={<Spinner />}>
+			<LazyAppView {...props} />
+		</Suspense>
+	</MatomoProvider>
 );
 
 const App: FC = () => {

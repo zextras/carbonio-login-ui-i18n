@@ -44,6 +44,7 @@ import { useDomainStore } from '../../store/domain/store';
 import ListPanelItem from '../list/list-panel-item';
 import ListItems from '../list/list-items';
 import { useBackupModuleStore } from '../../store/backup-module/store';
+import MatomoTracker from '../../matomo-tracker';
 
 const SelectItem = styled(Row)``;
 
@@ -55,6 +56,7 @@ const CustomIcon = styled(Icon)`
 const DomainListPanel: FC = () => {
 	const [t] = useTranslation();
 	const locationService = useLocation();
+	const matomo = useMemo(() => new MatomoTracker(), []);
 	const [isDomainListExpand, setIsDomainListExpand] = useState(false);
 	const [searchDomainName, setSearchDomainName] = useState('');
 	const [domainId, setDomainId] = useState('');
@@ -133,12 +135,17 @@ const DomainListPanel: FC = () => {
 	useEffect(() => {
 		if (isDomainSelect && domainId) {
 			if (selectedOperationItem) {
+				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${domainId}/${selectedOperationItem}`);
 			} else {
+				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${domainId}/${GENERAL_SETTINGS}`);
 			}
 		}
-	}, [isDomainSelect, domainId, selectedOperationItem]);
+	}, [isDomainSelect, domainId, selectedOperationItem, matomo]);
+	useEffect(() => {
+		matomo.trackPageView(`${DOMAINS_ROUTE_ID}`);
+	}, [matomo]);
 
 	const detailOptions = useMemo(
 		() => [

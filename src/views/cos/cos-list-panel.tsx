@@ -33,6 +33,7 @@ import {
 import { getCosList } from '../../services/search-cos-service';
 import { useCosStore } from '../../store/cos/store';
 import ListItems from '../list/list-items';
+import MatomoTracker from '../../matomo-tracker';
 
 const SelectItem = styled(Row)``;
 
@@ -45,6 +46,7 @@ const CosListPanel: FC = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [t] = useTranslation();
 	const locationService = useLocation();
+	const matomo = useMemo(() => new MatomoTracker(), []);
 	const [searchCosName, setSearchCosName] = useState('');
 	const [cosId, setCosId] = useState('');
 	const [isCosSelect, setIsCosSelect] = useState(false);
@@ -131,12 +133,18 @@ const CosListPanel: FC = () => {
 	useEffect(() => {
 		if (isCosSelect && cosId) {
 			if (selectedOperationItem) {
+				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${cosId}/${selectedOperationItem}`);
 			} else {
+				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${cosId}/${GENERAL_INFORMATION}`);
 			}
 		}
-	}, [isCosSelect, cosId, selectedOperationItem]);
+	}, [isCosSelect, cosId, selectedOperationItem, matomo]);
+
+	useEffect(() => {
+		matomo.trackPageView(`${COS_ROUTE_ID}`);
+	}, [matomo]);
 
 	const detailOptions = useMemo<
 		{

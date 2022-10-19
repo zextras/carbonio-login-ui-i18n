@@ -17,11 +17,13 @@ import {
 	VOLUME,
 	HSM_SETTINGS,
 	INDEXER_SETTINGS,
-	DATA_VOLUMES
+	DATA_VOLUMES,
+	STORAGES_ROUTE_ID
 } from '../../constants';
 import { fetchSoap } from '../../services/bucket-service';
 import { useBucketVolumeStore } from '../../store/bucket-volume/store';
 import { useBucketServersListStore } from '../../store/bucket-server-list/store';
+import MatomoTracker from '../../matomo-tracker';
 
 const SelectItem = styled(Row)``;
 
@@ -29,6 +31,7 @@ const BucketListPanel: FC = () => {
 	const [t] = useTranslation();
 	const setSelectedServerName = useBucketVolumeStore((state) => state.setSelectedServerName);
 	const volumeList = useBucketServersListStore((state) => state.volumeList);
+	const matomo = useMemo(() => new MatomoTracker(), []);
 	const [isStoreSelect, setIsStoreSelect] = useState(false);
 	const [isStoreVolumeSelect, setIsStoreVolumeSelect] = useState(false);
 	const [selectedOperationItem, setSelectedOperationItem] = useState('');
@@ -123,6 +126,7 @@ const BucketListPanel: FC = () => {
 	useEffect(() => {
 		if (isStoreSelect) {
 			if (selectedOperationItem) {
+				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				if (selectedOperationItem === DATA_VOLUMES) {
 					replaceHistory(`${searchVolumeName}/${selectedOperationItem}`);
 				} else {
@@ -132,7 +136,11 @@ const BucketListPanel: FC = () => {
 				replaceHistory(`/${selectedOperationItem}`);
 			}
 		}
-	}, [isStoreSelect, selectedOperationItem, searchVolumeName]);
+	}, [isStoreSelect, selectedOperationItem, searchVolumeName, matomo]);
+
+	useEffect(() => {
+		matomo.trackPageView(`${STORAGES_ROUTE_ID}`);
+	}, [matomo]);
 
 	const toggleServer = (): void => {
 		setIsServerListExpand(!isServerListExpand);

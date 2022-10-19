@@ -11,6 +11,7 @@ import ListPanelItem from '../list/list-panel-item';
 import {
 	ADVANCED,
 	ADVANCED_LBL,
+	BACKUP_ROUTE_ID,
 	CONFIGURATION_BACKUP,
 	IMPORT_EXTERNAL_BACKUP,
 	SERVERS_LIST,
@@ -19,9 +20,11 @@ import {
 } from '../../constants';
 import ListItems from '../list/list-items';
 import { useServerStore } from '../../store/server/store';
+import MatomoTracker from '../../matomo-tracker';
 
 const BackupListPanel: FC = () => {
 	const [t] = useTranslation();
+	const matomo = useMemo(() => new MatomoTracker(), []);
 	const [selectedOperationItem, setSelectedOperationItem] = useState(SERVER_CONFIG);
 	const [isDefaultSettingsExpanded, setIsDefaultSettingsExpanded] = useState(true);
 	const [isActionExpanded, setIsActionExpanded] = useState(true);
@@ -84,12 +87,17 @@ const BackupListPanel: FC = () => {
 	);
 
 	useEffect(() => {
+		matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 		if (selectedOperationItem === CONFIGURATION_BACKUP || selectedOperationItem === ADVANCED_LBL) {
 			replaceHistory(`/${selectedServer}/${selectedOperationItem}`);
 		} else {
 			replaceHistory(`/${selectedOperationItem}`);
 		}
-	}, [selectedOperationItem, selectedServer]);
+	}, [matomo, selectedOperationItem, selectedServer]);
+
+	useEffect(() => {
+		matomo.trackPageView(`${BACKUP_ROUTE_ID}`);
+	}, [matomo]);
 
 	const toggleDefaultSettingsView = (): void => {
 		setIsDefaultSettingsExpanded(!isDefaultSettingsExpanded);
