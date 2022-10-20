@@ -34,6 +34,7 @@ import { getCosList } from '../../services/search-cos-service';
 import { useCosStore } from '../../store/cos/store';
 import ListItems from '../list/list-items';
 import MatomoTracker from '../../matomo-tracker';
+import { useGlobalConfigStore } from '../../store/global-config/store';
 
 const SelectItem = styled(Row)``;
 
@@ -47,6 +48,9 @@ const CosListPanel: FC = () => {
 	const [t] = useTranslation();
 	const locationService = useLocation();
 	const matomo = useMemo(() => new MatomoTracker(), []);
+	const globalCarbonioSendAnalytics = useGlobalConfigStore(
+		(state) => state.globalCarbonioSendAnalytics
+	);
 	const [searchCosName, setSearchCosName] = useState('');
 	const [cosId, setCosId] = useState('');
 	const [isCosSelect, setIsCosSelect] = useState(false);
@@ -57,6 +61,10 @@ const CosListPanel: FC = () => {
 	const cosInformation = useCosStore((state) => state.cos);
 	const cosName: any = useCosStore((state) => state.cos?.name);
 	const prevCosRef = useRef();
+
+	useEffect(() => {
+		globalCarbonioSendAnalytics && matomo.trackPageView(`${COS_ROUTE_ID}`);
+	}, [globalCarbonioSendAnalytics, matomo]);
 
 	const getCosLists = (cos: string): any => {
 		getCosList(cos).then((data) => {
@@ -133,18 +141,16 @@ const CosListPanel: FC = () => {
 	useEffect(() => {
 		if (isCosSelect && cosId) {
 			if (selectedOperationItem) {
-				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
+				globalCarbonioSendAnalytics &&
+					matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${cosId}/${selectedOperationItem}`);
 			} else {
-				matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
+				globalCarbonioSendAnalytics &&
+					matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 				replaceHistory(`/${cosId}/${GENERAL_INFORMATION}`);
 			}
 		}
-	}, [isCosSelect, cosId, selectedOperationItem, matomo]);
-
-	useEffect(() => {
-		matomo.trackPageView(`${COS_ROUTE_ID}`);
-	}, [matomo]);
+	}, [isCosSelect, cosId, selectedOperationItem, matomo, globalCarbonioSendAnalytics]);
 
 	const detailOptions = useMemo<
 		{

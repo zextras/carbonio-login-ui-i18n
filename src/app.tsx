@@ -44,7 +44,8 @@ import {
 	PRIVACY_ROUTE_ID,
 	SERVICES_ROUTE_ID,
 	STORAGES_ROUTE_ID,
-	SUBSCRIPTIONS_ROUTE_ID
+	SUBSCRIPTIONS_ROUTE_ID,
+	TRUE
 } from './constants';
 import PrimaryBarTooltip from './views/primary-bar-tooltip/primary-bar-tooltip';
 import { useServerStore } from './store/server/store';
@@ -76,8 +77,20 @@ const App: FC = () => {
 	const setIsAdvavanced = useAuthIsAdvanced((state) => state.setIsAdvavanced);
 	const setBackupServerList = useBackupModuleStore((state) => state.setBackupServerList);
 	const { setAllServersList, setVolumeList } = useBucketServersListStore((state) => state);
-	const setConfig = useConfigStore((state) => state.setConfig);
+	const { config, setConfig } = useConfigStore((state) => state);
+	const setGlobalCarbonioSendAnalytics = useGlobalConfigStore(
+		(state) => state.setGlobalCarbonioSendAnalytics
+	);
 	const allConfig = useAllConfig();
+
+	useEffect(() => {
+		const sendAnalytics = config.filter((items) => items.n === CARBONIO_SEND_ANALYTICS)[0]
+			?._content;
+		sendAnalytics === TRUE
+			? setGlobalCarbonioSendAnalytics(true)
+			: setGlobalCarbonioSendAnalytics(false);
+	}, [config, setGlobalCarbonioSendAnalytics]);
+
 	useEffect(() => {
 		if (allConfig && allConfig.length > 0) {
 			setConfig(allConfig);
