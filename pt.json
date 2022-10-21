@@ -196,7 +196,8 @@
         "configuration_lbl": "Configuração",
         "disabled": "Desativado",
         "na": "N/A",
-        "scheduled": "Programado"
+        "scheduled": "Programado",
+        "soft_deleted": "desativado"
     },
     "timezone": {
         "asia_pyongyang": "{{value}} Pyongyang",
