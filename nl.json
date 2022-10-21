@@ -1211,7 +1211,7 @@
         "appointments_default_duration": "Standaardduur afspraak",
         "audible_reminder_notification": "Hoorbare herinneringsmelding",
         "auto_decline_if_inviter_is_blacklisted": "Automatisch afwijzen als de afzender op de zwarte lijst staat",
-        "auto_delete_duplicate_messages": "Dubbele berichten automatisch verwijderen",
+        "auto_delete_duplicate_messages": "Automatisch verwijderen van dubbele berichten",
         "browser_title_for_appointments": "Flash browsertitel voor afspraken",
         "can_send_auto_reply_messages": "Kan auto-reply berichten sturen",
         "can_specify_forwarding_address": "Kan een doorstuuradres opgeven",
