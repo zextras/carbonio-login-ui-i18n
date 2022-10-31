@@ -831,8 +831,13 @@ const BackupConfiguration: FC = () => {
 	const onSaveManageExternalVolume = useCallback(() => {
 		const body: any = {};
 		if (isManageExternalVolumeEnable && destinationSelected?.value === MANAGE_EXTERNAL_VOLUME) {
-			body.bucketConfigurationId = manageExternalVolumeConfiguration?.value;
-			body.storeType = 'S3';
+			if (manageExternalVolumeType.startsWith('LOCAL')) {
+				body.volumeRootPath = manageExternalVolumeLocalMountpoint;
+				body.storeType = 'LOCAL';
+			} else {
+				body.bucketConfigurationId = manageExternalVolumeConfiguration?.value;
+				body.storeType = 'S3';
+			}
 		} else if (
 			isManageExternalVolumeEnable &&
 			destinationSelected?.value === MOVE_TO_EXTERNAL_BUCKET
@@ -854,8 +859,19 @@ const BackupConfiguration: FC = () => {
 		manageExternalVolumeConfiguration?.value,
 		manageExternalVolumeBucketList?.value,
 		onBackupExternalVolume,
-		manageExternalVolumeLocalMountpoint
+		manageExternalVolumeLocalMountpoint,
+		manageExternalVolumeType
 	]);
+
+	const isSetManageExternalButtonVisible = useMemo(
+		() => isManageExternalVolumeEnable || isShowSetExternalVolume,
+		[isManageExternalVolumeEnable, isShowSetExternalVolume]
+	);
+
+	const isShowDefaultManageFields = useMemo(
+		() => !isSetManageExternalButtonVisible && !isBackArchivingStoreEmpty,
+		[isSetManageExternalButtonVisible, isBackArchivingStoreEmpty]
+	);
 
 	return (
 		<Container mainAlignment="flex-start" background="gray6">
@@ -1035,6 +1051,35 @@ const BackupConfiguration: FC = () => {
 						</Container>
 					</ListRow>
 
+					{isShowDefaultManageFields && (
+						<Container>
+							<ListRow>
+								<Container padding={{ top: 'large' }}>
+									<Input
+										label={t('backup.external_volume', 'External Volume')}
+										value={manageExternalVolumeType}
+										background="gray5"
+										readOnly
+									/>
+								</Container>
+							</ListRow>
+							<ListRow>
+								<Container padding={{ top: 'large', bottom: 'large' }}>
+									<Input
+										label={t('backup.bucket_configuration', 'Bucket Configuration')}
+										value={
+											manageExternalVolumeType.startsWith('LOCAL')
+												? manageExternalVolumeLocalMountpoint
+												: manageExternalVolumeConfiguration?.value
+										}
+										background="gray5"
+										readOnly
+									/>
+								</Container>
+							</ListRow>
+						</Container>
+					)}
+
 					{isShowSetExternalVolume && (
 						<ListRow>
 							<Container padding={{ top: 'large', bottom: 'large' }}>
@@ -1131,7 +1176,11 @@ const BackupConfiguration: FC = () => {
 								<Container padding={{ top: 'large', bottom: 'large' }}>
 									<Input
 										label={t('backup.bucket_configuration', 'Bucket Configuration')}
-										value={manageExternalVolumeConfiguration?.label}
+										value={
+											manageExternalVolumeType.startsWith('LOCAL')
+												? manageExternalVolumeLocalMountpoint
+												: manageExternalVolumeConfiguration?.value
+										}
 										background="gray5"
 										readOnly
 									/>
@@ -1202,29 +1251,31 @@ const BackupConfiguration: FC = () => {
 					)}
 					<ListRow>
 						<Container padding={{ top: 'large' }}>
-							<Button
-								type="outlined"
-								label={
-									isBackArchivingStoreEmpty
-										? t('backup.set_external_volume', 'Set external volume')
-										: t('backup.manage_external_volume', 'Manage external volume')
-								}
-								color="primary"
-								icon="HardDriveOutline"
-								iconPlacement="right"
-								height={36}
-								width="100%"
-								disabled={!isBackupInitialized}
-								onClick={(): void => {
-									if (!isBackArchivingStoreEmpty) {
-										setIsManageExternalVolumeEnable(true);
-										setIsShowSetExternalVolume(false);
-									} else {
-										setIsShowSetExternalVolume(true);
-										setIsManageExternalVolumeEnable(false);
+							{!isSetManageExternalButtonVisible && (
+								<Button
+									type="outlined"
+									label={
+										isBackArchivingStoreEmpty
+											? t('backup.set_external_volume', 'Set external volume')
+											: t('backup.manage_external_volume', 'Manage external volume')
 									}
-								}}
-							/>
+									color="primary"
+									icon="HardDriveOutline"
+									iconPlacement="right"
+									height={36}
+									width="100%"
+									disabled={!isBackupInitialized}
+									onClick={(): void => {
+										if (!isBackArchivingStoreEmpty) {
+											setIsManageExternalVolumeEnable(true);
+											setIsShowSetExternalVolume(false);
+										} else {
+											setIsShowSetExternalVolume(true);
+											setIsManageExternalVolumeEnable(false);
+										}
+									}}
+								/>
+							)}
 						</Container>
 					</ListRow>
 
