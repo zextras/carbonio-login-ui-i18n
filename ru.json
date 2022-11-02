@@ -526,7 +526,7 @@
         "reply_to_address_for_receipt": "Адрес для получения ответа",
         "allowed_sending_addresses": "Разрешенные адреса для отправки",
         "share_message_to_new_member": "Поделиться сообщением с новыми участниками",
-        "restore_account_has_added_operation_queue": "Учетная запись восстановления добавлена в очередь операций",
+        "restore_account_has_added_operation_queue": "Восстановление учетной записи успешно добавлено в очередь операций",
         "auto_accept_auto_decline_on_conflict": "Автоматическое принятие если доступен, автоматический отказ в случае конфликта",
         "account_disable_correctly": "Учетная запись была отключена.",
         "account_remove_correctly": "Аккаунт успешно удален.",
@@ -616,7 +616,8 @@
         "soft_deleted": "выключено",
         "there_are_not_owner_here": "Здесь нет владельцев.",
         "type_in_the_mails": "Введите учетные записи, чтобы добавить их в список",
-        "server_specific": "Характеристики сервера"
+        "server_specific": "Характеристики сервера",
+        "ex": "ех."
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
