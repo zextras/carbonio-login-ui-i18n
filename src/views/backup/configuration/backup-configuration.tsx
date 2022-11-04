@@ -667,7 +667,7 @@ const BackupConfiguration: FC = () => {
 							key: 'error',
 							type: 'error',
 							label: res?.error
-								? res?.error?.details?.cause
+								? res?.error?.message || res?.error?.details?.cause
 								: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
 							autoHideTimeout: 3000,
 							hideButton: true,
@@ -848,14 +848,15 @@ const BackupConfiguration: FC = () => {
 			body.volumeRootPath = manageExternalVolumeNewLocalMountpoint;
 			body.storeType = 'LOCAL';
 		}
-
+		body.targetServers = [server];
 		onBackupExternalVolume(body);
 	}, [
 		isManageExternalVolumeEnable,
 		destinationSelected?.value,
 		manageExternalVolumeBucketList?.value,
 		onBackupExternalVolume,
-		manageExternalVolumeNewLocalMountpoint
+		manageExternalVolumeNewLocalMountpoint,
+		server
 	]);
 
 	const isSetManageExternalButtonVisible = useMemo(
@@ -1060,7 +1061,7 @@ const BackupConfiguration: FC = () => {
 										value={
 											manageExternalVolumeType.startsWith('LOCAL')
 												? manageExternalVolumeLocalMountpoint
-												: manageExternalVolumeConfiguration?.value
+												: manageExternalVolumeConfiguration?.label
 										}
 										background="gray5"
 										readOnly
