@@ -1041,32 +1041,34 @@ const BackupConfiguration: FC = () => {
 						</Container>
 					</ListRow>
 
-					<Container>
-						<ListRow>
-							<Container padding={{ top: 'large' }}>
-								<Input
-									label={t('backup.external_volume', 'External Volume')}
-									value={manageExternalVolumeType}
-									background="gray5"
-									readOnly
-								/>
-							</Container>
-						</ListRow>
-						<ListRow>
-							<Container padding={{ top: 'large', bottom: 'large' }}>
-								<Input
-									label={t('backup.bucket_configuration', 'Bucket Configuration')}
-									value={
-										manageExternalVolumeType.startsWith('LOCAL')
-											? manageExternalVolumeLocalMountpoint
-											: manageExternalVolumeConfiguration?.value
-									}
-									background="gray5"
-									readOnly
-								/>
-							</Container>
-						</ListRow>
-					</Container>
+					{!isBackArchivingStoreEmpty && (
+						<Container>
+							<ListRow>
+								<Container padding={{ top: 'large' }}>
+									<Input
+										label={t('backup.external_volume', 'External Volume')}
+										value={manageExternalVolumeType}
+										background="gray5"
+										readOnly
+									/>
+								</Container>
+							</ListRow>
+							<ListRow>
+								<Container padding={{ top: 'large', bottom: 'large' }}>
+									<Input
+										label={t('backup.bucket_configuration', 'Bucket Configuration')}
+										value={
+											manageExternalVolumeType.startsWith('LOCAL')
+												? manageExternalVolumeLocalMountpoint
+												: manageExternalVolumeConfiguration?.value
+										}
+										background="gray5"
+										readOnly
+									/>
+								</Container>
+							</ListRow>
+						</Container>
+					)}
 
 					{isShowSetExternalVolume && (
 						<ListRow>
