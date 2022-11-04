@@ -730,7 +730,9 @@
         "max_email_quota_you_can_manage_is": "Lo spazio massimo che puoi gestire per una casella email è…",
         "server_specific": "Specifiche del Server",
         "sharing": "CONDIVISIONE",
-        "start": "inizia"
+        "start": "inizia",
+        "virtual_host_user_msg_2": "Gli host virtual devono essere unici per ciascun dominio, così il sistema sarà in grado di riconoscere a quale dominio appartiene l'utente e sarà possibile mostrare le impostazioni stabilite per il dato dominio",
+        "empty_table": "Tabella vuota"
     },
     "message": {
         "snackbar": {
