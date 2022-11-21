@@ -1279,6 +1279,6 @@
     },
     "reminder": {
         "minute": "{{count}} dakika",
-        "minute_plural": "{{count}} dakika"
+        "minute_plural": ""
     }
 }
