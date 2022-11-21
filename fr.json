@@ -703,7 +703,7 @@
         "would_you_like_to_add_ml": "<bold>Qui souhaitez-vous ajouter à cette liste de distribution ?</bold>",
         "you_are_deleting_ml": "Vous êtes sur le point de supprimer {{name}}",
         "server_specifics": "Spécifications du serveur",
-        "home": "Accueil"
+        "home": ""
     },
     "message": {
         "snackbar": {
