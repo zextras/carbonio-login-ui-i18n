@@ -75,7 +75,18 @@ const BackupServerConfig: FC = () => {
 				}
 			})
 			.catch((err) => {
-				console.log('caught it!', err);
+				console.log('[Error]: ', err);
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label:
+						err?.errors?.[0]?.error ||
+						err?.statusText ||
+						t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
 			});
 	};
 	useEffect(() => {
@@ -220,10 +231,10 @@ const BackupServerConfig: FC = () => {
 									'label.mb',
 									'MB'
 								)})`}
-								value={initbackupDetail.backupLatencyLowThreshold}
-								defaultValue={initbackupDetail.backupLatencyLowThreshold}
+								value={initbackupDetail.ZxBackup_SpaceThreshold}
+								defaultValue={initbackupDetail.ZxBackup_SpaceThreshold}
 								onChange={changeBackupDetail}
-								inputName="backupLatencyLowThreshold"
+								inputName="ZxBackup_SpaceThreshold"
 								background="gray5"
 							/>
 						</Container>
@@ -235,10 +246,10 @@ const BackupServerConfig: FC = () => {
 									'label.mb',
 									'MB'
 								)})`}
-								value={initbackupDetail.backupLatencyHighThreshold}
-								defaultValue={initbackupDetail.backupLatencyHighThreshold}
+								value={initbackupDetail.backupLocalMetadataThreshold}
+								defaultValue={initbackupDetail.backupLocalMetadataThreshold}
 								onChange={changeBackupDetail}
-								inputName="backupLatencyHighThreshold"
+								inputName="backupLocalMetadataThreshold"
 								background="gray5"
 							/>
 						</Container>
