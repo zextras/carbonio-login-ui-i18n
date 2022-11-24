@@ -1525,7 +1525,8 @@
         "volume_already_selected_in_destination": "宛先ボリュームですでに選択されているボリューム",
         "volume_already_selected_in_source": "ソース ボリュームですでに選択されているボリューム",
         "years": "年間",
-        "policy_name": "ポリシー名"
+        "policy_name": "ポリシー名",
+        "secondry": "セカンダリー"
     },
     "select_bucket_or_create_new_bucket_helperText": "バケットタイプを設定していないようです。\n[新しいバケット]をクリックして、新しいバケットを作成してください。",
     "welcome_to_carbonio_display_name": "ようこそ {{adminName}}！"
