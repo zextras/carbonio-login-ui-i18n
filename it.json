@@ -151,7 +151,7 @@
         "proceed_without_generating_an_otp_code": "PROCEDI SENZA GENERARE UN CODICE OTP"
     },
     "label": {
-        "account": "Account",
+        "account": "Profilo",
         "accounts": "Account",
         "cancel": "Elimina",
         "configuration": "CONFIGURAZIONE",
@@ -186,7 +186,7 @@
                 "accepted": "Hai accettato la richiesta di condivisione"
             }
         },
-        "status": "Stato",
+        "status": "stato",
         "suspended": "Sospeso",
         "timezone": "Fuso orario",
         "unlimited": "Illimitato",
@@ -398,7 +398,7 @@
         "id_lbl": "ID",
         "language": "Lingua",
         "location": "Luogo",
-        "mail": "Email",
+        "mail": "E-mail",
         "owners": "Proprietari",
         "password": "Password",
         "require_list_owner_approval": "Richiedi approvazione del proprietario della lista",
@@ -731,7 +731,32 @@
         "start": "inizia",
         "virtual_host_user_msg_2": "Gli host virtual devono essere unici per ciascun dominio, così il sistema sarà in grado di riconoscere a quale dominio appartiene l'utente e sarà possibile mostrare le impostazioni stabilite per il dato dominio",
         "empty_table": "Tabella vuota",
-        "not_ready_to_be_active": "Non pronto per essere attivo"
+        "not_ready_to_be_active": "Non pronto per essere attivo",
+        "DELETE": "ELIMINA",
+        "OTP": "OTP",
+        "advanced_lbl": "Avanzate",
+        "allowed": "Consentito",
+        "device_id": "ID Dispositivo",
+        "eas": "EAS",
+        "email_address": "Indirizzo email",
+        "enabled": "Abilitato",
+        "global": "Globale",
+        "last_seen": "Visto l’ultima volta",
+        "mailstores": "Mailstore",
+        "mobile_password": "Mobile Password",
+        "reset": "Ripristina",
+        "reset_device": "Reset sincronizzazione dispositivo",
+        "s3_bucket": "Bucket S3",
+        "select_an_external_volume": "Seleziona un Volume Esterno",
+        "service": "Servizio",
+        "status_lbl": "Stato",
+        "theme": "Tema",
+        "title": "Titolo",
+        "update": "Aggiorna",
+        "volume_next_button": "SUCCESSIVO",
+        "volume_server_name": "Server",
+        "wipe_device": "\"Wipe\" del dispositivo",
+        "e_mail": "E-mail"
     },
     "message": {
         "snackbar": {
@@ -964,7 +989,10 @@
         "schedule_smartscan": "Programma Smartscan",
         "smart_scan_configuration": "Configurazione SmartScan",
         "tuning_options": "Ottimizzazioni",
-        "on_the_fly_metadata": "Metadati"
+        "on_the_fly_metadata": "Metadati",
+        "bucket_list": "Lista Bucket",
+        "external_volume": "Volume Esterno",
+        "kb": "KB"
     },
     "cos": {
         "maximum_number_of_items_to_display_per_page": "Numero massimo di elementi da visualizzare per pagina",
@@ -1035,7 +1063,7 @@
         "free_busy_interop": "Libero/occupato Interop",
         "html_compose": "Composizione HTML",
         "imap_polling_interval": "Intervallo di ricezione automatica IMAP",
-        "mail": "Email",
+        "mail": "E-mail",
         "manuallly": "Manualmente",
         "maximum_number_of_contacts_allowed_in_folder": "Numero massimo di contatti consentiti nella cartella",
         "maximum_number_of_user_specific_forwarding_addresses": "Numero massimo di indirizzi di inoltro specificati dall’utente",
@@ -1111,7 +1139,9 @@
         "display_by": "Mostra per",
         "group_calender": "Calendario Avanzato",
         "new_proxy_allowed_domain": "Nuovo proxy abilitato per il dominio",
-        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione"
+        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione",
+        "active_sync": "ActiveSync",
+        "dark_mode": "Tema Scuro"
     },
     "accountDetails": {
         "default_COS": "COS Predefinita",
@@ -1191,7 +1221,7 @@
         "enable_smime": "Abilita S/MIME",
         "general": "Generale",
         "hide_in_gal": "Nascondi in GAL",
-        "mail": "Email",
+        "mail": "E-mail",
         "manuallly": "Manualmente",
         "message_priority": "Priorità messaggi",
         "offline_support_for_advanced_ajax_client": "Assistenza non in linea per client Advanced (Ajax)",
@@ -1272,6 +1302,84 @@
         "new": {
             "create_mailstores_volume": "Crea Volume Mailstore"
         },
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} Crea Volume Mailstore"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} Crea Volume Mailstore",
+        "server_list_header": {
+            "description": "Descrizione",
+            "index": "Indice",
+            "primary": "Primario",
+            "secondary": "Secondario",
+            "server": "Server"
+        },
+        "volume_allocation_list": {
+            "centralized": "Centralizzato",
+            "external": "Esterna",
+            "local": "Locale"
+        },
+        "volume_header": {
+            "compression": "Compressione",
+            "current": "Corrente",
+            "id": "ID",
+            "name": "Nome",
+            "path": "Percorso"
+        },
+        "volume_indexer_header": {
+            "current": "Corrente",
+            "id": "ID",
+            "name": "Nome",
+            "path": "Percorso"
+        },
+        "volume_type": {
+            "index": "Indice",
+            "primary": "Primario",
+            "secondary": "Secondario"
+        },
+        "volume_config_header": {
+            "name": "Nome"
+        }
+    },
+    "hsm": {
+        "all": "Tutto",
+        "allocation": "Allocazione",
+        "apply_duplication_after_scheduledhsm": "Applica Deduplica dopo aver pianificato HSM",
+        "contact": "Contatto",
+        "create_policy": "Crea Policy",
+        "criteria": "Criteri",
+        "current": "Corrente",
+        "days": "Giorni",
+        "delete": "Elimina",
+        "destination_volume": "Volume di Destinazione",
+        "details": "Dettagli",
+        "document": "Documenti",
+        "edit": "Modifica",
+        "event": "Evento",
+        "gb": "GB",
+        "hours": "Ore",
+        "hsm_policies_list": "Lista Policy HSM",
+        "hsm_policy": "Policy HSM",
+        "indexes": "Indici",
+        "items": "Item",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "Messaggio",
+        "minimum_space_threshold": "Soglia minima di spazio",
+        "minutes": "Minuti",
+        "months": "Mesi",
+        "name": "Nome",
+        "new_policy_summary": "Riassunto Nuova Policy",
+        "no": "No",
+        "option": "Opzione",
+        "parameters": "Parametri",
+        "policy_settings": "Impostazioni Policy",
+        "primary": "Primario",
+        "schedule": "Programma",
+        "secondary": "Secondario",
+        "select_volumes": "Seleziona Volumi",
+        "server": "Server",
+        "source_volume": "Volume Sorgente",
+        "this_function_allow_save_disk_copy_msg": "Questa funzione permette di risparmiare spazio su disco, salvando la singola copia di un elemento.",
+        "type": "Tipo",
+        "value": "Valore",
+        "volumes": "Volumi",
+        "yes": "Sì"
     }
 }
