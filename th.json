@@ -874,7 +874,32 @@
         "reply_to_address_for_receipt": "ที่อยู่ตอบกลับสำหรับใบเสร็จ",
         "username_with": "ชื่อผู้ใช้ที่มี",
         "username_without": "ชื่อผู้ใช้ที่ไม่มี",
-        "verify_connector_verified": " ยืนยันแล้ว"
+        "verify_connector_verified": " ยืนยันแล้ว",
+        "DELETE": "ลบ",
+        "OTP": "OTP",
+        "advanced_lbl": "ขั้นสูง",
+        "allowed": "อนุญาต",
+        "device_id": "ID ของอุปกรณ์",
+        "e_mail": "อีเมล",
+        "eas": "EAS",
+        "email_address": "ที่อยู่อีเมล",
+        "enabled": "เปิดการใช้งาน",
+        "global": "ทั่วโลก",
+        "last_seen": "ดูครั้งล่าสุด",
+        "mailstores": "Mailstores",
+        "mobile_password": "รหัสผ่านอุปกรณ์พกพา",
+        "reset": "รีเซ็ต",
+        "reset_device": "รีเซ็ตอุปกรณ์",
+        "s3_bucket": "S3 Bucket",
+        "select_an_external_volume": "เลือกไดรฟ์ข้อมูลภายนอก",
+        "service": "บริการ",
+        "status_lbl": "สถานะ",
+        "theme": "รูปแบบธีม",
+        "title": "หัวข้อ",
+        "update": "อัพเดท",
+        "volume_next_button": "ต่อไป",
+        "volume_server_name": "เซิร์ฟเวอร์",
+        "wipe_device": "Wipe อุปกรณ์"
     },
     "message": {
         "snackbar": {
@@ -956,7 +981,10 @@
         "maximum_metadata_size_mb": "ขนาดข้อมูลเมตาสูงสุด (MB)",
         "metadata": "Metadata",
         "other_controls": "การควบคุมอื่นๆ",
-        "smart_scan_configuration": "การกำหนดค่า SmartScan"
+        "smart_scan_configuration": "การกำหนดค่า SmartScan",
+        "bucket_list": "รายการ Bucket",
+        "external_volume": "วอลุ่มภายนอก",
+        "kb": "KB"
     },
     "cos": {
         "calendar_options": "ตัวเลือกปฏิทิน",
@@ -1104,7 +1132,9 @@
         "use_quickadd_dialog_in_creation": "ใช้กล่องโต้ตอบ QuickAdd ในการสร้าง",
         "yes_disable": "ใช่ ปิดการใช้งาน",
         "reject_common_passwords": "ปฏิเสธรหัสผ่านทั่วไป",
-        "search_a_specific_server": "ค้นหาเซิร์ฟเวอร์เฉพาะ"
+        "search_a_specific_server": "ค้นหาเซิร์ฟเวอร์เฉพาะ",
+        "dark_mode": "โหมดมืด",
+        "active_sync": "ActiveSync"
     },
     "accountDetails": {
         "enable_activeSync_remote_access": "เปิดใช้งานการเข้าถึงระยะไกล ActiveSync",
@@ -1274,8 +1304,86 @@
             "create_mailstores_volume": "สร้าง Mailstores Volume"
         },
         "serverName_volumes": "วอลุ่ม {{serverName}}",
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} สร้าง Mailstores Volume"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} สร้าง Mailstores Volume",
+        "server_list_header": {
+            "description": "คำอธิบาย",
+            "index": "ดัชนี",
+            "primary": "หลัก",
+            "secondary": "รอง",
+            "server": "เซิร์ฟเวอร์"
+        },
+        "volume_allocation_list": {
+            "centralized": "รวบรวมแล้ว",
+            "external": "ภายนอก",
+            "local": "โลคอล"
+        },
+        "volume_config_header": {
+            "name": "ชื่อ"
+        },
+        "volume_header": {
+            "compression": "การบีบอัด",
+            "current": "ปัจจุบัน",
+            "id": "ID",
+            "name": "ชื่อ",
+            "path": "เส้นทาง"
+        },
+        "volume_indexer_header": {
+            "current": "ปัจจุบัน",
+            "id": "ID",
+            "name": "ชื่อ",
+            "path": "เส้นทาง"
+        },
+        "volume_type": {
+            "index": "ดัชนี",
+            "primary": "หลัก",
+            "secondary": "รอง"
+        }
     },
     "click_new_bucket_button_to_create_new_one": "คลิกปุ่ม NEW BUCKET เพื่อสร้างใหม่",
-    "have_not_setup_bucket_type": "ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าประเภท bucket"
+    "have_not_setup_bucket_type": "ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าประเภท bucket",
+    "hsm": {
+        "all": "ทั้งหมด",
+        "allocation": "การจัดสรร",
+        "apply_duplication_after_scheduledhsm": "ใช้ Deduplication หลังจากกำหนดเวลา HSM",
+        "contact": "ผู้ติดต่อ",
+        "create_policy": "สร้างนโยบาย",
+        "criteria": "เกณฑ์",
+        "current": "ปัจจุบัน",
+        "days": "วัน",
+        "delete": "ลบ",
+        "destination_volume": "วอลุ่มปลายทาง",
+        "details": "รายละเอียด",
+        "document": "เอกสาร",
+        "edit": "แก้ไข",
+        "event": "เหตุการณ์",
+        "gb": "GB",
+        "hours": "ชั่วโมง",
+        "hsm_policies_list": "รายการนโยบาย HSM",
+        "hsm_policy": "นโยบาย HSM",
+        "indexes": "ดัชนี",
+        "items": "รายการ",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "ข้อความ",
+        "minimum_space_threshold": "ขีดจำกัดพื้นที่ขั้นต่ำสุด",
+        "minutes": "นาที",
+        "months": "เดือน",
+        "name": "ชื่อ",
+        "new_policy_summary": "สรุปนโยบายใหม่",
+        "no": "ไม่",
+        "option": "ตัวเลือก",
+        "parameters": "พารามิเตอร์",
+        "policy_settings": "การตั้งค่านโยบาย",
+        "primary": "หลัก",
+        "schedule": "กำหนดการ",
+        "secondary": "รอง",
+        "select_volumes": "เลือกวอลุ่ม",
+        "server": "เซิร์ฟเวอร์",
+        "source_volume": "แหล่งที่มาของวอลุ่ม",
+        "this_function_allow_save_disk_copy_msg": "ฟังก์ชันนี้ช่วยให้คุณประหยัดพื้นที่ดิสก์โดยการจัดเก็บสำเนารายการเดียว",
+        "type": "ประเภท",
+        "value": "ค่า",
+        "volumes": "ไดรฟ์ข้อมูล",
+        "yes": "ใช่"
+    }
 }
