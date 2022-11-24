@@ -642,7 +642,10 @@
         "title": "标题",
         "volume_next_button": "下一步",
         "volume_server_name": "服务器",
-        "wipe_device": "擦除设备"
+        "wipe_device": "擦除设备",
+        "failed": "失败",
+        "remove_button": "移除",
+        "session_id": "会话 ID"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -1384,6 +1387,9 @@
         "type": "类型",
         "value": "值",
         "volumes": "卷",
-        "yes": "是"
+        "yes": "是",
+        "policy_name": "政策名称",
+        "policies_added_successfully": "策略已添加成功",
+        "secondry": "次要"
     }
 }
