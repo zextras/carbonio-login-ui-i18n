@@ -35,9 +35,9 @@
         "page ": "आपने शेयर अनुरोध स्वीकार कर लिया",
         "page_": "आपने शेयर अनुरोध स्वीकार कर लिया",
         "privacy": "गोपनीयता",
-        "status": "स्थिति",
+        "status": "स्टेटस",
         "suspended": "निलंबित",
-        "timezone": "टाइम ज़ोन",
+        "timezone": "समय क्षेत्र",
         "unlimited": "असीमित",
         "url": "URL",
         "web_client": "वेब क्लाइंट",
@@ -77,7 +77,7 @@
         "show_time_zone_list_in_appointment_view": "अपॉइंटमेंट दृश्‍य में समय क्षेत्र सूची दिखाएँ",
         "space": "Space",
         "subscription": "सब्सक्रिप्शन",
-        "time_zone": "टाइम ज़ोन",
+        "time_zone": "समय क्षेत्र",
         "type": "टाइप",
         "unsaved_changes": "आपके अनसेव्ड मैसेज हैं",
         "unsaved_changes_line1": "क्या आप वाकई में बिना सेव किए ये पेज छोड़ना चाहते हैं?",
@@ -582,7 +582,32 @@
         "volume_max_quota_allowed": "अधिकतम अनुमत कोटा",
         "volume_min_threshold": "न्यूनतम सीमा",
         "who_is_in_this_list": "इस लिस्ट में कौन है?",
-        "who_needs_receive_this_email": "यह ईमेल किसको मिलनी चाहिए?"
+        "who_needs_receive_this_email": "यह ईमेल किसको मिलनी चाहिए?",
+        "DELETE": "डिलीट करें",
+        "OTP": "ओटीपी",
+        "device_id": "डिवाइस आईडी",
+        "e_mail": "ई-मेल",
+        "eas": "EAS",
+        "email_address": "ईमेल पता",
+        "enabled": "चालू है",
+        "global": "ग्लोबल",
+        "last_seen": "पिछली बार देखा गया",
+        "reset": "रीसेट करें",
+        "reset_device": "डिवाइस रीसेट करें",
+        "s3_bucket": "S3 बकेट",
+        "select_an_external_volume": "कोई एक्सटर्नल वॉल्यूम चुनें",
+        "service": "सर्विस",
+        "status_lbl": "स्थिति",
+        "theme": "थीम",
+        "title": "शीर्षक",
+        "update": "अपडेट करें",
+        "volume_next_button": "अगला",
+        "volume_server_name": "सर्वर",
+        "wipe_device": "डिवाइस साफ करें",
+        "advanced_lbl": "एड्वान्स्ड",
+        "allowed": "अनुमति है",
+        "mailstores": "मेलस्टोर",
+        "mobile_password": "मोबाइल पासवर्ड"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
@@ -955,7 +980,10 @@
         "general": "सामान्य",
         "initialize_backup": "बैकअप शुरू करें",
         "keep_deleted_item_in_backup": "डिलीट किए आइटम बैकअप में रखें",
-        "metadata": "मैटाडाटा"
+        "metadata": "मैटाडाटा",
+        "bucket_list": "बकेट्स लिस्ट",
+        "external_volume": "एक्सटर्नल वॉल्यूम",
+        "kb": "KB"
     },
     "cos": {
         "calendar_options": "कैलेंडर विकल्प",
@@ -1103,7 +1131,9 @@
         "use_gal_to_auto_fill": "अपने आप भरने के लिए GAL इस्तेमाल करें",
         "use_ical_delegation_model_for_shared_calendars": "शेयर किए कैलेंडरों के लिए iCal डेलीगेशन मॉडल इस्तेमाल करें",
         "use_quickadd_dialog_in_creation": "बनाने में QuickAdd डायलॉग इस्तेमाल करें",
-        "yes_disable": "हाँ, बंद करें"
+        "yes_disable": "हाँ, बंद करें",
+        "active_sync": "ActiveSync",
+        "dark_mode": "डार्क मोड"
     },
     "accountDetails": {
         "enable_activeSync_remote_access": "ActiveSync रिमोट एक्सेस चालू करें",
@@ -1275,7 +1305,85 @@
         "new": {
             "create_mailstores_volume": "मेलस्टोर वॉल्यूम बनाएँ"
         },
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} मेलस्टोर्स वॉल्यूम बनाएँ"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} मेलस्टोर्स वॉल्यूम बनाएँ",
+        "server_list_header": {
+            "description": "विवरण",
+            "index": "इंडेक्स",
+            "primary": "प्राइमरी",
+            "secondary": "सेकंडरी",
+            "server": "सर्वर"
+        },
+        "volume_allocation_list": {
+            "centralized": "केन्द्रित",
+            "external": "एक्सटर्नल",
+            "local": "लोकल"
+        },
+        "volume_config_header": {
+            "name": "नाम"
+        },
+        "volume_header": {
+            "compression": "कंप्रेशन",
+            "current": "वर्तमान",
+            "id": "आईडी",
+            "name": "नाम",
+            "path": "पाथ"
+        },
+        "volume_indexer_header": {
+            "current": "वर्तमान",
+            "id": "आईडी",
+            "name": "नाम",
+            "path": "पाथ"
+        },
+        "volume_type": {
+            "index": "इंडेक्स",
+            "primary": "प्राइमरी",
+            "secondary": "सेकंडरी"
+        }
     },
-    "click_new_bucket_button_to_create_new_one": "नई बकेट बटन क्लिक करके एक नई बनाएँ।"
+    "click_new_bucket_button_to_create_new_one": "नई बकेट बटन क्लिक करके एक नई बनाएँ।",
+    "hsm": {
+        "all": "सभी",
+        "allocation": "एलोकेशन",
+        "apply_duplication_after_scheduledhsm": "शैड्यूल्ड HSM के बाद डिडुप्लिकेशन एप्लाई करें",
+        "contact": "संपर्क",
+        "create_policy": "नीति बनाएँ",
+        "criteria": "मानदंड",
+        "current": "वर्तमान",
+        "days": "दिन",
+        "delete": "डिलीट करें",
+        "destination_volume": "गंतव्य वॉल्यूम",
+        "details": "विवरण",
+        "document": "दस्तावेज़",
+        "edit": "बदलाव करें",
+        "event": "ईवेंट",
+        "gb": "GB",
+        "hours": "घंटे",
+        "hsm_policies_list": "HSM नीतियों की लिस्ट",
+        "hsm_policy": "HSM पॉलिसी",
+        "indexes": "इंडेक्स",
+        "items": "आइटम",
+        "kb": "KB",
+        "mb": "एमबी",
+        "message": "मैसेज",
+        "minimum_space_threshold": "Minimum Space Threshold",
+        "minutes": "क्षण",
+        "months": "महीने",
+        "name": "नाम",
+        "new_policy_summary": "नई नीति सारांश",
+        "no": "नहीं",
+        "option": "ऑप्शन",
+        "parameters": "पैरामीटर",
+        "policy_settings": "नीति सेटिंग्स",
+        "primary": "प्राइमरी",
+        "schedule": "समय सारिणी",
+        "secondary": "सेकंडरी",
+        "select_volumes": "वॉल्यूम सिलेक्ट करें",
+        "server": "सर्वर",
+        "source_volume": "सोर्स वॉल्यूम",
+        "this_function_allow_save_disk_copy_msg": "इस फंक्शन से आप किसी आइटम की सिंगल कॉपी स्टोर करके डिस्क स्पेस बचा सकते हैं।",
+        "type": "टाइप",
+        "value": "वैल्यू",
+        "volumes": "वॉल्यूम",
+        "yes": "हाँ"
+    }
 }
