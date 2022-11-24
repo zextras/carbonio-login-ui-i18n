@@ -127,7 +127,7 @@
         "app_name": "Beheren",
         "available_space": "Beschikbare ruimte",
         "backup": "Backup",
-        "cancel": "Annuleren",
+        "cancel": "Abbrechen",
         "configuration": "CONFIGURATIE",
         "core": "Core",
         "days": "Dagen",
@@ -153,7 +153,7 @@
                 "accepted": "U heeft het verzoek tot delen geaccepteerd"
             }
         },
-        "status": "Status",
+        "status": "status",
         "suspended": "Tijdelijk stopgezet",
         "timezone": "Tijdzone",
         "unlimited": "Onbeperkt",
@@ -500,7 +500,7 @@
         "public": "Publiek",
         "quotas": "Quota",
         "restore_data_source": "Gegevensbron herstellen",
-        "settings": "Instellingen",
+        "settings": "Einstellungen",
         "something_wrong_wrror_msg": "Er is iets misgegaan. Probeer het opnieuw.",
         "use_last_available_status": "Gebruik de laatst beschikbare status",
         "volume": "Volume",
@@ -701,7 +701,32 @@
         "type_accounts_paste_them_here": "Type de Accounts of plak ze hier",
         "type_an_account_dot": "Type een account ...",
         "who_is_in_this_list": "Wie staat er op deze lijst?",
-        "who_needs_receive_this_email": "Wie moet deze e-mail ontvangen?"
+        "who_needs_receive_this_email": "Wie moet deze e-mail ontvangen?",
+        "DELETE": "VERWIJDEREN",
+        "OTP": "OTP",
+        "device_id": "Apparaat ID",
+        "e_mail": "E-mail",
+        "eas": "EAS",
+        "email_address": "Email address",
+        "enabled": "Geactiveerd",
+        "last_seen": "Laatst bekeken",
+        "mailstores": "Mailstores",
+        "mobile_password": "Mobiel wachtwoord",
+        "reset": "Resetten",
+        "reset_device": "Apparaat resetten",
+        "s3_bucket": "S3 Bucket",
+        "select_an_external_volume": "Een extern volume kiezen",
+        "service": "Service",
+        "status_lbl": "Status",
+        "theme": "Thema",
+        "title": "Titel",
+        "update": "Update",
+        "volume_next_button": "VOLGENDE",
+        "volume_server_name": "Server",
+        "wipe_device": "Apparaat wissen",
+        "advanced_lbl": "Geavanceerd",
+        "allowed": "Toegelaten",
+        "global": "Globaal"
     },
     "timezone": {
         "europe_belgrade": "{{value}} Belgrado, Bratislava, Boedapest, Ljubljana, Praag",
@@ -956,7 +981,10 @@
         "max_waiting_time_ms": "Max. wachttijd (ms)",
         "maximum_metadata_size_mb": "Maximumgrootte metagegevens (MB)",
         "metadata": "Metadata",
-        "smart_scan_configuration": "SmartScan Configuratie"
+        "smart_scan_configuration": "SmartScan Configuratie",
+        "bucket_list": "Buckets Lijst",
+        "external_volume": "Extern volume",
+        "kb": "KB"
     },
     "cos": {
         "calendar_options": "Agendaopties",
@@ -1022,7 +1050,7 @@
         "email_retention_policy": "Beleid voor behoud van e-mail",
         "enable_failed_login_lockout": "Vergrendeling mislukte aanmeldingen inschakelen",
         "enable_smime": "S/MIME inschakelen",
-        "enabled": "Ingeschakeld",
+        "enabled": "Geactiveerd",
         "failed_login_policy": "Beleid mislukte aanmelding",
         "free_busy_interop": "Interop",
         "html_compose": "Opstellen in HTML",
@@ -1104,7 +1132,9 @@
         "use_gal_to_auto_fill": "Gebruik GAL om automatisch te vullen",
         "use_ical_delegation_model_for_shared_calendars": "Gebruik iCal delegatiemodel voor gedeelde agenda's",
         "use_quickadd_dialog_in_creation": "Gebruik het QuickAdd-dialoogvenster bij creatie",
-        "yes_disable": "Ja, Uitschakelen"
+        "yes_disable": "Ja, Uitschakelen",
+        "dark_mode": "Donkere modus",
+        "active_sync": "ActiveSync"
     },
     "locale": {
         "English": "Engels",
@@ -1277,6 +1307,84 @@
             "create_mailstores_volume": "Mailstores Volume creëren"
         },
         "serverName_volumes": "{{serverName}} Volumes",
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} Mailstores Volume creëren"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} Mailstores Volume creëren",
+        "server_list_header": {
+            "description": "Omschrijving",
+            "index": "Index",
+            "primary": "Primair",
+            "secondary": "Secundair",
+            "server": "Server"
+        },
+        "volume_allocation_list": {
+            "centralized": "Gecentraliseerd",
+            "external": "Extern",
+            "local": "Locaal"
+        },
+        "volume_header": {
+            "id": "ID",
+            "name": "Naam",
+            "path": "Traject",
+            "compression": "Compressie",
+            "current": "Huidig"
+        },
+        "volume_indexer_header": {
+            "current": "Huidig",
+            "id": "ID",
+            "name": "Naam",
+            "path": "Traject"
+        },
+        "volume_type": {
+            "index": "Index",
+            "primary": "Primair",
+            "secondary": "Secundair"
+        },
+        "volume_config_header": {
+            "name": "Naam"
+        }
+    },
+    "hsm": {
+        "all": "Alle",
+        "allocation": "Toewijzing",
+        "apply_duplication_after_scheduledhsm": "Deduplicatie toepassen na geplande HSM",
+        "contact": "Contact",
+        "create_policy": "Beleid creëren",
+        "criteria": "Criteria",
+        "current": "Huidig",
+        "days": "Dagen",
+        "delete": "Verwijderen",
+        "destination_volume": "Bestemmingsvolume",
+        "details": "Details",
+        "document": "Document",
+        "edit": "Bewerken",
+        "event": "Gebeurtenis",
+        "gb": "GB",
+        "hours": "Uren",
+        "hsm_policies_list": "HSM-beleidslijnenlijst",
+        "hsm_policy": "HSM-beleid",
+        "indexes": "Indexen",
+        "items": "Items",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "Bericht",
+        "minimum_space_threshold": "Drempel minimum ruimte",
+        "minutes": "Minuten",
+        "months": "Maanden",
+        "name": "Naam",
+        "new_policy_summary": "Samenvatting nieuw beleid",
+        "no": "Nee",
+        "option": "Optie",
+        "parameters": "Parameters",
+        "policy_settings": "Beleidsinstellingen",
+        "primary": "Primair",
+        "schedule": "Planning",
+        "secondary": "Secundair",
+        "select_volumes": "Volumes selecteren",
+        "server": "Server",
+        "source_volume": "Bron Volume",
+        "this_function_allow_save_disk_copy_msg": "Met deze functie kunt u schijfruimte besparen door een enkele kopie van een item op te slaan.",
+        "type": "Type",
+        "value": "Waarde",
+        "volumes": "Volumes",
+        "yes": "Ja"
     }
 }
