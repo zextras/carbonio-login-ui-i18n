@@ -1385,6 +1385,7 @@
         "type": "Tipo",
         "value": "Valor",
         "volumes": "Volúmenes",
-        "yes": "Sí"
+        "yes": "Sí",
+        "secondry": "Secundario"
     }
 }
