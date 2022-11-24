@@ -323,7 +323,7 @@
                 "accepted": "Zaakceptowano prośbę o udostępnienie"
             }
         },
-        "status": "Status",
+        "status": "status",
         "suspended": "Zawieszone",
         "timezone": "Strefa czasowa",
         "unlimited": "Nielimitowane",
@@ -874,7 +874,32 @@
         "dl_delete_successfull": "{{name}} zostało usunięte",
         "ext_volume": "Wolumin zewnętrzny",
         "global_server_settings": "Globalne ustawienia serwerów",
-        "resource_disable_successfully": "{{resource_name}} zostało wyłączone."
+        "resource_disable_successfully": "{{resource_name}} zostało wyłączone.",
+        "DELETE": "USUŃ",
+        "OTP": "Hasło OTP",
+        "advanced_lbl": "Zaawansowane",
+        "allowed": "Dozwolone",
+        "device_id": "ID urządzenia",
+        "e_mail": "E-mail",
+        "eas": "EAS",
+        "email_address": "Adres e-mail",
+        "enabled": "Włączone",
+        "global": "Globalne",
+        "last_seen": "Ostatnio widziano",
+        "mailstores": "Przechowywanie poczty",
+        "mobile_password": "Hasło Mobilne",
+        "reset": "Zresetuj",
+        "reset_device": "Reset urządzenia",
+        "s3_bucket": "S3 Bucket",
+        "select_an_external_volume": "Wybierz wolumin zewnętrzny",
+        "service": "Usługa",
+        "status_lbl": "Status",
+        "theme": "Motyw",
+        "title": "Tytuł",
+        "update": "Zaktualizuj",
+        "volume_next_button": "DALEJ",
+        "volume_server_name": "Serwer",
+        "wipe_device": "Wyczyść urządzenie"
     },
     "message": {
         "snackbar": {
@@ -956,7 +981,10 @@
         "the_service_is": "Usługa",
         "thread_number_for_accounts": "Liczba wątków dla kont",
         "thread_number_for_items": "Liczba wątków dla elementów",
-        "waiting_time": "Czas oczekiwania"
+        "waiting_time": "Czas oczekiwania",
+        "bucket_list": "Lista Bucketów",
+        "external_volume": "Wolumin zewnętrzny",
+        "kb": "KB"
     },
     "cos": {
         "calendar_options": "Ustawienia kalendarza",
@@ -1104,7 +1132,9 @@
         "add_invites_with_publish_method": "Dodawaj zaproszenia metodą PUBLISH",
         "add_forwarded_invites_to_calendar": "Automatycznie dodawaj przekazane dalej zaproszenia do kalendarza",
         "add_appointments_when_invited": "Automatycznie dodawaj spotkania kiedy użytkownik dostaje zaproszenie",
-        "time_range": "Jednostka czasu"
+        "time_range": "Jednostka czasu",
+        "active_sync": "ActiveSync",
+        "dark_mode": "Tryb ciemny"
     },
     "locale": {
         "label_italian": "Włoski - {{value}}",
@@ -1276,8 +1306,86 @@
         "serverName_volumes": "Woluminy {{serverName}}",
         "new": {
             "create_mailstores_volume": "Stwórz wolumin przechowywania poczty"
+        },
+        "server_list_header": {
+            "description": "Opis",
+            "index": "Indeks",
+            "primary": "Pierwszorzędny",
+            "secondary": "Drugorzędny",
+            "server": "Serwer"
+        },
+        "volume_allocation_list": {
+            "centralized": "Zcentralizowane",
+            "external": "Zewnętrzne",
+            "local": "Lokalne"
+        },
+        "volume_config_header": {
+            "name": "Imię"
+        },
+        "volume_header": {
+            "compression": "Kompresja",
+            "current": "Aktualne",
+            "id": "ID",
+            "name": "Imię",
+            "path": "Ścieżka"
+        },
+        "volume_indexer_header": {
+            "current": "Aktualne",
+            "id": "ID",
+            "name": "Imię",
+            "path": "Ścieżka"
+        },
+        "volume_type": {
+            "index": "Indeks",
+            "primary": "Pierwszorzędny",
+            "secondary": "Drugorzędny"
         }
     },
     "have_not_setup_bucket_type": "Wygląda na to, że nie ustawiłeś typu bucketu",
-    "click_new_bucket_button_to_create_new_one": "Kliknij przycisk NOWY BUCKET, aby stworzyć nowy."
+    "click_new_bucket_button_to_create_new_one": "Kliknij przycisk NOWY BUCKET, aby stworzyć nowy.",
+    "hsm": {
+        "all": "Wszystkie",
+        "allocation": "Alokacja",
+        "apply_duplication_after_scheduledhsm": "Zastosuj od-duplikowanie po zaplanowanym HSM",
+        "contact": "Kontakty",
+        "create_policy": "Stwórz politykę",
+        "criteria": "Kryteria",
+        "current": "Aktualne",
+        "days": "Dni",
+        "delete": "Usuń",
+        "destination_volume": "Wolumin docelowy",
+        "details": "Szczegóły",
+        "document": "Dokument",
+        "edit": "Edytuj",
+        "event": "Wydarzenie",
+        "gb": "GB",
+        "hours": "Godziny",
+        "hsm_policies_list": "Lista polityk HSM",
+        "hsm_policy": "Polityka HSM",
+        "indexes": "Indeksy",
+        "items": "Pozycje",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "Wiadomość",
+        "minimum_space_threshold": "Próg minimalnej przestrzeni",
+        "minutes": "Minuty",
+        "months": "Miesiące",
+        "name": "Imię",
+        "new_policy_summary": "Podsumowanie nowej polityki",
+        "no": "Nie",
+        "option": "Opcja",
+        "parameters": "Parametry",
+        "policy_settings": "Ustawienia polityki",
+        "primary": "Pierwszorzędny",
+        "schedule": "Harmonogram",
+        "secondary": "Drugorzędny",
+        "select_volumes": "Wybierz woluminy",
+        "server": "Serwer",
+        "source_volume": "Wolumin źródłowy",
+        "this_function_allow_save_disk_copy_msg": "Ta funkcja pozwala Ci zaoszczędzić przestrzeń dyskową dzięki przechowywaniu tylko pojedynczej kopii pozycji.",
+        "type": "Typ",
+        "value": "Wartość",
+        "volumes": "Woluminy",
+        "yes": "Tak"
+    }
 }
