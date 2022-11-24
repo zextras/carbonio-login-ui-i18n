@@ -1384,6 +1384,7 @@
         "type": "Type",
         "value": "Valeur",
         "volumes": "Volumes",
-        "yes": "Oui"
+        "yes": "Oui",
+        "secondry": "Secondaire"
     }
 }
