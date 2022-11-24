@@ -86,7 +86,7 @@
                 "accepted": "Вы приняли права общего доступа"
             }
         },
-        "status": "Cостояние",
+        "status": "статус",
         "suspended": "приостановлена",
         "timezone": "Часовой пояс",
         "unlimited": "Неограниченно",
@@ -617,7 +617,32 @@
         "there_are_not_owner_here": "Здесь нет владельцев.",
         "type_in_the_mails": "Введите учетные записи, чтобы добавить их в список",
         "server_specific": "Характеристики сервера",
-        "ex": "ех."
+        "ex": "ех.",
+        "DELETE": "УДАЛИТЬ",
+        "OTP": "ОТP",
+        "advanced_lbl": "Дополнительно",
+        "allowed": "Разрешено",
+        "device_id": "ID устройства",
+        "e_mail": "электронная почта",
+        "eas": "EAS",
+        "email_address": "Адрес электронной почты",
+        "enabled": "Включено",
+        "global": "Глобальный",
+        "last_seen": "Последнее подключение",
+        "reset": "Удалить",
+        "reset_device": "Сброс устройства",
+        "s3_bucket": "S3 Bucket",
+        "select_an_external_volume": "Выберите внешний том",
+        "service": "Сервис",
+        "status_lbl": "Cостояние",
+        "theme": "Тема",
+        "title": "Заголовок",
+        "update": "Обновить",
+        "volume_server_name": "Сервер",
+        "wipe_device": "Очистка устройства",
+        "mailstores": "Mailstores",
+        "mobile_password": "Мобильный пароль",
+        "volume_next_button": "Далее"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -652,7 +677,7 @@
         "america_cancun": "{{value}} Канкун, Четумаль",
         "america_caracas": "{{value}} Каракас",
         "america_cayenne": "{{value}} Кайенна, Форталеза",
-        "america_chicago": "{{value}} США/ Центральная Канада",
+        "america_chicago": "{{value}} US/Canada Central",
         "america_chihuahua": "{{value}} Чиуауа, Ла-Пас, Масатлан",
         "america_cuiaba": "{{value}} Куяба",
         "america_denver": "{{value}} US/Canada Mountain",
@@ -725,7 +750,7 @@
         "asia_yerevan": "{{value}} Ереван",
         "atlantic_azores": "{{value}} Азорские острова",
         "atlantic_cape_verde": "{{value}} Острова Кабо-Верде.",
-        "atlantic_south_georgia": "{{value}} Средняя Атлантика",
+        "atlantic_south_georgia": "{{value}} Среднеатлантический регион",
         "australia_adelaide": "{{value}} Аделаида",
         "australia_brisbane": "{{value}} Брисбен",
         "australia_darwin": "{{value}} Дарвин",
@@ -1041,7 +1066,9 @@
         "timeout_policy": "Правила тайм-аута",
         "trashed_message_lifetime": "Время хранения сообщения в Корзине",
         "user_specific_fowarding_addresses": "Предельный размер поля указанных пользователем адресов пересылки (количество знаков)",
-        "time_range": "Диапазон времени"
+        "time_range": "Диапазон времени",
+        "active_sync": "ActiveSync",
+        "dark_mode": "Темный Режим"
     },
     "backup": {
         "backup_path": "Путь резервирования",
@@ -1116,7 +1143,10 @@
         "latency_low_threshold_ms": "Нижний порог задержки (мс)",
         "range": "Диапазон",
         "thread_number_for_accounts": "Количество потоков для учетной записи",
-        "thread_number_for_items": "Количество потоков для элементов"
+        "thread_number_for_items": "Количество потоков для элементов",
+        "bucket_list": "Список Бакетов",
+        "external_volume": "Внешний том",
+        "kb": "KB"
     },
     "welcome_to_carbonio": "Добро пожаловать, {{adminName}}, в Carbonio {{carbonioVersion}}!",
     "select_section_from_left_menu": "Пожалуйста, выберите раздел в меню слева",
@@ -1171,6 +1201,39 @@
         "serverName_volumes": "{{serverName}} Тома",
         "new": {
             "create_mailstores_volume": "Создать том Почтового хранила"
+        },
+        "server_list_header": {
+            "description": "Описание",
+            "index": "Индекс",
+            "primary": "Первичный",
+            "secondary": "Вторичный",
+            "server": "Сервер"
+        },
+        "volume_allocation_list": {
+            "centralized": "Централизованный",
+            "external": "Внешний",
+            "local": "Локальный"
+        },
+        "volume_config_header": {
+            "name": "имя"
+        },
+        "volume_header": {
+            "compression": "Компрессия",
+            "current": "Текущее",
+            "id": "ID",
+            "name": "имя",
+            "path": "Путь"
+        },
+        "volume_indexer_header": {
+            "current": "Текущее",
+            "id": "ID",
+            "name": "имя",
+            "path": "Путь"
+        },
+        "volume_type": {
+            "index": "Индекс",
+            "primary": "Первичный",
+            "secondary": "Вторичный"
         }
     },
     "have_not_setup_bucket_type": "Похоже, вы не настроили тип Бакета",
@@ -1278,5 +1341,50 @@
         "minute_0": "{{count}} минута",
         "minute_1": "",
         "minute_2": ""
+    },
+    "hsm": {
+        "all": "Все",
+        "allocation": "Распределение",
+        "apply_duplication_after_scheduledhsm": "Применить дедупликацию после запланированного HSM",
+        "contact": "Контакт",
+        "create_policy": "Создать политику",
+        "criteria": "Критерии",
+        "current": "Текущее",
+        "days": "Дней",
+        "delete": "Удалить",
+        "destination_volume": "Целевой том",
+        "details": "Детали",
+        "document": "Документ",
+        "edit": "Редактировать",
+        "event": "Событие",
+        "gb": "GB",
+        "hours": "Часы",
+        "hsm_policies_list": "Список политик HSM",
+        "hsm_policy": "HSM-политика",
+        "items": "Элементы",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "Сообщение",
+        "minimum_space_threshold": "Минимальный порог пространства",
+        "minutes": "Минут",
+        "months": "Месяцы",
+        "name": "имя",
+        "new_policy_summary": "Сводная информация о новой политике",
+        "no": "Нет",
+        "option": "Опция",
+        "parameters": "Параметры",
+        "policy_settings": "Настройки политики",
+        "primary": "Первичный",
+        "schedule": "Расписание",
+        "secondary": "Вторичный",
+        "select_volumes": "Выбрать том",
+        "server": "Сервер",
+        "source_volume": "Исходный том",
+        "this_function_allow_save_disk_copy_msg": "Эта функция позволяет сэкономить место на диске за счет сохранения одной копии элемента.",
+        "type": "Тип",
+        "value": "Значение",
+        "volumes": "Тома",
+        "yes": "Да",
+        "indexes": "Индексы"
     }
 }
