@@ -107,14 +107,17 @@
             "subscription_last_check": "Ultimo Controllo sulla Subscription",
             "subscription_type": "Tip di Subscription",
             "token": "Token",
-            "version": "Versione Zextras",
+            "version": "Versione modulo",
             "modal": {
                 "cancel": "NO",
                 "confirm": "Vuoi procedere?",
                 "deactivate": "Sì, Disattiva",
                 "label": "Disattiva Token",
                 "warning": "Stai provando a disattivare l'attuale token. Proseguendo, tutte le funzionalità abilitate verranno disattivate."
-            }
+            },
+            "activate": "Attiva",
+            "activation": "Attivazione",
+            "deactivate": "Disattiva"
         }
     },
     "domain": {
@@ -992,7 +995,10 @@
         "on_the_fly_metadata": "Metadati",
         "bucket_list": "Lista Bucket",
         "external_volume": "Volume Esterno",
-        "kb": "KB"
+        "kb": "KB",
+        "bucket_configuration": "Configurazione Bucket",
+        "manage_external_volume": "Gestisci volume esterno",
+        "ms": "MS"
     },
     "cos": {
         "maximum_number_of_items_to_display_per_page": "Numero massimo di elementi da visualizzare per pagina",
@@ -1141,7 +1147,9 @@
         "new_proxy_allowed_domain": "Nuovo proxy abilitato per il dominio",
         "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione",
         "active_sync": "ActiveSync",
-        "dark_mode": "Tema Scuro"
+        "dark_mode": "Tema Scuro",
+        "activesync_remote_access": "Accesso remoto ActiveSync",
+        "create_cos_success_msg": "Stai disabilitando il pool su {{serverName}}. Le caselle di posta non verranno spostate. Vuoi continuare?"
     },
     "accountDetails": {
         "default_COS": "COS Predefinita",
@@ -1286,7 +1294,8 @@
         "forwarding_calendar_invitations_to_these_addresses": "Inoltra inviti del calendario a questi indirizzi",
         "group_calendar": "Calendario Avanzato",
         "html_compose": "Composizione HTML",
-        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione"
+        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione",
+        "activesync_remote_access": "Accesso remoto ActiveSync"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
