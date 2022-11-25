@@ -642,7 +642,10 @@
         "volume_next_button": "WEITER",
         "volume_server_name": "Server",
         "wipe_device": "Gerät löschen",
-        "device_id": "Geräte-ID"
+        "device_id": "Geräte-ID",
+        "failed": "Fehlgeschlagen",
+        "remove_button": "ENTFERNEN",
+        "session_id": "Sitzungs-ID"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
@@ -1385,6 +1388,7 @@
         "yes": "Ja",
         "all": "Alle",
         "gb": "GB",
-        "secondry": "Sekundär"
+        "secondry": "Sekundär",
+        "policy_name": "Regelname"
     }
 }
