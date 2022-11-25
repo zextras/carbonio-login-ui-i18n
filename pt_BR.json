@@ -898,7 +898,11 @@
         "wipe_device": "Limpar dispositivo",
         "s3_bucket": "Bucket S3",
         "select_an_external_volume": "Selecionar um Volume Externo",
-        "theme": "Tema"
+        "theme": "Tema",
+        "home": "Início",
+        "failed": "Erro",
+        "remove_button": "REMOVER",
+        "session_id": "ID da sessão"
     },
     "message": {
         "snackbar": {
@@ -1385,6 +1389,7 @@
         "volumes": "Volumes",
         "yes": "Sim",
         "minutes": "Minutos",
-        "secondry": "Secundário"
+        "secondry": "Secundário",
+        "policy_name": "Nome da política"
     }
 }
