@@ -991,7 +991,10 @@
         "wiping_device_warning_msg_1": "デバイスをワイプすると、デフォルトの設定に復元されます。 本当に続行しますか？",
         "yes_reset_the_device": "はい、デバイスをリセットします",
         "yes_wipe_the_device": "はい、デバイスをワイプします",
-        "you_are_trying_wipe_device": "デバイスをワイプしようとしています"
+        "you_are_trying_wipe_device": "デバイスをワイプしようとしています",
+        "failed": "失敗",
+        "remove_button": "削除",
+        "session_id": "セッションID"
     },
     "message": {
         "snackbar": {
@@ -1521,7 +1524,8 @@
         "smaller_size_than": "<bold>{{measure}} {{scale}}</bold> より小さい",
         "volume_already_selected_in_destination": "宛先ボリュームですでに選択されているボリューム",
         "volume_already_selected_in_source": "ソース ボリュームですでに選択されているボリューム",
-        "years": "年間"
+        "years": "年間",
+        "policy_name": "ポリシー名"
     },
     "select_bucket_or_create_new_bucket_helperText": "バケットタイプを設定していないようです。\n[新しいバケット]をクリックして、新しいバケットを作成してください。",
     "welcome_to_carbonio_display_name": "ようこそ {{adminName}}！"
