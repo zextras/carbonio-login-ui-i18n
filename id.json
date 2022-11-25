@@ -897,7 +897,11 @@
         "volume_server_name": "Server",
         "wipe_device": "Hapus Perangkat",
         "advanced_lbl": "Canggih",
-        "reset": "Atur ulang"
+        "reset": "Atur ulang",
+        "home": "Rumah",
+        "failed": "Gagal",
+        "remove_button": "HAPUS",
+        "session_id": "ID Sesi"
     },
     "message": {
         "snackbar": {
@@ -1382,6 +1386,7 @@
         "type": "Jenis",
         "value": "Nilai",
         "volumes": "Volume",
-        "yes": "Ya"
+        "yes": "Ya",
+        "policy_name": "Nama Kebijakan"
     }
 }
