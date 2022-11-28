@@ -14,7 +14,8 @@ import {
 	Input,
 	Icon,
 	Table,
-	useSnackbar
+	useSnackbar,
+	Tooltip
 } from '@zextras/carbonio-design-system';
 
 import { useTranslation } from 'react-i18next';
@@ -27,7 +28,6 @@ import DetailsPanel from './details-panel';
 import { fetchSoap } from '../../services/bucket-service';
 import EditBucketDetailPanel from './edit-bucket-details-panel';
 import { AbsoluteContainer } from '../components/styled';
-import { Tooltip } from '@zextras/carbonio-design-system';
 
 const RelativeContainer = styled(Container)`
 	position: relative;
@@ -113,7 +113,6 @@ const BucketListTable: FC<{
 
 	return (
 		<Container crossAlignment="flex-start">
-			{console.log('_dd headers', headers(t))}
 			<Table
 				headers={headers(t)}
 				rows={tableRows}
@@ -266,16 +265,18 @@ const BucketDetailPanel: FC = () => {
 
 	const filterBucketList = (e: any): void => {
 		if (e.target.value !== '') {
-			console.log('_dd bucketList', bucketList);
-			setBucketList(filter(bucketList, (o) => o.bucketName.toLowerCase().includes(e.target.value)));
+			setBucketList(
+				filter(
+					bucketList,
+					(o) =>
+						o.bucketName.toLowerCase().includes(e.target.value) ||
+						o.label.toLowerCase().includes(e.target.value)
+				)
+			);
 		} else {
 			setBucketList(allBucketList);
 		}
 	};
-
-	useEffect(() => {
-		console.log('_dd bucketList', bucketList);
-	}, [bucketList]);
 
 	return (
 		<>
