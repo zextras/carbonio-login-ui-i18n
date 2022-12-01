@@ -645,7 +645,26 @@
         "device_id": "Geräte-ID",
         "failed": "Fehlgeschlagen",
         "remove_button": "ENTFERNEN",
-        "session_id": "Sitzungs-ID"
+        "session_id": "Sitzungs-ID",
+        "NEW_OTP": "NEUES OTP",
+        "abq_status": "ABQ Status",
+        "active_sessions": "Aktive Sitzungen",
+        "active_sync_active_paused": "Activesync ist aktiviert / pausiert",
+        "admin_panel": "Admin Panel",
+        "admin_panel_theme_description": "In diesem Abschnitt können Sie das Admin Panel mit Ihrem Firmenlogo und Bild anpassen.",
+        "admin_panel_title": "ADMIN PANEL",
+        "apperance": "Aussehen",
+        "aware_of_doing_device_factory_settings": "Ich möchte auf Werkseinstellungen zurücksetzen",
+        "background": "Hintergrund",
+        "background_description": "Fügen Sie den URL des Bildes für die Login Seite ein. Nutzen Sie eine JPG Datei, Größe 2560x1440 Pixel, 800 KB max.",
+        "background_for_the_login_page": "Hintergrund für die Login Seite",
+        "background_login_page": "Hintergrund Login Seite",
+        "blocked": "Gesperrt",
+        "can_not_receiver": "kann nicht empfangen",
+        "cancle_button_is_current": "OK, VERSTANDEN",
+        "close_the_resource": "Ressource schließen",
+        "create_otp": "OTP ERSTELLEN",
+        "you_are_trying_reset_device": "Sie versuchen ein Gerät zurückzusetzen"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
@@ -894,14 +913,17 @@
             "subscription_last_check": "Abonnement Letzte Überprüfung",
             "subscription_type": "Abonnement Art",
             "token": "Token",
-            "version": "Zextras Version",
+            "version": "Modul Version",
             "modal": {
                 "warning": "Sie versuchen, den aktuellen Token zu deaktivieren. Dadurch werden alle aktivierten Funktionieren deaktiviert.",
                 "label": "Token deaktivieren",
                 "deactivate": "Ja, deaktivieren",
                 "confirm": "Sind Sie sicher, dass Sie sich fortfahren möchten?",
                 "cancel": "NEIN"
-            }
+            },
+            "activate": "Aktivieren",
+            "activation": "Aktivierung",
+            "deactivate": "Deaktivieren"
         }
     },
     "message": {
@@ -987,7 +1009,11 @@
         "waiting_time": "Wartezeit",
         "bucket_list": "Buckets Liste",
         "external_volume": "Externer Datenträger",
-        "kb": "KB"
+        "kb": "KB",
+        "bucket_configuration": "Bucket Konfiguration",
+        "local_mountpoint": "Lokaler Einhängepunkt",
+        "manage_external_volume": "Externe Datenträger verwalten",
+        "ms": "MS"
     },
     "cos": {
         "calendar_options": "Kalenderoptionen",
@@ -1136,7 +1162,9 @@
         "use_gal_to_auto_fill": "GAL zum automatischen Vervollständigen benutzen",
         "use_ical_delegation_model_for_shared_calendars": "iCal Delegierungsmodell für geteilte Kalender nutzen",
         "active_sync": "ActiveSync",
-        "dark_mode": "Dunkler Modus"
+        "dark_mode": "Dunkler Modus",
+        "activesync_remote_access": "ActiveSync Fernsteuerung",
+        "create_cos_success_msg": "Sie deaktivieren den Pool auf {{serverName}}. Mailboxen werden nicht entfernt. Möchten Sie fortfahren?"
     },
     "locale": {
         "English": "Englisch",
@@ -1178,7 +1206,8 @@
     },
     "account": {
         "new": {
-            "create_account_wizard": "Konten Assistent erstellen"
+            "create_account_wizard": "Konten Assistent erstellen",
+            "create_otp_wizard": "OTP erstellen"
         }
     },
     "create_new_domain": "Neue Domain erstellen",
@@ -1281,7 +1310,8 @@
         "show_time_zone_lists_in_view": "Liste der Zeitzonen in Terminansicht zeigen",
         "use_ical_delegation_model_for_shared_calendars": "iCal Delegierungsmodell für geteilte Kalender nutzen",
         "use_quickadd_dialog_in_creation": "QuickAdd Dialog bei Erstellung nutzen",
-        "view_mail_as_html": "E-Mail als HTML ansehen"
+        "view_mail_as_html": "E-Mail als HTML ansehen",
+        "activesync_remote_access": "ActiveSync Fernsteuerung"
     },
     "connection": {
         "access_key": "Access Key",
@@ -1315,15 +1345,18 @@
             "index": "Index",
             "primary": "Primär",
             "secondary": "Sekundär",
-            "server": "Server"
+            "server": "Server",
+            "server_name": "Server Name"
         },
         "volume_allocation_list": {
             "centralized": "Zentralisiert",
             "external": "Extern",
-            "local": "Lokal"
+            "local": "Lokal",
+            "sproxy": "SProxy"
         },
         "volume_config_header": {
-            "name": "Name"
+            "name": "Name",
+            "indexer": "Indexer"
         },
         "volume_header": {
             "compression": "Komprimierung",
@@ -1389,6 +1422,39 @@
         "all": "Alle",
         "gb": "GB",
         "secondry": "Sekundär",
-        "policy_name": "Regelname"
-    }
+        "policy_name": "Regelname",
+        "abstract_msg_1": "<strong>{{enables}} {{largerSmaller}}</strong>. Dies wird Daten betreffen, die in <bold>{{previous}}</bold> und in <bold>{{next}}</bold> gespeichert sind.",
+        "after_date": "Nach (Datum)",
+        "bytes": "Byte (B)",
+        "abstract_msg_2": "<bold>{{enables}} {{largerSmaller}}</bold> gespeichert in {{source}} werden verschoben werden zu {{destination}}. Dies betrifft Daten, die in <bold>{{previous}}</bold> und in <bold>{{next}}</bold> gespeichert sind.",
+        "all_primary_volume_used_source_msg": "All primären Datenträger werden standardmäßig als Quelle genutzt. Sie können manuell andere Datenträger auswählen.",
+        "all_secondary_volume_used_source_msg": "Der sekundäre Datenträger wird als Ziel genutzt werden. Sie können manuell andere Datenträger auswählen.",
+        "before_date": "Vor (Datum)",
+        "copy_hsm_policy_from_clipboard_msg": "Wenn Sie nicht sicher sind, können Sie die Richtlinienkette in die Zwischenablage kopieren und diese später wiederherstellen.",
+        "create_new_policy": "Neue Richtlinie erstellen",
+        "delete_hsm_policy": "HSM Richtlinie löschen?",
+        "delete_hsm_policy_confirm_msg_1": "Wenn Sie diese HSM Richtlinie löschen, können Sie diese nicht wiederherstellen. Möchten Sie die HSM Richtlinie wirklich löschen?",
+        "edit_hsm_policy_success": "HSM Richtlinie erfolgreich aktualisiert",
+        "hsm_policy_correctly_deleted": "HSM Richtlinie wurde korrekt gelöscht",
+        "larger_size": "Größer (Größe)",
+        "larger_size_than": "größer als <bold>{{measure}}{{scale}}</bold>",
+        "name_hsm_policies": "{{serverName}} HSM Richtlinien",
+        "new_policy": "Neue Richtlinie",
+        "next_day_scale": "nächsten<bold>{{day}}</bold>{{scale}?",
+        "policies_added_successfully": "Die Richtlinien wurden erfolgreich hinzugefügt",
+        "policy_criteria": "Kriterien für Richtlinien",
+        "policy_has_been_coppied": "HSM Richtlinie wurde in die Zwischenablage kopiert",
+        "previous_day_scale": "vorheriger <bold>{{day}}</bold> {{scale}}?",
+        "select_manually_source_volumes": "Quelldatenträger manuell auswählen",
+        "editing_policy": "Richtlinie bearbeiten",
+        "enable_scheduler": "Zeitplan aktivieren",
+        "scheduling": "Planung",
+        "select_manually_destination_volumes": "Zieldatenträger manuell auswählen",
+        "smaller_size": "Kleiner (Größe)",
+        "smaller_size_than": "kleiner als <bold>{{measure}}{{scale}}</bold>",
+        "years": "Jahre",
+        "volume_already_selected_in_destination": "Datenträger wurde bereits als Zieldatenträger ausgewählt",
+        "volume_already_selected_in_source": "Datenträger wurde bereits als Quellldatenträger ausgewählt"
+    },
+    "welcome_to_carbonio_display_name": "Willkommen {{adminName}}!"
 }
