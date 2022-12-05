@@ -186,7 +186,7 @@ const DomainListPanel: FC = () => {
 			},
 			{
 				id: VIRTUAL_HOSTS,
-				name: t('label.virtual_hosts', 'Virtual Hosts'),
+				name: t('label.virtual_hosts_and_certificates', 'Virtual Hosts & Certificate'),
 				isSelected: isDomainSelect
 			},
 			{
