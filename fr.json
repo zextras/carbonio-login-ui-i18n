@@ -731,10 +731,10 @@
         "update": "Mettre à jour",
         "create_otp_list_msg": "Vous pouvez créer une nouvelle OTP en cliquant sur le bouton <bold>NOUVEAU OTP</bold> ici",
         "delete_content_is_current": "Vous essayez de supprimer {{name}}. Ce volume est défini comme courant. Vous devez définir un autre volume comme étant le volume courant avant de le supprimer.",
-        "aware_of_doing_device_factory_settings": "Je suis conscient de ce que je fais, je veux réinitialiser les paramètres d'usine. ",
+        "aware_of_doing_device_factory_settings": "Je veux rétablir les paramètres d'usine.",
         "logo_description": "Collez l'URL du logo pour la page de connexion. Utilisez un fichier SVG ou PNG avec un fond transparent, de dimension 240x120 pixels.",
         "otp_deleted_successfully": "L'OTP a été supprimée avec succès",
-        "owners_description_msg_1": "Les propriétaires peuvent ajouter et supprimer des membres, modifier le nom d'affichage et la description, modifier la visibilité de la liste (c'est-à-dire la masquer dans la liste d'adresses globale), modifier la propriété, modifier le comportement d'abonnement/désabonnement.",
+        "owners_description_msg_1": "Les propriétaires peuvent ajouter et supprimer des membres, modifier le nom d'affichage et la description, modifier la visibilité de la liste (ex : la masquer dans la liste d'adresses globale), modifier la propriété, modifier le comportement d'abonnement/désabonnement.",
         "home": "Accueil",
         "NEW_OTP": "NOUVEAU OTP",
         "abq_status": "Statut ABQ",
@@ -760,7 +760,7 @@
         "eligible_servers": "Serveurs éligibles",
         "end_session": "Fin de la session",
         "end_user_theme_description": "Dans cette section, vous pouvez personnaliser la WebApp avec le logo et l'image de votre entreprise.",
-        "end_user_title": "TERMINER L'UTILISATEUR",
+        "end_user_title": "UTILISATEUR FINAL",
         "failed": "Échec",
         "false": "Faux",
         "favicon": "Favicon",
@@ -769,7 +769,7 @@
         "filter_by_device_type_account": "Filtrer par type d'équipement, compte et statut",
         "image_path": "Chemin de l'image",
         "i_m_looking_for_the_session": "Je cherche la session ...",
-        "index_volume": "Il s'agit d'un volume d'index",
+        "index_volume": "Il s'agit d'un volume d'indexation",
         "end_user_webapp": "Application web pour l'utilisateur final",
         "ip": "IP",
         "light_mode": "Mode <bold>Clair</bold>",
@@ -803,7 +803,25 @@
         "select_a_bucket_configuration": "Sélectionnez une configuration de Bucket",
         "selected_empty_bucket": "Vous n'avez pas sélectionné de Bucket. Vous pouvez commencer à taper dans le champ ci-dessus pour commencer à les visualiser.",
         "selected_empty_bucket_helperText": "Vous n'avez pas sélectionné un bucket.\n\t\t\t\t\t\t\t\t\t\t\tVous pouvez commencer à taper dans le champ\n\t\t\t\t\t\t\t\t\t\t\tci-dessus pour commencer à les visualiser.",
-        "session_end_success": "La session s'est terminée avec succès"
+        "session_end_success": "La session s'est terminée avec succès",
+        "wiping_device_warning_msg_1": "L'effacement d'un appareil le ramène aux paramètres d'usine. Êtes-vous sûr de vouloir continuer ?",
+        "total_acc_rights_with_delete_distribution_list_helper_text": "Cette liste a <bold>{{totalAccRights}}</bold> droits de comptes partagés.<br /> Si vous la supprimez, tous les droits seront perdus.",
+        "session_id": "ID de session",
+        "storage_centralized": "Je souhaite que ce Stockage soit centralisé",
+        "storage_centralized_helptext": "La centralisation des données devient utile lorsque deux serveurs ou plus doivent accéder aux mêmes données. \n En conservant les données en un seul endroit, il est plus facile de gérer à la fois le matériel et les données elles-mêmes. ",
+        "suspend": "Suspendre",
+        "title_and_description": "Titre & Description",
+        "title_theme_note": "Le titre est le nom qui apparaîtra dans l'onglet du navigateur",
+        "true": "Vrai",
+        "use_https_protocol_message": "Vous devez utiliser le protocole HTTPS",
+        "user_agent": "User Agent",
+        "volume_definition": "DÉFINITION",
+        "will_be_centralized_in_helptext": "Seront centralisés dans",
+        "wipe_device_factory_settings": "Remettre l'appareil aux paramètres d'usine",
+        "yes_reset_the_device": "Oui, réinitialiser l'appareil",
+        "yes_wipe_the_device": "Oui, effacez l'appareil",
+        "you_are_trying_reset_device": "Vous essayez de réinitialiser un appareil",
+        "you_are_trying_wipe_device": "Vous essayez de réinitialiser un appareil"
     },
     "message": {
         "snackbar": {
@@ -1276,7 +1294,7 @@
     "account": {
         "new": {
             "create_account_wizard": "Assistant de création de compte",
-            "create_otp_wizard": "Assistant de création d'OTP"
+            "create_otp_wizard": "Création d'OTP"
         }
     },
     "account_details": {
@@ -1396,15 +1414,21 @@
             "index": "Index",
             "primary": "Primaire",
             "secondary": "Secondaire",
-            "server": "Server"
+            "server": "Server",
+            "HSM Scheduling": "Planificateur HSM",
+            "indexer": "Indexeur",
+            "server_name": "Nom du serveur"
         },
         "volume_allocation_list": {
             "centralized": "Centralisé",
             "external": "Externe",
-            "local": "Local"
+            "local": "Local",
+            "sproxy": "Sproxy"
         },
         "volume_config_header": {
-            "name": "Nom"
+            "name": "Nom",
+            "hsm_scheduled": "HSM programmé",
+            "indexer": "Indexeur"
         },
         "volume_header": {
             "compression": "Compression",
@@ -1484,7 +1508,7 @@
         "delete_hsm_policy_confirm_msg_1": "Si vous supprimez cette politique HSM, vous ne pourrez pas la restaurer. Voulez-vous supprimer la politique HSM ?",
         "edit_hsm_policy_success": "Politique HSM mise à jour avec succès",
         "editing_policy": "Modifier la Politique",
-        "enable_scheduler": "Activer le planificateur",
+        "enable_scheduler": "Activer la planification",
         "hsm_policy_correctly_deleted": "La politique HSM a été correctement supprimée",
         "larger_size": "Plus grand (taille)",
         "larger_size_than": "plus grande que <bold>{{mesure}} {{scale}}</bold>",
@@ -1501,8 +1525,10 @@
         "smaller_size": "Plus petit (taille)",
         "smaller_size_than": "plus petit que <bold>{{measure}} {{scale}}</bold>",
         "years": "Années",
-        "scheduling": "Programmation",
-        "volume_already_selected_in_destination": "Volume déjà sélectionné dans le volume de destination",
-        "volume_already_selected_in_source": "Volume déjà sélectionné dans le volume source"
-    }
+        "scheduling": "Planifier",
+        "volume_already_selected_in_destination": "Volume déjà sélectionné comme volume de destination",
+        "volume_already_selected_in_source": "Volume déjà sélectionné comme volume source"
+    },
+    "select_bucket_or_create_new_bucket_helperText": "Il semble que vous n'ayez pas configuré de type de bucket.\n\t\t\t\t\t\t\t\t\tCliquez sur le bouton \"NOUVEAU BUCKET\" pour en créer un nouveau.",
+    "welcome_to_carbonio_display_name": "Bienvenue {{adminName}} !"
 }
