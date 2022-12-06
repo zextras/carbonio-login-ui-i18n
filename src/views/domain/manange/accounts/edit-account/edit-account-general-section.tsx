@@ -31,12 +31,14 @@ const EditAccountGeneralSection: FC = () => {
 	const conext = useContext(AccountContext);
 	const { accountDetail, setAccountDetail, directMemberList, inDirectMemberList } = conext;
 	const domainName = useDomainStore((state) => state.domain?.name);
+	const domainList = useDomainStore((state) => state.domainList);
 	const cosList = useDomainStore((state) => state.cosList);
 	const [cosItems, setCosItems] = useState<any[]>([]);
 	const [defaultCOS, setDefaultCOS] = useState<boolean>(!accountDetail?.zimbraCOSId);
 	const [showManageAliesModal, setShowManageAliesModal] = useState<boolean>(false);
 	const [accountAliases, setAccountAliases] = useState<any[]>([]);
 	const [aliesNameValue, setAliesNameValue] = useState<string>('');
+	const [selectedDomainName, setSelectedDomainName] = useState<string>('');
 
 	const [t] = useTranslation();
 	const timezones = useMemo(() => timeZoneList(t), [t]);
@@ -93,6 +95,9 @@ const EditAccountGeneralSection: FC = () => {
 	const onCOSSwitchChanges = (): void => {
 		defaultCOS && setAccountDetail((prev: any) => ({ ...prev, zimbraCOSId: '' }));
 		setDefaultCOS(!defaultCOS);
+	};
+	const onDomainOptionChange = (v: any): any => {
+		setSelectedDomainName(v);
 	};
 	return (
 		<Container
@@ -460,21 +465,22 @@ const EditAccountGeneralSection: FC = () => {
 								padding={{ right: 'large' }}
 							>
 								<Select
-									items={[
-										{
-											label: domainName,
-											value: domainName
-										}
-									]}
+									items={domainList.map((ele) => ({
+										label: ele.name,
+										value: ele.name
+									}))}
 									background="gray5"
 									label={t('account_details.domain', 'Domain')}
 									showCheckbox={false}
-									defaultSelection={{
-										label: domainName,
-										value: domainName
+									// defaultSelection={{
+									// 	label: domainName,
+									// 	value: domainName
+									// }}
+									selection={{
+										label: selectedDomainName || domainName,
+										value: selectedDomainName || domainName
 									}}
-									// selection={selectedOption}
-									// onChange={onOptionChange}
+									onChange={onDomainOptionChange}
 								/>
 							</Container>
 							<Container style={{ border: '1px solid #2b73d2' }} width="fit">
@@ -485,8 +491,10 @@ const EditAccountGeneralSection: FC = () => {
 									onClick={(): void => {
 										if (!aliesNameValue.trim()) return;
 										let aliaes = cloneDeep(accountAliases);
-										aliaes.unshift({ label: `${accountDetail?.uid}@${domainName}` });
-										aliaes.push({ label: `${aliesNameValue.trim()}@${domainName}` });
+										// aliaes.unshift({ label: `${accountDetail?.uid}@${domainName}` });
+										aliaes.push({
+											label: `${aliesNameValue.trim()}@${selectedDomainName || domainName}`
+										});
 										aliaes = uniqBy(aliaes, 'label');
 										setAccountAliases(aliaes);
 										setAccountDetail((prev: any) => ({
@@ -551,6 +559,7 @@ const EditAccountGeneralSection: FC = () => {
 																selectedItem = selectedItem.split('@');
 
 																setAliesNameValue(selectedItem[0]);
+																setSelectedDomainName(selectedItem[1]);
 																setAccountAliases(aliaes);
 																setAccountDetail((prev: any) => ({
 																	...prev,
