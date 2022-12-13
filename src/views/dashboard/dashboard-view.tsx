@@ -4,13 +4,14 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { Container } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { useUserAccounts } from '@zextras/carbonio-shell-ui';
+import { useHistory } from 'react-router-dom';
 import packageJson from '../../../package.json';
 import MatomoTracker from '../../matomo-tracker';
-import { DASHBOARD } from '../../constants';
+import { DASHBOARD, MANAGE, SERVERS_LIST, STORAGES_ROUTE_ID } from '../../constants';
 import { useGlobalConfigStore } from '../../store/global-config/store';
 import ListRow from '../list/list-row';
 import CarbonioVersionInformation from './carbonio-version-information-view';
@@ -20,6 +21,7 @@ import DashboardServerList from './dashboard-server-list-view';
 
 const Dashboard: FC = () => {
 	const [t] = useTranslation();
+	const history = useHistory();
 	const matomo = useMemo(() => new MatomoTracker(), []);
 	const globalCarbonioSendAnalytics = useGlobalConfigStore(
 		(state) => state.globalCarbonioSendAnalytics
@@ -64,6 +66,10 @@ const Dashboard: FC = () => {
 		}
 	}, []);
 
+	const goToMailStoreServerList = useCallback(() => {
+		history.push(`/${MANAGE}/${STORAGES_ROUTE_ID}/${SERVERS_LIST}`);
+	}, [history]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -89,7 +95,7 @@ const Dashboard: FC = () => {
 
 			<ListRow>
 				<Container padding={{ all: 'extralarge' }}>
-					<DashboardServerList />
+					<DashboardServerList goToMailStoreServerList={goToMailStoreServerList} />
 				</Container>
 			</ListRow>
 		</Container>

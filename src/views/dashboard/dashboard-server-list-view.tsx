@@ -11,7 +11,9 @@ import ListRow from '../list/list-row';
 import { useServerStore } from '../../store/server/store';
 import { Server } from '../../../types';
 
-const DashboardServerList: FC = () => {
+const DashboardServerList: FC<{
+	goToMailStoreServerList: () => void;
+}> = ({ goToMailStoreServerList }) => {
 	const [t] = useTranslation();
 	const serverList = useServerStore((state) => state.serverList || []);
 	const [serverListRow, setServerListRow] = useState<Array<any>>([]);
@@ -147,6 +149,7 @@ const DashboardServerList: FC = () => {
 						type="ghost"
 						label={t('dashboard.go_to_mailstores_server_list', 'Go to mailstores servers list')}
 						color="primary"
+						onClick={goToMailStoreServerList}
 					/>
 				</Container>
 			</ListRow>

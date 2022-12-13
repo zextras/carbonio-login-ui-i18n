@@ -1,0 +1,143 @@
+/*
+ * SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+import React, { FC, useEffect } from 'react';
+import {
+	Container,
+	Text,
+	Row,
+	IconButton,
+	Divider,
+	Padding,
+	Button,
+	Input
+} from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
+import ListRow from '../../list/list-row';
+
+const NotificationDetail: FC<{
+	notification: any;
+	setShowNotificationDetail: (arg: boolean) => void;
+}> = ({ notification, setShowNotificationDetail }) => {
+	const [t] = useTranslation();
+	return (
+		<Container
+			background="gray6"
+			mainAlignment="flex-start"
+			style={{
+				position: 'absolute',
+				left: `${'max(calc(100% - 680px), 12px)'}`,
+				top: '0px',
+				height: '100%',
+				width: `42rem`,
+				overflow: 'hidden',
+				transition: 'left 0.2s ease-in-out',
+				'box-shadow': '-6px 4px 5px 0px rgba(0, 0, 0, 0.1)'
+			}}
+		>
+			<Row
+				mainAlignment="flex-start"
+				crossAlignment="center"
+				orientation="horizontal"
+				background="white"
+				width="fill"
+				height="48px"
+			>
+				<Row padding={{ horizontal: 'small' }}></Row>
+				<Row takeAvailableSpace mainAlignment="flex-start">
+					<Text size="medium" overflow="ellipsis" weight="bold">
+						{t('notification.notification_details', 'Notification Details')} |{' '}
+						{notification?.server}
+					</Text>
+				</Row>
+				<Row padding={{ right: 'extrasmall' }}>
+					<IconButton
+						size="medium"
+						icon="CloseOutline"
+						onClick={(): void => {
+							setShowNotificationDetail(false);
+						}}
+					/>
+				</Row>
+			</Row>
+			<Row>
+				<Divider color="gray3" />
+			</Row>
+			<ListRow>
+				<Container
+					mainAlignment="flex-end"
+					crossAlignment="flex-end"
+					orientation="horizontal"
+					padding={{ all: 'extralarge' }}
+				>
+					<Button
+						type="ghost"
+						label={t('notification.copy', 'Copy')}
+						icon="CopyOutline"
+						iconPlacement="right"
+						color="secondary"
+					/>
+					<Padding left="large">
+						<Button
+							type="outlined"
+							label={t('notification.mark_as_read', 'Mark as read')}
+							icon="EmailReadOutline"
+							iconPlacement="right"
+							color="primary"
+							disabled
+						/>
+					</Padding>
+				</Container>
+			</ListRow>
+			<ListRow>
+				<Container padding={{ bottom: 'large', right: 'small', left: 'extralarge' }}>
+					<Input
+						label={t('label.date', 'Date')}
+						value={notification?.date}
+						background="gray6"
+						readOnly
+					/>
+				</Container>
+				<Container padding={{ bottom: 'large', left: 'small', right: 'extralarge' }}>
+					<Input
+						label={t('label.type', 'Type')}
+						value={notification?.level}
+						background="gray6"
+						readOnly
+					/>
+				</Container>
+			</ListRow>
+			<ListRow>
+				<Container
+					padding={{ top: 'small', bottom: 'small', right: 'extralarge', left: 'extralarge' }}
+				>
+					<Input
+						label={t('label.what_inside', 'What’s inside?')}
+						value={notification?.subject}
+						background="gray6"
+						readOnly
+					/>
+				</Container>
+			</ListRow>
+			<ListRow>
+				<Row padding={{ all: 'extralarge' }}>
+					<Text size="medium" weight="bold" color="gray0">
+						{t('label.content', 'Content')}
+					</Text>
+				</Row>
+			</ListRow>
+
+			<Row
+				padding={{ right: 'extralarge', left: 'extralarge', bottom: 'extralarge' }}
+				wrap="nowrap"
+			>
+				{notification?.text}
+			</Row>
+		</Container>
+	);
+};
+
+export default NotificationDetail;

@@ -22,6 +22,7 @@ import React, {
 	useContext,
 	useEffect,
 	useMemo,
+	useRef,
 	useState
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -35,6 +36,7 @@ import {
 } from '../../../constants';
 import { getAllNotifications } from '../../../services/get-all-notifications';
 import ListRow from '../../list/list-row';
+import NotificationDetail from './notification-detail-view';
 
 const ReusedDefaultTabBar: FC<{
 	item: any;
@@ -89,6 +91,9 @@ const NotificationView: FC<{
 	const [notificationList, setNotificationList] = useState<Array<Notification>>([]);
 	const [filterdNotification, setFilterdNotification] = useState<Array<Notification>>([]);
 	const [notificationRows, setNotificationRows] = useState<Array<any>>([]);
+	const [showNotificationDetail, setShowNotificationDetail] = useState<boolean>(false);
+	const [selectedNotification, setSelectedNotification] = useState<any>({});
+	const timer = useRef<any>();
 
 	const items = [
 		{
@@ -203,6 +208,27 @@ const NotificationView: FC<{
 		}
 	}, [change, notificationList]);
 
+	const doClickAction = useCallback((): void => {
+		setShowNotificationDetail(true);
+	}, []);
+
+	const doDoubleClickAction = useCallback((): void => {
+		setShowNotificationDetail(true);
+	}, []);
+
+	const handleClick = useCallback(
+		(event: any) => {
+			event.stopPropagation();
+			clearTimeout(timer.current);
+			if (event.detail === 1) {
+				timer.current = setTimeout(doClickAction, 300);
+			} else if (event.detail === 2) {
+				doDoubleClickAction();
+			}
+		},
+		[doClickAction, doDoubleClickAction]
+	);
+
 	useEffect(() => {
 		if (filterdNotification.length > 0) {
 			const allRows = filterdNotification.map((item: Notification) => ({
@@ -215,6 +241,8 @@ const NotificationView: FC<{
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
 							event.stopPropagation();
+							setSelectedNotification(item);
+							handleClick(event);
 						}}
 					>
 						{item?.server}
@@ -226,6 +254,8 @@ const NotificationView: FC<{
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
 							event.stopPropagation();
+							setSelectedNotification(item);
+							handleClick(event);
 						}}
 					>
 						{moment(item?.date).format('DD-MM-YYYY - HH:mm A')}
@@ -237,6 +267,8 @@ const NotificationView: FC<{
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
 							event.stopPropagation();
+							setSelectedNotification(item);
+							handleClick(event);
 						}}
 					>
 						{item?.level}
@@ -248,9 +280,11 @@ const NotificationView: FC<{
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
 							event.stopPropagation();
+							setSelectedNotification(item);
+							handleClick(event);
 						}}
 					>
-						{item?.text}
+						{item?.subject}
 					</Text>
 				]
 			}));
@@ -258,7 +292,7 @@ const NotificationView: FC<{
 		} else {
 			setNotificationRows([]);
 		}
-	}, [filterdNotification]);
+	}, [filterdNotification, handleClick]);
 
 	return (
 		<Container background="gray6">
@@ -300,6 +334,7 @@ const NotificationView: FC<{
 							icon="EmailReadOutline"
 							iconPlacement="right"
 							color="primary"
+							disabled
 						/>
 					</Padding>
 				</Container>
@@ -321,6 +356,12 @@ const NotificationView: FC<{
 					/>
 				</Container>
 			</ListRow>
+			{showNotificationDetail && (
+				<NotificationDetail
+					notification={selectedNotification}
+					setShowNotificationDetail={setShowNotificationDetail}
+				/>
+			)}
 		</Container>
 	);
 };

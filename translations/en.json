@@ -1363,6 +1363,7 @@
         "error": "ERROR",
         "information": "INFORMATION",
         "mark_as_read": "Mark as read",
+        "notification_details": "Notification Details",
         "notifications_list": "Notifications’ List",
         "warning": "WARNING"
     },
