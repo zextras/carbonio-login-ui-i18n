@@ -233,7 +233,6 @@ const NotificationView: FC<{
 
 	const handleClick = useCallback(
 		(event: any) => {
-			event.stopPropagation();
 			clearTimeout(timer.current);
 			if (event.detail === 1) {
 				timer.current = setTimeout(doClickAction, 300);
@@ -254,8 +253,7 @@ const NotificationView: FC<{
 						color="gray0"
 						weight="bold"
 						key={item}
-						onClick={(event: { stopPropagation: () => void }): void => {
-							event.stopPropagation();
+						onClick={(event: any): void => {
 							setSelectedNotification(item);
 							handleClick(event);
 						}}
@@ -268,7 +266,6 @@ const NotificationView: FC<{
 						weight="bold"
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
-							event.stopPropagation();
 							setSelectedNotification(item);
 							handleClick(event);
 						}}
@@ -281,7 +278,6 @@ const NotificationView: FC<{
 						color="gray0"
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
-							event.stopPropagation();
 							setSelectedNotification(item);
 							handleClick(event);
 						}}
@@ -294,7 +290,6 @@ const NotificationView: FC<{
 						color="gray0"
 						key={item}
 						onClick={(event: { stopPropagation: () => void }): void => {
-							event.stopPropagation();
 							setSelectedNotification(item);
 							handleClick(event);
 						}}
