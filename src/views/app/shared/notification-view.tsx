@@ -28,6 +28,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import { isEmpty } from 'lodash';
 import {
 	ERROR,
 	NOTIFICATION_ALL,
@@ -38,6 +39,7 @@ import {
 import { getAllNotifications } from '../../../services/get-all-notifications';
 import ListRow from '../../list/list-row';
 import NotificationDetail from './notification-detail-view';
+import { copyTextToClipboard } from '../../utility/utils';
 
 const ReusedDefaultTabBar: FC<{
 	item: any;
@@ -307,6 +309,31 @@ const NotificationView: FC<{
 		}
 	}, [filterdNotification, handleClick]);
 
+	const copyNotificationOperation = useCallback(
+		(notificationSelected: Notification) => {
+			const notificationItem = `
+			${t('label.date', 'Date')} : ${moment(notificationSelected?.date).format('DD-MM-YYYY - HH:mm A')} \n
+			${t('label.type', 'Type')} : ${notificationSelected?.level} \n
+			${t('label.what_inside', 'What’s inside?')} : ${notificationSelected?.subject} \n
+			${t('label.content', 'Content')} : ${notificationSelected?.text}
+		`;
+			copyTextToClipboard(notificationItem);
+			createSnackbar({
+				key: 'success',
+				type: 'success',
+				label: t('notification.copy_notification_successfully', 'Notification copied successfully'),
+				autoHideTimeout: 3000,
+				hideButton: true,
+				replace: true
+			});
+		},
+		[t, createSnackbar]
+	);
+
+	const copyNotification = useCallback(() => {
+		copyNotificationOperation(selectedNotification);
+	}, [selectedNotification, copyNotificationOperation]);
+
 	return (
 		<Container background="gray6">
 			<ListRow>
@@ -346,6 +373,8 @@ const NotificationView: FC<{
 						icon="CopyOutline"
 						iconPlacement="right"
 						color="secondary"
+						onClick={copyNotification}
+						disabled={isEmpty(selectedNotification)}
 					/>
 					<Padding left="large">
 						<Button
@@ -381,6 +410,7 @@ const NotificationView: FC<{
 				<NotificationDetail
 					notification={selectedNotification}
 					setShowNotificationDetail={setShowNotificationDetail}
+					copyNotificationOperation={copyNotificationOperation}
 				/>
 			)}
 		</Container>

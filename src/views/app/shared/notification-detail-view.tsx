@@ -16,12 +16,14 @@ import {
 	Input
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 import ListRow from '../../list/list-row';
 
 const NotificationDetail: FC<{
 	notification: any;
 	setShowNotificationDetail: (arg: boolean) => void;
-}> = ({ notification, setShowNotificationDetail }) => {
+	copyNotificationOperation: (args: any) => void;
+}> = ({ notification, setShowNotificationDetail, copyNotificationOperation }) => {
 	const [t] = useTranslation();
 	return (
 		<Container
@@ -79,6 +81,9 @@ const NotificationDetail: FC<{
 						icon="CopyOutline"
 						iconPlacement="right"
 						color="secondary"
+						onClick={(): void => {
+							copyNotificationOperation(notification);
+						}}
 					/>
 					<Padding left="large">
 						<Button
@@ -96,7 +101,7 @@ const NotificationDetail: FC<{
 				<Container padding={{ bottom: 'large', right: 'small', left: 'extralarge' }}>
 					<Input
 						label={t('label.date', 'Date')}
-						value={notification?.date}
+						value={moment(notification?.date).format('DD-MM-YYYY - HH:mm A')}
 						background="gray6"
 						readOnly
 					/>
