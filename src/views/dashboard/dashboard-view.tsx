@@ -127,7 +127,11 @@ const Dashboard: FC = () => {
 					<CarbonioVersionInformation userName={userName} />
 				</Container>
 				<Container width={'60'} padding={{ all: 'extralarge' }}>
-					<QuickAccess quickAccessItems={quickAccessItems} openOperationView={openOperationView} />
+					<QuickAccess
+						quickAccessItems={quickAccessItems}
+						openOperationView={openOperationView}
+						domainName={domainInformation?.name}
+					/>
 				</Container>
 			</ListRow>
 

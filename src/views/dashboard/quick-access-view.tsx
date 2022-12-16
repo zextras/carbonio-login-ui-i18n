@@ -21,7 +21,8 @@ export const OperationContainer = styled(Container)`
 const QuickAccess: FC<{
 	quickAccessItems: Array<any>;
 	openOperationView: (operation: string) => void;
-}> = ({ quickAccessItems, openOperationView }) => {
+	domainName: string;
+}> = ({ quickAccessItems, openOperationView, domainName }) => {
 	const [t] = useTranslation();
 	return (
 		<Container
@@ -37,7 +38,9 @@ const QuickAccess: FC<{
 						<Icon icon="FlashOutline" height={'1.5rem'} width="1.5rem" />
 					</Container>
 					<Container mainAlignment="flex-start" crossAlignment="flex-start">
-						{t('dashboard.quick_access_default_domain', 'Quick Access to {defaultDomain}')}
+						<Text color="gray0" overflow="break-word" weight="bold" size="medium">
+							{t('dashboard.quick_access_to', 'Quick Access to')} {domainName}
+						</Text>
 					</Container>
 				</ListRow>
 			</Container>
