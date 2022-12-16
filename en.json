@@ -478,6 +478,7 @@
         "go_to_notification": "Go to notification",
         "new_notifications": "New Notifications",
         "quick_access_default_domain": "Quick Access to {defaultDomain}",
+        "quick_access_to": "Quick Access to",
         "server_ip": "Server IP",
         "server_name": "Server name",
         "your_notifications": "Your Notifications"
