@@ -1517,7 +1517,7 @@
         "policy_criteria": "ポリシー基準",
         "policy_has_been_coppied": "HSM ポリシーがクリップボードにコピーされました",
         "previous_day_scale": "前の <bold>{{day}}</bold> {{scale}}?",
-        "scheduling": "スケジューリング",
+        "scheduling": "スケジュール",
         "select_manually_destination_volumes": "宛先ボリュームを手動で選択する",
         "select_manually_source_volumes": "ソースボリュームを手動で選択する",
         "smaller_size": "小さい（サイズ）",
