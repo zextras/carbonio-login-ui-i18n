@@ -634,7 +634,7 @@
         "username_with": "nome utente con",
         "username_without": "nome utente senza",
         "volume_active": "{{volumeName}} è attualmente attivo",
-        "virtual_host_user_msg_1": "Per esempio, è possibile rendere il servizio disponibile sia per mail.example.com che per webamail.example.com.",
+        "virtual_host_user_msg_1": "Per esempio, è possibile rendere il servizio disponibile sia per mail.example.com che per webmail.example.com.",
         "volume_back_button": "INDIETRO",
         "volume_check": "CONTROLLA",
         "volume_created": "Volume creato con successo",
