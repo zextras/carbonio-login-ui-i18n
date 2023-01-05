@@ -57,25 +57,8 @@ const RunningDetailPanel: FC<{ getAllOperationAPICallHandler: any }> = ({
 		setWizardDetailToggle(true);
 	};
 
-	const handleStopAllOperation = (): any => {
-		console.log('__stopAllOperation');
-	};
-
-	// const allOperations = useCallback(() => {
-	// 	const res =
-	// 		'{"response":{"np-s01.demo.zextras.io":{"response":{"operationList":[{"startTime":1672218757532,"module":"ZxBackup","name":"SmartScan","descName":"Smart Scan","id":"45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","state":"Started","host":"np-s01.demo.zextras.io","parameters":{"requesterAddress":"zimbra","additionalNotificationAddresses":[],"origin":"ZxLink","isDeep":true,"createFakeBlob":false},"monitorCommand":"carbonio backup monitor 45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","queuedTime":1672218757532}],"realTimeScanOperations":0},"ok":true}},"nested":true,"ok":true}';
-	// 	const result = JSON.parse(res);
-	// 	console.log('__Res', result);
-
-	// 	setOperationData(result?.response?.[`${serverList}`]?.response?.operationList);
-	// 	// getAllOperations().then((response: any) => {
-	// 	// 	console.log('__res', response);
-	// 	// });
-	// }, [serverList]);
-
-	// useEffect(() => {
-	// 	allOperations();
-	// }, [allOperations]);
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	const handleStopAllOperation = (): any => {};
 
 	return (
 		<>
@@ -135,9 +118,8 @@ const RunningDetailPanel: FC<{ getAllOperationAPICallHandler: any }> = ({
 								headers={operationsHeader}
 								donePanel={false}
 								selectedRows=""
-								onSelectionChange={(selected: any): any => {
-									console.log('__selected', selected);
-								}}
+								// eslint-disable-next-line @typescript-eslint/no-empty-function
+								onSelectionChange={(selected: any): any => {}}
 								onClick={(i: any): any => {
 									handleClick(i);
 								}}

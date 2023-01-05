@@ -14,6 +14,7 @@ import {
 	STARTED,
 	STOPPING
 } from '../../constants';
+import { getAllOperations } from '../../services/get-all-operations';
 import { useOperationStore } from '../../store/operation/store';
 import { useServerStore } from '../../store/server/store';
 import DoneDetailPanel from './done-detail-panel';
@@ -28,17 +29,18 @@ const OperationsDetailOperation: FC = () => {
 	);
 
 	const getAllOperationAPICallHandler = useCallback(() => {
-		console.log('__getCall');
-		const res =
-			'{"response":{"np-s01.demo.zextras.io":{"response":{"operationList":[{"startTime":1672218757532,"module":"ZxBackup","name":"SmartScan","descName":"Smart Scan","id":"45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","state":"Started","host":"np-s01.demo.zextras.io","parameters":{"requesterAddress":"zimbra","additionalNotificationAddresses":[],"origin":"ZxLink","isDeep":true,"createFakeBlob":false},"monitorCommand":"carbonio backup monitor 45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","queuedTime":1672218757532},{"startTime":1672218757532,"module":"ZxBackup","name":"SmartScan","descName":"Smart Scan","id":"45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","state":"Queued","host":"np-s01.demo.zextras.io","parameters":{"requesterAddress":"zimbra","additionalNotificationAddresses":[],"origin":"ZxLink","isDeep":true,"createFakeBlob":false},"monitorCommand":"carbonio backup monitor 45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","queuedTime":1672218757532},{"startTime":1672218757532,"module":"ZxBackup","name":"SmartScan","descName":"Smart Scan","id":"45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","state":"Stopping","host":"np-s01.demo.zextras.io","parameters":{"requesterAddress":"zimbra","additionalNotificationAddresses":[],"origin":"ZxLink","isDeep":true,"createFakeBlob":false},"monitorCommand":"carbonio backup monitor 45cd85f0-04b1-461c-8bb0-7f0ddb0a19c5","queuedTime":1672218757532}],"realTimeScanOperations":0},"ok":true}},"nested":true,"ok":true}';
-		const result = JSON.parse(res)?.response?.[`${serverList}`]?.response?.operationList;
-		setAlloperationDetail(result);
-		const RunningOperationData = result?.filter((item: any) => item?.state === STARTED);
-		setRunningData(RunningOperationData);
-		const QueuedOperationData = result?.filter((item: any) => item?.state === QUEUED);
-		setQueuedData(QueuedOperationData);
-		const DoneOperationData = result?.filter((item: any) => item?.state === STOPPING);
-		setDoneData(DoneOperationData);
+		getAllOperations().then((response: any) => {
+			console.log('_dd operation response', response.Body?.response.content);
+			const res = response.Body?.response.content;
+			const result = JSON.parse(res)?.response?.[`${serverList}`]?.response?.operationList;
+			setAlloperationDetail(result);
+			const RunningOperationData = result?.filter((item: any) => item?.state === STARTED);
+			setRunningData(RunningOperationData);
+			const QueuedOperationData = result?.filter((item: any) => item?.state === QUEUED);
+			setQueuedData(QueuedOperationData);
+			const DoneOperationData = result?.filter((item: any) => item?.state === STOPPING);
+			setDoneData(DoneOperationData);
+		});
 	}, [serverList, setAlloperationDetail, setDoneData, setQueuedData, setRunningData]);
 
 	useEffect(() => {

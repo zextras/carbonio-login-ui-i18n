@@ -24,7 +24,6 @@ const DoneDetailPanel: FC = () => {
 	const operationsDoneHeader = useMemo(() => OperationsDoneHeader(t), [t]);
 	const [wizardDetailToggle, setWizardDetailToggle] = useState(false);
 	const [selectedData, setSelectedData] = useState<any>();
-	console.log('__doneData', doneData);
 
 	const handleClick = (i: any): any => {
 		const volumeObject: any = doneData.find((s: any, index: any) => index === i);
@@ -72,9 +71,8 @@ const DoneDetailPanel: FC = () => {
 							headers={operationsDoneHeader}
 							donePanel
 							selectedRows=""
-							onSelectionChange={(selected: any): any => {
-								console.log('__selected', selected);
-							}}
+							// eslint-disable-next-line @typescript-eslint/no-empty-function
+							onSelectionChange={(selected: any): any => {}}
 							onClick={(i: any): any => {
 								handleClick(i);
 							}}

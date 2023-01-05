@@ -29,18 +29,15 @@ const QuededDetailPanel: FC<{ getAllOperationAPICallHandler: any }> = ({
 	const [wizardDetailToggle, setWizardDetailToggle] = useState(false);
 	const [open, setOpen] = useState(false);
 	const [selectedData, setSelectedData] = useState<any>();
-	console.log('__queuedData', queuedData);
 
 	const closeHandler = (): any => {
 		setOpen(false);
 	};
 
 	const stopHandler = (modelHandler: boolean): any => {
-		console.log('__modelHandler', modelHandler);
 		if (!modelHandler) {
 			stopOperations(selectedData?.id)
 				.then((res) => {
-					console.log('__Res', res);
 					if (res.ok) {
 						setOpen(false);
 						setWizardDetailToggle(false);
@@ -117,9 +114,8 @@ const QuededDetailPanel: FC<{ getAllOperationAPICallHandler: any }> = ({
 								headers={operationsHeader}
 								donePanel={false}
 								selectedRows=""
-								onSelectionChange={(selected: any): any => {
-									console.log('__selected', selected);
-								}}
+								// eslint-disable-next-line @typescript-eslint/no-empty-function
+								onSelectionChange={(selected: any): any => {}}
 								onClick={(i: any): any => {
 									handleClick(i);
 								}}

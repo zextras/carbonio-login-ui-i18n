@@ -47,8 +47,6 @@ const OperationsListPanel: FC = () => {
 	}, [globalCarbonioSendAnalytics, matomo]);
 
 	useEffect(() => {
-		// console.log('__selectedOperation', selectedOperationItem);
-
 		// globalCarbonioSendAnalytics && matomo.trackEvent('trackViewPage', `${selectedOperationItem}`);
 		replaceHistory(`/${selectedOperationItem}`);
 	}, [selectedOperationItem, globalCarbonioSendAnalytics, matomo]);

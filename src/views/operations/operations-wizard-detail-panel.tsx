@@ -37,7 +37,6 @@ const OperationsWizardDetailPanel: FC<{
 }> = ({ setWizardDetailToggle, server, operation, setOpen, selectedData }) => {
 	const [t] = useTranslation();
 	const [status, setStatus] = useState('');
-	console.log('__data', selectedData);
 
 	useEffect(() => {
 		if (selectedData?.state === STARTED) {
