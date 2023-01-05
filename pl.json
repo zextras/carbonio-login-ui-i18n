@@ -991,7 +991,19 @@
         "yes_reset_the_device": "Tak, zresetuj urządzenie",
         "yes_wipe_the_device": "Tak, wyczyść urządzenie",
         "you_are_trying_reset_device": "Próbujesz zresetować urządzenie",
-        "you_are_trying_wipe_device": "Próbujesz wyczyścić urządzenie"
+        "you_are_trying_wipe_device": "Próbujesz wyczyścić urządzenie",
+        "label": "Określenie",
+        "who_can_send_mails_to_list ": "Kto może wysyłać e-maile do tej listy?",
+        "bucket_create_button": "STWÓRZ",
+        "bucket_delete_button": "USUŃ",
+        "bucket_notes": "Notatki",
+        "date": "Data",
+        "notifications": "Notifications",
+        "open": "Otwórz",
+        "search_for_user_and_clic_to_add": "Wyszukaj użytkownika i kliknij przycisk DODAJ.",
+        "there_are_no_owners": "Nie ma żadnych właścicieli.",
+        "verify": "Zweryfikuj",
+        "verify_certificate": "Zweryfikuj"
     },
     "message": {
         "snackbar": {
@@ -1231,7 +1243,9 @@
         "time_range": "Jednostka czasu",
         "active_sync": "ActiveSync",
         "dark_mode": "Tryb ciemny",
-        "activesync_remote_access": "Zdalny dostęp ActiveSync"
+        "activesync_remote_access": "Zdalny dostęp ActiveSync",
+        "chats": "Czaty",
+        "files": "Pliki"
     },
     "locale": {
         "label_italian": "Włoski - {{value}}",
@@ -1378,7 +1392,10 @@
         "secret_code": "Tajny kod",
         "select_email_otp": "Wybierz adres e-mail, do którego zostanie wysłane hasło OTP lub skopiuj kod powyżej",
         "send_the_otp_to": "Wysyłaj hasło OTP do",
-        "activesync_remote_access": "Zdalny dostęp ActiveSync"
+        "activesync_remote_access": "Zdalny dostęp ActiveSync",
+        "Chats": "Czaty",
+        "domain": "Domena",
+        "files": "Pliki"
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Wysyłaj wszystkie informacje o błędach do Zextras",
@@ -1528,5 +1545,16 @@
         "volume_already_selected_in_source": "Wolumin został już wybrany jako wolumin źródłowy"
     },
     "select_bucket_or_create_new_bucket_helperText": "Wygląda na to, że nie ustawiiono typu bucketa.\n\t\t\t\t\t\t\t\t\tKliknij w przycisk \"NOWY BUCKET\", aby stworzyć nowy.",
-    "welcome_to_carbonio_display_name": "Witaj, {{adminName}}!"
+    "welcome_to_carbonio_display_name": "Witaj, {{adminName}}!",
+    "dashboard": {
+        "description": "Opis",
+        "carbonio": "Carbonio"
+    },
+    "notification": {
+        "copy": "Skopiuj",
+        "list": "Lista",
+        "manage": "Zarządzaj",
+        "mark_as_read": "Zaznacz jako przeczytane",
+        "mark_as_unread": "Zaznacz jako nieczytane"
+    }
 }
