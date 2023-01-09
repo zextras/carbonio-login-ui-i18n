@@ -4,12 +4,22 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { soapFetch } from '@zextras/carbonio-shell-ui';
+import {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	postSoapFetchRequest
+} from '@zextras/carbonio-shell-ui';
 
-export const getAccountIdentities = async (accountId: string): Promise<any> =>
-	soapFetch(`GetIdentities`, {
-		_jsns: 'urn:zimbraAdmin',
-		identity: {
-			a: accountId
-		}
-	});
+export const getAccountIdentities = async (accountId: string): Promise<any> => {
+	const request: any = {
+		_jsns: 'urn:zimbraAccount'
+	};
+	return postSoapFetchRequest(
+		`/service/admin/soap/GetIdentitiesRequest`,
+		{
+			...request
+		},
+		'GetIdentitiesRequest',
+		accountId
+	);
+};

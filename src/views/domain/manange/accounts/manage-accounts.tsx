@@ -45,6 +45,7 @@ const ManageAccounts: FC = () => {
 	const [initAccountDetail, setInitAccountDetail] = useState<any>({});
 	const [otpList, setOtpList] = useState<any[]>([]);
 	const [identitiesList, setIdentitiesList] = useState<any[]>([]);
+	const [deligateDetail, setDeligateDetail] = useState<any>({});
 
 	const headers: any = useMemo(
 		() => [
@@ -270,45 +271,24 @@ const ManageAccounts: FC = () => {
 		},
 		[t]
 	);
-	const getIdentitiesList = useCallback(
-		(id): void => {
-			getAccountIdentities(id).then((res) => {
-				if (res?.ok) {
-					const otpListResponse = res.response?.list;
-					if (otpListResponse && Array.isArray(otpListResponse)) {
-						const otpListArr: any = [];
-						otpListResponse.map((item: any): any => {
-							otpListArr.push({
-								id: item?.id,
-								columns: [
-									<Text size="medium" key={item?.id} color="#414141">
-										{item?.label || ' '}
-									</Text>,
-									<Text size="medium" key={item?.id} color="#414141">
-										{item?.status ? t('label.enabled', 'Enabled') : t('label.disabled', 'Disabled')}
-									</Text>,
-									<Text size="medium" key={item?.id}>
-										{item?.failed_attempts}
-									</Text>,
-									<Text size="medium" key={item?.id}>
-										{moment(item?.created).format('DD/MMM/YYYY')}
-									</Text>,
-									<Text size="medium" key={item?.id} color="#414141">
-										{item?.description || <>&nbsp;</>}
-									</Text>
-								],
-								item,
-								clickable: true
-							});
-							return '';
-						});
-						setOtpList(otpListArr);
-					}
-				}
-			});
-		},
-		[t]
-	);
+	const getIdentitiesList = useCallback((id): void => {
+		const targetServers = 'localhost';
+		fetchSoap('zextras', {
+			_jsns: 'urn:zimbraAdmin',
+			module: 'ZxCore',
+			action: 'getAllowDelegatedAddress',
+			targetServers,
+			targetID: id,
+			type: 'account',
+			by: 'id'
+		}).then((res: any) => {
+			if (res?.ok) {
+				setIdentitiesList(res?.response?.[targetServers]?.grants);
+			}
+			console.log('addAllowAddressForDelegatedSender ==>', res);
+			// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
+		});
+	}, []);
 	const openDetailView = useCallback(
 		(acc: any): void => {
 			setSelectedAccount(acc);
@@ -317,7 +297,7 @@ const ManageAccounts: FC = () => {
 			getSignatureDetail(acc?.id);
 			getAccountMembership(acc?.id);
 			getListOtp(acc?.name);
-			getIdentitiesList(acc?.name);
+			getIdentitiesList(acc?.id);
 		},
 		[getAccountDetail, getAccountMembership, getSignatureDetail, getListOtp, getIdentitiesList]
 	);
@@ -635,7 +615,10 @@ const ManageAccounts: FC = () => {
 					setSignatureList,
 					otpList,
 					getListOtp,
-					identitiesList
+					identitiesList,
+					deligateDetail,
+					setDeligateDetail,
+					getIdentitiesList
 				}}
 			>
 				{showAccountDetailView && (

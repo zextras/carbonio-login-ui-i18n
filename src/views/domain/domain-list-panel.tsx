@@ -80,21 +80,24 @@ const DomainListPanel: FC = () => {
 	}, [globalCarbonioSendAnalytics, matomo]);
 
 	const getBackupModuleEnable = useBackupModuleStore((state) => state.backupModuleEnable);
-	const getDomainLists = (domainName: string): any => {
-		getDomainList(domainName).then((data) => {
-			const searchResponse: any = data;
-			if (!!searchResponse && searchResponse?.searchTotal > 0) {
-				setDomainList(searchResponse?.domain);
-				setDomainListStore(searchResponse?.domain);
-			} else {
-				setDomainList([]);
-			}
-		});
-	};
+	const getDomainLists = useCallback(
+		(domainName: string): any => {
+			getDomainList(domainName).then((data) => {
+				const searchResponse: any = data;
+				if (!!searchResponse && searchResponse?.searchTotal > 0) {
+					setDomainList(searchResponse?.domain);
+					setDomainListStore(searchResponse?.domain);
+				} else {
+					setDomainList([]);
+				}
+			});
+		},
+		[setDomainListStore]
+	);
 
 	useEffect(() => {
 		getDomainLists('');
-	}, []);
+	}, [getDomainLists]);
 
 	useEffect(() => {
 		if (domainInformation?.name) {

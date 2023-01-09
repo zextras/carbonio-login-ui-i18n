@@ -3,7 +3,15 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useMemo, useContext, useState, ReactElement } from 'react';
+import React, {
+	FC,
+	useMemo,
+	useContext,
+	useState,
+	ReactElement,
+	useEffect,
+	useCallback
+} from 'react';
 import {
 	Container,
 	Padding,
@@ -13,9 +21,11 @@ import {
 	useSnackbar,
 	Table,
 	Divider,
-	ChipInput
+	Select,
+	Dropdown,
+	Input,
+	Icon
 } from '@zextras/carbonio-design-system';
-import QRCode from 'qrcode.react';
 import styled from 'styled-components';
 import { map } from 'lodash';
 import { Trans, useTranslation } from 'react-i18next';
@@ -24,10 +34,16 @@ import { AccountContext } from '../account-context';
 import { HorizontalWizard } from '../../../../app/component/hwizard';
 import logo from '../../../../../assets/gardian.svg';
 import { Section } from '../../../../app/component/section';
-import { sendMail } from '../../../../../services/send-mail-service';
-import { emailContent } from '../create-account/email-content';
-import { fetchSoap } from '../../../../../services/generateOTP-service';
+import { fetchSoap } from '../../../../../services/fetch-soap';
+
 import { useAuthIsAdvanced } from '../../../../../store/auth-advanced/store';
+
+import { delegateType } from '../../../../utility/utils';
+import DelegateSelectModeSection from './add-delegate-section/delegate-selectmode-section';
+import DelegateSetRightsSection from './add-delegate-section/delegate-setright-section';
+import DelegateAddSection from './add-delegate-section/delegate-add-section';
+
+const SelectItem = styled(Row)``;
 
 const emailRegex =
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars, max-len, no-control-regex
@@ -52,7 +68,7 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 	const { t } = useTranslation();
 	return (
 		<Section
-			title={t('account.new.create_otp_wizard', 'Create OTP Wizard')}
+			title={t('account_details.add_user_on_delegates_list', 'Add user on Delegates List')}
 			padding={{ all: '0' }}
 			footer={wizardFooter}
 			divider
@@ -68,9 +84,11 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 
 const EditAccountDelegatesSection: FC = () => {
 	const conext = useContext(AccountContext);
-	const { identitiesList, accountDetail, getListOtp } = conext;
+	const { identitiesList, accountDetail, getIdentitiesList, deligateDetail, setDeligateDetail } =
+		conext;
+	console.log('accountDetail===>', accountDetail);
 	const domainName = useDomainStore((state) => state.domain?.name);
-	const [showCreateOTP, setShowCreateOTP] = useState<boolean>(false);
+	const [showCreateIdentity, setShowCreateIdentity] = useState<boolean>(false);
 	const [qrData, setQrData] = useState('');
 	const [sendEmailTo, setSendEmailTo] = useState('');
 	const [pinCodes, setPinCodes] = useState<any>([]);
@@ -78,225 +96,68 @@ const EditAccountDelegatesSection: FC = () => {
 	const [t] = useTranslation();
 	const createSnackbar = useSnackbar();
 	const isAdvanced = useAuthIsAdvanced((state) => state.isAdvanced);
-	const wizardSteps = useMemo(
-		() => [
-			{
-				name: 'otp',
-				label: t('label.create_otp', 'CREATE OTP'),
-				icon: 'KeyOutline',
-				view: (): ReactElement => (
-					<>
-						<Container mainAlignment="flex-start">
-							<Row
-								padding={{ top: 'large', left: 'large' }}
-								width="100%"
-								mainAlignment="space-between"
-							>
-								<Row width="40%" mainAlignment="flex-start">
-									<QRCode
-										data-testid="qrcode-password"
-										size={179}
-										bgColor="transparent"
-										value={qrData}
-									/>
-								</Row>
-								<Row width="60%" mainAlignment="flex-start">
-									<Container>
-										<Padding top="large">
-											<Row mainAlignment="center">
-												<StaticCodesContainer background="gray5">
-													<StaticCodesWrapper>
-														{map(pinCodes, (singleCode: any) => (
-															// eslint-disable-next-line max-len
-															<StaticCode key={singleCode.code}>{singleCode.code}</StaticCode>
-														))}
-													</StaticCodesWrapper>
-												</StaticCodesContainer>
-											</Row>
-										</Padding>
-									</Container>
-									<Container
-										orientation="horizontal"
-										width="99%"
-										crossAlignment="center"
-										mainAlignment="space-between"
-									>
-										<Row
-											takeAvwidth="fill"
-											mainAlignment="center"
-											width="100%"
-											padding={{
-												top: 'small',
-												bottom: 'small'
-											}}
-										>
-											<Text>{t('account_details.secret_code', 'Secret Code')}</Text>
-										</Row>
-									</Container>
-									<Container
-										orientation="horizontal"
-										width="99%"
-										crossAlignment="center"
-										mainAlignment="space-between"
-									>
-										<Row
-											takeAvwidth="fill"
-											mainAlignment="center"
-											width="100%"
-											padding={{
-												top: 'small',
-												bottom: 'small'
-											}}
-										>
-											<Text>{qrData}</Text>
-										</Row>
-									</Container>
-								</Row>
-							</Row>
-							<Container
-								orientation="horizontal"
-								width="99%"
-								crossAlignment="center"
-								mainAlignment="space-between"
-							>
-								<Row
-									takeAvwidth="fill"
-									mainAlignment="center"
-									width="100%"
-									padding={{
-										top: 'small',
-										bottom: 'small'
-									}}
-								>
-									<Text>
-										{t(
-											'account_details.please_note_code',
-											`Please note: you'll be able to see these codes just once.`
-										)}
-									</Text>
-								</Row>
-							</Container>
-							<Container
-								orientation="horizontal"
-								width="99%"
-								crossAlignment="center"
-								mainAlignment="space-between"
-							>
-								<Row
-									takeAvwidth="fill"
-									mainAlignment="center"
-									width="100%"
-									padding={{
-										top: 'small',
-										bottom: 'small'
-									}}
-								>
-									<Text>
-										{t(
-											'account_details.select_email_otp',
-											`Select an email address to send the OTP to or copy the code above`
-										)}
-									</Text>
-								</Row>
-							</Container>
-							<Row
-								padding={{ top: 'large', left: 'large' }}
-								width="100%"
-								mainAlignment="space-between"
-							>
-								<Row width="80%" mainAlignment="space-between" padding={{ right: 'large' }}>
-									<ChipInput
-										placeholder={t('account_details.send_the_otp_to', 'Send the OTP to')}
-										onChange={(contacts: any): void => {
-											const data: any = [];
-											map(contacts, (contact) => {
-												if (emailRegex.test(contact.label ?? '')) data.push(contact);
-											});
-											setSendEmailTo(data);
-										}}
-										defaultValue={sendEmailTo}
-										value={sendEmailTo}
-										background="gray5"
-										// hasError={some(sendEmailTo || [], { error: true })}
-									/>
-								</Row>
-								<Row width="20%" mainAlignment="space-between">
-									<Button
-										label={t('account_details.send', 'SEND')}
-										icon="PaperPlaneOutline"
-										iconPlacement="right"
-										onClick={(): void => {
-											sendMail('SendMsgRequest', {
-												_jsns: 'urn:zimbraMail',
-												m: {
-													attach: { mp: [] },
-													su: { _content: 'Account 2FA code' },
-													e: [
-														{
-															t: 'f',
-															a: `${accountDetail?.name}@${domainName}`,
-															d: accountDetail?.name
-														},
-														...map(sendEmailTo, (email: any) => ({ t: 't', a: email.label, d: '' }))
-													],
-													mp: [
-														{
-															ct: 'text/html',
-															body: true,
-															content: {
-																_content: emailContent(qrData, pinCodes)
-															}
-														}
-													]
-												}
-											}).then(() => setSendEmailTo(''));
-										}}
-									></Button>
-								</Row>
-							</Row>
-						</Container>
-					</>
-				),
-				clickDisabled: true,
-				CancelButton: () => <></>,
-				PrevButton: (): ReactElement => <></>,
-				NextButton: (props: any) => (
-					<Button
-						{...props}
-						label={t('commons.i_have_sent_data_to_user', 'I HAVE SENT THE DATA TO THE USER')}
-						icon="PersonOutline"
-						iconPlacement="right"
-						onClick={(): void => setShowCreateOTP(false)}
-					/>
-				)
-			}
-		],
-		[accountDetail?.name, domainName, pinCodes, qrData, sendEmailTo, t]
-	);
+	const [identityListItem, setIdentityListItem] = useState<any>([]);
+
+	useEffect(() => {
+		const identitiesArr: any = [];
+		console.log('identitiesList ==>', identitiesList);
+		identitiesList.map((item: any): any => {
+			identitiesArr.push({
+				id: item?.granteeID,
+				columns: [
+					<Text size="medium" key={item?.granteeID} color="#414141">
+						{item?.granteeName || ' '}
+					</Text>,
+					<Text size="medium" key={item?.granteeID} color="#414141">
+						{item?.granteeType === 'usr' ? 'Single User' : 'Group'}
+					</Text>,
+					<Text size="medium" key={item?.granteeID} color="#414141">
+						{'Read'}
+					</Text>,
+					<Text size="medium" key={item?.granteeID} color="#414141">
+						{'Read, Send, Write'}
+					</Text>,
+					<Text size="medium" key={item?.granteeID} color="#414141">
+						{'Save it on the Delegated Account'}
+					</Text>
+				],
+				item,
+				clickable: true
+			});
+			return '';
+		});
+		setIdentityListItem(identitiesArr);
+	}, [identitiesList]);
 
 	const headers: any = useMemo(
 		() => [
 			{
 				id: 'description',
-				label: t('label.description', 'Description'),
-				width: '40%',
+				label: t('label.Accounts', 'Accounts'),
+				width: '20%',
 				bold: true
 			},
 			{
 				id: 'status',
-				label: t('label.status', 'Status'),
+				label: t('label.Type', 'Type'),
 				width: '20%',
 				bold: true
 			},
 			{
 				id: 'failed',
-				label: t('label.failed', 'Failed'),
+				label: t('label.Rights', 'Rights'),
 				width: '20%',
 				bold: true
 			},
 			{
 				id: 'creation-date',
-				label: t('label.creation_date', 'Creation Date'),
+				label: t('label.sending_options', 'Sending Options'),
+				width: '20%',
+				bold: true
+			},
+			{
+				id: 'save-mails-to',
+				label: t('label.save_mails_to', 'Save Mails to'),
 				width: '20%',
 				bold: true
 			}
@@ -304,52 +165,95 @@ const EditAccountDelegatesSection: FC = () => {
 		[t]
 	);
 
-	const handleOnGenerateOTP = (): void => {
+	const handleCreateDelegate = (): void => {
+		setShowCreateIdentity(true);
+	};
+
+	const handleCreateDelegateAPI = useCallback((): void => {
+		console.log('handleCreateDelegateAPI');
+		console.log('deligateDetail', deligateDetail);
+		// doAddAllowAddressForDelegatedSender
 		fetchSoap('zextras', {
 			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxAuth',
-			action: 'totp_generate_command',
-			account: `${accountDetail?.uid}@${domainName}`
+			module: 'ZxCore',
+			action: 'doAddAllowAddressForDelegatedSender',
+			targetServers: 'localhost',
+			targetID: 'd1d0a9ae-702f-4e34-8577-02193eb2e08e',
+			targetEmail: 'a_user1@demo.zextras.io',
+			type: 'account',
+			by: 'name',
+			granteeEmail: deligateDetail?.granteeEmail,
+			granteeType: deligateDetail?.granteeType,
+			right: 'sendAs'
 		}).then((res: any) => {
-			if (res.ok) {
-				setQrData(res.response.secret);
-				setPinCodes(res.response.static_otp_codes);
-				setShowCreateOTP(true);
-				getListOtp(`${accountDetail?.uid}@${domainName}`);
-			}
+			console.log('addAllowAddressForDelegatedSender ==>', res?.Body);
+			setShowCreateIdentity(false);
+			getIdentitiesList(accountDetail?.zimbraId);
 		});
+	}, [deligateDetail, getIdentitiesList, accountDetail]);
+
+	const handleDeleteeDelegate = (): void => {
+		console.log('handleDeleteeDelegate');
 	};
-	const handleDeleteOTP = (): void => {
-		fetchSoap('zextras', {
-			_jsns: 'urn:zimbraAdmin',
-			module: 'ZxAuth',
-			action: 'delete_totp_command',
-			account: `${accountDetail?.uid}@${domainName}`,
-			id: selectedRows?.[0]
-		}).then((res: any) => {
-			if (res.ok) {
-				setSelectedRows([]);
-				createSnackbar({
-					key: 'success',
-					type: 'success',
-					label: t('label.otp_deleted_successfully', 'OTP has been deleted successfully'),
-					autoHideTimeout: 3000,
-					hideButton: true,
-					replace: true
-				});
-				getListOtp(`${accountDetail?.uid}@${domainName}`);
-			} else {
-				createSnackbar({
-					key: 'error',
-					type: 'error',
-					label: t('label.something_wrong_wrror_msg', 'Something went wrong. Please try again.'),
-					autoHideTimeout: 3000,
-					hideButton: true,
-					replace: true
-				});
+	const wizardSteps = useMemo(
+		() => [
+			{
+				name: 'select-mode',
+				label: t('account_details.select_mode', 'SELECT MODE'),
+				icon: 'PlusOutline',
+				view: DelegateSelectModeSection,
+				clickDisabled: true,
+				CancelButton: () => <></>,
+				PrevButton: (): ReactElement => <></>,
+				NextButton: (props: any) => (
+					<Button
+						{...props}
+						label={t('account_details.NEXT', 'NEXT')}
+						icon="ChevronRightOutline"
+						iconPlacement="right"
+						// onClick={(): void => setShowCreateIdentity(false)}
+					/>
+				)
+			},
+			{
+				name: 'set-rights',
+				label: t('account_details.set_rights', 'SET RIGHTS'),
+				icon: 'OptionsOutline',
+				view: DelegateSetRightsSection,
+				clickDisabled: true,
+				CancelButton: () => <></>,
+				PrevButton: (): ReactElement => <></>,
+				NextButton: (props: any) => (
+					<Button
+						{...props}
+						label={t('account_details.NEXT', 'NEXT')}
+						icon="ChevronRightOutline"
+						iconPlacement="right"
+						// onClick={(): void => setShowCreateIdentity(false)}
+					/>
+				)
+			},
+			{
+				name: 'add-delegate',
+				label: t('account_details.ADD', 'ADD'),
+				icon: 'KeyOutline',
+				view: DelegateAddSection,
+				clickDisabled: true,
+				CancelButton: () => <></>,
+				PrevButton: (): ReactElement => <></>,
+				NextButton: (props: any) => (
+					<Button
+						{...props}
+						label={t('account_details.NEXT', 'NEXT')}
+						icon="PersonOutline"
+						iconPlacement="right"
+						onClick={(): void => handleCreateDelegateAPI()}
+					/>
+				)
 			}
-		});
-	};
+		],
+		[handleCreateDelegateAPI, t]
+	);
 	return (
 		<>
 			{isAdvanced && (
@@ -357,7 +261,7 @@ const EditAccountDelegatesSection: FC = () => {
 					mainAlignment="flex-start"
 					padding={{ left: 'large', right: 'extralarge', bottom: 'large' }}
 				>
-					{!showCreateOTP && (
+					{!showCreateIdentity && (
 						<>
 							<Row mainAlignment="flex-start" padding={{ left: 'small' }} width="100%">
 								<Row padding={{ top: 'large' }} width="100%" mainAlignment="space-between">
@@ -374,7 +278,7 @@ const EditAccountDelegatesSection: FC = () => {
 											iconPlacement="right"
 											color="primary"
 											height={44}
-											onClick={(): void => handleOnGenerateOTP()}
+											onClick={(): void => handleCreateDelegate()}
 										/>
 									</Padding>
 									<Padding right="large">
@@ -385,7 +289,7 @@ const EditAccountDelegatesSection: FC = () => {
 											iconPlacement="right"
 											color="secondary"
 											height={44}
-											onClick={(): void => handleOnGenerateOTP()}
+											onClick={(): void => handleCreateDelegateAPI()}
 										/>
 									</Padding>
 									<Button
@@ -396,7 +300,7 @@ const EditAccountDelegatesSection: FC = () => {
 										color="error"
 										height={44}
 										disabled={!selectedRows?.length}
-										onClick={(): void => handleDeleteOTP()}
+										onClick={(): void => handleDeleteeDelegate()}
 									/>
 								</Row>
 								<Row
@@ -411,16 +315,16 @@ const EditAccountDelegatesSection: FC = () => {
 										width="fill"
 										height="calc(100vh - 340px)"
 									>
-										{identitiesList.length !== 0 && (
+										{identityListItem.length !== 0 && (
 											<Table
-												rows={identitiesList}
+												rows={identityListItem}
 												headers={headers}
 												multiSelect={false}
 												onSelectionChange={setSelectedRows}
 												style={{ overflow: 'auto', height: '100%' }}
 											/>
 										)}
-										{identitiesList.length === 0 && (
+										{identityListItem.length === 0 && (
 											<Container
 												orientation="column"
 												crossAlignment="center"
@@ -470,13 +374,13 @@ const EditAccountDelegatesSection: FC = () => {
 							</Row>
 						</>
 					)}
-					{showCreateOTP && (
+					{showCreateIdentity && (
 						<>
 							<Row mainAlignment="flex-start" padding={{ left: 'small' }} width="100%">
 								<HorizontalWizard
 									steps={wizardSteps}
 									Wrapper={WizardInSection}
-									setToggleWizardSection={setShowCreateOTP}
+									setToggleWizardSection={setShowCreateIdentity}
 								/>
 							</Row>
 						</>
