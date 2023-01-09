@@ -611,32 +611,22 @@ const App: FC = () => {
 		[setGlobalConfig]
 	);
 
-	const getAllServersRequest = useCallback(() => {
-		getAllServers().then((data) => {
+	const getMailstoresServersRequest = useCallback(() => {
+		getMailstoresServers().then((data) => {
 			const server = data?.server;
 			if (server && Array.isArray(server) && server.length > 0) {
+				setVolumeList(server);
 				setServerList(server);
 				checkIsBackupModuleEnable(server);
 				setAllServersList(server);
 				getGlobalConfig(server[0]?.name);
 			}
 		});
-	}, [setServerList, checkIsBackupModuleEnable, setAllServersList, getGlobalConfig]);
-
-	const getMailstoresServersRequest = useCallback(() => {
-		getMailstoresServers().then((data) => {
-			const server = data?.server;
-			if (server && Array.isArray(server) && server.length > 0) {
-				setVolumeList(server);
-			}
-		});
-	}, [setVolumeList]);
+	}, [setVolumeList, setServerList, checkIsBackupModuleEnable, getGlobalConfig, setAllServersList]);
 
 	useEffect(() => {
-		getAllServersRequest();
-		// another call just to get only mailstores can be improvised later
 		getMailstoresServersRequest();
-	}, [getAllServersRequest, getMailstoresServersRequest]);
+	}, [getMailstoresServersRequest]);
 
 	return null;
 };
