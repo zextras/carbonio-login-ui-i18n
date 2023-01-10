@@ -11,7 +11,8 @@ import {
 	Switch,
 	DateTimePicker,
 	Icon,
-	Text
+	Text,
+	Divider
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -118,7 +119,11 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 							</Container>
 						</ListRow>
 						<ListRow>
-							<Container crossAlignment="flex-start" padding={{ top: 'large', bottom: 'medium' }}>
+							<Container
+								crossAlignment="flex-start"
+								padding={{ top: 'extralarge', bottom: 'medium' }}
+								width="30%"
+							>
 								<Switch
 									value={restoreAccountDetail?.lastAvailableStatus}
 									label={t('label.use_last_available_status', 'Use last available status')}
@@ -130,19 +135,20 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 									}}
 								/>
 							</Container>
-
-							<DatePickerContainer
-								crossAlignment="flex-start"
-								padding={{ top: 'large', bottom: 'medium' }}
-							>
-								<DateTimePicker
-									label={t('label.date_time_picker', 'Date Time Picker')}
-									defaultValue={date}
-									onChange={handleChange}
-									dateFormat="dd/MM/yyyy hh:mm"
-									style={{ background: 'green' }}
-								/>
-							</DatePickerContainer>
+							<Container>
+								<DatePickerContainer
+									crossAlignment="flex-start"
+									padding={{ top: 'large', bottom: 'medium' }}
+								>
+									<DateTimePicker
+										label={t('label.date_time_picker', 'Date Time Picker')}
+										defaultValue={date}
+										onChange={handleChange}
+										dateFormat="dd/MM/yyyy hh:mm"
+										style={{ background: 'green' }}
+									/>
+								</DatePickerContainer>
+							</Container>
 						</ListRow>
 
 						<ListRow>
@@ -163,18 +169,9 @@ const RestoreDeleteAccountConfigSection: FC<any> = () => {
 							</Row>
 						</ListRow>
 						<ListRow>
-							<Row padding={{ bottom: 'medium' }}>
-								<Switch
-									value={restoreAccountDetail?.dataSource}
-									label={t('label.restore_external_data_source', 'Restore External Data Sources')}
-									onClick={(): void => {
-										setRestoreAccountDetail((prev: any) => ({
-											...prev,
-											dataSource: !restoreAccountDetail?.dataSource
-										}));
-									}}
-								/>
-							</Row>
+							<Container padding={{ top: 'medium', bottom: 'large' }}>
+								<Divider />
+							</Container>
 						</ListRow>
 						<ListRow>
 							<Row padding={{ bottom: 'medium' }}>

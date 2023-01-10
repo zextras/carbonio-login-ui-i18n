@@ -85,7 +85,7 @@ const RestoreDeleteAccountStartSection: FC<any> = () => {
 							</Container>
 						</ListRow>
 						<ListRow>
-							<Container padding={{ right: 'medium', bottom: 'medium' }}>
+							<Container>
 								<Input
 									backgroundColor="gray6"
 									label={t(
@@ -98,19 +98,9 @@ const RestoreDeleteAccountStartSection: FC<any> = () => {
 									readOnly
 								/>
 							</Container>
-							<Container padding={{ right: 'medium', bottom: 'medium' }}>
-								<Input
-									backgroundColor="gray6"
-									label={t('label.restore_external_data_source', 'Restore External Data Sources')}
-									value={
-										restoreAccountDetail?.dataSource ? t('label.yes', 'Yes') : t('label.no', 'NO')
-									}
-									readOnly
-								/>
-							</Container>
 						</ListRow>
 						<ListRow>
-							<Container padding={{ bottom: 'large' }}>
+							<Container padding={{ bottom: 'large', top: 'large' }}>
 								<Input
 									backgroundColor="gray6"
 									label={t('label.mail_notifications', 'Email Notifications')}
