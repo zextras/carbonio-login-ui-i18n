@@ -125,7 +125,7 @@ const ActiveDeviceDetail: FC<{
 			setIsDetailRequestInProgess(true);
 			getMobileDeviceDetail(
 				ZX_MOBILE,
-				selectedMobileDeviceDetail?.accountName,
+				selectedMobileDeviceDetail?.accountEmail,
 				selectedMobileDeviceDetail?.deviceId
 			)
 				.then((res: any) => {
