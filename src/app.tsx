@@ -620,26 +620,20 @@ const App: FC = () => {
 				setServerList(server);
 				checkIsBackupModuleEnable(server);
 				setAllServersList(server);
-				setAllMailstoreList(server);
 				getGlobalConfig(server[0]?.name);
 			}
 		});
-	}, [
-		setServerList,
-		checkIsBackupModuleEnable,
-		setAllServersList,
-		getGlobalConfig,
-		setAllMailstoreList
-	]);
+	}, [setServerList, checkIsBackupModuleEnable, setAllServersList, getGlobalConfig]);
 
 	const getMailstoresServersRequest = useCallback(() => {
 		getMailstoresServers().then((data) => {
 			const server = data?.server;
 			if (server && Array.isArray(server) && server.length > 0) {
 				setVolumeList(server);
+				setAllMailstoreList(server);
 			}
 		});
-	}, [setVolumeList]);
+	}, [setVolumeList, setAllMailstoreList]);
 
 	useEffect(() => {
 		getAllServersRequest();
