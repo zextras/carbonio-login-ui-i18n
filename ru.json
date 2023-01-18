@@ -1314,7 +1314,7 @@
         "label_portuguese": "Португальский-{{value}}",
         "label_portuguese_brazil": "Португальский-{{value}}",
         "label_romanian": "Румынский-{{value}}",
-        "label_russian": "Русский-{{value}}",
+        "label_russian": "Русский - {{value}}",
         "label_spanish": "Испанский-{{value}}",
         "label_thai": "Тайский-{{value}}",
         "label_turkish": "Турецкий-{{value}}",
