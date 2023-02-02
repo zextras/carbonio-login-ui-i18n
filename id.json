@@ -1004,7 +1004,21 @@
         "who_can_send_mails_to_list ": "Siapa yang dapat mengirim email KE daftar ini?",
         "Aliases": "Alias",
         "domain_certificate": "Sertifikat Domain",
-        "domain_certificate_private_key": "Kunci Pribadi Domain"
+        "domain_certificate_private_key": "Kunci Pribadi Domain",
+        "centralized": "Terpusat",
+        "external_volume_edited": "{{message}}",
+        "general_options": "Opsi Umum",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "running": "Berjalan",
+        "use_intelligent_tiering": "Gunakan Tiering Cerdas",
+        "ID": "ID",
+        "done": "Selesai",
+        "empty_table_helperText": "Kosongkan Tabel",
+        "queued": "Diantrekan",
+        "stop_operation_helperText": "{{message}}"
     },
     "message": {
         "snackbar": {
@@ -1443,7 +1457,8 @@
         "volume_config_header": {
             "name": "Nama",
             "hsm_scheduled": "HSM Terjadwal",
-            "indexer": "Pengindeks"
+            "indexer": "Pengindeks",
+            "status": "Status"
         },
         "volume_header": {
             "compression": "Kompresi",
@@ -1462,7 +1477,10 @@
             "index": "Indeks",
             "primary": "Utama",
             "secondary": "Sekunder"
-        }
+        },
+        "indexer_helperText": "Pengindeks",
+        "primary_helperText": "Utama",
+        "secondary_helperText": "Sekunder"
     },
     "hsm": {
         "all": "Semua",
@@ -1557,5 +1575,27 @@
         "mark_as_unread": "Tandai sebagai belum dibaca",
         "notifications_list": "Daftar Notifikasi"
     },
-    "welcome": "Selamat Datang"
+    "welcome": "Selamat Datang",
+    "operations": {
+        "copy_btn": "SALIN",
+        "details": "Detail",
+        "done": "Selesai",
+        "empty_table_helperText": "Kosongkan Tabel",
+        "label": {
+            "Deep": "Dalam",
+            "notifications": "Notifikasi",
+            "status": "Status"
+        },
+        "operations_list_header": {
+            "start_date": "Tanggal mulai",
+            "status": "Status",
+            "submit_date": "Tanggal kirim",
+            "author": "Penulis",
+            "operation": "Operasi",
+            "server": "Server"
+        },
+        "other": "Lainnya",
+        "queued": "Diantrekan",
+        "running": "Berjalan"
+    }
 }
