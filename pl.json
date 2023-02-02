@@ -1046,7 +1046,21 @@
         "type_an_account_add_senders_list": "Wprowadź konto, aby dodać je jako nadawcę listy",
         "virtual_hosts_and_certificates": "Wirtualne hosty i certyfikat",
         "want_to_use_this_certifiacte": "CHCĘ UŻYĆ TEGO CERTYFIKATU",
-        "what_inside": "Co się w tym znajduje?"
+        "what_inside": "Co się w tym znajduje?",
+        "centralized": "Zcentralizowane",
+        "done": "Gotowe",
+        "empty_table_helperText": "Tabela jest pusta",
+        "external_volume_edited": "{{message}}",
+        "ID": "ID",
+        "general_options": "Ustawienia ogólne",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "queued": "W kolejce",
+        "running": "Działa",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "Używaj intelligent tiering"
     },
     "message": {
         "snackbar": {
@@ -1492,7 +1506,8 @@
         "volume_config_header": {
             "name": "Imię",
             "hsm_scheduled": "HSM zostało zaplanowane",
-            "indexer": "Indeksowanie"
+            "indexer": "Indeksowanie",
+            "status": "Status"
         },
         "volume_header": {
             "compression": "Kompresja",
@@ -1511,7 +1526,10 @@
             "index": "Indeks",
             "primary": "Pierwszorzędny",
             "secondary": "Drugorzędny"
-        }
+        },
+        "primary_helperText": "Pierwszorzędny",
+        "secondary_helperText": "Drugorzędny",
+        "indexer_helperText": "Indeksowanie"
     },
     "have_not_setup_bucket_type": "Wygląda na to, że nie ustawiłeś typu bucketu",
     "click_new_bucket_button_to_create_new_one": "Kliknij przycisk NOWY BUCKET, aby stworzyć nowy.",
@@ -1634,5 +1652,28 @@
         "load_certificate": "PRZEŚLIJ CERTYFIKAT"
     },
     "welcome": "Witaj",
-    "welcome_to_carbonio_information": "{{adminName}}, witaj w Carbonio!"
+    "welcome_to_carbonio_information": "{{adminName}}, witaj w Carbonio!",
+    "operations": {
+        "copy_btn": "SKOPIUJ",
+        "copy_operation_successfully": "Powiadomienie zostało skopiowane",
+        "details": "Szczegóły",
+        "done": "Gotowe",
+        "empty_table_helperText": "Tabela jest pusta",
+        "label": {
+            "Deep": "Głęboki",
+            "notifications": "Notifications",
+            "status": "Status"
+        },
+        "operations_list_header": {
+            "author": "Autor",
+            "operation": "Operacja",
+            "server": "Serwer",
+            "start_date": "Data rozpoczęcia",
+            "status": "Status",
+            "submit_date": "Data wysłania"
+        },
+        "other": "Inne",
+        "queued": "W kolejce",
+        "running": "Działa"
+    }
 }
