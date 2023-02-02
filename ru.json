@@ -786,7 +786,21 @@
         "type_an_account_add_senders_list": "Введите учетную запись, чтобы добавить ее в список отправителей",
         "virtual_hosts_and_certificates": "Виртуальные хосты и сертификат",
         "want_to_use_this_certifiacte": "Я ХОЧУ ИСПОЛЬЗОВАТЬ ЭТОТ СЕРТИФИКАТ",
-        "what_inside": "Что внутри?"
+        "what_inside": "Что внутри?",
+        "centralized": "Централизованный",
+        "done": "Готово",
+        "empty_table_helperText": "Пустая таблица",
+        "external_volume_edited": "{{message}}",
+        "general_options": "Общие параметры",
+        "operation": {
+            "stop_operation_error": "{{name}}",
+            "get_all_operation_error": "{{name}}"
+        },
+        "queued": "В очереди",
+        "running": "Работает",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "Использовать интеллектуальное Tiering",
+        "ID": "ID"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -1377,7 +1391,8 @@
         "volume_config_header": {
             "name": "имя",
             "indexer": "Индексатор",
-            "hsm_scheduled": "HSM запланировано"
+            "hsm_scheduled": "HSM запланировано",
+            "status": "Cостояние"
         },
         "volume_header": {
             "compression": "Компрессия",
@@ -1396,7 +1411,10 @@
             "index": "Индекс",
             "primary": "Первичный",
             "secondary": "Вторичный"
-        }
+        },
+        "indexer_helperText": "Индексатор",
+        "primary_helperText": "Первичный",
+        "secondary_helperText": "Вторичный"
     },
     "have_not_setup_bucket_type": "Похоже, вы не настроили тип Бакета",
     "click_new_bucket_button_to_create_new_one": "Для создания нажмите кнопку NEW BUCKET.",
@@ -1634,5 +1652,28 @@
     },
     "to_carbonio": "в Carbonio!",
     "welcome": "Добро пожаловать",
-    "welcome_to_carbonio_information": "Добро пожаловать {{adminName}} в Carbonio!"
+    "welcome_to_carbonio_information": "Добро пожаловать {{adminName}} в Carbonio!",
+    "operations": {
+        "copy_btn": "КОПИЯ",
+        "copy_operation_successfully": "Уведомление успешно скопировано",
+        "details": "Детали",
+        "done": "Готово",
+        "empty_table_helperText": "Пустая таблица",
+        "label": {
+            "Deep": "Глубокий",
+            "notifications": "Оповещения",
+            "status": "Cостояние"
+        },
+        "operations_list_header": {
+            "author": "Автор",
+            "operation": "Операция",
+            "server": "Сервер",
+            "start_date": "Дата начала",
+            "status": "Cостояние",
+            "submit_date": "Дата отправки"
+        },
+        "other": "Другое",
+        "queued": "В очереди",
+        "running": "Работает"
+    }
 }
