@@ -25,7 +25,8 @@
             },
             "deactivate": "無効にする",
             "activation": "有効化",
-            "activate": "有効にする"
+            "activate": "有効にする",
+            "order_id": "オーダーID"
         }
     },
     "timezone": {
@@ -1084,7 +1085,10 @@
         "load_copy_certi": "証明書を読み込む、またはコピーする",
         "private_key_certificate": "証明書の秘密鍵",
         "title_and_copyrights_information": "タイトルと著作権情報",
-        "want_to_use_this_certifiacte": "この証明書を使用します"
+        "want_to_use_this_certifiacte": "この証明書を使用します",
+        "please_wait": "しばらくお待ちください",
+        "lockout": "ロックアウト",
+        "what_inside": "件名"
     },
     "message": {
         "snackbar": {
@@ -1648,7 +1652,9 @@
         "core_version": "コア版",
         "go_to_mailstores_server_list": "メールストアサーバーリストに移動する",
         "your_notifications": "通知",
-        "quick_access_to": "へのクイックアクセス"
+        "quick_access_to": "へのクイックアクセス",
+        "server_ip": "サーバーIP",
+        "server_name": "サーバー名"
     },
     "notification": {
         "copy": "コピー",
