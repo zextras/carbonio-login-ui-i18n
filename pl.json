@@ -1501,8 +1501,8 @@
     },
     "reminder": {
         "minute_0": "{{count}} minuta",
-        "minute_1": "",
-        "minute_2": ""
+        "minute_1": "{{count}} minuty",
+        "minute_2": "{{count}} minut"
     },
     "connection": {
         "access_key": "Klucz dostępu",
@@ -1648,7 +1648,7 @@
         "description": "Opis",
         "carbonio": "Carbonio",
         "quick_access_default_domain": "Szybki dostęp do {defaultDomain}",
-        "carbonio_core": "Carbonio rdzeń",
+        "carbonio_core": "Carbonio Rdzeń",
         "go_to_mailstores_server_list": "Idź do listy serwerów przechowywania poczty",
         "go_to_notification": "Idź do powiadomień",
         "new_notifications": "Nowe powiadomienia",
