@@ -726,7 +726,10 @@
         "centralized": "केन्द्रित",
         "done": "हो गया",
         "empty_table_helperText": "खाली टेबल",
-        "stop_operation_helperText": "{{message}}"
+        "stop_operation_helperText": "{{message}}",
+        "please_wait": "कृपया प्रतीक्षा करें",
+        "lockout": "लॉकआउट",
+        "what_inside": "विषय"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
@@ -985,7 +988,8 @@
             },
             "activate": "एक्टिवेट करें",
             "activation": "एक्टिवेशन",
-            "deactivate": "डीएक्टिवेट करें"
+            "deactivate": "डीएक्टिवेट करें",
+            "order_id": "ऑर्डर आईडी"
         }
     },
     "domain": {
