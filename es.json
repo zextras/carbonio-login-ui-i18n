@@ -852,7 +852,10 @@
         "general_options": "Opciones generales",
         "queued": "En cola",
         "stop_operation_helperText": "{{message}}",
-        "use_intelligent_tiering": "Usar Intelligent Tiering"
+        "use_intelligent_tiering": "Usar Intelligent Tiering",
+        "lockout": "Bloqueo",
+        "please_wait": "Espera por favor",
+        "what_inside": "Asunto"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
