@@ -449,6 +449,19 @@ const App: FC = () => {
 				primarybarSection: { ...logAndQueuesSection },
 				tooltip: OperationTooltipView
 			});
+
+			addRoute({
+				route: OPERATIONS_ROUTE_ID,
+				position: 2,
+				visible: true,
+				label: t('label.operations', 'Operations'),
+				primaryBar: 'ListOutline',
+				appView: AppView,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				primarybarSection: { ...logAndQueuesSection },
+				tooltip: OperationTooltipView
+			});
 		}
 		addRoute({
 			route: PRIVACY_ROUTE_ID,
