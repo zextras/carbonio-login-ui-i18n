@@ -1382,7 +1382,7 @@
         "vietnamese": "Vietnamita"
     },
     "create_new_cos": "CREA NUOVA COS",
-    "welcome_to_carbonio": "Benvenuto {{adminName}}, in Carbonio {{carbonioVersion}}!",
+    "welcome_to_carbonio": "Benvenuto {{adminName}} in Carbonio {{carbonioVersion}}!",
     "account": {
         "new": {
             "create_account_wizard": "Procedura guidata di modifica dell'account",
