@@ -369,7 +369,7 @@
         "delete_cos_succeess": "La COS {{cosname}} a été supprimée avec succès",
         "delete_cos_instruction_msg": "Si vous cliquez sur le bouton \"OUI, SUPPRIMER\", la COS par défaut remplacera la COS supprimée.",
         "delete_bucket_sucess": "Le {{name}} a été supprimé",
-        "location": "Emplacement",
+        "location": "Localisation",
         "mail": "Mail",
         "owners": "Propriétaires",
         "password": "Mot de passe",
@@ -712,7 +712,7 @@
         "email_address": "Adresse email",
         "enabled": "Activé",
         "global": "Global",
-        "last_seen": "Dernière connexion",
+        "last_seen": "vu pour la dernière fois",
         "mailstores": "Mailstores",
         "mobile_password": "Mot de passe mobile",
         "reset": "Réinitialiser",
@@ -845,7 +845,20 @@
         "use_intelligent_tiering": "Utiliser le Tiering intelligent",
         "Aliases": "Alias",
         "ADD_NEW": "AJOUTER UN NOUVEAU",
-        "delegates": "DÉLÉGUATIONS"
+        "delegates": "DÉLÉGUATIONS",
+        "Accounts": "Comptes",
+        "EDIT": "ÉDITER",
+        "REMOVE": "SUPPRIMER",
+        "Rights": "Droits",
+        "Type": "Type",
+        "chats": "Chats",
+        "contacts": "Contacts",
+        "files": "Fichiers",
+        "mail_signatures": "Signatures email",
+        "mails": "Emails",
+        "out_of_the_office_reply": "Réponse hors bureau",
+        "tasks": "Tâches",
+        "what_inside": "Sujet"
     },
     "message": {
         "snackbar": {
@@ -966,7 +979,7 @@
         "europe_berlin": "{{value}} Amsterdam, Berlin, Berne, Rome, Stockholm, Vienne",
         "europe_brussels": "{{value}} Bruxelles, Copenhague, Madrid, Paris",
         "europe_chisinau": "{{value}} Chisinau",
-        "europe_helsinki": "{{value}} Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
+        "europe_helsinki": "{{value}} Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius",
         "europe_istanbul": "{{value}} Istanbul",
         "europe_kaliningrad": "{{value}} Kaliningrad (RTZ 1)",
         "europe_london": "{{value}} Grande-Bretagne, Irlande, Portugal",
@@ -1459,7 +1472,10 @@
         "who_will_be_delegates": "Qui seront les délégués ?",
         "your_available_aliases": "Vos alias disponibles",
         "aliases": "Alias",
-        "click_on_the_pencil_to_edit": "Cliquer sur le pinceau pour éditer les alias disponibles ou cliquer sur la croix pour les supprimer"
+        "click_on_the_pencil_to_edit": "Cliquer sur le pinceau pour éditer les alias disponibles ou cliquer sur la croix pour les supprimer",
+        "NEXT": "SUIVANT",
+        "abstract": "Abstract",
+        "on_behalf_of": "au nom de"
     },
     "connection": {
         "access_key": "Clé d’accès",
