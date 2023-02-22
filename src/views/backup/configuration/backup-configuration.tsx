@@ -999,7 +999,7 @@ const BackupConfiguration: FC = () => {
 					</ListRow>
 
 					<ListRow>
-						<Container padding={{ top: 'large' }}>
+						<Container padding={{ top: 'large' }} style={{ display: 'block' }}>
 							<Button
 								type="outlined"
 								label={t('backup.initialize_backup', 'Initialize Backup')}
@@ -1008,6 +1008,7 @@ const BackupConfiguration: FC = () => {
 								iconPlacement="right"
 								height={36}
 								width="100%"
+								style={{ width: '100%' }}
 								disabled={isBackupInitialized}
 								onClick={(): void => {
 									doInitializeBackup(true);
@@ -1213,7 +1214,7 @@ const BackupConfiguration: FC = () => {
 						</Row>
 					)}
 					<ListRow>
-						<Container padding={{ top: 'large' }}>
+						<Container padding={{ top: 'large' }} style={{ display: 'block' }}>
 							{!isSetManageExternalButtonVisible && (
 								<Button
 									type="outlined"
@@ -1226,6 +1227,7 @@ const BackupConfiguration: FC = () => {
 									icon="HardDriveOutline"
 									iconPlacement="right"
 									height={36}
+									style={{ width: '100%' }}
 									width="100%"
 									disabled={!isBackupInitialized}
 									onClick={(): void => {
@@ -1292,7 +1294,7 @@ const BackupConfiguration: FC = () => {
 					</ListRow>
 
 					<ListRow>
-						<Container padding={{ top: 'large' }}>
+						<Container padding={{ top: 'large' }} style={{ display: 'block' }}>
 							<Button
 								type="outlined"
 								label={t('backup.force_start_smartscan_now', 'Force start smartscan now')}
@@ -1300,6 +1302,7 @@ const BackupConfiguration: FC = () => {
 								icon="PowerOutline"
 								iconPlacement="right"
 								height={36}
+								style={{ width: '100%' }}
 								width="100%"
 								disabled={!isBackupInitialized}
 								onClick={(): void => {
@@ -1380,6 +1383,12 @@ const BackupConfiguration: FC = () => {
 									setKeepDeletedItemInBackup(e.target.value);
 								}}
 								disabled={!scheduleAutomaticRetentionPolicy}
+								description={
+									<Trans
+										i18nKey="backup.back_delete_account_warning_message"
+										defaults="If you set 0, <strong>accounts</strong> will be kept in backup forever"
+									/>
+								}
 							/>
 						</Container>
 						<Container
@@ -1413,7 +1422,12 @@ const BackupConfiguration: FC = () => {
 									setKeepDeletedAccountsInBackup(e.target.value);
 								}}
 								disabled={!scheduleAutomaticRetentionPolicy}
-								description="Optional description"
+								description={
+									<Trans
+										i18nKey="backup.back_delete_account_warning_message"
+										defaults="If you set 0, <strong>accounts</strong> will be kept in backup forever"
+									/>
+								}
 							/>
 						</Container>
 						<Container
@@ -1430,39 +1444,8 @@ const BackupConfiguration: FC = () => {
 							/>
 						</Container>
 					</ListRow>
-
 					<ListRow>
-						<Container
-							mainAlignment="flex-start"
-							crossAlignment="flex-start"
-							orientation="horizontal"
-							padding={{ top: 'small', right: 'large' }}
-							width="50%"
-						>
-							<Text overflow="break-word" size="extrasmall">
-								<Trans
-									i18nKey="backup.back_delete_item_warning_message"
-									defaults="If you set 0, <strong>items</strong> will be kept in backup forever ?"
-								/>
-							</Text>
-						</Container>
-						<Container
-							mainAlignment="flex-start"
-							crossAlignment="flex-start"
-							orientation="horizontal"
-							padding={{ top: 'small', right: 'large' }}
-							width="50%"
-						>
-							<Text overflow="break-word" size="extrasmall">
-								<Trans
-									i18nKey="backup.back_delete_account_warning_message"
-									defaults="If you set 0, <strong>accounts</strong> will be kept in backup forever"
-								/>
-							</Text>
-						</Container>
-					</ListRow>
-					<ListRow>
-						<Container padding={{ top: 'large' }}>
+						<Container padding={{ top: 'large' }} style={{ display: 'block' }}>
 							<Button
 								type="outlined"
 								label={t('backup.force_backup_purge_now', 'Force backup purge now')}
@@ -1470,6 +1453,7 @@ const BackupConfiguration: FC = () => {
 								icon="PowerOutline"
 								iconPlacement="right"
 								height={36}
+								style={{ width: '100%' }}
 								width="100%"
 								disabled={isPurgeRequestRunning || !isBackupInitialized}
 								loading={isPurgeRequestRunning}
