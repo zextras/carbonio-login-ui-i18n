@@ -81,12 +81,12 @@ const CustomRowFactory = ({
 	);
 
 	const _onChange = (): void => {
-		console.log('>>>>>>>>>44444');
 		!clickableRow && onChange(row.id);
 	};
 
 	const onClick = useCallback<React.ReactEventHandler>(
 		(e) => {
+			onChange(row.id);
 			showCheckbox &&
 				ckbRef.current &&
 				e.target !== ckbRef.current &&

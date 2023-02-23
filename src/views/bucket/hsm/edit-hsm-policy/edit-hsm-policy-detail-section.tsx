@@ -562,7 +562,7 @@ const EditHsmPolicyDetailSection: FC<{
 						}}
 					/>
 				</Container>
-				<Container style={{ border: '1px solid #2b73d2' }} width="fit">
+				<Container>
 					{!isUpdatePolicyCriteria && (
 						<Button
 							type="outlined"
@@ -570,7 +570,7 @@ const EditHsmPolicyDetailSection: FC<{
 							icon="PlusOutline"
 							iconPlacement="right"
 							color="primary"
-							height={46}
+							size="large"
 							onClick={onAdd}
 						/>
 					)}
@@ -581,18 +581,22 @@ const EditHsmPolicyDetailSection: FC<{
 							icon="EditOutline"
 							iconPlacement="right"
 							color="primary"
-							height={46}
+							size="large"
 							onClick={onUpdate}
 						/>
 					)}
 				</Container>
 				<Padding left="small">
-					<Container style={{ border: '1px solid rgb(215, 73, 66)' }} width="fit">
+					<Container
+						width="3rem"
+						height="fit"
+						style={{ border: '1px solid #d74942', margin: '4px 0 0 0' }}
+					>
 						<IconButton
 							iconColor="error"
+							backgroundColor="gray6"
 							icon="Trash2Outline"
-							height={44}
-							width={44}
+							size="large"
 							onClick={onDeletePolicy}
 							disabled={selectedPolicies.length === 0}
 						/>
