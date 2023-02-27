@@ -1099,7 +1099,7 @@ const EditAccountDelegatesSection: FC = () => {
 											mainAlignment="space-between"
 											crossAlignment="flex-start"
 											width="fill"
-											height="calc(100vh - 340px)"
+											height="calc(100vh - 22rem)"
 										>
 											{identityListItem.length !== 0 && (
 												<Table
