@@ -99,7 +99,15 @@ const MailingListSection: FC<any> = () => {
 			const allRows = ownersList.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="bold" key={item?.id} color="#828282">
+					<Text
+						size="medium"
+						weight="bold"
+						key={item?.id}
+						color="#828282"
+						onClick={(): void => {
+							setSelectedDistributionListOwner([item]);
+						}}
+					>
 						{item}
 					</Text>
 				]
@@ -689,9 +697,6 @@ const MailingListSection: FC<any> = () => {
 									headers={ownerHeaders}
 									showCheckbox={false}
 									selectedRows={selectedDistributionListOwner}
-									onSelectionChange={(selected: any): void =>
-										setSelectedDistributionListOwner(selected)
-									}
 									RowFactory={CustomRowFactory}
 									HeaderFactory={CustomHeaderFactory}
 								/>

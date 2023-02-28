@@ -400,7 +400,7 @@ const HSMpolicySettings: FC<any> = () => {
 						}}
 					/>
 				</Container>
-				<Container padding={{ right: 'small' }}>
+				<Container>
 					<Button
 						type="outlined"
 						label={t('label.add', 'Add')}
@@ -411,19 +411,16 @@ const HSMpolicySettings: FC<any> = () => {
 						size="large"
 					/>
 				</Container>
-				<Container
-					style={{
-						border: '0.063rem solid rgb(215, 73, 66)',
-						'max-width': '4.25rem',
-						height: '2.25rem',
-						'margin-top': '0.375rem'
-					}}
-				>
-					<IconButton
-						iconColor="error"
+				<Container maxWidth="5rem">
+					<Button
+						type="outlined"
+						key="add-button"
+						label={''}
+						color="error"
 						icon="Trash2Outline"
+						iconPlacement="left"
+						size="large"
 						onClick={onDeletePolicy}
-						size="extralarge"
 					/>
 				</Container>
 			</ListRow>

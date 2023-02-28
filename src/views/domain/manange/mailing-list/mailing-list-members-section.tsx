@@ -64,7 +64,15 @@ const MailingListMembersSection: FC<any> = () => {
 			const allRows = dlm.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="bold" key={item} color="#828282">
+					<Text
+						size="medium"
+						weight="bold"
+						key={item}
+						color="#828282"
+						onClick={(): void => {
+							setSelectedDistributionListMember([item]);
+						}}
+					>
 						{item}
 					</Text>,
 					''
@@ -282,9 +290,6 @@ const MailingListMembersSection: FC<any> = () => {
 							headers={memberHeaders}
 							showCheckbox={false}
 							selectedRows={selectedDistributionListMember}
-							onSelectionChange={(selected: any): void =>
-								setSelectedDistributionListMember(selected)
-							}
 							RowFactory={CustomRowFactory}
 							HeaderFactory={CustomHeaderFactory}
 						/>

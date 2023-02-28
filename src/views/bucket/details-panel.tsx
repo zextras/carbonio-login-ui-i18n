@@ -371,6 +371,7 @@ const DetailsPanel: FC<{
 						color={verify}
 						onClick={verifyConnector}
 						disabled={toggleBtn}
+						size="large"
 					/>
 				</Row>
 

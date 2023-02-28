@@ -178,7 +178,15 @@ const MailingListSettingsSection: FC<any> = () => {
 			const allRows = ownersList.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="bold" key={item?.id} color="#828282">
+					<Text
+						size="medium"
+						weight="bold"
+						key={item?.id}
+						color="#828282"
+						onClick={(): void => {
+							setSelectedDistributionListOwner([item]);
+						}}
+					>
 						{item}
 					</Text>
 				]
@@ -409,7 +417,15 @@ const MailingListSettingsSection: FC<any> = () => {
 			const allRows = grantEmailsList.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="bold" key={item?.id} color="#828282">
+					<Text
+						size="medium"
+						weight="bold"
+						key={item?.id}
+						color="#828282"
+						onClick={(): void => {
+							setSelectedGrantEmail([item]);
+						}}
+					>
 						{item}
 					</Text>
 				]
@@ -633,9 +649,6 @@ const MailingListSettingsSection: FC<any> = () => {
 							headers={ownerHeaders}
 							showCheckbox={false}
 							selectedRows={selectedDistributionListOwner}
-							onSelectionChange={(selected: any): void =>
-								setSelectedDistributionListOwner(selected)
-							}
 							RowFactory={CustomRowFactory}
 							HeaderFactory={CustomHeaderFactory}
 						/>
@@ -769,7 +782,6 @@ const MailingListSettingsSection: FC<any> = () => {
 							headers={grantEmailHeaders}
 							showCheckbox={false}
 							selectedRows={selectedGrantEmail}
-							onSelectionChange={(selected: any): void => setSelectedGrantEmail(selected)}
 							RowFactory={CustomRowFactory}
 							HeaderFactory={CustomHeaderFactory}
 						/>

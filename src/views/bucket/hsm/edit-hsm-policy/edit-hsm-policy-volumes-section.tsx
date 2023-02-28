@@ -301,7 +301,7 @@ const EditHsmPolicyVolumesSection: FC<{
 						<Table
 							rows={volumeRows}
 							headers={headers}
-							showCheckbox={false}
+							showCheckbox
 							multiSelect={false}
 							selectedRows={selectedDestinationVolume}
 							onSelectionChange={(selected: any): void => {

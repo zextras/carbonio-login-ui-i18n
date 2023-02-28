@@ -608,7 +608,7 @@ const EditHsmPolicyDetailSection: FC<{
 					<Table
 						rows={policyCriteriaRows}
 						headers={headers}
-						showCheckbox={false}
+						showCheckbox
 						multiSelect={false}
 						selectedRows={selectedPolicies}
 						onSelectionChange={(selected: any): void => setSelectedPolicies(selected)}

@@ -262,7 +262,7 @@ const HSMselectVolumes: FC<any> = () => {
 						<Table
 							rows={volumeRows}
 							headers={headers}
-							showCheckbox={false}
+							showCheckbox
 							multiSelect={false}
 							selectedRows={selectedDestinationVolume}
 							onSelectionChange={(selected: any): void => {

@@ -526,7 +526,15 @@ const EditMailingListView: FC<any> = ({
 			const allRows = dlm.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="light" key={item} color="gray0">
+					<Text
+						size="medium"
+						weight="light"
+						key={item}
+						color="gray0"
+						onClick={(): void => {
+							setSelectedDistributionListMember([item]);
+						}}
+					>
 						{item}
 					</Text>,
 					''
@@ -543,7 +551,15 @@ const EditMailingListView: FC<any> = ({
 			const allRows = ownersList.map((item: any) => ({
 				id: item?.name,
 				columns: [
-					<Text size="medium" weight="light" key={item?.id} color="gray0">
+					<Text
+						size="medium"
+						weight="light"
+						key={item?.id}
+						color="gray0"
+						onClick={(): void => {
+							setSelectedOwnerListMember([item?.name]);
+						}}
+					>
 						{item?.name}
 					</Text>
 				]
@@ -1648,7 +1664,15 @@ const EditMailingListView: FC<any> = ({
 			const allRows = grantEmailsList.map((item: any) => ({
 				id: item,
 				columns: [
-					<Text size="medium" weight="light" key={item} color="gray0">
+					<Text
+						size="medium"
+						weight="light"
+						key={item}
+						color="gray0"
+						onClick={(): void => {
+							setSelectedGrantEmail([item]);
+						}}
+					>
 						{item}
 					</Text>
 				]
@@ -1722,7 +1746,7 @@ const EditMailingListView: FC<any> = ({
 						</Container>
 					)}
 				</Row>
-				<Row padding={{ right: 'extrasmall' }}>
+				<Row padding={{ right: 'extrasmall', left: 'small' }}>
 					<IconButton
 						size="medium"
 						icon="CloseOutline"
@@ -2068,9 +2092,6 @@ const EditMailingListView: FC<any> = ({
 								headers={memberHeaders}
 								showCheckbox={false}
 								selectedRows={selectedDistributionListMember}
-								onSelectionChange={(selected: any): void =>
-									setSelectedDistributionListMember(selected)
-								}
 								RowFactory={CustomRowFactory}
 								HeaderFactory={CustomHeaderFactory}
 							/>
@@ -2250,7 +2271,6 @@ const EditMailingListView: FC<any> = ({
 							headers={ownerHeaders}
 							showCheckbox={false}
 							selectedRows={selectedOwnerListMember}
-							onSelectionChange={(selected: any): void => setSelectedOwnerListMember(selected)}
 							RowFactory={CustomRowFactory}
 							HeaderFactory={CustomHeaderFactory}
 						/>
@@ -2397,7 +2417,6 @@ const EditMailingListView: FC<any> = ({
 							headers={grantEmailHeaders}
 							showCheckbox={false}
 							selectedRows={selectedGrantEmail}
-							onSelectionChange={(selected: any): void => setSelectedGrantEmail(selected)}
 							RowFactory={CustomRowFactory}
 							HeaderFactory={CustomHeaderFactory}
 						/>
