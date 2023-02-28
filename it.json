@@ -955,7 +955,18 @@
         "mail_signatures": "Firme E-mail",
         "mails": "Mail",
         "out_of_the_office_reply": "Risposta automatica Fuori Ufficio",
-        "tasks": "Impegni"
+        "tasks": "Impegni",
+        "example_lbl": "Esempio:",
+        "logo_redirection_title": "Cliccando sul logo, l'utente verrà reindirizzato a...",
+        "mobile_app": "App Mobile",
+        "quota": "Spazio",
+        "quota_used_lbl": "Spazio utilizzato",
+        "save_mails_to": "Salva Mail in",
+        "sending_options": "Opzioni di invio",
+        "sharing_options": "Opzioni di Condivisione",
+        "sort_by_percentage": "Ordina per percentuale",
+        "sort_by_total_quota": "Ordina per spazio totale",
+        "web_feature": "Funzionalità Web"
     },
     "message": {
         "snackbar": {
@@ -1509,7 +1520,19 @@
         "type_the_new_alias_name": "Digita il nuovo nome alias e seleziona un dominio per aggiungerlo ai tuoi alias disponibili",
         "NEXT": "SUCCESSIVO",
         "abstract": "Riassunto",
-        "on_behalf_of": "per conto di"
+        "on_behalf_of": "per conto di",
+        "read_mails_only": "Solo lettura mail (non permesso l'invio di messaggi)",
+        "send_read_mails": "Invio e Lettura mail ( nessun permesso per la creazione di cartelle / gestione mail)",
+        "ADD": "AGGIUNGI",
+        "a_user": "Un utente",
+        "an_existing_group": "Un gruppo esistente",
+        "as": "come",
+        "do_not_save_it": "Non salvare",
+        "i_want_to_select": "Voglio selezionare le cartelle",
+        "search_here_for_an_account": "Cerca un account",
+        "sendin_options": "Opzioni di invio",
+        "sending_options": "Opzioni di invio",
+        "set_rights": "IMPOSTA PERMESSI"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
