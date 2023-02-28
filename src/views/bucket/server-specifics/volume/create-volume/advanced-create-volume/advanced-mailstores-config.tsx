@@ -134,7 +134,7 @@ const AdvancedMailstoresConfig: FC<{
 				</Row>
 				<Row padding={{ top: 'large' }} width="100%">
 					<Input
-						label={t('label.volume_allocation', 'Allocation')}
+						label={t('label.storage_type', 'Storage Type')}
 						backgroundColor="gray6"
 						value={advancedVolumeDetail?.volumeAllocation}
 						readOnly

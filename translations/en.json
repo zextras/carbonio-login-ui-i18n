@@ -1324,6 +1324,7 @@
         "storage_centralized_helpertext": "<bold>Use the CLI to manage the centralization.</bold> Centralized data becomes useful when two or more servers need access to the same data. By keeping data in one place, it’s easier to manage both the hardware and the data itself. ",
         "storage_centralized_helptext": "Centralized data becomes useful when two or more servers need access to the same data. \n By keeping data in one place, it’s easier to manage both the hardware and the data itself. ",
         "storage_primarybar_tooltip": "View your <bold>server status</bold>, your <bold>volumes</bold> and <bold>HSM policies</bold>. You’ll also be able to <bold>connect buckets</bold>.",
+        "storage_type": "Storage Type",
         "storages": "Storages",
         "subscription": "Subscription",
         "subscription_primarybar_tooltip": "View your <bold>subscription details</bold> and/or <bold>activate</bold> your new one.",
@@ -1613,6 +1614,8 @@
             "whenToUse": ""
         }
     },
+    "the_change_will_not_move_the_data": "The change will not move the data… !!",
+    "this_will_not_affect_data_already_stored": "This will not affect data already stored",
     "timezone": {
         "africa_algiers": "{{value}} West Central Africa",
         "africa_cairo": "{{value}} Egypt",
@@ -1767,6 +1770,7 @@
         "secondary_helperText": "Secondary",
         "serverName_volumes": "{{serverName}} Volumes",
         "serverName_volumes_create_mailstores_volume": "{{serverName}} Create Mailstores Volume",
+        "serverName_volumes_create_storage_volume": "{{serverName}} | Create Storage Volume",
         "server_list_header": {
             "HSM Scheduling": "HSM Schedule",
             "description": "Description",
@@ -1781,6 +1785,8 @@
             "centralized": "Centralized",
             "external": "External",
             "local": "Local",
+            "local_block_device": "Local Block Device",
+            "object_storage": "ObjectStorage",
             "sproxy": "Sproxy"
         },
         "volume_config_header": {
@@ -1794,7 +1800,8 @@
             "current": "Current",
             "id": "ID",
             "name": "Name",
-            "path": "Path"
+            "path": "Path",
+            "storageType": "Storage Type"
         },
         "volume_indexer_header": {
             "current": "Current",

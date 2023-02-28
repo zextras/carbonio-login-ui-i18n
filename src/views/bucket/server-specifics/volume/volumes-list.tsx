@@ -97,6 +97,15 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
+						{v?.storeType}
+					</Row>,
+					<Row
+						key={i}
+						onClick={(): void => {
+							onClick(i);
+						}}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
+					>
 						{isAdvanced ? v?.path : v?.rootpath}
 					</Row>,
 					<Row

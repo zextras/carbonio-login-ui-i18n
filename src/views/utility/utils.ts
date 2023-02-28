@@ -908,7 +908,14 @@ export const volTableHeader = (
 	{
 		id: 'name',
 		label: t('volume.volume_header.name', 'Name'),
-		width: '10%',
+		width: '30%',
+		bold: true,
+		align: 'left'
+	},
+	{
+		id: 'storeType',
+		label: t('volume.volume_header.storageType', 'Storage Type'),
+		width: '20%',
 		bold: true,
 		align: 'left'
 	},
@@ -954,14 +961,21 @@ export const indexerHeaders = (
 	{
 		id: 'name',
 		label: t('volume.volume_indexer_header.name', 'Name'),
-		width: '10%',
+		width: '30%',
+		bold: true,
+		align: 'left'
+	},
+	{
+		id: 'storeType',
+		label: t('volume.volume_header.storageType', 'Storage Type'),
+		width: '20%',
 		bold: true,
 		align: 'left'
 	},
 	{
 		id: 'path',
 		label: t('volume.volume_indexer_header.path', 'Path'),
-		width: '71%',
+		width: '61%',
 		align: 'left',
 		bold: true
 	},
@@ -991,11 +1005,11 @@ export const volumeTypeList = (t: TFunction): Array<{ label: string; value?: num
 
 export const volumeAllocationList = (t: TFunction): Array<{ label: string; value?: number }> => [
 	{
-		label: t('volume.volume_allocation_list.local', 'Local'),
+		label: t('volume.volume_allocation_list.local_block_device', 'Local Block Device'),
 		value: 1
 	},
 	{
-		label: t('volume.volume_allocation_list.external', 'External'),
+		label: t('volume.volume_allocation_list.object_storage', 'ObjectStorage'),
 		value: 2
 	}
 ];

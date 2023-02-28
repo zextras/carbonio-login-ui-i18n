@@ -46,6 +46,15 @@ const IndexerVolumeTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
+						{v?.storeType}
+					</Row>,
+					<Row
+						key={i}
+						onClick={(): void => {
+							onClick(i);
+						}}
+						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
+					>
 						{v?.rootpath}
 					</Row>,
 					<Row

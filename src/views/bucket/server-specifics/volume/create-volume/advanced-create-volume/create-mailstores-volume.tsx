@@ -25,8 +25,8 @@ const WizardInSection: FC<any> = ({
 	return (
 		<Section
 			title={t(
-				'volume.serverName_volumes_create_mailstores_volume',
-				'{{serverName}} | Create Mailstores Volume',
+				'volume.serverName_volumes_create_storage_volume',
+				'{{serverName}} | Create Storage Volume',
 				{
 					serverName: externalData
 				}
