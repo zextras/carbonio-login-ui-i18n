@@ -306,7 +306,7 @@
     "label": {
         "account": "Conta",
         "accounts": "Contas",
-        "active": "Ativa",
+        "active": "Ativo",
         "add": "Adicionar",
         "app_clicked": "Você aceitou este pedido de compartilhamento",
         "app_name": "Gerenciar",
@@ -340,7 +340,7 @@
             }
         },
         "status": "status",
-        "suspended": "Suspenso",
+        "suspended": "Suspendido",
         "timezone": "Fuso horário",
         "unlimited": "Ilimitado",
         "url": "URL",
@@ -1097,7 +1097,8 @@
         "files": "Drive",
         "mails": "E-mails",
         "out_of_the_office_reply": "Resposta Automática",
-        "tasks": "Tarefas"
+        "tasks": "Tarefas",
+        "storage": "Storage"
     },
     "message": {
         "snackbar": {
@@ -1349,7 +1350,7 @@
         "use_quickadd_dialog_in_creation": "Usar o diálogo QuickAdd na criação",
         "yes_disable": "Sim, Desativar",
         "active_sync": "ActiveSync",
-        "dark_mode": "Modo Noturno",
+        "dark_mode": "Modo escuro",
         "activesync_remote_access": "Acesso remoto ActiveSync",
         "chats": "Chats",
         "files": "Drive"
