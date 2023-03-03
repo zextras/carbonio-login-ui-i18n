@@ -794,7 +794,8 @@
         "mail_signatures": "मेल हस्ताक्षर",
         "mails": "मेल्स",
         "out_of_the_office_reply": "आउट ऑफ ऑफिस जबाब",
-        "tasks": "काम"
+        "tasks": "काम",
+        "storage": "स्टोरेज"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
