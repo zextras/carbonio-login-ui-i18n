@@ -1096,7 +1096,8 @@
         "mail_signatures": "Tanda Tangan Email",
         "mails": "Email",
         "out_of_the_office_reply": "Balas Di Luar Kantor",
-        "tasks": "Tugas"
+        "tasks": "Tugas",
+        "storage": "Penyimpanan"
     },
     "message": {
         "snackbar": {
