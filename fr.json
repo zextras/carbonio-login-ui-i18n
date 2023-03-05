@@ -869,7 +869,6 @@
         "there_are_not_member_here": "Il n'y a pas de membre.",
         "use_intelligent_tiering_helptext": "<underline>Documentation du Tiering Amazon</underline>",
         "virtual_host_msg": "Les Virtual Host permettent au système de définir un domaine par défaut pour la connexion d'un utilisateur.<br />Tout utilisateur qui se connecte en utilisant une URL avec l'un des hostname ci-dessous sera supposé être dans ce domaine, domain1.local.<br />Veuillez noter, que la suppression d'un Virtual Host ne prend effet qu'après le redémarrage du serveur mailbox.",
-        "home": "",
         "delete_private_key_certificate_content": "Vous êtes sur le point de supprimer la clé privé de certificat.<br />Êtes-vous sûr de vouloir la supprimer ?",
         "delete_private_key_certificate_header": "Supprimer la clé privé de certificat ?",
         "restore_config_info_row_1": "<bold>{{accountName}}</bold> sera copié dans le compte que vous avez sélectionné dans le champ ci-dessous.",
