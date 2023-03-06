@@ -267,8 +267,8 @@ const App: FC = () => {
 				header: (
 					<>
 						<Trans
-							i18nKey="label.domain_lbl"
-							defaults="<bold>Domain</bold>"
+							i18nKey="label.domains_lbl"
+							defaults="<bold>Domains</bold>"
 							components={{ bold: <strong /> }}
 						/>
 						{'\n\n'}
