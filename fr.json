@@ -520,7 +520,7 @@
         "volume_type_edited": "{{message}}",
         "deleting_account_content_1": "Êtes-vous sûr de souhaiter supprimer <bold>{{name}}</bold> ?",
         "deleting_account_content_2": "Supprimer le compte supprimera les données de celui-ci de manière définitive. ",
-        "deleting_account_content_3": "À la place, vous pouvez le <bold>Désactiver pour préserver</bold> les données.",
+        "deleting_account_content_3": "À la place, vous pouvez le <bold>fermer pour préserver</bold> les données.",
         "deleting_account_name": "Vous êtes sur le point de supprimer le compte {{name}}",
         "deletion_date": "Date de suppression",
         "disable_it_instead": "Le désactiver",
@@ -860,7 +860,7 @@
         "tasks": "Tâches",
         "what_inside": "Sujet",
         "account_password_setting_note_for_external_authentication": "Les paramétrages ci-dessous ↓ n'affecteront pas la définition des mots de passe défini par les utilisateur du domaine qui ont configuré l'usage d'une authentification externe. Les changement réalisés ici surchargent les paramétrage de COS pour les mots de passe ainsi que les blocages sur échec de connexion.",
-        "operation_primarybar_tooltip": "Voir et gérer les <bold>opérations</bold>, permet de les <bold>lancer, ajouter à la liste d'attente</bold> ou <bold>terminer</bold>.",
+        "operation_primarybar_tooltip": "Voir et gérer les <bold>opérations de démarrage, de gestion</bold> ou <bold>d'arrêt</bold>.",
         "size_threshold": "Seuil de la taille",
         "sort_by_total_quota": "Trier par quota total",
         "stop_operations_message": "Êtes-vous sûr de vouloir ARRÊTER cette opération ?<br /> En cliquant sur ARRETER L'OPERATION, elle sera arrêtée et <br />retirée de la liste d'attente des opérations.",
@@ -939,7 +939,8 @@
         "volume_detail_page_title": "Détails de {{message}}",
         "want_to_use_this_certifiacte": "JE SOUHAITE UTILISER CE CERTIFICAT",
         "web_feature": "Fonctionnalité Web",
-        "storage": "Stockage"
+        "storage": "Stockage",
+        "home": "Accueil"
     },
     "message": {
         "snackbar": {
@@ -952,7 +953,7 @@
         "africa_algiers": "{{value}} Afrique Central de l'Ouest",
         "africa_cairo": "{{value}} Egypte",
         "africa_casablanca": "{{value}} Casablanca",
-        "africa_harare": "{{value}} Harare, Pretorija",
+        "africa_harare": "{{value}} Harare, Pretoria",
         "africa_juba": "{{value}} Juba",
         "africa_khartoum": "{{value}} Khartoum",
         "africa_monrovia": "{{value}} Monrovia",
@@ -984,7 +985,7 @@
         "america_adak": "{{value}} Adak",
         "america_anchorage": "{{value}} Alaska",
         "america_araguaina": "{{value}} Araguaina",
-        "america_argentina_buenos_aires": "{{value}} Argentina",
+        "america_argentina_buenos_aires": "{{value}} Argentine",
         "america_asuncion": "{{value}} Asuncion",
         "america_bahia": "{{value}} Salvador",
         "america_bogota": "{{value}} Colombie",
@@ -1015,7 +1016,7 @@
         "asia_hovd": "{{value}} Hovd",
         "asia_irkutsk": "{{value}} Irkutsk (RTZ 7)",
         "asia_jerusalem": "{{value}} Jerusalem",
-        "asia_kabul": "{{value}} Kabul",
+        "asia_kabul": "{{value}} Kaboul",
         "asia_kamchatka": "{{value}} Anadyr, Petropavlovsk-Kamchatsky (RTZ 11)",
         "asia_karachi": "{{value}} Islamabad, Karachi",
         "asia_kathmandu": "{{value}} Katmandou",
@@ -1418,7 +1419,8 @@
     "accountDetails": {
         "enable_activeSync_remote_access": "Activer l'accès distant ActiveSync",
         "default_COS": "COS par défaut",
-        "change_password_for_next_login": "Doit changer son mot de passe à la prochaine connexion"
+        "change_password_for_next_login": "Doit changer son mot de passe à la prochaine connexion",
+        "user_will_change_password_on_next_login": "L'utilisateur changera son mot de passe lors de sa prochaine connexion"
     },
     "account": {
         "new": {
@@ -1522,13 +1524,13 @@
         "ADD": "AJOUTER",
         "a_user": "Un utilisateur",
         "add_user_on_delegates_list": "Ajouter un utilisateur à la liste des déléguations",
-        "all_folders": "Tous les dossiers (inclure les futurs dossiers)",
+        "all_folders": "Tous les dossiers (incluant les futurs dossiers)",
         "an_existing_group": "Un groupe existant",
         "as": "comme",
         "delegate_created_successfully": "Délégation créée avec succès",
-        "delegate_deleted_successfully": "Délégation supprimée avec succès",
+        "delegate_deleted_successfully": "Droits de délégation supprimés avec succès",
         "delegate_rights": "Droits de délégation",
-        "delegate_updated_successfully": "Délégation mise à jour avec succès",
+        "delegate_updated_successfully": "Droits de délégation mise à jour avec succès",
         "deligate_abstract_text": "L'utilisateur {{granteeEmail}} sera en mesure d'envoyer des emails {{right}} {{targetEmail}}",
         "do_not_save_it": "Ne pas sauver",
         "i_want_to_create_a_delegate_for": "Je souhaite créer une délégation pour",
@@ -1541,9 +1543,9 @@
         "select_delegate_folder": "Sélectionner les dossiers délégués pouvant être vus",
         "select_mode": "SÉLECTION DU MODE",
         "send_as_recepients": "Envoyer en tant que (les destinataires verront l'expéditeur {{targetEmail}})",
-        "send_mails_only": "Envoyer les emails seulement (pas de droits de lecture des dossiers)",
+        "send_mails_only": "Envoyer les emails seulement (pas de droits d'accès aux dossiers)",
         "send_read_mails": "Envoyé et Lire les emails (pas de droits de créer des dossiers ou de gérer les emails)",
-        "send_recepients_see_the_mail": "Envoyer {{right}} (les destinataires verront l'email depuis {{targetEmail}})",
+        "send_recepients_see_the_mail": "Envoyer {{right}} (les destinataires verront cet expéditeur {{targetEmail}})",
         "sendin_options": "Options d'envoi",
         "sending_options": "Options d'envoi",
         "set_rights": "DÉFINITION DES DROITS",
@@ -1575,7 +1577,7 @@
     },
     "reminder": {
         "minute": "{{count}} minute",
-        "minute_plural": ""
+        "minute_plural": "{{count}} minutes"
     },
     "click_new_bucket_button_to_create_new_one": "Cliquer sur le bouton NOUVEAU BUCKET pour en créer un nouveau.",
     "have_not_setup_bucket_type": "Il semblerai que vous n'ayez pas paramétré le type de bucket",
