@@ -35,7 +35,8 @@ import {
 	CEPH,
 	CLOUDIAN,
 	EMC,
-	SCALITYS3
+	SCALITYS3,
+	LOCAL_VALUE
 } from '../../../../constants';
 import { AbsoluteContainer } from '../../../components/styled';
 import ServerVolumeDetailsPanel from './server-volume-details-panel';
@@ -97,7 +98,9 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
-						{v?.storeType}
+						{v?.storeType === LOCAL_VALUE
+							? t('volume.volume_allocation_list.local_block_device', 'Local Block Device')
+							: t('volume.volume_allocation_list.object_storage', 'ObjectStorage')}
 					</Row>,
 					<Row
 						key={i}
@@ -106,7 +109,11 @@ const VolumeListTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
-						{isAdvanced ? v?.path : v?.rootpath}
+						{v?.storeType === LOCAL_VALUE
+							? v?.path
+							: t('label.prefix_volume', 'Prefix - {{volumePrefix}}', {
+									volumePrefix: v?.volumePrefix
+							  })}
 					</Row>,
 					<Row
 						key={i}
@@ -129,7 +136,7 @@ const VolumeListTable: FC<{
 				],
 				clickable: true
 			})),
-		[isAdvanced, onClick, volumes]
+		[onClick, t, volumes]
 	);
 
 	return (
@@ -161,9 +168,9 @@ const VolumesDetailPanel: FC = () => {
 	const volIndexerHeaders = useMemo(() => indexerHeaders(t), [t]);
 	const volPrimarySecondaryHeaders = useMemo(() => volTableHeader(t), [t]);
 	const volTypeList = useMemo(() => volumeTypeList(t), [t]);
-	const [priamryVolumeSelection, setPriamryVolumeSelection] = useState('');
-	const [secondaryVolumeSelection, setSecondaryVolumeSelection] = useState('');
-	const [indexerVolumeSelection, setIndexerVolumeSelection] = useState('');
+	const [priamryVolumeSelection, setPriamryVolumeSelection] = useState<string[]>([]);
+	const [secondaryVolumeSelection, setSecondaryVolumeSelection] = useState<string[]>([]);
+	const [indexerVolumeSelection, setIndexerVolumeSelection] = useState<string[]>([]);
 	const [toggleWizardLocal, setToggleWizardLocal] = useState(false);
 	const [toggleWizardExternal, setToggleWizardExternal] = useState(false);
 	const [detailsVolume, setDetailsVolume] = useState(false);
@@ -215,7 +222,7 @@ const VolumesDetailPanel: FC = () => {
 	const createSnackbar = useSnackbar();
 	const serverName = useBucketServersListStore((state) => state?.volumeList)[0].name;
 
-	const changeSelectedVolume = (): any => {
+	const changeSelectedVolume = (): void => {
 		if (detailData?.type === 1 && detailData?.id !== 0) {
 			const volumeObject: any = volumeList?.primaries?.find((s: any) => s?.id === detailData?.id);
 			setVolume(volumeObject);
@@ -228,7 +235,7 @@ const VolumesDetailPanel: FC = () => {
 		}
 	};
 
-	const closeHandler = (): any => {
+	const closeHandler = (): void => {
 		setOpen(false);
 	};
 
@@ -784,7 +791,7 @@ const VolumesDetailPanel: FC = () => {
 								label={t('label.new_volume_button', 'NEW VOLUME')}
 								icon="PlusOutline"
 								color="primary"
-								onClick={(): any => {
+								onClick={(): void => {
 									setVolumeDetail({
 										id: '',
 										volumeName: '',
@@ -814,10 +821,10 @@ const VolumesDetailPanel: FC = () => {
 								volumes={volumeList?.primaries}
 								headers={volPrimarySecondaryHeaders}
 								selectedRows={priamryVolumeSelection}
-								onSelectionChange={(selected: any): any => {
+								onSelectionChange={(selected: string[]): void => {
 									setPriamryVolumeSelection(selected);
 								}}
-								onClick={(i: any): any => {
+								onClick={(i: number): void => {
 									handleClick(i, volumeList?.primaries);
 								}}
 							/>
@@ -840,10 +847,10 @@ const VolumesDetailPanel: FC = () => {
 								volumes={volumeList?.secondaries}
 								headers={volPrimarySecondaryHeaders}
 								selectedRows={secondaryVolumeSelection}
-								onSelectionChange={(selected: any): any => {
+								onSelectionChange={(selected: string[]): void => {
 									setSecondaryVolumeSelection(selected);
 								}}
-								onClick={(i: any): any => {
+								onClick={(i: number): void => {
 									handleClick(i, volumeList?.secondaries);
 								}}
 							/>
@@ -867,10 +874,10 @@ const VolumesDetailPanel: FC = () => {
 								volumes={volumeList?.indexes}
 								headers={volIndexerHeaders}
 								selectedRows={indexerVolumeSelection}
-								onSelectionChange={(selected: any): any => {
+								onSelectionChange={(selected: string[]): void => {
 									setIndexerVolumeSelection(selected);
 								}}
-								onClick={(i: any): any => {
+								onClick={(i: number): void => {
 									handleClick(i, volumeList?.indexes);
 								}}
 							/>

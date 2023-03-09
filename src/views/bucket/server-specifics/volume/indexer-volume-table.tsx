@@ -6,7 +6,7 @@
 import React, { FC, useMemo } from 'react';
 import { Container, Row, Text, Table } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import { NO, YES } from '../../../../constants';
+import { LOCAL_VALUE, NO, YES } from '../../../../constants';
 
 const IndexerVolumeTable: FC<{
 	volumes: Array<any>;
@@ -46,7 +46,9 @@ const IndexerVolumeTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
-						{v?.storeType}
+						{v?.storeType === LOCAL_VALUE
+							? t('volume.volume_allocation_list.local_block_device', 'Local Block Device')
+							: t('volume.volume_allocation_list.object_storage', 'ObjectStorage')}
 					</Row>,
 					<Row
 						key={i}
@@ -55,7 +57,11 @@ const IndexerVolumeTable: FC<{
 						}}
 						style={{ textAlign: 'left', justifyContent: 'flex-start' }}
 					>
-						{v?.rootpath}
+						{v?.storeType === LOCAL_VALUE
+							? v?.path
+							: t('label.prefix_volume', 'Prefix - {{volumePrefix}}', {
+									volumePrefix: v?.volumePrefix
+							  })}
 					</Row>,
 					<Row
 						key={i}
@@ -69,7 +75,7 @@ const IndexerVolumeTable: FC<{
 				],
 				clickable: true
 			})),
-		[onClick, volumes]
+		[onClick, t, volumes]
 	);
 	return (
 		<Container crossAlignment="flex-start">

@@ -15,11 +15,14 @@ import {
 	Radio,
 	Text,
 	Switch,
-	useSnackbar
+	useSnackbar,
+	Link
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import { soapFetch } from '@zextras/carbonio-shell-ui';
 import {
+	AMAZON_USERGUIDE_INTELLIGENT_TIERING_LINK,
+	AMAZON_USERGUIDE_STORAGE_CLASS_LINK,
 	INDEXERES,
 	LOCAL_VALUE,
 	PRIMARIES,
@@ -289,7 +292,12 @@ const ServerVolumeDetailsPanel: FC<{
 	return (
 		<>
 			{detailData && volumeDetail?.storeType === LOCAL_VALUE ? (
-				<Container background="gray6">
+				<Container
+					background="gray6"
+					mainAlignment="flex-start"
+					orientation="vertical"
+					style={{ overflowY: 'scroll' }}
+				>
 					<Row mainAlignment="flex-start" crossAlignment="center" width="100%" height="auto">
 						<Row mainAlignment="flex-start" padding={{ all: 'large' }} takeAvailableSpace>
 							<Text size="extralarge" weight="bold">
@@ -331,7 +339,7 @@ const ServerVolumeDetailsPanel: FC<{
 						/>
 					</Container>
 					<Container
-						padding={{ horizontal: 'large', top: 'extralarge', bottom: 'large' }}
+						padding={{ horizontal: 'large', bottom: 'large' }}
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
 					>
@@ -421,7 +429,7 @@ const ServerVolumeDetailsPanel: FC<{
 									label={t('label.button_delete', 'DELETE')}
 									color="error"
 									width="fill"
-									onClick={(): any => setOpen(true)}
+									onClick={(): void => setOpen(true)}
 									disabled={!detailData?.id || volumeDetail?.id !== detailData?.id}
 									loading={!detailData?.id || volumeDetail?.id !== detailData?.id}
 								/>
@@ -430,7 +438,12 @@ const ServerVolumeDetailsPanel: FC<{
 					</Container>
 				</Container>
 			) : (
-				<Container background="gray6">
+				<Container
+					background="gray6"
+					mainAlignment="flex-start"
+					orientation="vertical"
+					style={{ overflowY: 'auto' }}
+				>
 					<Row mainAlignment="flex-start" crossAlignment="center" width="100%" height="auto">
 						<Row mainAlignment="flex-start" padding={{ all: 'large' }} takeAvailableSpace>
 							<Text size="extralarge" weight="bold">
@@ -476,7 +489,7 @@ const ServerVolumeDetailsPanel: FC<{
 					</Container>
 
 					<Container
-						padding={{ horizontal: 'large', top: 'extralarge', bottom: 'large' }}
+						padding={{ horizontal: 'large', bottom: 'large' }}
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
 					>
@@ -556,7 +569,7 @@ const ServerVolumeDetailsPanel: FC<{
 									label={t('label.primary_volume', 'This is a Primary Volume')}
 									value={PRIMARY_TYPE_VALUE}
 									checked={primaryRadio}
-									onClick={(): any => {
+									onClick={(): void => {
 										setPrimaryRadio(!primaryRadio);
 										setSecondaryRadio(false);
 									}}
@@ -569,7 +582,7 @@ const ServerVolumeDetailsPanel: FC<{
 									label={t('label.secondary_volume', 'This is a Secondary Volume')}
 									value={SECONDARY_TYPE_VALUE}
 									checked={secondaryRadio}
-									onClick={(): any => {
+									onClick={(): void => {
 										setSecondaryRadio(!secondaryRadio);
 										setPrimaryRadio(false);
 									}}
@@ -606,13 +619,18 @@ const ServerVolumeDetailsPanel: FC<{
 											/>
 										</Row>
 										<Row mainAlignment="flex-start" width="100%" padding={{ left: 'extralarge' }}>
-											<Text color="secondary">
+											<Link
+												color="secondary"
+												href={AMAZON_USERGUIDE_STORAGE_CLASS_LINK}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Trans
 													i18nKey="label.use_infraquent_access_helptext"
 													defaults="<underline>Amazon Storage Class Documentation</underline>"
 													components={{ underline: <u /> }}
 												/>
-											</Text>
+											</Link>
 										</Row>
 									</Row>
 									<Padding horizontal="small" />
@@ -634,13 +652,18 @@ const ServerVolumeDetailsPanel: FC<{
 									/>
 								</Row>
 								<Row mainAlignment="flex-start" width="100%" padding={{ left: 'extralarge' }}>
-									<Text color="secondary">
+									<Link
+										color="secondary"
+										href={AMAZON_USERGUIDE_INTELLIGENT_TIERING_LINK}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										<Trans
 											i18nKey="label.use_intelligent_tiering_helptext"
 											defaults="<underline>Amazon Tiering Documentation</underline>"
 											components={{ underline: <u /> }}
 										/>
-									</Text>
+									</Link>
 								</Row>
 							</>
 						)}
@@ -675,7 +698,12 @@ const ServerVolumeDetailsPanel: FC<{
 								/>
 							</Text>
 						</Row>
-						<Container orientation="horizontal" mainAlignment="flex-end" crossAlignment="flex-end">
+						<Container
+							orientation="horizontal"
+							mainAlignment="flex-end"
+							crossAlignment="flex-end"
+							padding={{ top: 'large' }}
+						>
 							{typeLabel !== INDEXERES && (
 								<>
 									<Row width="50%" mainAlignment="flex-start">
@@ -702,7 +730,7 @@ const ServerVolumeDetailsPanel: FC<{
 									label={t('label.button_delete', 'DELETE')}
 									color="error"
 									width="fill"
-									onClick={(): any => setOpen(true)}
+									onClick={(): void => setOpen(true)}
 									disabled={!detailData?.id || volumeDetail?.id !== detailData?.id}
 									loading={!detailData?.id || volumeDetail?.id !== detailData?.id}
 								/>

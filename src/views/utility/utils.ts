@@ -915,7 +915,7 @@ export const volTableHeader = (
 	{
 		id: 'storeType',
 		label: t('volume.volume_header.storageType', 'Storage Type'),
-		width: '20%',
+		width: '25%',
 		bold: true,
 		align: 'left'
 	},
@@ -968,7 +968,7 @@ export const indexerHeaders = (
 	{
 		id: 'storeType',
 		label: t('volume.volume_header.storageType', 'Storage Type'),
-		width: '20%',
+		width: '25%',
 		bold: true,
 		align: 'left'
 	},

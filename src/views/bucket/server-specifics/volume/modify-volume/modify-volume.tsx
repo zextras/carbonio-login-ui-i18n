@@ -18,7 +18,8 @@ import {
 	useSnackbar,
 	Radio,
 	Modal,
-	Popover
+	Tooltip,
+	Link
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import { soapFetch } from '@zextras/carbonio-shell-ui';
@@ -27,6 +28,8 @@ import { useAuthIsAdvanced } from '../../../../../store/auth-advanced/store';
 import { fetchSoap } from '../../../../../services/bucket-service';
 import {
 	ALIBABA,
+	AMAZON_USERGUIDE_INTELLIGENT_TIERING_LINK,
+	AMAZON_USERGUIDE_STORAGE_CLASS_LINK,
 	CEPH,
 	CLOUDIAN,
 	CUSTOM_S3,
@@ -77,7 +80,6 @@ const ModifyVolume: FC<{
 	const [compressBlobs, setCompressBlobs] = useState(volumeDetail?.compressBlobs);
 	const [isCurrent, setIsCurrent] = useState(volumeDetail?.isCurrent);
 	const isCurrentRef = useRef(undefined);
-	const [isCurrentPopper, setIsCurrentPopper] = useState(false);
 
 	const [compressionThreshold, setCompressionThreshold] = useState(
 		volumeDetail?.compressionThreshold
@@ -93,13 +95,13 @@ const ModifyVolume: FC<{
 	const [bucketConfigurationId, setBucketConfigurationId] = useState();
 	const [bucketS3, setBucketS3] = useState(false);
 	const [volumePrefix, setVolumePrefix] = useState<any>(externalVolDetail?.volumePrefix);
-	const [useInfrequentAccess, setUseInfrequentAccess] = useState<any>(
+	const [useInfrequentAccess, setUseInfrequentAccess] = useState<boolean>(
 		externalVolDetail?.useInfrequentAccess
 	);
-	const [useIntelligentTiering, setUseIntelligentTiering] = useState<any>(
+	const [useIntelligentTiering, setUseIntelligentTiering] = useState<boolean>(
 		externalVolDetail?.useIntelligentTiering
 	);
-	const [infrequentAccessThreshold, setInfrequentAccessThreshold] = useState<any>(
+	const [infrequentAccessThreshold, setInfrequentAccessThreshold] = useState<string>(
 		externalVolDetail?.infrequentAccessThreshold
 	);
 	const [isCurrentToggle, setIsCurrentToggle] = useState<boolean>(false);
@@ -569,7 +571,12 @@ const ModifyVolume: FC<{
 
 	return (
 		<>
-			<Container background="gray6">
+			<Container
+				background="gray6"
+				mainAlignment="flex-start"
+				orientation="vertical"
+				style={{ overflowY: 'auto' }}
+			>
 				<Row mainAlignment="flex-start" crossAlignment="center" width="100%" height="auto">
 					<Row mainAlignment="flex-start" padding={{ all: 'large' }} takeAvailableSpace>
 						<Text size="extralarge" weight="bold">
@@ -604,7 +611,7 @@ const ModifyVolume: FC<{
 				</Container>
 				{externalVolDetail === '' ? (
 					<Container
-						padding={{ horizontal: 'large', top: 'extralarge', bottom: 'large' }}
+						padding={{ horizontal: 'large', bottom: 'large' }}
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
 					>
@@ -613,7 +620,9 @@ const ModifyVolume: FC<{
 								label={t('label.volume_name', 'Volume Name')}
 								value={name}
 								backgroundColor="gray5"
-								onChange={(e: any): any => setName(e?.target?.value)}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+									setName(e?.target?.value)
+								}
 							/>
 						</Row>
 						<Row padding={{ top: 'large' }} width="100%">
@@ -632,7 +641,7 @@ const ModifyVolume: FC<{
 								label={t('label.volume_id', 'Volume ID')}
 								value={id}
 								backgroundColor="gray6"
-								onChange={(e: any): any => setId(e?.target?.value)}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setId(e?.target?.value)}
 							/>
 						</Row>
 						<Row padding={{ top: 'large' }} width="100%">
@@ -640,7 +649,9 @@ const ModifyVolume: FC<{
 								label={t('label.path', 'Path')}
 								value={rootpath}
 								backgroundColor="gray5"
-								onChange={(e: any): any => setRootpath(e?.target?.value)}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+									setRootpath(e?.target?.value)
+								}
 							/>
 						</Row>
 						<Padding top="extrasmall">
@@ -661,7 +672,7 @@ const ModifyVolume: FC<{
 									label={t('label.primary_volume', 'This is a Primary Volume')}
 									value={PRIMARY_TYPE_VALUE}
 									checked={type?.value === 1}
-									onClick={(): any => {
+									onClick={(): void => {
 										onVolumeTypeChange(1);
 									}}
 								/>
@@ -672,7 +683,7 @@ const ModifyVolume: FC<{
 									label={t('label.secondary_volume', 'This is a Secondary Volume')}
 									value={SECONDARY_TYPE_VALUE}
 									checked={type?.value === 2}
-									onClick={(): any => {
+									onClick={(): void => {
 										onVolumeTypeChange(2);
 									}}
 								/>
@@ -685,7 +696,7 @@ const ModifyVolume: FC<{
 										<Switch
 											value={compressBlobs}
 											label={t('label.enable_compression', 'Enable Compression')}
-											onClick={(): any => setCompressBlobs(!compressBlobs)}
+											onClick={(): void => setCompressBlobs(!compressBlobs)}
 										/>
 										<Padding top="extrasmall">
 											<Text color="secondary" overflow="break-word" size="extrasmall">
@@ -700,31 +711,24 @@ const ModifyVolume: FC<{
 								</>
 							)}
 							<Row width="48%" mainAlignment="flex-start">
-								<Switch
-									ref={isCurrentRef}
-									value={isCurrent}
-									label={t('label.enable_current', 'Enable as Current')}
-									onClick={(): any => {
-										!isCurrent && setIsCurrentToggle(true);
-										isCurrent && setIsCurrentPopper(true);
-									}}
-									onMouseEnter={(): any => {
-										isCurrent && setIsCurrentPopper(true);
-									}}
-									onMouseLeave={(): any => setIsCurrentPopper(false)}
-								/>
-								<Popover
-									open={isCurrentPopper}
-									anchorEl={isCurrentRef}
-									placement="right"
-									onClose={(): any => setIsCurrentPopper(false)}
-									disableRestoreFocus
-									background="gray3"
+								<Tooltip
+									placement="top"
+									label={t(
+										'warning.is_current',
+										'You have to set another volume as current before.'
+									)}
+									maxWidth="auto"
+									disabled={!isCurrent}
 								>
-									<Text>
-										{t('warning.is_current', 'You have to set another volume as current before.')}
-									</Text>
-								</Popover>
+									<Switch
+										ref={isCurrentRef}
+										value={isCurrent}
+										label={t('label.enable_current', 'Enable as Current')}
+										onClick={(): void => {
+											!isCurrent && setIsCurrentToggle(true);
+										}}
+									/>
+								</Tooltip>
 							</Row>
 						</Row>
 						{volumeDetail?.type !== 10 && (
@@ -734,7 +738,9 @@ const ModifyVolume: FC<{
 										label={t('label.compression_threshold', 'Compression Threshold')}
 										value={compressionThreshold}
 										backgroundColor="gray6"
-										onChange={(e: any): any => setCompressionThreshold(e?.target?.value)}
+										onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+											setCompressionThreshold(e?.target?.value)
+										}
 										color="secondary"
 									/>
 								</Row>
@@ -751,7 +757,7 @@ const ModifyVolume: FC<{
 					</Container>
 				) : (
 					<Container
-						padding={{ horizontal: 'large', top: 'extralarge', bottom: 'large' }}
+						padding={{ horizontal: 'large', bottom: 'large' }}
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
 					>
@@ -779,7 +785,9 @@ const ModifyVolume: FC<{
 								label={t('label.volume_name', 'Volume Name')}
 								value={name}
 								backgroundColor="gray6"
-								onChange={(e: any): any => setName(e?.target?.value)}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+									setName(e?.target?.value)
+								}
 							/>
 						</Row>
 						{backupUnusedBucketList?.length !== 0 && (
@@ -860,7 +868,7 @@ const ModifyVolume: FC<{
 									label={t('label.primary_volume', 'This is a Primary Volume')}
 									value={PRIMARY_TYPE_VALUE}
 									checked={type?.value === 1}
-									onClick={(): any => {
+									onClick={(): void => {
 										onVolumeTypeChange(1);
 									}}
 								/>
@@ -871,7 +879,7 @@ const ModifyVolume: FC<{
 									label={t('label.secondary_volume', 'This is a Secondary Volume')}
 									value={SECONDARY_TYPE_VALUE}
 									checked={type?.value === 2}
-									onClick={(): any => {
+									onClick={(): void => {
 										onVolumeTypeChange(2);
 									}}
 								/>
@@ -886,7 +894,9 @@ const ModifyVolume: FC<{
 								)}
 								value={volumePrefix}
 								backgroundColor="gray5"
-								onChange={(e: any): any => setVolumePrefix(e?.target?.value)}
+								onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+									setVolumePrefix(e?.target?.value)
+								}
 							/>
 						</Row>
 						<Padding top="extrasmall">
@@ -907,17 +917,22 @@ const ModifyVolume: FC<{
 											<Switch
 												value={useInfrequentAccess}
 												label={t('label.use_infraquent_access', 'Use infrequent access')}
-												onClick={(): any => setUseInfrequentAccess(!useInfrequentAccess)}
+												onClick={(): void => setUseInfrequentAccess(!useInfrequentAccess)}
 											/>
 										</Row>
 										<Row mainAlignment="flex-start" width="100%" padding={{ left: 'extralarge' }}>
-											<Text color="secondary">
+											<Link
+												color="secondary"
+												href={AMAZON_USERGUIDE_STORAGE_CLASS_LINK}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												<Trans
 													i18nKey="label.use_infraquent_access_helptext"
 													defaults="<underline>Amazon Storage Class Documentation</underline>"
 													components={{ underline: <u /> }}
 												/>
-											</Text>
+											</Link>
 										</Row>
 									</Row>
 									<Padding horizontal="small" />
@@ -927,7 +942,9 @@ const ModifyVolume: FC<{
 											label={t('label.size_threshold', 'Size Threshold')}
 											backgroundColor="gray5"
 											value={infrequentAccessThreshold}
-											onChange={(e: any): any => setInfrequentAccessThreshold(e?.target?.value)}
+											onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+												setInfrequentAccessThreshold(e?.target?.value)
+											}
 										/>
 									</Row>
 								</Row>
@@ -935,46 +952,41 @@ const ModifyVolume: FC<{
 									<Switch
 										value={useIntelligentTiering}
 										label={t('label.use_intelligent_tiering', 'Use intelligent tiering')}
-										onClick={(): any => setUseIntelligentTiering(!useIntelligentTiering)}
+										onClick={(): void => setUseIntelligentTiering(!useIntelligentTiering)}
 									/>
 								</Row>
 								<Row mainAlignment="flex-start" width="100%" padding={{ left: 'extralarge' }}>
-									<Text color="secondary">
+									<Link
+										color="secondary"
+										href={AMAZON_USERGUIDE_INTELLIGENT_TIERING_LINK}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										<Trans
 											i18nKey="label.use_intelligent_tiering_helptext"
 											defaults="<underline>Amazon Tiering Documentation</underline>"
 											components={{ underline: <u /> }}
 										/>
-									</Text>
+									</Link>
 								</Row>
 							</>
 						)}
 						<Row padding={{ top: 'large' }} mainAlignment="flex-start" width="100%">
-							<Switch
-								ref={isCurrentRef}
-								value={isCurrent}
-								label={t('label.enable_current', 'Enable as Current')}
-								onClick={(): any => {
-									!isCurrent && setIsCurrentToggle(true);
-									isCurrent && setIsCurrentPopper(true);
-								}}
-								onMouseEnter={(): any => {
-									isCurrent && setIsCurrentPopper(true);
-								}}
-								onMouseLeave={(): any => setIsCurrentPopper(false)}
-							/>
-							<Popover
-								open={isCurrentPopper}
-								anchorEl={isCurrentRef}
-								placement="right"
-								onClose={(): any => setIsCurrentPopper(false)}
-								disableRestoreFocus
-								background="gray3"
+							<Tooltip
+								placement="top"
+								label={t('warning.is_current', 'You have to set another volume as current before.')}
+								maxWidth="auto"
+								disabled={!isCurrent}
 							>
-								<Text>
-									{t('warning.is_current', 'You have to set another volume as current before.')}
-								</Text>
-							</Popover>
+								<Switch
+									ref={isCurrentRef}
+									value={isCurrent}
+									label={t('label.enable_current', 'Enable as Current')}
+									onClick={(): void => {
+										!isCurrent && setIsCurrentToggle(true);
+									}}
+								/>
+							</Tooltip>
 						</Row>
 						<Row mainAlignment="flex-start" width="100%" padding={{ left: 'extralarge' }}>
 							<Text color="secondary">
@@ -991,13 +1003,13 @@ const ModifyVolume: FC<{
 					title={t('modal.iscurrent_confirm.title', 'You are setting {{name}} as current', {
 						name
 					})}
-					onClose={(): any => setIsCurrentToggle(false)}
-					onConfirm={(): any => {
+					onClose={(): void => setIsCurrentToggle(false)}
+					onConfirm={(): void => {
 						setIsCurrent(true);
 						setIsCurrentToggle(false);
 					}}
 					confirmLabel={t('modal.iscurrent_confirm.confirm_label', 'YES, PROCEED')}
-					onSecondaryAction={(): any => setIsCurrentToggle(false)}
+					onSecondaryAction={(): void => setIsCurrentToggle(false)}
 					secondaryActionLabel={t('modal.iscurrent_confirm.secondary_label', 'NO, GO BACK')}
 					showCloseIcon
 				>
