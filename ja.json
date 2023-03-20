@@ -126,7 +126,7 @@
         "asia_yekaterinburg": "{{value}}エカテリンブルク（RTZ 4）",
         "asia_yerevan": "{{value}}エレバン",
         "atlantic_azores": "{{value}}アゾレス諸島",
-        "atlantic_cape_verde": "{{value}}カーボベルデ諸島",
+        "atlantic_cape_verde": "{{value}}カーボベルデ諸島。",
         "atlantic_south_georgia": "{{value}}中部大西洋岸",
         "australia_adelaide": "{{value}}アデレード",
         "australia_brisbane": "{{value}}ブリスベン",
@@ -1794,5 +1794,5 @@
         "load_certificate": "証明書を読み込む"
     },
     "welcome_to_carbonio_information": "{{adminName}}、Carbonio にようこそ！",
-    "select_bucket_or_create_bucket": "バケットタイプを設定していないようです。\n  []CREATE +]をクリックして、新規で作成してください。"
+    "select_bucket_or_create_bucket": "バケットタイプを設定していないようです。\n []CREATE +]をクリックして、新規で作成してください。"
 }
