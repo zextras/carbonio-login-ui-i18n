@@ -202,7 +202,7 @@
         "cos": "COS",
         "create_date": "Fecha de creación",
         "delete_domain": "Eliminar dominio",
-        "delete_domain_error_msg": "Está a pundo de eliminar \"{{domainName}}\". ¿Está seguro que quiere continuar?",
+        "delete_domain_error_msg": "Está a pundo de eliminar {{domainName}}. ¿Está seguro que quiere continuar?",
         "deleteing": "Eliminando ",
         "deligated_admin_help_url": "URL de ayuda para el Administrador Delegado",
         "domain_quota_settings": "Cuota del dominio",
