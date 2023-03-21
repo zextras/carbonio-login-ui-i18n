@@ -361,7 +361,7 @@
         "mailing_list_not_exists_error_msg": "Список рассылки/пользователь не существует. Пожалуйста, проверьте правильность написания и повторите попытку.",
         "mailing_list_already_in_list_error": "Список рассылки/пользователь уже в списке",
         "list_url": "URL списка рассылок",
-        "i_am_looking_for_member": "Я ищу пользователя…",
+        "i_am_looking_for_member": "Поиск пользователя…",
         "enter_email_address": "Введите адрес электронной почты",
         "edit_signature": "<bold>Редактировать подпись</bold>",
         "dynamic": "Динамический",
