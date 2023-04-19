@@ -40,7 +40,14 @@
         "certificate_type_use_letsencrypt": "我想要使用Let‘s Encrypt证书",
         "certificate_valid": "证书有效",
         "certificate_valid_but_either_expired_or_exists_non_trusted_CA": "证书有效但其可能已过期或存在不受信任的CA",
-        "domain_certificate_removed": "域证书已被移除"
+        "domain_certificate_removed": "域证书已被移除",
+        "gal_change_mode_both": "两个",
+        "gal_change_mode_external": "外部",
+        "gal_change_mode_internal": "内部",
+        "unit_measure_days": "天",
+        "unit_measure_hours": "小时",
+        "unit_measure_minutes": "分钟",
+        "unit_measure_seconds": "秒"
     },
     "label": {
         "account": "账户",
@@ -860,7 +867,15 @@
         "backup_primarybar_tooltip": "管理您的<bold>备份服务，查看</bold>其<bold>状态</bold>、<bold>服务器列表</bold>或<bold>导入现有选项</bold>。",
         "cos_primarybar_tooltip": "查看并管理您的<bold>服务类</bold>详情、<bold>功能、服务器池</bold>以及<bold>高级</bold>设置。",
         "notification_primarybar_tooltip": "查看您的<bold>消息通知</bold>，将其标记为<bold>已读</bold>或<bold>复制</bold>以对其进行分享。",
-        "privacy_primarybar_tooltip": "管理<bold>隐私</bold>设置，如<bold>数据报告、错误日志</bold>以及<bold>调查</bold>。"
+        "privacy_primarybar_tooltip": "管理<bold>隐私</bold>设置，如<bold>数据报告、错误日志</bold>以及<bold>调查</bold>。",
+        "account_name": "账户名称",
+        "aliases": "别名",
+        "distribution_list": "通讯组列表",
+        "dont_save_a_copy_of_sent_messages": "不要保存已发送消息副本",
+        "save_a_copy_of_sent_messages_to_delegates_sent_folder": "将已发送消息副本保存至委派“已发送”文件夹",
+        "save_a_copy_of_sent_messages_to_my_sent_folder": "将已发送消息副本保存至我的“已发送”文件夹",
+        "save_a_copy_of_sent_messages_to_my_sent_folder_and_delegates_folder": "将已发送消息副本保存至我的“已发送”文件夹与委派文件夹",
+        "value": "值"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -1120,7 +1135,8 @@
             "activate": "激活",
             "activation": "激活",
             "deactivate": "停用",
-            "order_id": "订单ID"
+            "order_id": "订单ID",
+            "valid": "有效"
         }
     },
     "message": {
@@ -1569,7 +1585,15 @@
         "add_user_on_delegates_list": "在被委派人列表中添加用户",
         "all_folders": "所有文件夹（其中还包括将在稍后创建的文件夹）",
         "an_existing_group": "一个现有群组",
-        "as": "为"
+        "as": "为",
+        "DELETE": "删除",
+        "SAVE": "保存",
+        "create": "创建",
+        "label": "标签",
+        "remove": "移除",
+        "send_check": "发送",
+        "services": "服务",
+        "status": "状态"
     },
     "connection": {
         "access_key": "访问密钥",
@@ -1792,5 +1816,6 @@
         "load_certificate": "加载证书"
     },
     "cumminity_edition": "Community Edition！",
-    "welcome_to_carbonio_information": "欢迎{{adminName}}来到Carbonio！"
+    "welcome_to_carbonio_information": "欢迎{{adminName}}来到Carbonio！",
+    "new": "新建"
 }
