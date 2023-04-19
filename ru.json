@@ -40,7 +40,14 @@
         "certificate_type_use_custom": "Я хочу использовать пользовательский сертификат",
         "certificate_valid": "Сертификат действителен",
         "domain_certificate_removed": "Сертификаты домена были удалены",
-        "private_key_certificate_removed": "Сертификат закрытого ключа был удален"
+        "private_key_certificate_removed": "Сертификат закрытого ключа был удален",
+        "gal_change_mode_both": "Оба",
+        "gal_change_mode_external": "Внешний",
+        "gal_change_mode_internal": "Внутренний",
+        "unit_measure_days": "Дней",
+        "unit_measure_hours": "Часы",
+        "unit_measure_minutes": "Минут",
+        "unit_measure_seconds": "Секунды"
     },
     "label": {
         "account": "Учетная запись",
@@ -641,7 +648,7 @@
         "s3_bucket": "S3 Bucket",
         "select_an_external_volume": "Выберите внешний том",
         "service": "Сервис",
-        "status_lbl": "Cостояние",
+        "status_lbl": "статусу",
         "theme": "Тема",
         "title": "Заголовок",
         "update": "Обновить",
@@ -859,7 +866,15 @@
         "notification_primarybar_tooltip": "Просмотрите свои <bold>уведомления</bold>, отметьте их как <bold>прочитанные</bold> или <bold>скопируйте</bold>, чтобы поделиться ими.",
         "privacy_primarybar_tooltip": "Управляйте настройками <bold>конфиденциальности</bold>, такими как <bold>отчеты с данными, журналы ошибок</bold> и <bold>опросы</bold>.",
         "storage_primarybar_tooltip": "Просмотрите свой <bold>статус сервера</bold>, свои <bold>тома</bold> и <bold>политики HSM</bold>. Вы также сможете <bold>подключать бакеты </bold>.",
-        "storage": "Хранилище"
+        "storage": "Хранилище",
+        "account_name": "Имя пользователя",
+        "aliases": "Альясы",
+        "distribution_list": "Список распространения",
+        "value": "Значение",
+        "dont_save_a_copy_of_sent_messages": "Не сохранять копии отправленных сообщений",
+        "save_a_copy_of_sent_messages_to_delegates_sent_folder": "Сохранять копии отправленных сообщений в делегированной папке «Отправленные»",
+        "save_a_copy_of_sent_messages_to_my_sent_folder": "Сохранять копии отправленных сообщений в папке «Отправленные»",
+        "save_a_copy_of_sent_messages_to_my_sent_folder_and_delegates_folder": "Сохранять копии отправленных сообщений в папке «Отправленные» и в папке делегата"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -1103,7 +1118,7 @@
             "hide": "Скрыть",
             "less_info": "Меньше информации",
             "more_info": "Подробная информация",
-            "status": "Cостояние",
+            "status": "статусу",
             "subscription_Accounts": "Лицензированные учетные записи",
             "subscription_last_check": "Последняя проверка подписки",
             "subscription_type": "Тип подписки",
@@ -1119,7 +1134,8 @@
             "activate": "Активировать",
             "activation": "Активация",
             "deactivate": "Отключить",
-            "order_id": "Номер заказа"
+            "order_id": "Номер заказа",
+            "valid": "Действительна"
         }
     },
     "message": {
@@ -1280,7 +1296,7 @@
         "session_idle_timeout": "Таймаут простоя сеанса",
         "shortest_allowed_duration_for_any_polling_interval": "Самая короткая разрешенная длительность для любого интервала опроса",
         "spam_message_lifetime": "Время жизни спамового сообщения",
-        "status": "Cостояние",
+        "status": "статусу",
         "tagging": "Установление меток",
         "time_to_lockout_account": "Время блокировки учетной записи",
         "time_window_failed_logins_must_occur_to_lock_account": "Временной интервал с неудачными входами, после которого блокируется учетная запись:",
@@ -1453,7 +1469,7 @@
             "name": "имя",
             "indexer": "Индексатор",
             "hsm_scheduled": "HSM запланировано",
-            "status": "Cостояние"
+            "status": "статусу"
         },
         "volume_header": {
             "compression": "Компрессия",
@@ -1609,7 +1625,15 @@
         "send_read_manage_mails": "Отправка, чтение и управление письмами (все вышеперечисленное)",
         "save_it_to_delegate_sent_folder": "Сохранить в папку «Отправленные» отправителя и делегатов",
         "send_recepients_see_the_mail": "Отправить {{right}} получатели будут отображать письмо отправителя {{targetEmail}}",
-        "where_do_we_store_it": "Где мы его храним?"
+        "where_do_we_store_it": "Где мы его храним?",
+        "remove": "Удалить",
+        "DELETE": "УДАЛИТЬ",
+        "SAVE": "СОХРАНИТЬ",
+        "create": "СОЗДАТЬ",
+        "label": "Метка",
+        "send_check": "Отправить",
+        "services": "Службы",
+        "status": "статусу"
     },
     "privacy": {
         "survey_feedback_sub_1": "Помогите нам стать лучше. Пройдите быстрый опрос.",
@@ -1758,7 +1782,7 @@
         "label": {
             "Deep": "Глубокий",
             "notifications": "Оповещения",
-            "status": "Cостояние",
+            "status": "статусу",
             "action(M)": "Действие (M)",
             "create_fake_blob": "Создать фальшивый блоб",
             "let_it_run_btn": "ЗАПУСТИТЬ",
@@ -1777,7 +1801,7 @@
             "operation": "Операция",
             "server": "Сервер",
             "start_date": "Дата начала",
-            "status": "Cостояние",
+            "status": "статусу",
             "submit_date": "Дата отправки"
         },
         "other": "Другое",
@@ -1793,5 +1817,6 @@
         "done_panel_heading": "Выполненные операции",
         "stopping_operation_model_title": "Вы останавливаете {{OperationName}}",
         "stopping_operation_model_title_helperText": "Вы останавливаете {{operationName}}"
-    }
+    },
+    "new": "Новый"
 }
