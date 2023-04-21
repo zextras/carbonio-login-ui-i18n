@@ -271,7 +271,7 @@
         "space": "Espace",
         "subscription": "Souscription",
         "time_zone": "Fuseau horaire",
-        "type": "Type de rendez-vous",
+        "type": "Type",
         "unsaved_changes": "Vous avez des modifications non sauvegardées",
         "unsaved_changes_line1": "Êtes-vous sûr de vouloir quitter cette page sans sauvegarder ?",
         "unsaved_changes_line2": "Tous vos changements non sauvegardés seront perdus",
