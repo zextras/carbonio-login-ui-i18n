@@ -649,7 +649,7 @@
         "activate_and_update": "Aktywuj i zaktualizuj",
         "account_created_successfully": "Konto zostało stworzone pomyślnie",
         "block_send": "Blokuj wysyłanie",
-        "bind_dn_template": "Szablon Bind DN",
+        "bind_dn_template": "Szablon powiązanego DN (nazwy wyróżniającej)",
         "auto_refuse": "Automatycznie odrzucaj",
         "auto_negation": "Automatycznie odrzucaj",
         "auto_logout_users": "Automatyczne wylogowywanie użytkowników",
@@ -1148,8 +1148,8 @@
         "attribute": "Atrybut",
         "allow_unsecure": "Zezwalaj na niezabezpieczone",
         "backup_lbl": "<bold>Kopia zapasowa</bold>",
-        "bind_dn": "Bind DN",
-        "bind_password": "Bind password",
+        "bind_dn": "Powiązane DN",
+        "bind_password": "Powiązane hasło",
         "byte_lbl": "BAJT",
         "change_to": "ZMIEŃ NA",
         "change_to_external": "ZMIEŃ NA ZEWNĘTRZNE",
@@ -1227,8 +1227,8 @@
         "you_have_removed_attribute": "Usunąłeś atrybut {{ attributeName }}",
         "delete_domain_with_all_resources_close_domain": "Jeśli nie jesteś pewien, możesz zamknąć domenę. W ten sposób unikniesz kolejnych interakcji z nią a wszystkie zasoby pozostaną dostępne w razie potrzeby.",
         "gal_update_frequencey_value": "Częstotliwość aktualizacji GLA",
-        "primary_color_hint": "Aby zmienić główny kolor, użyj kodu koloru HEX w formacie placeholder.",
-        "use_dn_password_to_bind_external_server": "Używaj DN/hasła do podłączenia do serwera zewnętrznego"
+        "primary_color_hint": "Aby zmienić główny kolor, użyj kodu koloru w formacie HEX.",
+        "use_dn_password_to_bind_external_server": "Użyj DN/hasła do powiązania z serwerem zewnętrznym"
     },
     "message": {
         "snackbar": {
@@ -1774,7 +1774,7 @@
         "primary_helperText": "Pierwszorzędny",
         "secondary_helperText": "Drugorzędny",
         "indexer_helperText": "Indeksowanie",
-        "create_storage_volume": "Stwórz wolumin"
+        "create_storage_volume": "Stwórz wolumin pamięci"
     },
     "have_not_setup_bucket_type": "Wygląda na to, że nie ustawiłeś typu bucketu",
     "click_new_bucket_button_to_create_new_one": "Kliknij przycisk NOWY BUCKET, aby stworzyć nowy.",
