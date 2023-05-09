@@ -334,7 +334,7 @@
         "hours": "Godziny",
         "mb": "MB",
         "minutes": "Minuty",
-        "name": "Imię",
+        "name": "Nazwa",
         "not_set": "Nie ustawiono",
         "note": "Notatka",
         "notification": "Powiadomienie",
@@ -342,7 +342,7 @@
         "page ": "Zaakceptowano prośbę o udostępnienie",
         "page_": "Zaakceptowano prośbę o udostępnienie",
         "privacy": "Prywatność",
-        "remove": "Usuwać",
+        "remove": "Usuń",
         "save": "Zapisz",
         "signature_required": "Informacje o podpisie są wymagane.",
         "snackbar": {
@@ -354,7 +354,7 @@
         "suspended": "Zawieszone",
         "timezone": "Strefa czasowa",
         "unlimited": "Nielimitowane",
-        "url": "Adres URL",
+        "url": "URL",
         "active": "Aktywne",
         "authentication": "Uwierzytelnianie",
         "available_space": "Dostępna przestrzeń",
@@ -455,7 +455,7 @@
         "id_lbl": "ID",
         "language": "Język",
         "location": "Lokalizacja",
-        "mail": "E-mail",
+        "mail": "Skrzynka pocztowa",
         "no": "NIE",
         "owners": "Właściciele",
         "password": "Hasło",
@@ -1398,7 +1398,7 @@
         "free_busy_interop": "Współdziałanie z Wolny/zajęty",
         "html_compose": "Tworzenie HTML",
         "imap_polling_interval": "Interwał sprawdzania serwera IMAP",
-        "mail": "E-mail",
+        "mail": "Skrzynka pocztowa",
         "manuallly": "Ręcznie",
         "maximum_number_of_contacts_allowed_in_folder": "Max. liczba kontaktów w książce adresowej",
         "maximum_number_of_user_specific_forwarding_addresses": "Max. liczba adresów przekazywania dalej określanych przez użytkownika",
@@ -1558,7 +1558,7 @@
         "enable_smime": "Włącz S/MIME",
         "general": "Ogólne",
         "hide_in_gal": "Ukryj w GLA",
-        "mail": "E-mail",
+        "mail": "Skrzynka pocztowa",
         "manuallly": "Ręcznie",
         "message_priority": "Priorytet wiadomości",
         "offline_support_for_advanced_ajax_client": "Wsparcie offline dla zaawansowanego klienta Ajax",
@@ -1673,7 +1673,7 @@
         "SAVE": "ZAPISZ",
         "create": "STWÓRZ",
         "label": "Określenie",
-        "remove": "Usuwać",
+        "remove": "Usuń",
         "send_check": "Wyślij",
         "services": "Usługi",
         "status": "Status",
@@ -1712,8 +1712,8 @@
     },
     "reminder": {
         "minute_0": "{{count}} minuta",
-        "minute_1": "{{count}} minuty",
-        "minute_2": "{{count}} minut"
+        "minute_1": "",
+        "minute_2": ""
     },
     "connection": {
         "access_key": "Klucz dostępu",
@@ -1747,7 +1747,7 @@
             "object_storage": "Pamięć obiektów"
         },
         "volume_config_header": {
-            "name": "Imię",
+            "name": "Nazwa",
             "hsm_scheduled": "HSM zostało zaplanowane",
             "indexer": "Indeksowanie",
             "status": "Status"
@@ -1756,14 +1756,14 @@
             "compression": "Kompresja",
             "current": "Aktualne",
             "id": "ID",
-            "name": "Imię",
+            "name": "Nazwa",
             "path": "Ścieżka",
             "storageType": "Typ pamięci"
         },
         "volume_indexer_header": {
             "current": "Aktualne",
             "id": "ID",
-            "name": "Imię",
+            "name": "Nazwa",
             "path": "Ścieżka"
         },
         "volume_type": {
@@ -1805,7 +1805,7 @@
         "minimum_space_threshold": "Próg minimalnej przestrzeni",
         "minutes": "Minuty",
         "months": "Miesiące",
-        "name": "Imię",
+        "name": "Nazwa",
         "new_policy_summary": "Podsumowanie nowej polityki",
         "no": "Nie",
         "option": "Opcja",
