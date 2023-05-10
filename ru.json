@@ -952,12 +952,16 @@
         "storage_type": "Тип хранилища",
         "subscription_lbl": "<bold>Подписка</bold>",
         "system_account": "Системные учетные записи",
-        "type_account_name_for_global_address_list": "Введите имя учетной записи для глобального списка адресов (GAL).",
+        "type_account_name_for_global_address_list": "Введите имя учетной записи для глобального адресной книги (GAL).",
         "use_dn_password_to_bind_external_server": "Используйте DN/пароль для привязки к внешнему серверу",
         "user_ssl": "Использовать SSL",
         "you_have_deleted_the_configuration": "Вы удалили конфигурацию",
         "you_have_imported_the_configuration": "Вы импортировали конфигурацию",
-        "you_have_removed_attribute": "Вы удалили атрибут {{ attributeName }}"
+        "you_have_removed_attribute": "Вы удалили атрибут {{ attributeName }}",
+        "delete_domain_with_all_resources_msg": "Домен {{domainName}} не пуст и содержит {{domainRegularAccounts}} учетных записей, {{domainSystemAccounts}} системных учетных записей, {{distributionList}} список рассылки, {{aliases}} псевдонимов и {{resources}} ресурсов. Если вы не уверены, вы все равно можете «закрыть» домен, чтобы избежать дальнейшего взаимодействия, оставив все ресурсы доступными в случае необходимости. В противном случае вы можете безвозвратно удалить все учетные записи и объекты домена. Эта операция не может быть отменена.",
+        "save_a_copy_of_sent_messages_only_in_delegates_send_folder": "Сохранение копии отправленных сообщений только в папке отправки делегата",
+        "save_a_copy_of_sent_messages_to_delegate_and_delegated_send_folder": "Сохраняйте копии отправленных сообщений в папку делегирования и делегированной отправки",
+        "you_have_generated_the_sp_certificate": "Вы создали сертификат SP"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -1941,9 +1945,12 @@
             "body_message": "Текущий {{type}} {{currentVolumeName}}.<br />Вы действительно хотите <strong>установить {{name}} в качестве текущего</strong>?",
             "confirm_label": "ДА, ПРОДОЛЖИТЬ",
             "secondary_label": "НАЗАД",
-            "title": "Вы устанавливаете {{name}} в качестве текущего"
+            "title": "Вы настраиваете {{name}} в качестве текущего"
         }
     },
     "the_change_will_not_move_the_data": "Это изменение не приведет к перемещению данных... !!",
-    "this_will_not_affect_data_already_stored": "Это не повлияет на уже сохраненные данные."
+    "this_will_not_affect_data_already_stored": "Это не повлияет на уже сохраненные данные",
+    "warning": {
+        "is_current": "Вы должны настроить другой том в качестве текущего ранее."
+    }
 }
