@@ -22,16 +22,18 @@
     "changePassword_title": "Создать новый пароль",
     "changePassword_oldPassword": "Старый пароль",
     "changePassword_newPassword": "Новый пароль",
-    "changePassword_error_passwordRecentlyUsed": "Недавно использованный пароль",
+    "changePassword_error_passwordRecentlyUsed": "Пароль недавно использовался",
     "changePassword_error_minUppercaseChars": "Как минимум {{num}} символы верхнего регистра",
     "changePassword_error_minLowerCaseChars": "Как минимум {{num}} символов нижнего регистра",
     "changePassword_error_minNumericChars": "Как минимум {{num}} числовых символов",
     "changePassword_error_minPunctuationChars": "Как минимум {{num}} знаков пунктуации",
-    "changePassword_error_minLength": "Минимальная длина {{num}} символов",
-    "changePassword_error_maxLength": "Максимальная длина {{num}} символов",
+    "changePassword_error_minLength": "Минимальная длина: {{num}} символов",
+    "changePassword_error_maxLength": "Максимальная длина: {{num}} символов",
     "changePassword_confirm_label": "Изменить пароль и затем войти",
-    "changePassword_confirmNewPassword": "Подтвердите новый пароль",
+    "changePassword_confirmNewPassword": "Подтвердить новый пароль",
     "carbonio_authentication": "Аутентификация Carbonio",
     "changePassword_error_block_personal_data": "Неверный пароль: пароль содержит имя пользователя или другие личные данные: {{str}}",
-    "server_unreachable": "Ошибка 502: Служба недоступна. Повторите попытку позже."
+    "server_unreachable": "Ошибка 502: Служба недоступна. Повторите попытку позже.",
+    "code": "Пароль",
+    "submit": "Отправить"
 }
