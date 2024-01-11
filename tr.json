@@ -33,5 +33,7 @@
     "changePassword_confirmNewPassword": "Yeni parolayı onayla",
     "carbonio_authentication": "Carbonio Kimlik Doğrulama",
     "changePassword_error_block_personal_data": "Geçersiz parola: parola kullanıcı adı veya diğer kişisel verileri içeriyor: {{str}}",
-    "server_unreachable": "Hata 502: Servise Erişilemiyor - Daha sonra tekrar deneyin."
+    "server_unreachable": "Hata 502: Servise Erişilemiyor - Daha sonra tekrar deneyin.",
+    "submit": "Gönder",
+    "code": "Kod"
 }
