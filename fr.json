@@ -29,7 +29,6 @@
     "changePassword_newPassword": "Nouveau mot de passe",
     "changePassword_oldPassword": "Ancien mot de passe",
     "changePassword_title": "Créer un nouveau mot de passe",
-    "select_ui": "Sélectionnez l'interface utilisateur",
     "trust_device_and_ip": "Faire confiance à cet appareil et cette adresse IP",
     "changePassword_error_maxLength": "La longueur maximum est de {{num}} caractères",
     "changePassword_error_block_personal_data": "Mot de passe non valide : le mot de passe contient un nom d'utilisateur ou d'autres données personnelles : {{str}}",
