@@ -49,6 +49,6 @@
     "send_recovery_code": "Envoyer un code de récupération",
     "something_went_wrong": "Quelque chose s'est mal passé. Merci de contacter votre administrateur de messagerie.",
     "still_have_access_to_recovery_email": "Avez-vous toujours accès à <strong>{{ recovery_email }}</strong> ?",
-    "submit": "Valider",
+    "submit": "Soumettre",
     "validate_code": "Valider le code"
 }
