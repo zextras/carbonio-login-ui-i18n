@@ -31,7 +31,7 @@
     "changePassword_error_confirmPassword": "As senhas não correspondem",
     "changePassword_confirm_label": "Alterar senha e fazer login",
     "carbonio_authentication": "Autenticação do Carbonio",
-    "changePassword_error_block_personal_data": "Senha inválida: a mesma contém o nome de usuário ou outras informações pessoais: {{str}}",
+    "changePassword_error_block_personal_data": "A senha não é válida: ela contém nome de usuário ou dados pessoais: {{str}}",
     "server_unreachable": "Error 502: Service Unreachable - Retry later.",
     "submit": "Enviar",
     "code": "Código"
