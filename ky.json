@@ -1,1 +1,24 @@
-{}
+{
+    "all_rights_reserved": "Бардык укуктар корголгон",
+    "auth_not_valid": "Аутентификациялоо саясаты кошумча аракеттерди талап кылат: кошумча маалымат алуу үчүн администраторго кайрылыңыз",
+    "changePassword_error_block_personal_data": "Туура эмес пароль: пароль пайдалануучунун атын же башка жеке маалыматтарды камтыйт",
+    "credentials_not_valid": "Эсепке алуу маалыматтары туура эмес, маалыматтарды текшерип, кайра кирип көрүңүз",
+    "server_not_responding": "Сервер жооп бербей жатат. Администраторго кайрылыңыз",
+    "carbonio_authentication": "Carbonio аутентификациясы",
+    "changePassword_confirmNewPassword": "Жаңы паролду тастыктоо",
+    "changePassword_confirm_label": "Паролду өзгөртүү жана андан кийин кирүү",
+    "changePassword_error_confirmPassword": "Паролдор дал келбей жатат",
+    "changePassword_error_maxLength": "Максималдык узундугу {{num}} символ",
+    "changePassword_error_minLength": "Минималдык узундугу: {{num}} символ",
+    "changePassword_error_passwordRecentlyUsed": "Пароль жакында колдонулду",
+    "changePassword_newPassword": "Жаңы пароль",
+    "changePassword_oldPassword": "Эски пароль",
+    "changePassword_title": "Жаңы пароль түзүү",
+    "choose_otp": "ОТР ыкмасын тандоо",
+    "details": "Толугу менен",
+    "login": "Кирүү",
+    "login_saml": "SAML кирүү",
+    "offline": "Сиз тармакта эмессиз, Интернеттин бар экенин текшериңиз",
+    "password": "Пароль",
+    "server_unreachable": "Ката 502: Кызмат жеткиликсиз. Кийинчерээк кайталап көрүңүз"
+}
