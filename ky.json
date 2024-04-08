@@ -4,7 +4,7 @@
     "changePassword_error_block_personal_data": "Туура эмес пароль: пароль пайдалануучунун атын же башка жеке маалыматтарды камтыйт",
     "credentials_not_valid": "Эсепке алуу маалыматтары туура эмес, маалыматтарды текшерип, кайра кирип көрүңүз",
     "server_not_responding": "Сервер жооп бербей жатат. Администраторго кайрылыңыз",
-    "carbonio_authentication": "Carbonio аутентификациясы",
+    "carbonio_authentication": "Carbonio аутентификациялоо",
     "changePassword_confirmNewPassword": "Жаңы паролду тастыктоо",
     "changePassword_confirm_label": "Паролду өзгөртүү жана андан кийин кирүү",
     "changePassword_error_confirmPassword": "Паролдор дал келбей жатат",
@@ -20,5 +20,12 @@
     "login_saml": "SAML кирүү",
     "offline": "Сиз тармакта эмессиз, Интернеттин бар экенин текшериңиз",
     "password": "Пароль",
-    "server_unreachable": "Ката 502: Кызмат жеткиликсиз. Кийинчерээк кайталап көрүңүз"
+    "server_unreachable": "Ката 502: Кызмат жеткиликсиз. Кийинчерээк кайталап көрүңүз",
+    "unsupported_version": "Сервер туура эмес жооп жиберди. Администраторго кайрылгыла",
+    "supported_browsers": "Колдонгон браузерлер",
+    "trust_device_and_ip": "Ушул түзүлүшкө жана IP-дарекке ишенүү",
+    "two_step_authentication": "Эки факторлуу аутентификация",
+    "type_otp": "ОТР киргизгиле",
+    "username": "Пайдалануучунун аты",
+    "wrong_password": "Пароль туура эмес, маалыматтарды кайталап, дагы бир жолу аракет кылыңыз"
 }
