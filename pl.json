@@ -10,7 +10,6 @@
     "offline": "Jesteś offline, sprawdź swoje połączenie internetowe",
     "password": "Hasło",
     "server_not_responding": "Serwer nie odpowiada. Skontaktuj się z administratorem serwera",
-    "supported_browsers": "Wspierane przeglądarki",
     "two_step_authentication": "Uwierzytelnianie dwuetapowe",
     "type_otp": "Wpisz tutaj hasło OTP",
     "unsupported_version": "Serwer wysłał nieprawidłową odpowiedź. Skontaktuj się z administratorem serwera",

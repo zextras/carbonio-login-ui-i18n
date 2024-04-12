@@ -10,7 +10,6 @@
     "auth_not_valid": "Kimlik Doğrulama ilkesi için başka adımlar gerekiyor: daha fazla bilgi için lütfen sistem yöneticinizle görüşün",
     "password": "Parola",
     "server_not_responding": "Sunucu yanıt vermiyor. Lütfen sunucu yöneticinizle görüşün",
-    "supported_browsers": "Desteklenen tarayıcılar",
     "two_step_authentication": "İki Adımda Kimlik Doğrulama",
     "type_otp": "Tek Kullanımlık Parolayı yazın",
     "unsupported_version": "Sunucudan geçersiz bir yanıt gönderildi. Lütfen sunucuyöneticinizle görüşün",
