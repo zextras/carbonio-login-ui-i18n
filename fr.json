@@ -54,5 +54,8 @@
     "browser_limited_supported": "Vous avez des problèmes ? Essayez un navigateur entièrement <a>supporté</a>",
     "changePassword_error_passwordLocked": "Le mot de passe est bloqué et ne peut être changé",
     "changePassword_error_block_common_words": "Mot de passe invalide : le mot de passe est connu pour être trop commun : {{str}}",
-    "changePassword_error_minDigitsOrPuncs": "Il est attendu au moins {{num}} caractères numériques ou de ponctuation"
+    "changePassword_error_minDigitsOrPuncs": "Il est attendu au moins {{num}} caractères numériques ou de ponctuation",
+    "are_you_using_a_small_screen?": "Utilisez-vous un petit écran ?",
+    "do_not_show_this_again": "Ne plus afficher",
+    "login_with_app": "Vous pouvez vous connecter en utilisant une application dédiée pour <bold>Android</bold> et  <bold>iPhone,</bold> télécharger votre version en utilisant les boutons ci-dessous !"
 }
