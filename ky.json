@@ -29,7 +29,7 @@
     "wrong_password": "Пароль туура эмес, маалыматтарды кайталап, дагы бир жолу аракет кылыңыз",
     "validation_code_was_sent_to_recovery_email": "Текшерүү коду <strong>{{ recovery_email }}</strong> дарегине жөнөтүлдү жана 10 мүнөт бою жарактуу болот. Сизде дагы {{ recoveryAttemptsLeft }} аракет бар. Кодду төмөнкү формага киргизиңиз.",
     "cant_login": "Азыр кирүүгө мүмкүн эмес",
-    "changePassword_error_minLowerCaseChars": "Төмөнкү каттоодогу символдордун минималдык саны: {{num}}.",
+    "changePassword_error_minLowerCaseChars": "Төмөнкү каттоо символдордун минималдык саны: {{num}}.",
     "changePassword_error_minNumericChars": "Цифралардын минималдык саны: {{num}}.",
     "changePassword_error_minPunctuationChars": "Тыныш белгилеринин минималдык саны: {{num}}",
     "changePassword_error_minUppercaseChars": "Жогорку каттоодогу символдордун минималдык саны: {{num}}",
