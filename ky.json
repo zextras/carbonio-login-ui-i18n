@@ -53,7 +53,7 @@
     "changePassword_error_block_common_words": "Туура эмес пароль: кеңири таралган пароль экени белгилүү: {{str}}",
     "browser_fully_supported": "Сиздин браузер толугу менен <a> колдойт</a>",
     "browser_limited_supported": "Көйгөй пайда болду? Толугу менен <a> колдогон </a> браузерден аракет кылып көрүңүз",
-    "changePassword_error_minDigitsOrPuncs": "{{num}} кем эмес сандык символдор же тыныш белгилери зарыл",
+    "changePassword_error_minDigitsOrPuncs": "{{num}} кем эмес сандык символдор же тыныш белгилери болууга тийиш",
     "changePassword_error_passwordLocked": "Пароль блоктолгон жана өзгөртүүгө мүмкүн эмес",
     "are_you_using_a_small_screen?": "Сиз кичинекей экранды колдоносузбу?",
     "do_not_show_this_again": "Муну кайра көрсөтпө",
