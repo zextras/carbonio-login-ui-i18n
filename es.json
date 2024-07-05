@@ -33,5 +33,6 @@
     "server_unreachable": "Error 502: Service Unreachable - Retry later.",
     "changePassword_error_block_personal_data": "Contraseña inválida: la contraseña contiene el nombre de usuario u otros datos personales: {{str}}",
     "code": "Código",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "are_you_using_a_small_screen?": "¿Estás utilizando una ventana pequeña?"
 }
