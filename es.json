@@ -28,11 +28,18 @@
     "changePassword_error_minPunctuationChars": "Se requieren al menos {{num}} signos de puntuación",
     "changePassword_error_minNumericChars": "Se requieren al menos {{num}} caracteres numéricos",
     "changePassword_error_minLowerCaseChars": "Se requieren al menos {{num}} caracteres en minúscula",
-    "changePassword_confirm_label": "Actualizar contraseña e ingresar",
+    "changePassword_confirm_label": "Cambiar contraseña e iniciar sesión",
     "carbonio_authentication": "Autenticación de Carbonio",
     "server_unreachable": "Error 502: Service Unreachable - Retry later.",
-    "changePassword_error_block_personal_data": "Contraseña inválida: la contraseña contiene el nombre de usuario u otros datos personales: {{str}}",
+    "changePassword_error_block_personal_data": "Contraseña no válida: la contraseña contiene un nombre de usuario u otros datos personales: {{str}}",
     "code": "Código",
     "submit": "Enviar",
-    "are_you_using_a_small_screen?": "¿Estás utilizando una ventana pequeña?"
+    "are_you_using_a_small_screen?": "¿Estás utilizando una ventana pequeña?",
+    "browser_limited_supported": "¿Tienes algún problema? Prueba con un navegador completamente <a>soportado</a>",
+    "changePassword_error_block_common_words": "Contraseña no válida: la contraseña parece ser demasiado común: {{str}}",
+    "changePassword_error_passwordLocked": "La contraseña está bloqueada y no puede ser cambiada",
+    "continue_with_your_session": "Continuar con tu sesión",
+    "do_not_show_this_again": "No mostrar esto de nuevo",
+    "enter_your_username_to_retrieve_recovery_email": "Por favor, introduce tu nombre de usuario para que podamos recuperar tu email de recuperación.",
+    "forget_password": "¿Contraseña olvidada?"
 }
