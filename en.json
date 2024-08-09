@@ -30,7 +30,7 @@
     "details": "Details",
     "do_not_show_this_again": "Do not show this again",
     "enter_your_username_to_retrieve_recovery_email": "Please enter your username so we may retrieve the recovery email.",
-    "forget_password": "Forget Password?",
+    "forget_password": "Forgot Password?",
     "glad_to_have_you_back_username": "Glad to have you back, <strong>{{ username }}</strong>!",
     "login": "Login",
     "login_saml": "Login SAML",
