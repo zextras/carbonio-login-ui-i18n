@@ -31,7 +31,7 @@
     "changePassword_confirm_label": "Alterar senha e fazer login",
     "carbonio_authentication": "Autenticação do Carbonio",
     "changePassword_error_block_personal_data": "A senha não é válida: ela contém nome de usuário ou dados pessoais: {{str}}",
-    "server_unreachable": "Error 502: Service Unreachable - Retry later.",
+    "server_unreachable": "Erro 502: Serviço inacessível - Tente novamente mais tarde.",
     "submit": "Enviar",
     "code": "Código",
     "are_you_using_a_small_screen?": "Você está usando uma tela pequena?",
