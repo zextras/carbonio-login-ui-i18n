@@ -36,5 +36,7 @@
     "submit": "सब्मिट करें",
     "browser_fully_supported": "आपका ब्राउज़र पूरी तरीके से <a>सपोर्टेड</a> कर रहा है",
     "browser_limited_supported": "समस्या आ रही है? पूर्णतः <a>समर्थित> ब्राउज़र आज़माएँ",
-    "changePassword_error_block_common_words": "अमान्य पासवर्ड: पासवर्ड बहुत सामान्य माना जाता है: {{str}}"
+    "changePassword_error_block_common_words": "अमान्य पासवर्ड: पासवर्ड बहुत सामान्य माना जाता है: {{str}}",
+    "changePassword_error_minDigitsOrPuncs": "कम से कम {{num}} अंकीय या विराम चिह्न वर्ण अपेक्षित हैं",
+    "changePassword_error_passwordLocked": "पासवर्ड लॉक है और उसे बदला नहीं जा सकता"
 }
