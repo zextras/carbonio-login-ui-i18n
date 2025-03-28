@@ -28,10 +28,10 @@
     "unsupported_version": "Сервер надіслав невірну відповідь. Зверніться до адміністратора вашого сервера",
     "choose_otp": "Виберіть метод OTP",
     "server_not_responding": "Сервер не відповідає. Зверніться до адміністратора вашого сервера",
-    "changePassword_error_minLowerCaseChars": "Як мінімум {{num}} символів нижнього регістру",
-    "changePassword_error_minNumericChars": "Очікується принаймні {{num}} числових символів",
-    "changePassword_error_minPunctuationChars": "Очікується щонайменше {{num}} знаків пунктуації",
-    "changePassword_error_minUppercaseChars": "Очікується щонайменше {{num}} символів верхнього регістру",
+    "changePassword_error_minLowerCaseChars": "Мінімальна кількість малих літер - {{num}}",
+    "changePassword_error_minNumericChars": "Мінімальна кількість цифр - {{num}}",
+    "changePassword_error_minPunctuationChars": "Мінімальна кількість знаків пунктуації - {{num}}",
+    "changePassword_error_minUppercaseChars": "Мінімальна кількість символів верхнього регістру - {{num}}",
     "code": "Код",
     "continue_with_your_session": "Продовжити сеанс",
     "enter_your_username_to_retrieve_recovery_email": "Введіть своє ім’я користувача, щоб ми могли отримати резервну електронну адресу.",
@@ -49,5 +49,10 @@
     "still_have_access_to_recovery_email": "Ви все ще маєте доступ до <strong>{{ recovery_email}}</strong>?",
     "submit": "Надіслати",
     "validate_code": "Перевірити код",
-    "validation_code_was_sent_to_recovery_email": "Код підтвердження було надіслано на <strong>{{ recovery_email }}</strong> і буде дійсним протягом 10 хвилин. У вас є {{ recoveryAttemptsLeft}} спроб. Введіть код у форму нижче."
+    "validation_code_was_sent_to_recovery_email": "Код підтвердження було надіслано на <strong>{{ recovery_email }}</strong> і буде дійсним протягом 10 хвилин. У вас є {{ recoveryAttemptsLeft}} спроб. Введіть код у форму нижче.",
+    "browser_limited_supported": "Виникли проблеми? Спробуйте повністю <a>підтримуваний</a> браузер",
+    "changePassword_error_minDigitsOrPuncs": "Очікується щонайменше {{num}} цифр або розділових знаків",
+    "browser_fully_supported": "Ваш браузер повністю <a>підтримується</a>",
+    "changePassword_error_block_common_words": "Недійсний пароль: пароль відомий як надто поширений: {{str}}",
+    "changePassword_error_passwordLocked": "Пароль заблоковано і його не можна змінити"
 }
