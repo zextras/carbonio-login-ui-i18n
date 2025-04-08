@@ -31,7 +31,7 @@
     "trust_device_and_ip": "Faire confiance à cet appareil et cette adresse IP",
     "changePassword_error_maxLength": "La longueur maximum est de {{num}} caractères",
     "changePassword_error_block_personal_data": "Mot de passe non valide : le mot de passe contient un nom d'utilisateur ou d'autres données personnelles : {{str}}",
-    "server_unreachable": "Erreur 502 : Services inaccessible - Recommencez plus tard.",
+    "server_unreachable": "Erreur 502 : Service inaccessible - Recommencez plus tard.",
     "enter_your_username_to_retrieve_recovery_email": "Veuillez saisir votre nom d'utilisateur afin que nous puissions récupérer l'email de récupération.",
     "not_have_recovery_email_setup_note": "Vous n'avez pas configuré d'email de récupération ? Veuillez contacter votre administrateur système pour obtenir de l'aide.",
     "resend_code_notes": "Vous ne voyez pas le code dans votre boîte de réception ? Attendez quelques minutes ou vérifiez votre dossier spam. Si vous ne le voyez toujours pas, cliquez sur \"Envoyer le code à nouveau\".",
