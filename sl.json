@@ -54,7 +54,7 @@
     "send_recovery_code": "Pošlji kodo za obnovitev",
     "something_went_wrong": "Prišlo je do napake. Obrnite se na svojega skrbnika.",
     "still_have_access_to_recovery_email": "Ali imate še vedno dostop do <strong>{{ recovery_email }}</strong>?",
-    "submit": "Potrdi",
+    "submit": "Pošlji",
     "validate_code": "Potrdite kodo",
     "validation_code_was_sent_to_recovery_email": "Potrditvena koda je bila poslana na <strong>{{ recovery_email }}</strong> in bo veljavna 10 minut. Imate še {{ recoveryAttemptsLeft }} poskusov. Vnesite kodo v spodnji obrazec.",
     "resend_code_notes": "Ne vidite kode v svojem nabiralniku? Počakajte nekaj minut ali preverite mapo z vsiljeno pošto. Če kode še vedno ne vidite, kliknite na \"Znova pošlji kodo\"."
