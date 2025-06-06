@@ -1,1 +1,10 @@
-{}
+{
+    "changePassword_confirm_label": "비밀번호를 변경하고 로그인하세요",
+    "all_rights_reserved": "무단 전재와 무단 복제를 금함",
+    "auth_not_valid": "인증 절차가 완료되지 않았습니다. 추가 단계를 진행하려면 관리자에게 문의하십시오.",
+    "browser_fully_supported": "이 브라우저는 모든 기능을 <a>지원</a>합니다.",
+    "browser_limited_supported": "이용에 문제가 있으신가요? 완전히 <a>지원되는</a> 브라우저를 사용해 보세요.",
+    "cant_login": "지금은 로그인할 수 없습니다.",
+    "carbonio_authentication": "Carbonio 인증",
+    "changePassword_confirmNewPassword": "새 비밀번호 확인"
+}
