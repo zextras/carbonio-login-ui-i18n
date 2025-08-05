@@ -57,5 +57,13 @@
     "username": "Username",
     "validate_code": "Validate Code",
     "validation_code_was_sent_to_recovery_email": "The validation code was sent to <strong>{{ recovery_email }}</strong> and will be valid for 10 minutes. You have {{ recoveryAttemptsLeft }} more attempts. Enter the code in the form below.",
-    "wrong_password": "Wrong password, please check data and try again"
+    "wrong_password": "Wrong password, please check data and try again",
+    "error": {
+        "something_went_wrong": "Something went wrong",
+        "loading_page": "We’re sorry, but there was an error trying to load this page.",
+        "contact_support": "Contact support or try refreshing the page"
+    },
+    "button": {
+        "refresh_page": "REFRESH"
+    }
 }
