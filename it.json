@@ -57,5 +57,13 @@
     "are_you_using_a_small_screen?": "Si sta utilizzando uno schermo piccolo?",
     "changePassword_error_passwordLocked": "La password è bloccata e non può essere modificata",
     "do_not_show_this_again": "Non mostrare di nuovo",
-    "login_with_app": "È possibile effettuare il login utilizzando l'app dedicata per <bold> Android </bold> e  <bold> Iphone, </bold> scarica la tua versione utilizzando i pulsanti sottostanti!"
+    "login_with_app": "È possibile effettuare il login utilizzando l'app dedicata per <bold> Android </bold> e  <bold> Iphone, </bold> scarica la tua versione utilizzando i pulsanti sottostanti!",
+    "error": {
+        "something_went_wrong": "Qualcosa è andato storto",
+        "contact_support": "Contatta il supporto o prova ad aggiornare la pagina",
+        "loading_page": "Ci dispiace, ma c'è stato un errore nel caricamento della pagina."
+    },
+    "button": {
+        "refresh_page": "AGGIORNA"
+    }
 }
