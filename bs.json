@@ -57,5 +57,13 @@
     "still_have_access_to_recovery_email": "Da li ste još uvijek imate pristup <strong>{{ recovery_email }}</strong>?",
     "changePassword_title": "Kreirajte novu lozinku",
     "validation_code_was_sent_to_recovery_email": "Validacioni kod je poslan na <strong>{{ recovery_email }}</strong> i važi 10 minuta. Imate {{ recoveryAttemptsLeft }} pokušaja. Unesite kod u donjoj formi.",
-    "resend_code_notes": "Ne vidite kod u inboxu? Pričekajte nekoliko minuta ili provjerite svoj spam folder. Ako ga i dalje ne vidite, kliknite na \"Ponovo pošalji kod\"."
+    "resend_code_notes": "Ne vidite kod u inboxu? Pričekajte nekoliko minuta ili provjerite svoj spam folder. Ako ga i dalje ne vidite, kliknite na \"Ponovo pošalji kod\".",
+    "error": {
+        "something_went_wrong": "Nešto nije u redu",
+        "loading_page": "Izvinjavamo se, ali došlo je do greške prilikom učitavanja ove stranice.",
+        "contact_support": "Kontaktirajte podršku ili pokušajte osvježiti stranicu"
+    },
+    "button": {
+        "refresh_page": "OSVJEŽI"
+    }
 }
