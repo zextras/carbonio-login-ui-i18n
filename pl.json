@@ -57,5 +57,9 @@
     "login_with_app": "Możesz się zalogować używając dedykowanej aplikacji na system <bold> Android </bold> lub dla <bold> Iphone, </bold> pobierz wersję dla Ciebie używając przycisków poniżej!",
     "changePassword_error_minDigitsOrPuncs": "Wymagane min. {{num}} znaków numerycznych lub interpunkcyjnych",
     "changePassword_error_block_common_words": "Nieprawidłowe hasło: hasło jest zbyt pospolite: {{str}}",
-    "are_you_using_a_small_screen?": "Czy używasz małego ekranu?"
+    "are_you_using_a_small_screen?": "Czy używasz małego ekranu?",
+    "error": {
+        "something_went_wrong": "Coś poszło nie tak",
+        "loading_page": "Wystąpił błąd podczas ładowania tej strony."
+    }
 }
