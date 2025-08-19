@@ -57,5 +57,13 @@
     "changePassword_error_minDigitsOrPuncs": "Il est attendu au moins {{num}} caractères numériques ou de ponctuation",
     "are_you_using_a_small_screen?": "Utilisez-vous un petit écran ?",
     "do_not_show_this_again": "Ne plus afficher",
-    "login_with_app": "Vous pouvez vous connecter en utilisant une application dédiée pour <bold>Android</bold> et  <bold>iPhone,</bold> télécharger votre version en utilisant les boutons ci-dessous !"
+    "login_with_app": "Vous pouvez vous connecter en utilisant une application dédiée pour <bold>Android</bold> et  <bold>iPhone,</bold> télécharger votre version en utilisant les boutons ci-dessous !",
+    "error": {
+        "something_went_wrong": "Quelque chose s'est mal passé",
+        "loading_page": "Nous sommes désolé, mais une erreur est apparue lors du chargement de cette page.",
+        "contact_support": "Contactez le support ou essayez de rafraîchir cette page"
+    },
+    "button": {
+        "refresh_page": "RAFRAÎCHIR"
+    }
 }
