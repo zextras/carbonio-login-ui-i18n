@@ -57,5 +57,13 @@
     "submit": "Pošlji",
     "validate_code": "Potrdite kodo",
     "validation_code_was_sent_to_recovery_email": "Potrditvena koda je bila poslana na <strong>{{ recovery_email }}</strong> in bo veljavna 10 minut. Imate še {{ recoveryAttemptsLeft }} poskusov. Vnesite kodo v spodnji obrazec.",
-    "resend_code_notes": "Ne vidite kode v svojem nabiralniku? Počakajte nekaj minut ali preverite mapo z vsiljeno pošto. Če kode še vedno ne vidite, kliknite na \"Znova pošlji kodo\"."
+    "resend_code_notes": "Ne vidite kode v svojem nabiralniku? Počakajte nekaj minut ali preverite mapo z vsiljeno pošto. Če kode še vedno ne vidite, kliknite na \"Znova pošlji kodo\".",
+    "error": {
+        "something_went_wrong": "Nekaj je šlo narobe",
+        "loading_page": "Oprostite, pri nalaganju te strani je prišlo do napake.",
+        "contact_support": "Stopite v stik s podporo ali poskusite osvežiti stran"
+    },
+    "button": {
+        "refresh_page": "OSVEŽI"
+    }
 }
