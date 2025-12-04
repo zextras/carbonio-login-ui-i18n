@@ -50,7 +50,7 @@
     "something_went_wrong": "Something went wrong. Please contact your administrator.",
     "still_have_access_to_recovery_email": "Do you still have access to <strong>{{ recovery_email }}</strong>?",
     "submit": "Submit",
-    "trust_device_and_ip": "Trust this device and IP address",
+    "trust_device_and_ip": "Trust this device or IP address",
     "two_step_authentication": "Two-Step-Authentication",
     "type_otp": "Type here One-Time-Password",
     "unsupported_version": "The server sent a not valid response. Please contact your server administrator",
