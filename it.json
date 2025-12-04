@@ -15,7 +15,7 @@
     "wrong_password": "Password errata, controlla i dati e riprova",
     "choose_otp": "Scegli il metodo OTP",
     "auth_not_valid": "La politica di autenticazione richiede più passaggi: per maggiori informazioni contatta il tuo amministratore",
-    "trust_device_and_ip": "Considera questo dispositivo e IP come affidabili",
+    "trust_device_and_ip": "Considera questo dispositivo o IP come affidabili",
     "changePassword_title": "Crea una nuova password",
     "changePassword_oldPassword": "Vecchia password",
     "changePassword_newPassword": "Nuova password",
