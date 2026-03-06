@@ -20,7 +20,7 @@
     "changePassword_error_minLength": "ความยาวขั้นต่ำคือ {{num}} ตัวอักษร",
     "changePassword_error_maxLength": "ความยาวสูงสุดคือ {{num}} ตัวอักษร",
     "changePassword_confirmNewPassword": "ยืนยันรหัสผ่านใหม่",
-    "trust_device_and_ip": "เชื่อถืออุปกรณ์และที่อยู่ IP นี้",
+    "trust_device_and_ip": "เชื่อถืออุปกรณ์หรือที่อยู่ IP นี้",
     "changePassword_title": "สร้างรหัสผ่านใหม่",
     "changePassword_error_passwordRecentlyUsed": "รหัสผ่านที่เพิ่งใช้งาน",
     "changePassword_error_minUppercaseChars": "ต้องมีอักขระที่เป็นตัวพิมพ์ใหญ่อย่างน้อย {{num}} ตัว",
@@ -59,6 +59,8 @@
     "still_have_access_to_recovery_email": "คุณยังคงสามารถเข้าถึง <strong>{{ recovery_email }}</strong> ได้หรือไม่?",
     "validation_code_was_sent_to_recovery_email": "รหัสตรวจสอบถูกส่งไปยัง <strong>{{ recovery_email }}</strong> และรหัสนี้จะใช้งานได้ 10 นาที คุณลองได้อีก {{ recoveryAttemptsLeft }} ครั้ง กรอกรหัสในแบบฟอร์มด้านล่าง",
     "error": {
-        "something_went_wrong": "มีบางอย่างผิดพลาด"
+        "something_went_wrong": "มีบางอย่างผิดพลาด",
+        "loading_page": "ขออภัย เกิดข้อผิดพลาดในการโหลดหน้านี้",
+        "contact_support": "ติดต่อฝ่ายสนับสนุน หรือลองรีเฟรชหน้าอีกครั้ง"
     }
 }
