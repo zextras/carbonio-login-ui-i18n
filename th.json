@@ -57,5 +57,8 @@
     "login_with_app": "คุณสามารถเข้าสู่ระบบโดยใช้แอปเฉพาะสำหรับ <bold> Android </bold> และ <bold> Iphone </bold> ดาวน์โหลดเวอร์ชันของคุณโดยใช้ปุ่มด้านล่าง!",
     "recovery_code_send_success": "รหัสกู้คืนถูกส่งเรียบร้อยแล้ว",
     "still_have_access_to_recovery_email": "คุณยังคงสามารถเข้าถึง <strong>{{ recovery_email }}</strong> ได้หรือไม่?",
-    "validation_code_was_sent_to_recovery_email": "รหัสตรวจสอบถูกส่งไปยัง <strong>{{ recovery_email }}</strong> และรหัสนี้จะใช้งานได้ 10 นาที คุณลองได้อีก {{ recoveryAttemptsLeft }} ครั้ง กรอกรหัสในแบบฟอร์มด้านล่าง"
+    "validation_code_was_sent_to_recovery_email": "รหัสตรวจสอบถูกส่งไปยัง <strong>{{ recovery_email }}</strong> และรหัสนี้จะใช้งานได้ 10 นาที คุณลองได้อีก {{ recoveryAttemptsLeft }} ครั้ง กรอกรหัสในแบบฟอร์มด้านล่าง",
+    "error": {
+        "something_went_wrong": "มีบางอย่างผิดพลาด"
+    }
 }
