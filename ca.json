@@ -8,7 +8,8 @@
     "forget_password": "Contrasenya oblidada",
     "error": {
         "something_went_wrong": "Alguna cosa ha anat malament",
-        "loading_page": "Ho sentim, però hi havia un error en intentar carregar aquesta pàgina."
+        "loading_page": "Ho sentim, però hi havia un error en intentar carregar aquesta pàgina.",
+        "contact_support": "Contacteu el suport tècnic o torneu a actualitzar la pàgina"
     },
     "button": {
         "refresh_page": "ACTUALITZA"
