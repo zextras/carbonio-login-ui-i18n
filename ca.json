@@ -12,5 +12,11 @@
     },
     "button": {
         "refresh_page": "ACTUALITZA"
-    }
+    },
+    "changePassword_newPassword": "Contrasenya nova",
+    "code": "Codi",
+    "details": "Detalls",
+    "password": "Contrasenya",
+    "username": "Nom d’usuari",
+    "validate_code": "Valida codi"
 }
