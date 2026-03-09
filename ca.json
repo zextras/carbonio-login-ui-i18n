@@ -1,3 +1,16 @@
 {
-    "all_rights_reserved": "Tots els drets reservats"
+    "all_rights_reserved": "Tots els drets reservats",
+    "changePassword_confirmNewPassword": "Confirmeu la contrasenya:",
+    "changePassword_error_confirmPassword": "Les contrasenyes no coincideixen!",
+    "changePassword_error_maxLength": "La longitud màxima de la contrasenya és de {0} caràcters",
+    "changePassword_error_minLength": "La longitud mínima de la contrasenya és de {0} caràcters",
+    "changePassword_oldPassword": "Contrasenya",
+    "forget_password": "Contrasenya oblidada",
+    "error": {
+        "something_went_wrong": "Alguna cosa ha anat malament",
+        "loading_page": "Ho sentim, però hi havia un error en intentar carregar aquesta pàgina."
+    },
+    "button": {
+        "refresh_page": "ACTUALITZA"
+    }
 }
