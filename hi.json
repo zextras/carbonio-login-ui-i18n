@@ -15,7 +15,7 @@
     "all_rights_reserved": "सभी अधिकार सुरक्षित",
     "cant_login": "अभी लॉगिन नहीं कर सकते",
     "credentials_not_valid": "लॉगिन पासवर्ड मान्य नहीं है, जांच करें और दोबारा कोशिश करें",
-    "trust_device_and_ip": "इस डिवाइस और आईपी एड्रेस पर भरोसा करें",
+    "trust_device_and_ip": "इस उपकरण और आईपी एड्रेस पर भरोसा करें",
     "changePassword_title": "कोई नया पासवर्ड बनाएँ",
     "changePassword_error_passwordRecentlyUsed": "हाल ही में इस्तेमाल किया गया पासवर्ड",
     "changePassword_error_minUppercaseChars": "कम से कम {{num}} अपरकेस वर्ण आने चाहिए",
@@ -44,12 +44,26 @@
     "recovery_code_send_success": "पुनर्प्राप्ति कोड सफलतापूर्वक भेज दिया गया है",
     "error": {
         "something_went_wrong": "कुछ गड़बड़ हुई",
-        "loading_page": "हमें खेद है, लेकिन इस पृष्ठ को लोड करने का प्रयास करते समय एक त्रुटि हुई।"
+        "loading_page": "हमें खेद है, लेकिन इस पृष्ठ को लोड करने का प्रयास करते समय एक त्रुटि हुई।",
+        "contact_support": "सहायता से संपर्क करें या पृष्ठ को ताज़ा करने का प्रयास करें"
     },
     "resend_Code": "कोड पुनः भेजें",
     "something_went_wrong": "कुछ गलत हो गया। कृपया अपने प्रशासक से संपर्क करें।",
     "do_not_show_this_again": "इसे दोबारा न दिखाएँ",
     "enter_your_username_to_retrieve_recovery_email": "कृपया अपना उपयोगकर्ता नाम दर्ज करें ताकि हम रिकवरी ईमेल प्राप्त कर सकें।",
     "forget_password": "पासवर्ड भूल गए?",
-    "glad_to_have_you_back_username": "आपको वापस पाकर खुशी हुई, <strong>{{ username }}</strong>!"
+    "glad_to_have_you_back_username": "आपको वापस पाकर खुशी हुई, <strong>{{ username }}</strong>!",
+    "continue_with_your_session": "अपने सत्र के साथ जारी रखें",
+    "login_with_app": "आप <bold> एंड्रॉइड </bold> और <bold> आईफ़ोन के लिए समर्पित ऐप का उपयोग करके लॉग इन कर सकते हैं, </bold> नीचे दिए गए बटनों का उपयोग करके अपना संस्करण डाउनलोड करें!",
+    "not_have_recovery_email_setup_note": "पुनर्प्राप्ति ईमेल सेटअप नहीं है? कृपया सहायता के लिए अपने सिस्टम प्रशासक से संपर्क करें।",
+    "resend_code_notes": "अपने इनबॉक्स में कोड नहीं देख रहे हैं? कुछ मिनट प्रतीक्षा करें या अपने स्पैम फ़ोल्डर की जाँच करें। यदि आप इसे अभी भी नहीं देखते हैं तो \"कोड फिर से भेजें\" पर क्लिक करें।",
+    "return_to_login": "लॉगिन पर वापस जाएं",
+    "button": {
+        "refresh_page": "ताज़ा करें"
+    },
+    "send_a_recovery_code_notes": "नीचे दिए गए बटन पर क्लिक करें ताकि उस पते पर एक पुनर्प्राप्ति कोड भेजा जा सके, इसका उपयोग अगले अनुरोध को सत्यापित करने के लिए करें।",
+    "send_recovery_code": "पुनर्प्राप्ति कोड भेजें",
+    "still_have_access_to_recovery_email": "क्या आपके पास अभी भी <strong>{{ recovery_email }}</strong> तक पहुंच है?",
+    "validate_code": "कोड मान्य करें",
+    "validation_code_was_sent_to_recovery_email": "मान्यकरण कोड <strong>{{ recovery_email }}</strong> पर भेजा गया था और 10 मिनट के लिए वैध होगा। आपके पास {{ recoveryAttemptsLeft }} और प्रयास हैं। नीचे दिए गए फॉर्म में कोड दर्ज करें।"
 }
