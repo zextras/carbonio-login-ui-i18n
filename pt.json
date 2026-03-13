@@ -57,5 +57,8 @@
     "resend_Code": "Reenviar Código",
     "resend_code_notes": "Não localizou o código na sua caixa de entrada? Aguarde alguns minutos ou verifique sua pasta de spam. Caso ainda não localize, clique em \"Reenviar Código\".",
     "return_to_login": "Retornar ao Login",
-    "validation_code_was_sent_to_recovery_email": "O código de validação foi enviado para <strong>{{ recovery_email }}</strong> e será válido por 10 minutos. Você tem mais {{ recoveryAttemptsLeft }} tentativas. Insira o código no formulário abaixo."
+    "validation_code_was_sent_to_recovery_email": "O código de validação foi enviado para <strong>{{ recovery_email }}</strong> e será válido por 10 minutos. Você tem mais {{ recoveryAttemptsLeft }} tentativas. Insira o código no formulário abaixo.",
+    "error": {
+        "something_went_wrong": "Algo deu errado"
+    }
 }
