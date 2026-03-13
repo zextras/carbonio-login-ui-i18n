@@ -20,7 +20,7 @@
     "changePassword_error_minLength": "O comprimento mínimo é de {{num}} caracteres",
     "changePassword_error_maxLength": "O comprimento máximo é de {{num}} caracteres",
     "changePassword_confirmNewPassword": "Confirmar nova senha",
-    "trust_device_and_ip": "Confiar neste dispositivo e endereço IP",
+    "trust_device_and_ip": "Confiar neste dispositivo e/ou endereço IP",
     "changePassword_title": "Criar nova senha",
     "changePassword_error_minUppercaseChars": "Esperando ao menos {{num}} caracteres maiúsculos",
     "changePassword_error_minPunctuationChars": "Esperando ao menos {{num}} caracteres de pontuação",
