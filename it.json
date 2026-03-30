@@ -75,5 +75,18 @@
     "proceed_with_configuration": "Procedi con la configurazione",
     "otp_setup_description": "Configura il servizio di autenticazione a due fattori (2FA) seguendo questi semplici passaggi:",
     "otp_setup_step1_title": "Step 1",
-    "otp_setup_step1_scan_qr": "Usa l'app di autenticazione per scansionare il codice QR qui sotto"
+    "otp_setup_step1_scan_qr": "Usa l'app di autenticazione per scansionare il codice QR qui sotto",
+    "otp_setup_cant_scan": "Usa l'app di autenticazione per scansionare il codice QR qui sotto",
+    "otp_setup_step2_title": "Step 2",
+    "otp_setup_step2_enter_code": "Inserisci il codice a 6 cifre generato dalla tua app di autenticazione",
+    "otp_setup_code_placeholder": "Inserisci il codice a 6 cifre generato",
+    "otp_setup_code_error": "Questo codice non è valido o è scaduto. Riprova. ({{count}} tentativi rimanenti)",
+    "otp_setup_code_error_generic": "Per motivi di sicurezza, l'accesso è stato limitato a seguito di un numero eccessivo di tentativi errati. Aggiorna la pagina per ricominciare la procedura di configurazione dell'autenticazione a due fattori",
+    "remember_device_or_ip": "Ricorda questo dispositivo o indirizzo IP",
+    "verify_and_proceed": "Verifica e procedi",
+    "backup_codes_description": "Scarica o stampa questi codici e conservali in un luogo sicuro. Ti serviranno per accedere al tuo account nel caso in cui dovessi perdere l'accesso al tuo dispositivo mobile o all'app di autenticazione.",
+    "copy": "Copia",
+    "save_as_txt": "Salva come file TXT",
+    "backup_codes_confirm_saved": "Ho salvato questi codici di sicurezza (obbligatori)",
+    "login_to_my_workspace": "Accedi al mio account"
 }
