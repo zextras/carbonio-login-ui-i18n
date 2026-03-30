@@ -73,5 +73,7 @@
     "otp_wizard_input_placeholder": "Inserisci un nome univoco",
     "otp_wizard_input_hint": "Massimo 20 caratteri. Non utilizzare caratteri speciali, spazi o trattini.",
     "proceed_with_configuration": "Procedi con la configurazione",
-    "otp_setup_description": "Configura il servizio di autenticazione a due fattori (2FA) seguendo questi semplici passaggi:"
+    "otp_setup_description": "Configura il servizio di autenticazione a due fattori (2FA) seguendo questi semplici passaggi:",
+    "otp_setup_step1_title": "Step 1",
+    "otp_setup_step1_scan_qr": "Usa l'app di autenticazione per scansionare il codice QR qui sotto"
 }
