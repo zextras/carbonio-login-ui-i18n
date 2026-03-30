@@ -65,5 +65,13 @@
     },
     "button": {
         "refresh_page": "AGGIORNA"
-    }
+    },
+    "back_to_login_page": "Torna alla pagina di login",
+    "otp_wizard_title": "La tua organizzazione ha introdotto l'autenticazione a due fattori per migliorare la sicurezza del tuo account.",
+    "otp_wizard_description": "Prima di iniziare, crea un nome univoco che ti aiuti a identificarlo in seguito nelle impostazioni di sicurezza.",
+    "otp_wizard_input_label": "Inserisci un nome facile da ricordare",
+    "otp_wizard_input_placeholder": "Inserisci un nome univoco",
+    "otp_wizard_input_hint": "Massimo 20 caratteri. Non utilizzare caratteri speciali, spazi o trattini.",
+    "proceed_with_configuration": "Procedi con la configurazione",
+    "otp_setup_description": "Configura il servizio di autenticazione a due fattori (2FA) seguendo questi semplici passaggi:"
 }
