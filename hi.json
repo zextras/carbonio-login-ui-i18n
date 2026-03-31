@@ -65,5 +65,7 @@
     "send_recovery_code": "पुनर्प्राप्ति कोड भेजें",
     "still_have_access_to_recovery_email": "क्या आपके पास अभी भी <strong>{{ recovery_email }}</strong> तक पहुंच है?",
     "validate_code": "कोड मान्य करें",
-    "validation_code_was_sent_to_recovery_email": "मान्यकरण कोड <strong>{{ recovery_email }}</strong> पर भेजा गया था और 10 मिनट के लिए वैध होगा। आपके पास {{ recoveryAttemptsLeft }} और प्रयास हैं। नीचे दिए गए फॉर्म में कोड दर्ज करें।"
+    "validation_code_was_sent_to_recovery_email": "मान्यकरण कोड <strong>{{ recovery_email }}</strong> पर भेजा गया था और 10 मिनट के लिए वैध होगा। आपके पास {{ recoveryAttemptsLeft }} और प्रयास हैं। नीचे दिए गए फॉर्म में कोड दर्ज करें।",
+    "back_to_login_page": "लॉगिन पृष्ठ पर वापस जाएं",
+    "otp_wizard_title": "आपके संगठन ने अपने खाते की सुरक्षा में सुधार करने के लिए दो-कारक प्रमाणीकरण शुरू किया है।"
 }
