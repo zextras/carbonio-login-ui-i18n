@@ -28,7 +28,7 @@
     "changePassword_newPassword": "Nouveau mot de passe",
     "changePassword_oldPassword": "Ancien mot de passe",
     "changePassword_title": "Créer un nouveau mot de passe",
-    "trust_device_and_ip": "Faire confiance à cet appareil ou cette adresse IP",
+    "trust_device_and_ip": "Faire confiance à cet appareil ou à cette adresse IP",
     "changePassword_error_maxLength": "La longueur maximum est de {{num}} caractères",
     "changePassword_error_block_personal_data": "Mot de passe non valide : le mot de passe contient un nom d'utilisateur ou d'autres données personnelles : {{str}}",
     "server_unreachable": "Erreur 502 : Service inaccessible - Recommencez plus tard.",
@@ -65,5 +65,28 @@
     },
     "button": {
         "refresh_page": "RAFRAÎCHIR"
-    }
+    },
+    "back_to_login_page": "Retour à la page de connexion",
+    "otp_wizard_title": "Votre organisation a mis en place l'authentification à deux facteurs afin de renforcer la sécurité de votre compte.",
+    "otp_wizard_description": "Avant de commencer, choisissez un nom unique qui vous permettra de l'identifier plus tard dans vos paramètres de sécurité.",
+    "otp_wizard_input_label": "Entrez un nom facile à retenir",
+    "otp_wizard_input_placeholder": "Entrez un nom unique",
+    "otp_wizard_input_hint": "20 caractères maximum. N'utilisez pas de caractères spéciaux, d'espaces ni de tirets.",
+    "proceed_with_configuration": "Poursuivre la configuration",
+    "otp_setup_description": "Configurez le service d'authentification à deux facteurs (2FA) en suivant ces quelques étapes simples :",
+    "otp_setup_step1_title": "Étape 1",
+    "otp_setup_step1_scan_qr": "Utilisez votre application d'authentification pour scanner le code QR ci-dessous",
+    "otp_setup_cant_scan": "Vous n'arrivez pas à scanner le code ? Saisissez ce code secret dans votre application d'authentification",
+    "otp_setup_step2_title": "Étape 2",
+    "otp_setup_step2_enter_code": "Saisissez le code à 6 chiffres généré par votre application d'authentification",
+    "otp_setup_code_placeholder": "Saisissez le code à 6 chiffres généré",
+    "otp_setup_code_error": "Ce code est incorrect ou a expiré. Veuillez réessayer. (Il vous reste {{count}} tentatives)",
+    "otp_setup_code_error_generic": "Pour votre sécurité, l'accès a été restreint après un nombre excessif de tentatives infructueuses. Actualisez la page pour recommencer la procédure de configuration de l'authentification à deux facteurs",
+    "remember_device_or_ip": "Mémoriser cet appareil ou cette adresse IP",
+    "verify_and_proceed": "Vérifier et continuer",
+    "backup_codes_description": "Veuillez télécharger ou imprimer ces codes et les conserver en lieu sûr. Vous en aurez besoin pour vous connecter si vous ne pouvez plus accéder à votre appareil mobile ou à votre application d'authentification.",
+    "copy": "Copier",
+    "save_as_txt": "Enregistrer en TXT",
+    "backup_codes_confirm_saved": "J'ai enregistré ces codes de secours (obligatoire)",
+    "login_to_my_workspace": "Connexion à mon espace de travail"
 }
