@@ -65,5 +65,28 @@
     },
     "button": {
         "refresh_page": "ODŚWIEŻ"
-    }
+    },
+    "back_to_login_page": "Powrót do strony logowania",
+    "otp_wizard_title": "Twoja organizacja wprowadziła uwierzytelnianie dwuetapowe, aby zwiększyć bezpieczeństwo Twojego konta.",
+    "otp_wizard_description": "Zanim rozpoczniesz, stwórz unikalną nazwę, tak, aby móc łatwo zidentyfikować ją później w Twoich ustawieniach bezpieczeństwa.",
+    "otp_wizard_input_label": "Wprowadź nazwę, która będzie dla Ciebie łatwa do zapamiętania",
+    "otp_wizard_input_placeholder": "Wprowadź unikalną nazwę",
+    "otp_wizard_input_hint": "Max. 20 znaków. Nie używaj znaków specjalnych, spacji ani myślników.",
+    "proceed_with_configuration": "Kontynuuj z konfiguracją",
+    "otp_setup_description": "Skonfiguruj uwierzytelnianie dwuetapowe w kilku prostych krokach:",
+    "otp_setup_step1_title": "Krok 1",
+    "otp_setup_step1_scan_qr": "Użyj aplikacji uwierzytelniającej, aby zeskanować poniższy kod QR",
+    "otp_setup_cant_scan": "Nie udaje się zeskanować kodu? Wprowadź ten sekretny kod do aplikacji uwierzytelniającej",
+    "otp_setup_step2_title": "Krok 2",
+    "otp_setup_step2_enter_code": "Wprowadź sześciocyfrowy kod wygenerowany przez aplikację uwierzytelniającą",
+    "otp_setup_code_placeholder": "Wprowadź wygenerowany, sześciocyfrowy kod",
+    "otp_setup_code_error": "Ten kod wygasł lub jest nieprawidłowy. Spróbuj ponownie. (pozostało {{count}} prób)",
+    "otp_setup_code_error_generic": "Aby zwiększyć Twoje bezpieczeństwo, dostęp został ograniczony po zbyt wielu niepoprawnych próbach. Odśwież stronę, aby ponownie rozpocząć proces konfiguracji uwierzytelniania dwuetapowego",
+    "backup_codes_description": "Pobierz lub wydrukuj te kody i trzymaj je w bezpiecznym miejscu. Będziesz ich potrzebować, żeby się zalogować, jeśli stracisz dostęp do Twojego telefonu lub aplikacji uwierzytelniającej.",
+    "remember_device_or_ip": "Zapamiętaj to urządzenie lub adres IP",
+    "verify_and_proceed": "Zweryfikuj i kontynuuj",
+    "copy": "Skopiuj",
+    "save_as_txt": "Zapisz jako TXT",
+    "backup_codes_confirm_saved": "Zapisałem kody zapasowe (wymagane)",
+    "login_to_my_workspace": "Zaloguj się do systemu"
 }
