@@ -88,5 +88,7 @@
     "copy": "Copy",
     "save_as_txt": "Save as TXT",
     "backup_codes_confirm_saved": "I have saved this backup codes (mandatory)",
-    "login_to_my_workspace": "Login to my workspace"
+    "login_to_my_workspace": "Login to my workspace",
+    "otp_method_disabled": "This OTP method is disabled. To restore it, please contact your system administrator.",
+    "otp_max_attempts": "Invalid OTP. You have reached the maximum number of attempts"
 }
