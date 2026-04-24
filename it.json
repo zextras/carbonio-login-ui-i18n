@@ -88,5 +88,7 @@
     "copy": "Copia",
     "save_as_txt": "Salva come file TXT",
     "backup_codes_confirm_saved": "Ho salvato questi codici di sicurezza (obbligatori)",
-    "login_to_my_workspace": "Accedi al mio account"
+    "login_to_my_workspace": "Accedi al mio account",
+    "otp_method_disabled": "Questo metodo OTP è disabilitato. Per riattivarlo, contatta l'amministratore di sistema.",
+    "otp_max_attempts": "Codice OTP non valido. Hai raggiunto il numero massimo di tentativi"
 }
