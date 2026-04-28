@@ -88,5 +88,7 @@
     "copy": "Skopiuj",
     "save_as_txt": "Zapisz jako TXT",
     "backup_codes_confirm_saved": "Zapisałem kody zapasowe (wymagane)",
-    "login_to_my_workspace": "Zaloguj się do systemu"
+    "login_to_my_workspace": "Zaloguj się do systemu",
+    "otp_method_disabled": "Ta metoda hasła jednorazowego jest wyłączona. Aby ją przywrócić, skontaktuj się z administratorem systemu.",
+    "otp_max_attempts": "Nieprawidłowe hasło jednorazowe. Osiągnięto maksymalną liczbę prób"
 }
