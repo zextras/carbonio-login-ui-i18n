@@ -88,5 +88,7 @@
     "backup_codes_description": "Baixe ou imprima estes códigos e guarde-os em um local seguro. Você precisará deles para entrar caso perca o acesso ao seu dispositivo móvel ou aplicativo de autenticação.",
     "copy": "Copiar",
     "save_as_txt": "Salvar como TXT",
-    "backup_codes_confirm_saved": "Salvei estes códigos de backup (obrigatório)"
+    "backup_codes_confirm_saved": "Salvei estes códigos de backup (obrigatório)",
+    "login_to_my_workspace": "Entrar no meu workspace",
+    "otp_max_attempts": "OTP inválido. Você atingiu o número máximo de tentativas"
 }
