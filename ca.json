@@ -1,6 +1,6 @@
 {
     "all_rights_reserved": "Tots els drets reservats",
-    "changePassword_confirmNewPassword": "Confirmeu la contrasenya:",
+    "changePassword_confirmNewPassword": "Confirmeu la contrasenya",
     "changePassword_error_confirmPassword": "Les contrasenyes no coincideixen!",
     "changePassword_error_maxLength": "La longitud màxima de la contrasenya és de {0} caràcters",
     "changePassword_error_minLength": "La longitud mínima de la contrasenya és de {0} caràcters",
