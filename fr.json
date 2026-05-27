@@ -88,5 +88,7 @@
     "copy": "Copier",
     "save_as_txt": "Enregistrer en TXT",
     "backup_codes_confirm_saved": "J'ai enregistré ces codes de secours (obligatoire)",
-    "login_to_my_workspace": "Connexion à mon espace de travail"
+    "login_to_my_workspace": "Connexion à mon espace de travail",
+    "otp_method_disabled": "Cette méthode OTP est désactivée. Pour la réactiver, veuillez contacter votre administrateur système.",
+    "otp_max_attempts": "OTP invalide. Vous avez atteint le nombre maximum de tentatives."
 }
