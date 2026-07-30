@@ -46,5 +46,14 @@
     "login_with_app": "Sie können sich mit der dedizierten App für <bold>Android</bold> und <bold>iPhone</bold> anmelden. Laden Sie Ihre Version über die Schaltflächen unten herunter!",
     "not_have_recovery_email_setup_note": "Haben Sie keine Wiederherstellungs-E-Mail eingerichtet? Bitte kontaktieren Sie Ihren Systemadministrator, um Unterstützung zu erhalten.",
     "proceed_with_the_login_and_change_your_password": "Sie können mit der Anmeldung fortfahren, denken Sie aber daran, auch Ihr Passwort zu ändern",
-    "otp_method_disabled": "Diese OTP-Methode ist deaktiviert. Um sie wiederherzustellen, kontaktieren Sie bitte Ihren Systemadministrator."
+    "otp_method_disabled": "Diese OTP-Methode ist deaktiviert. Um sie wiederherzustellen, kontaktieren Sie bitte Ihren Systemadministrator.",
+    "browser_limited_supported": "Probleme? Versuchen Sie einen vollständig <a>unterstützten</a> Browser",
+    "changePassword_error_passwordLocked": "Das Passwort ist gesperrt und kann nicht geändert werden",
+    "error": {
+        "contact_support": "Kontaktieren Sie den Support oder versuchen Sie, die Seite neu zu laden",
+        "loading_page": "Es tut uns leid, aber es gab einen Fehler beim Laden dieser Seite."
+    },
+    "button": {
+        "refresh_page": "SEITE NEU LADEN"
+    }
 }
