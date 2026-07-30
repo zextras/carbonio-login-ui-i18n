@@ -51,7 +51,8 @@
     "changePassword_error_passwordLocked": "Das Passwort ist gesperrt und kann nicht geändert werden",
     "error": {
         "contact_support": "Kontaktieren Sie den Support oder versuchen Sie, die Seite neu zu laden",
-        "loading_page": "Es tut uns leid, aber es gab einen Fehler beim Laden dieser Seite."
+        "loading_page": "Es tut uns leid, aber es gab einen Fehler beim Laden dieser Seite.",
+        "something_went_wrong": "Etwas ist schiefgegangen"
     },
     "button": {
         "refresh_page": "SEITE NEU LADEN"
