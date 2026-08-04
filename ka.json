@@ -1,1 +1,10 @@
-{}
+{
+    "details": "დეტალები",
+    "login": "მომხმარებელი",
+    "password": "პაროლი",
+    "two_step_authentication": "2FA",
+    "username": "მომხმარებლის სახელი",
+    "button": {
+        "refresh_page": "განახლება"
+    }
+}
