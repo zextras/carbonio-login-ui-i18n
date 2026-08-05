@@ -6,5 +6,12 @@
     "username": "მომხმარებლის სახელი",
     "button": {
         "refresh_page": "განახლება"
-    }
+    },
+    "code": "კოდი",
+    "submit": "გადაცემა",
+    "copy": "კოპირება",
+    "carbonio_authentication": "Carbonio-ის ავთენტიკაცია",
+    "changePassword_newPassword": "ახალი პაროლი",
+    "changePassword_oldPassword": "ძველი პაროლი",
+    "login_saml": "SAML-ით შესვლა"
 }
