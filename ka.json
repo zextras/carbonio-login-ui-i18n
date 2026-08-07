@@ -13,5 +13,10 @@
     "carbonio_authentication": "Carbonio-ის ავთენტიკაცია",
     "changePassword_newPassword": "ახალი პაროლი",
     "changePassword_oldPassword": "ძველი პაროლი",
-    "login_saml": "SAML-ით შესვლა"
+    "login_saml": "SAML-ით შესვლა",
+    "forget_password": "პაროლი დაგავიწყდათ?",
+    "resend_Code": "კოდის თავიდან გაგზავნა",
+    "validate_code": "კოდის გადამოწმება",
+    "otp_setup_step1_title": "ნაბიჯი 1",
+    "otp_setup_step2_title": "ნაბიჯი 2"
 }
