@@ -18,5 +18,13 @@
     "resend_Code": "კოდის თავიდან გაგზავნა",
     "validate_code": "კოდის გადამოწმება",
     "otp_setup_step1_title": "ნაბიჯი 1",
-    "otp_setup_step2_title": "ნაბიჯი 2"
+    "otp_setup_step2_title": "ნაბიჯი 2",
+    "all_rights_reserved": "ყველა უფლება დაცულია",
+    "changePassword_confirmNewPassword": "ახალი პაროლის დადასტურება",
+    "changePassword_error_confirmPassword": "პაროლები არ ემთხვევა",
+    "changePassword_error_passwordRecentlyUsed": "პაროლი ახლახან იქნა გამოყენებული",
+    "type_otp": "აკრიფეთ აქ ერთჯერადი პაროლი",
+    "error": {
+        "something_went_wrong": "რაღაც არასწორად წავიდა"
+    }
 }
