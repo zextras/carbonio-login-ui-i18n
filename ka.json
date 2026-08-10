@@ -26,5 +26,14 @@
     "type_otp": "აკრიფეთ აქ ერთჯერადი პაროლი",
     "error": {
         "something_went_wrong": "რაღაც არასწორად წავიდა"
-    }
+    },
+    "return_to_login": "შესვლაზე დაბრუნება",
+    "send_recovery_code": "აღდგენის კოდის გაგზავნა",
+    "proceed_with_configuration": "მორგებაზე გადასვლა",
+    "verify_and_proceed": "გადამოწმება და გაგრძელება",
+    "save_as_txt": "შენახვა TXT ფორმატში",
+    "cant_login": "ამჟამად შესვლა შეუძლებელია",
+    "changePassword_confirm_label": "პაროლის შეცვლა და შესვლა",
+    "changePassword_title": "ახალი პაროლის შექმნა",
+    "choose_otp": "აირჩიეთ OTP-ის მეთოდი"
 }
