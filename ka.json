@@ -35,5 +35,9 @@
     "cant_login": "ამჟამად შესვლა შეუძლებელია",
     "changePassword_confirm_label": "პაროლის შეცვლა და შესვლა",
     "changePassword_title": "ახალი პაროლის შექმნა",
-    "choose_otp": "აირჩიეთ OTP-ის მეთოდი"
+    "choose_otp": "აირჩიეთ OTP-ის მეთოდი",
+    "continue_with_your_session": "გაგრძელება თქვენი სესიით",
+    "back_to_login_page": "დაბრუნება შესვლის გვერდზე",
+    "otp_wizard_input_placeholder": "შეიყვანეთ უნიკალური სახელი",
+    "login_to_my_workspace": "შესვლა ჩემი სამუშაო სივრცეში"
 }
