@@ -39,5 +39,16 @@
     "continue_with_your_session": "გაგრძელება თქვენი სესიით",
     "back_to_login_page": "დაბრუნება შესვლის გვერდზე",
     "otp_wizard_input_placeholder": "შეიყვანეთ უნიკალური სახელი",
-    "login_to_my_workspace": "შესვლა ჩემი სამუშაო სივრცეში"
+    "login_to_my_workspace": "შესვლა ჩემი სამუშაო სივრცეში",
+    "browser_fully_supported": "თქვენი ბრაუზერი სრულად <a>მხარდაჭერილია</a>",
+    "changePassword_error_maxLength": "მაქსიმალური სიგრძეა {{num}} სიმბოლო",
+    "changePassword_error_minLength": "მინიმალური სიგრძეა {{num}} სიმბოლო",
+    "do_not_show_this_again": "ეს აღარ მაჩვენო",
+    "otp_setup_code_placeholder": "შეიყვანეთ გენერირებული 6-ციფრიანი კოდი",
+    "remember_device_or_ip": "ამ მოწყობილობის, ან IP-ის დამახსოვრება",
+    "changePassword_error_minLowerCaseChars": "მოველოდი, სულ ცოტა, {{num}} მხედრულ ასოს",
+    "changePassword_error_minNumericChars": "მოველოდი, სულ ცოტა {{num}} ციფრს",
+    "changePassword_error_minPunctuationChars": "მოველოდი, სულ ცოტა, {{num}} პუნქტუაციის სიმბოლოს",
+    "changePassword_error_minUppercaseChars": "მოველოდი, სულ ცოტა, {{num}} მთავრულ ასოს",
+    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა"
 }
