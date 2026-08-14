@@ -25,7 +25,8 @@
     "changePassword_error_passwordRecentlyUsed": "პაროლი ახლახან იქნა გამოყენებული",
     "type_otp": "აკრიფეთ აქ ერთჯერადი პაროლი",
     "error": {
-        "something_went_wrong": "რაღაც არასწორად წავიდა"
+        "something_went_wrong": "რაღაც არასწორად წავიდა",
+        "contact_support": "დაუკავშირდით მხარდაჭერის გუნდს, ან სცადეთ გვერდის თავიდან ჩატვირთვა"
     },
     "return_to_login": "შესვლაზე დაბრუნება",
     "send_recovery_code": "აღდგენის კოდის გაგზავნა",
@@ -50,5 +51,15 @@
     "changePassword_error_minNumericChars": "მოველოდი, სულ ცოტა {{num}} ციფრს",
     "changePassword_error_minPunctuationChars": "მოველოდი, სულ ცოტა, {{num}} პუნქტუაციის სიმბოლოს",
     "changePassword_error_minUppercaseChars": "მოველოდი, სულ ცოტა, {{num}} მთავრულ ასოს",
-    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა"
+    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა",
+    "are_you_using_a_small_screen?": "პატარა ეკრანს იყენებთ?",
+    "browser_limited_supported": "პრობლემები გაქვთ? სცადეთ სრულად <a>მხარდაჭერილი</a> ბრაუზერი",
+    "changePassword_error_passwordLocked": "პაროლი დაბლოკილია და ვერ შეიცვლება",
+    "server_unreachable": "შეცდომა 502: სერვისი ხელმისაწვდომი არაა - მოგვიანებით სცადეთ.",
+    "recovery_code_send_success": "აღდგენის კოდი წარმატებით გაიგზავნა",
+    "something_went_wrong": "რაღაც არასწორად წავიდა. დაუკავშირდით თქვენს ადმინისტრატორს.",
+    "backup_codes_confirm_saved": "მე შევინახე ეს მარქაფის კოდები (აუცილებელია)",
+    "changePassword_error_minDigitsOrPuncs": "მოველოდი, სულ ცოტა {{num}} ციფრს, ან პუნქტუაციის ნიშანს",
+    "wrong_password": "არასწორი პაროლი. შეამოწმეთ მონაცემები და კიდევ სცადეთ",
+    "glad_to_have_you_back_username": "გვიხარია, რომ დაგვიბრუნდით, <strong>{{ username }}</strong>!"
 }
